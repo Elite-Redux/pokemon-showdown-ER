@@ -346,6 +346,19 @@ export class BattleActions {
 			this.battle.activeMove = oldActiveMove;
 		}
 	}
+
+	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: Object, ) {
+		type MutableMove = {-readonly [K in keyof Move]: Move[K]}
+		const nextMutableMove: MutableMove = move
+		if (moveMutations) {
+			for (const key of Object.keys(moveMutations)) {
+				(nextMutableMove as any)[key] = (moveMutations as any)[key];
+			}
+		}
+		const nextMove: Move = nextMutableMove
+		const targetLoc = pokemon.getLocOf(target)
+		this.runMove(nextMove, pokemon, targetLoc, null, undefined, true);
+	}
 	/**
 	 * useMove is the "inside" move caller. It handles effects of the
 	 * move itself, but not the idea of using the move.
@@ -1695,21 +1708,21 @@ export class BattleActions {
 		const type = move.type;
 
 		baseDamage += 2;
-
+		//TODO: Test Parental Bond Rework
 		if (move.spreadHit) {
 			// multi-target modifier (doubles only)
 			const spreadModifier = move.spreadModifier || (this.battle.gameType === 'freeforall' ? 0.5 : 0.75);
 			this.battle.debug('Spread modifier: ' + spreadModifier);
-			baseDamage = this.battle.modify(baseDamage, spreadModifier);
+			baseDamage = move.damage === 'level' ? pokemon.level : this.battle.modify(baseDamage, spreadModifier);
 		} else if (move.multihitType === 'parentalbond' && move.hit > 1) {
 			// Parental Bond modifier
 			const bondModifier = this.battle.gen > 6 ? 0.25 : 0.5;
 			this.battle.debug(`Parental Bond modifier: ${bondModifier}`);
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
-		} else if (move.multihitType === 'boxer' && move.hit > 1) {
-			// Boxer modifier
+		} else if ((move.multihitType === 'boxer' || move.multihitType === 'maw') && move.hit > 1) {
+			// Boxer & Primal Maw modifier
 			const bondModifier = 0.5
-			this.battle.debug(`Raging Boxer modifier: ${bondModifier}`);
+			this.battle.debug(`Raging Boxer / Primal Maw modifier: ${bondModifier}`);
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
 		} else if (move.multihitType === 'headed') {
 			let bondModifier;
@@ -1719,6 +1732,9 @@ export class BattleActions {
 				this.battle.debug(`Multi-Headed modifier: ${bondModifier}`);
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
 			}
+		} else if (move.multihitType === 'dual') {
+			const bondModifier = 0.75
+			baseDamage = this.battle.modify(baseDamage, bondModifier);
 		}
 
 
@@ -1783,6 +1799,10 @@ export class BattleActions {
 			if (this.battle.gen < 6 || move.id !== 'facade') {
 				baseDamage = this.battle.modify(baseDamage, 0.5);
 			}
+		}
+
+		if (pokemon.volatiles['attract']) {
+			baseDamage = this.battle.modify(baseDamage, 0.5);
 		}
 
 		// Generation 5, but nothing later, sets damage to 1 before the final damage modifiers

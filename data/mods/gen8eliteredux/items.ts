@@ -589,10 +589,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 		onAfterMoveSecondarySelfPriority: -1,
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (move.totalDamage && !pokemon.forceSwitchFlag) {
-				this.heal(move.totalDamage / 3, pokemon);
+				this.heal(move.totalDamage / 4, pokemon);
 			}
 		},
-		desc: "After an attack, holder gains 1/3 of the damage in HP dealt to other Pokemon.",
+		desc: "After an attack, holder gains 1/4 of the damage in HP dealt to other Pokemon.",
 	},
 	sharpedonite: {
 		inherit: true,
@@ -796,6 +796,142 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	fairymemory: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	dewgongite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	hitmonchanite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	hitmonleeite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	hitmontopite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	crobatite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	skarmorite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	torterrite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	infernapite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	empoleonite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	shucklite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	relicanthite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	quagsite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	jellicentite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	toucannonite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	dragoniteite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	breloomite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	slakingite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	feraligatritex: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	feralitgatritey: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	granbullite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	gyaradosmegay: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	haxorusite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	meganiumite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	luxrite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	nidokingite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	nidoqueenite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	sandslashite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	typhlosionite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	krookodilite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	magnezonite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	shedninjite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	swalotite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	lanturnite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	slowkingite: {
 		inherit: true,
 		isNonstandard: null,
 	},

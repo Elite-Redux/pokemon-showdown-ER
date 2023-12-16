@@ -48,6 +48,45 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {failencore: 1, nosleeptalk: 1, noassist: 1, failcopycat: 1, failinstruct: 1},
 	},
+	attract: {
+		inherit: true, 
+		condition: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			onStart(pokemon, source, effect) {
+				if (!(pokemon.gender === 'M' && source.gender === 'F') && !(pokemon.gender === 'F' && source.gender === 'M')) {
+					this.debug('incompatible gender');
+					return false;
+				}
+				if (!this.runEvent('Attract', pokemon, source)) {
+					this.debug('Attract event failed');
+					return false;
+				}
+
+				if (effect.name === 'Cute Charm') {
+					this.add('-start', pokemon, 'Attract', '[from] ability: Cute Charm', '[of] ' + source);
+				} else if (effect.name === 'Destiny Knot') {
+					this.add('-start', pokemon, 'Attract', '[from] item: Destiny Knot', '[of] ' + source);
+				} else {
+					this.add('-start', pokemon, 'Attract');
+				}
+			},
+			onUpdate(pokemon) {
+				if (this.effectState.source && !this.effectState.source.isActive && pokemon.volatiles['attract']) {
+					this.debug('Removing Attract volatile on ' + pokemon);
+					pokemon.removeVolatile('attract');
+				}
+			},
+			onBeforeMovePriority: 2,
+			onBeforeMove(pokemon, target, move) {},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Attract', '[silent]');
+			},
+		},
+		onTryImmunity(target, source) {
+			return (target.gender === 'M' && source.gender === 'F') || (target.gender === 'F' && source.gender === 'M');
+		},
+
+	},
 	aurawheel: {
 		inherit: true,
 		isNonstandard: null,
@@ -1176,6 +1215,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	ironfangs: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
+	},
+	jaggedfangs: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
+	},
 	jumpkick: {
 		inherit: true,
 		isNonstandard: null,
@@ -1199,6 +1248,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	lightthatburnsthesky: {
 		inherit: true,
 		isNonstandard: null,
+	},
+	lovelybite: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
 	},
 	lowkick: {
 		inherit: true,
@@ -1337,6 +1391,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	ominouswind: {
 		inherit: true,
 		isNonstandard: null,
+	},
+	outburst: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
 	},
 	pollenpuff: {
 		inherit: true,
@@ -1480,6 +1539,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	scorchedearth: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
+	},
 	searingsunrazesmash: {
 		inherit: true,
 		isNonstandard: null,
@@ -1491,6 +1555,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	seedflare: {
 		inherit: true,
 		isNonstandard: null,
+	},
+	seismicfist: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
+	},
+	shadowfangs: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
 	},
 	sharpen: {
 		inherit: true,
@@ -1532,6 +1606,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	smellingsalts: {
 		inherit: true,
 		isNonstandard: null,
+	},
+	smite: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
 	},
 	snatch: {
 		inherit: true,
