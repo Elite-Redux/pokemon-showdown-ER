@@ -241,8 +241,27 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (this.illusion) {
 					this.ability = ''; // Don't allow Illusion to wear off
 				}
-				this.setAbility(species.abilities['0'], null, true);
-				this.baseAbility = this.ability;
+
+				if (isPermanent && !['disguise', 'iceface'].includes(source.id)) {
+					if (this.illusion) {
+						this.ability = ''; // Don't allow Illusion to wear off
+					}
+
+					let abilityKey: keyof typeof rawSpecies.abilities
+					const baseSpecies = this.battle.dex.species.get(rawSpecies.baseSpecies)
+					let abilitySlot;
+
+					for (abilityKey in baseSpecies.abilities) {
+						if (this.battle.dex.abilities.getByID(this.baseAbility).name === this.battle.dex.abilities.get(baseSpecies.abilities[abilityKey]).name) {
+							if (!(abilityKey as string).includes('I')) abilitySlot = abilityKey
+
+						}
+					}
+
+					if (abilitySlot === undefined) abilitySlot = '0'
+					this.setAbility(species.abilities[abilitySlot as string], null, true);
+					this.baseAbility = this.ability;
+				}
 			}
 			if (this.terastallized && this.terastallized !== this.apparentType) {
 				this.battle.add('-start', this, 'typechange', this.terastallized, '[silent]');
