@@ -7540,7 +7540,7 @@ export const Items: {[itemid: string]: ItemData} = {
 	feralitgatritey: {
 		name: "Feraligatrite Y",
 		spritenum: 622,
-		megaStone: "Feraligatrite-Mega-Y",
+		megaStone: "Feraligatr-Mega-Y",
 		megaEvolves: "Feraligatr",
 		itemUser: ["Feraligatr"],
 		onTakeItem(item, source) {

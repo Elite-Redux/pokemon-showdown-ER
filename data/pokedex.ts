@@ -2860,8 +2860,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Magikarp",
 		evoLevel: 20,
 		eggGroups: ["Water 2", "Dragon"],
-		otherFormes: ["Gyarados-Mega"],
-		formeOrder: ["Gyarados", "Gyarados-Mega"],
+		otherFormes: ["Gyarados-Mega", "Gyarados-Mega-Y"],
+		formeOrder: ["Gyarados", "Gyarados-Mega", "Gyarados-Mega-Y"],
 	},
 	gyaradosmega: {
 		num: 130,
@@ -2888,6 +2888,9 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Blue",
 		eggGroups: ["Monster", "Water 1"],
 		canGigantamax: "G-Max Resonance",
+		otherFormes: ["Lapras-Mega", "Lapras-Mega-X"],
+		formeOrder: ["Lapras", "Lapras-Mega-X"],
+
 	},
 	laprasgmax: {
 		num: 131,
@@ -3459,6 +3462,9 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Croconaw",
 		evoLevel: 30,
 		eggGroups: ["Monster", "Water 1"],
+		otherFormes: ["Feraligatr-Mega-X", "Feraligatr-Mega-Y"],
+		formeOrder: ["Feraligatr", "Feraligatr-Mega-X", "Feraligatr-Mega-Y"],
+
 	},
 	sentret: {
 		num: 161,
@@ -18767,7 +18773,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		"heightm": 2.3,
 		"weightkg": 88.8,
 		"color": "Blue",
-		requiredItem: "Feralitatrite X"
+		requiredItem: "Feralitatrite X",
+
 
 	},
 	"feraligatrmegay": {
