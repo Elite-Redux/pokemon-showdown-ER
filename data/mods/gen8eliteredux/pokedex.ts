@@ -16648,7 +16648,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Water Veil",
 			"I3": "Hydrate"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"hitmonchanmega": {
 		"abilities": {
@@ -16657,7 +16658,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Power Fists",
 			"I3": "Blitz Boxer"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8,
 	},
 	"hitmonleemega": {
 		"abilities": {
@@ -16666,7 +16668,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Mineralize",
 			"I3": "Striker"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8,
 	},
 	"hitmontopmega": {
 		"abilities": {
@@ -16675,7 +16678,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Battle Armor",
 			"I3": "Intimidate"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"crobatmega": {
 		"abilities": {
@@ -16686,7 +16690,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Spectral Shroud",
 			"I3": "Shadow Shield"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"skarmorymega": {
 		"abilities": {
@@ -16695,7 +16700,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Power Core",
 			"I3": "Self Repair"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	// "bruxishmega": {
 	// 	"abilities": {
@@ -16715,7 +16721,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Solid Rock",
 			"I3": "Grassy Surge"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"infernapemega": {
 		"abilities": {
@@ -16724,7 +16731,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Limber",
 			"I3": "Berserk"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"empoleonmega": {
 		"abilities": {
@@ -16735,7 +16743,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Antarctic Bird",
 			"I3": "Battle Armor"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"shucklemega": {
 		"abilities": {
@@ -16744,7 +16753,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Juggernaut",
 			"I3": "Unaware"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"relicanthmega": {
 		"abilities": {
@@ -16753,7 +16763,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Reckless",
 			"I3": "Primal Armor"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"quagsiremega": {
 		"abilities": {
@@ -16762,7 +16773,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Water Veil",
 			"I3": "Oblivious"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	// "jellicentmega": {
 	// 	"abilities": {
@@ -16782,7 +16794,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Iron Barrage",
 			"I3": "Pyro Shells"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"dragonitemega": {
 		"abilities": {
@@ -16791,7 +16804,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Discipline",
 			"I3": "Thundercall"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"breloommega": {
 		"abilities": {
@@ -16800,7 +16814,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Technician",
 			"I3": "Effect Spore"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"slakingmega": {
 		"abilities": {
@@ -16809,7 +16824,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Crystallize",
 			"I3": "Rampage"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"feraligatrmegax": {
 		"abilities": {
@@ -16818,7 +16834,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Dry Skin",
 			"I3": "Predator"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"feraligatrmegay": {
 		"abilities": {
@@ -16827,7 +16844,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Galvanize",
 			"I3": "Rampage"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"granbullmega": {
 		"abilities": {
@@ -16838,7 +16856,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Defiant",
 			"I3": "Hyper Aggressive"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"gyaradosmegay": {
 		"abilities": {
@@ -16847,7 +16866,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Prism Scales",
 			"I3": "Draconize"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"haxorusmega": {
 		"abilities": {
@@ -16856,7 +16876,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Sweeping Edge",
 			"I3": "Merciless"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	// "kingdramegay": {
 	// 	"abilities": {
@@ -16876,7 +16897,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Absorbant",
 			"I3": "Triage"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"luxraymega": {
 		"abilities": {
@@ -16885,7 +16907,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Fae Hunter",
 			"I3": "Merciless"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"nidokingmega": {
 		"abilities": {
@@ -16894,7 +16917,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Rivalry",
 			"I3": "Mighty Horn"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"nidoqueenmega": {
 		"abilities": {
@@ -16903,7 +16927,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Queenly Majesty",
 			"I3": "Multiscale"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"sandslashmega": {
 		"abilities": {
@@ -16912,7 +16937,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Sand Force",
 			"I3": "Tough Claws"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"typhlosionmega": {
 		"abilities": {
@@ -16921,7 +16947,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Sand Stream",
 			"I3": "Sand Force"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"krookodilemega": {
 		"abilities": {
@@ -16930,7 +16957,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Moxie",
 			"I3": "Jaws Of Carnage"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"magnezonemega": {
 		"abilities": {
@@ -16939,7 +16967,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Multi Headed",
 			"I3": "Magnet Pull"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"shedinjamega": {
 		"abilities": {
@@ -16948,7 +16977,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Magic Guard",
 			"I3": "Adaptability"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"swalotmega": {
 		"abilities": {
@@ -16957,7 +16987,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Liquified",
 			"I3": "Corrosion"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"lanturnmega": {
 		"abilities": {
@@ -16966,7 +16997,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Volt Absorb",
 			"I3": "Radiance"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"laprasmegax": {
 		"abilities": {
@@ -16975,7 +17007,8 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Shell Armor",
 			"I3": "Jaws Of Carnage"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	},
 	"slowkingmega": {
 		"abilities": {
@@ -16984,6 +17017,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 			"I2": "Psychic Surge",
 			"I3": "Magical Dust"
 		},
-		"inherit": true
+		"inherit": true,
+                 gen: 8
 	}
 };
