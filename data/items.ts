@@ -7537,7 +7537,7 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
-	feralitgatritey: {
+	feraligatritey: {
 		name: "Feraligatrite Y",
 		spritenum: 622,
 		megaStone: "Feraligatr-Mega-Y",

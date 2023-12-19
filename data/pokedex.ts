@@ -18758,7 +18758,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 93,
 			"spe": 103
 		},
-		"forme": "Mega",
+		"forme": "Mega-X",
 		"name": "Feraligatr-Mega-X",
 		"types": [
 			"Water",
@@ -18789,7 +18789,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 113,
 			"spe": 68
 		},
-		"forme": "Mega",
+		"forme": "Mega-Y",
 		"name": "Feraligatr-Mega-Y",
 		"types": [
 			"Water",
@@ -18851,7 +18851,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 140,
 			"spe": 81
 		},
-		"forme": "Mega",
+		"forme": "Mega-Y",
 		"name": "Gyarados-Mega-Y",
 		"types": [
 			"Water",
@@ -19253,7 +19253,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 90,
 			"spe": 85
 		},
-		"forme": "Mega",
+		"forme": "Mega-X",
 		"name": "Lapras-Mega-X",
 		"types": [
 			"Water"
