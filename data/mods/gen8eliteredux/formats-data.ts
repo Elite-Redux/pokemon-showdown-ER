@@ -464,8 +464,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	dewgong: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 	grimer: {
 		tier: "LC",
@@ -4957,10 +4957,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "DOU",
 	},
 	"dewgongmega": {	
-                tier: "OU",
-		doublesTier: "DOU",
-
-
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 	"hitmonchanmega": {	
                 tier: "OU",
