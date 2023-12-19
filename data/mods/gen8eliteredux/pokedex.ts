@@ -16609,6 +16609,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 120,
 		color: "White",
 		eggGroups: ["Water 1", "Field"],
+		gen: 8,
 	},
 	//ER Megas
 	miloticmega: {
