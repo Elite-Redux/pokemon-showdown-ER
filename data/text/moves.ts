@@ -7425,9 +7425,53 @@ export const MovesText: {[k: string]: MoveText} = {
 		shortDesc: "Has a 20% chance to confuse the target.",
 	},
 	excalibur: {
-		name: "Deathroll",
+		name: "Excalibur",
 		desc: "This move's type effectiveness against Dragon is changed to be super effective no matter what this move's type is.",
 		shortDesc: "Super effective against Dragon types.",
 	},
-
+	smite: {
+		name: "Smite",
+		desc: "Has a 20% chance to paralyse. Grounds opponent..",
+		shortDesc: "Has a 20% chance to paralyse. Grounds opponent.",
+	},
+	outburst: {
+		name: "Outburst",
+		desc: "The user faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+		shortDesc: "Hits adjacent Pokemon. The user faints.",
+	},
+	scorchedearth: {
+		name: "Scorched Earth",
+		desc: "This move combines Ground in its type effectiveness against the target.",
+		shortDesc: "Combines Ground in its type effectiveness.",
+	},
+	ironfangs: {
+		name: "Iron Fangs",
+		desc: "If this attack does not miss, the effects of Reflect, Light Screen, and Aurora Veil end for the target's side of the field before damage is calculated.",
+		shortDesc: "Destroys screens, unless the target is immune.",
+	},
+	lovelybite: {
+		name: "Lovely Bite",
+		desc: "Has a 10% chance to infatuate the target.",
+		shortDesc: "10% chance to infatuate target.",
+	},
+	shadowfangs: {
+		name: "Shadow Fangs",
+		desc: "Has a 10% chance to curse the target.",
+		shortDesc: "10% chance to curse target.",
+	},
+	jaggedfangs: {
+		name: "Jagged Fangs",
+		desc: "Has a 10% chance to raise the user's Attack by 1 stage.",
+		shortDesc: "10% chance to raise the user's Attack by 1.",
+	},
+	seismicfist: {
+		name: "Seismic Fist",
+		desc: "Has a 20% chance to lower the target's Defense by 1 stage.",
+		shortDesc: "20% chance to lower the target's Defense by 1.",
+	},
+	plasmapulse: {
+		name: "Plasma Pulse",
+		desc: "Power doubles if the target is statused. 10% chance to paralyse",
+		shortDesc: "10% chance to paralyse; power doubles if the target is statused.",
+	},
 };
