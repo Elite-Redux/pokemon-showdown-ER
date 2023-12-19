@@ -1397,6 +1397,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		isNonstandard: null,
 		gen: 8
 	},
+	plasmapulse: {
+		inherit: true,
+		isNonstandard: null,
+		gen: 8
+	},
 	pollenpuff: {
 		inherit: true,
 		flags: {bullet: 1, protect: 1, mirror: 1},

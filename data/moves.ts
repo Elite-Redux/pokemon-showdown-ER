@@ -21918,6 +21918,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Electric",
 		contestType: "Beautiful",
+		isNonstandard: null,
 	},
 	angelsshield: {
 		num: 913,
