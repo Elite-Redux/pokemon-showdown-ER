@@ -18591,37 +18591,37 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		requiredItem: "Quagsite"
 
 	},
-	"jellicentmega": {
-		"abilities": {
-			"0": "Cursed Body",
-			"1": "Clear Body",
-			"H": "Immunity"
-		},
-		"baseStats": {
-			"hp": 120,
-			"atk": 60,
-			"def": 70,
-			"spa": 85,
-			"spd": 105,
-			"spe": 0
-		},
-		"forme": "Mega",
-		"name": "Jellicent-Mega",
-		"types": [
-			"Water",
-			"Ghost"
-		],
-		"baseSpecies": "Jellicent",
-		"eggGroups": [
-			"Amorphous"
-		],
-		"num": 593,
-		"heightm": 2.2,
-		"weightkg": 135,
-		"color": "White",
-		requiredItem: "Jellicentite"
+	// "jellicentmega": {
+	// 	"abilities": {
+	// 		"0": "Cursed Body",
+	// 		"1": "Clear Body",
+	// 		"H": "Immunity"
+	// 	},
+	// 	"baseStats": {
+	// 		"hp": 120,
+	// 		"atk": 60,
+	// 		"def": 70,
+	// 		"spa": 85,
+	// 		"spd": 105,
+	// 		"spe": 0
+	// 	},
+	// 	"forme": "Mega",
+	// 	"name": "Jellicent-Mega",
+	// 	"types": [
+	// 		"Water",
+	// 		"Ghost"
+	// 	],
+	// 	"baseSpecies": "Jellicent",
+	// 	"eggGroups": [
+	// 		"Amorphous"
+	// 	],
+	// 	"num": 593,
+	// 	"heightm": 2.2,
+	// 	"weightkg": 135,
+	// 	"color": "White",
+	// 	requiredItem: "Jellicentite"
 
-	},
+	// },
 	"toucannonmega": {
 		"abilities": {
 			"0": "Sturdy"

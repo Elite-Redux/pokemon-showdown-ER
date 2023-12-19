@@ -16712,17 +16712,17 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		},
 		"inherit": true
 	},
-	"jellicentmega": {
-		"abilities": {
-			"0": "Cursed Body",
-			"1": "Clear Body",
-			"H": "Immunity",
-			"I1": "Water Bubble",
-			"I2": "Soul Eater",
-			"I3": "Poison Touch"
-		},
-		"inherit": true
-	},
+	// "jellicentmega": {
+	// 	"abilities": {
+	// 		"0": "Cursed Body",
+	// 		"1": "Clear Body",
+	// 		"H": "Immunity",
+	// 		"I1": "Water Bubble",
+	// 		"I2": "Soul Eater",
+	// 		"I3": "Poison Touch"
+	// 	},
+	// 	"inherit": true
+	// },
 	"toucannonmega": {
 		"abilities": {
 			"0": "Sturdy",
