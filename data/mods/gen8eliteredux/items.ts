@@ -593,6 +593,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 			}
 		},
 		desc: "After an attack, holder gains 1/4 of the damage in HP dealt to other Pokemon.",
+		gen: 8,
 	},
 	sharpedonite: {
 		inherit: true,
@@ -635,6 +636,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		},
 		isNonstandard: null,
 		desc: "If held by a Latias or a Latios, its Sp. Atk and Sp. Def are 1.5x.",
+		gen: 8,
 	},
 	spelonberry: {
 		inherit: true,

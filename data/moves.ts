@@ -21873,7 +21873,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 		},
 		target: "normal",
-		type: "Ghost",
+		type: "Rock",
 		contestType: "Tough",
 	},
 	seismicfist: {
@@ -21895,8 +21895,33 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 		},
 	},
-	angelsshield: {
+	plasmapulse: {
 		num: 912,
+		accuracy: 100,
+		basePower: 65,
+		category: "Special",
+		name: "Plasma Pulse",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		basePowerCallback(pokemon, target, move) {
+			if (target.status || target.hasAbility('comatose')) {
+				this.debug('BP doubled from status condition');
+				return move.basePower * 2;
+			}
+			return move.basePower;
+		},
+		secondary: {
+			chance: 10,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Electric",
+		contestType: "Beautiful",
+		isNonstandard: null,
+	},
+	angelsshield: {
+		num: 913,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",

@@ -2860,8 +2860,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Magikarp",
 		evoLevel: 20,
 		eggGroups: ["Water 2", "Dragon"],
-		otherFormes: ["Gyarados-Mega"],
-		formeOrder: ["Gyarados", "Gyarados-Mega"],
+		otherFormes: ["Gyarados-Mega", "Gyarados-Mega-Y"],
+		formeOrder: ["Gyarados", "Gyarados-Mega", "Gyarados-Mega-Y"],
 	},
 	gyaradosmega: {
 		num: 130,
@@ -2888,6 +2888,9 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Blue",
 		eggGroups: ["Monster", "Water 1"],
 		canGigantamax: "G-Max Resonance",
+		otherFormes: ["Lapras-Mega", "Lapras-Mega-X"],
+		formeOrder: ["Lapras", "Lapras-Mega-X"],
+
 	},
 	laprasgmax: {
 		num: 131,
@@ -3459,6 +3462,9 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Croconaw",
 		evoLevel: 30,
 		eggGroups: ["Monster", "Water 1"],
+		otherFormes: ["Feraligatr-Mega-X", "Feraligatr-Mega-Y"],
+		formeOrder: ["Feraligatr", "Feraligatr-Mega-X", "Feraligatr-Mega-Y"],
+
 	},
 	sentret: {
 		num: 161,
@@ -12249,7 +12255,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 0.5,
 		weightkg: 8.3,
 		color: "Blue",
-		evos: ["Clawitzer"],
+		evos: ["Clawitzer", "Clawitzer-Redux"],
 		eggGroups: ["Water 1", "Water 3"],
 	},
 	clawitzer: {
@@ -12275,6 +12281,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.3,
 		weightkg: 35.3,
 		color: "White",
+		evoLevel: 37,
+		prevo: "Clauncher",
 		eggGroups: ["Water 1", "Water 3"],
 	},
 	helioptile: {
@@ -18086,6 +18094,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		weightkg: 120,
 		color: "White",
 		eggGroups: ["Water 1", "Field"],
+		gen: 8
 	},
 	missingno: {
 		num: 0,
@@ -18591,37 +18600,37 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		requiredItem: "Quagsite"
 
 	},
-	"jellicentmega": {
-		"abilities": {
-			"0": "Cursed Body",
-			"1": "Clear Body",
-			"H": "Immunity"
-		},
-		"baseStats": {
-			"hp": 120,
-			"atk": 60,
-			"def": 70,
-			"spa": 85,
-			"spd": 105,
-			"spe": 0
-		},
-		"forme": "Mega",
-		"name": "Jellicent-Mega",
-		"types": [
-			"Water",
-			"Ghost"
-		],
-		"baseSpecies": "Jellicent",
-		"eggGroups": [
-			"Amorphous"
-		],
-		"num": 593,
-		"heightm": 2.2,
-		"weightkg": 135,
-		"color": "White",
-		requiredItem: "Jellicentite"
+	// "jellicentmega": {
+	// 	"abilities": {
+	// 		"0": "Cursed Body",
+	// 		"1": "Clear Body",
+	// 		"H": "Immunity"
+	// 	},
+	// 	"baseStats": {
+	// 		"hp": 120,
+	// 		"atk": 60,
+	// 		"def": 70,
+	// 		"spa": 85,
+	// 		"spd": 105,
+	// 		"spe": 0
+	// 	},
+	// 	"forme": "Mega",
+	// 	"name": "Jellicent-Mega",
+	// 	"types": [
+	// 		"Water",
+	// 		"Ghost"
+	// 	],
+	// 	"baseSpecies": "Jellicent",
+	// 	"eggGroups": [
+	// 		"Amorphous"
+	// 	],
+	// 	"num": 593,
+	// 	"heightm": 2.2,
+	// 	"weightkg": 135,
+	// 	"color": "White",
+	// 	requiredItem: "Jellicentite"
 
-	},
+	// },
 	"toucannonmega": {
 		"abilities": {
 			"0": "Sturdy"
@@ -18752,7 +18761,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 93,
 			"spe": 103
 		},
-		"forme": "Mega",
+		"forme": "Mega-X",
 		"name": "Feraligatr-Mega-X",
 		"types": [
 			"Water",
@@ -18767,7 +18776,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		"heightm": 2.3,
 		"weightkg": 88.8,
 		"color": "Blue",
-		requiredItem: "Feralitatrite X"
+		requiredItem: "Feraligatrite X",
+
 
 	},
 	"feraligatrmegay": {
@@ -18782,7 +18792,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 113,
 			"spe": 68
 		},
-		"forme": "Mega",
+		"forme": "Mega-Y",
 		"name": "Feraligatr-Mega-Y",
 		"types": [
 			"Water",
@@ -18797,7 +18807,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		"heightm": 2.3,
 		"weightkg": 88.8,
 		"color": "Blue",
-		requiredItem: "Feralitatrite Y"
+		requiredItem: "Feraligatrite Y"
 
 	},
 	"granbullmega": {
@@ -18844,7 +18854,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 140,
 			"spe": 81
 		},
-		"forme": "Mega",
+		"forme": "Mega-Y",
 		"name": "Gyarados-Mega-Y",
 		"types": [
 			"Water",
@@ -19246,7 +19256,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 			"spd": 90,
 			"spe": 85
 		},
-		"forme": "Mega",
+		"forme": "Mega-X",
 		"name": "Lapras-Mega-X",
 		"types": [
 			"Water"

@@ -698,15 +698,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	bubble: {
 		name: "Bubble",
-		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "10% chance to lower the foe(s) Speed by 1.",
-		gen1: {
-			desc: "Has a 33% chance to lower the target's Speed by 1 stage.",
-			shortDesc: "33% chance to lower the target's Speed by 1.",
-		},
-		gen2: {
-			shortDesc: "10% chance to lower the target's Speed by 1.",
-		},
+		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
+		shortDesc: "100% chance to lower the foe(s) Speed by 1.",
 	},
 	bubblebeam: {
 		name: "Bubble Beam",
@@ -1877,7 +1870,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	fairywind: {
 		name: "Fairy Wind",
-		shortDesc: "No additional effect.",
+		shortDesc: "Usually Goes First.",
 	},
 	fakeout: {
 		name: "Fake Out",
@@ -2057,7 +2050,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	flameburst: {
 		name: "Flame Burst",
 		desc: "If this move is successful, the target's ally loses 1/16 of its maximum HP, rounded down, unless it has the Magic Guard Ability.",
-		shortDesc: "Damages Pokemon next to the target as well.",
+		shortDesc: "Usually goes first. Damages Pokemon next to the target as well.",
 		gen6: {
 			desc: "If this move is successful, each ally adjacent to the target loses 1/16 of its maximum HP, rounded down, unless it has the Magic Guard Ability.",
 		},
@@ -2749,19 +2742,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	gust: {
 		name: "Gust",
 		desc: "Power doubles if the target is using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop.",
-		shortDesc: "Power doubles during Bounce, Fly, and Sky Drop.",
-		gen4: {
-			desc: "Power doubles if the target is using Bounce or Fly.",
-			shortDesc: "Power doubles during Bounce and Fly.",
-		},
-		gen2: {
-			desc: "Power doubles if the target is using Fly.",
-			shortDesc: "Power doubles during Fly.",
-		},
-		gen1: {
-			desc: "No additional effect.",
-			shortDesc: "No additional effect.",
-		},
+		shortDesc: "Usually Goes First. Power doubles during Bounce, Fly, and Sky Drop.",
 	},
 	gyroball: {
 		name: "Gyro Ball",
@@ -3133,7 +3114,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	hyperspacehole: {
 		name: "Hyperspace Hole",
-		desc: "If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. +1 Priority",
+		desc: "If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally.",
 		shortDesc: "Breaks target's protection; +1 priority.",
 		gen6: {
 			desc: "If this move is successful, it breaks through the target's Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally.",
@@ -4249,8 +4230,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	mudshot: {
 		name: "Mud Shot",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the target's Speed by 1.",
+		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
+		shortDesc: "Usually goes first. 10% chance to lower the target's Speed by 1.",
 	},
 	mudslap: {
 		name: "Mud-Slap",
@@ -4345,7 +4326,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	nightdaze: {
 		name: "Night Daze",
 		desc: "Has a 40% chance to lower the target's accuracy by 1 stage.",
-		shortDesc: "40% chance to lower the target's accuracy by 1.",
+		shortDesc: "Usually Goes First. 40% chance to lower the target's accuracy by 1.",
 	},
 	nightmare: {
 		name: "Nightmare",
@@ -4521,7 +4502,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	peck: {
 		name: "Peck",
-		shortDesc: "No additional effect.",
+		shortDesc: "Hits 2-5 times in one turn",
 	},
 	perishsong: {
 		name: "Perish Song",
@@ -4646,12 +4627,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisonsting: {
 		name: "Poison Sting",
-		desc: "Has a 30% chance to poison the target.",
-		shortDesc: "30% chance to poison the target.",
-		gen1: {
-			desc: "Has a 20% chance to poison the target.",
-			shortDesc: "20% chance to poison the target.",
-		},
+		desc: "Usually Goes First. 30% chance to poison.",
+		shortDesc: "Usually Goes First. 30% chance to poison."
 	},
 	poisontail: {
 		name: "Poison Tail",
@@ -4867,15 +4844,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	psywave: {
 		name: "Psywave",
-		desc: "Deals damage to the target equal to (user's level) * (X + 50) / 100, where X is a random number from 0 to 100, rounded down, but not less than 1 HP.",
-		shortDesc: "Random damage equal to 0.5x-1.5x user's level.",
-		gen4: {
-			desc: "Deals damage to the target equal to (user's level) * (X * 10 + 50) / 100, where X is a random number from 0 to 10, rounded down, but not less than 1 HP.",
-		},
-		gen2: {
-			desc: "Deals damage to the target equal to a random number from 1 to (user's level * 1.5 - 1), rounded down, but not less than 1 HP.",
-			shortDesc: "Random damage from 1 to (user's level*1.5 - 1).",
-		},
+		desc: "Usually Goes First. 30% chance to confuse.",
+		shortDesc: "Usually Goes First. 30% chance to confuse."
 	},
 	pulverizingpancake: {
 		name: "Pulverizing Pancake",
@@ -5029,11 +4999,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	razorleaf: {
 		name: "Razor Leaf",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio. Hits adjacent foes.",
-		gen2: {
-			shortDesc: "High critical hit ratio.",
-		},
+		desc: "This move always results in a critical hit",
+		shortDesc: "This move always results in a critical hit.",
 	},
 	razorshell: {
 		name: "Razor Shell",
@@ -5630,7 +5597,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	shockwave: {
 		name: "Shock Wave",
-		shortDesc: "This move does not check accuracy.",
+		shortDesc: "Usually goes first. This move does not check accuracy.",
 	},
 	shoreup: {
 		name: "Shore Up",
@@ -6002,8 +5969,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	spark: {
 		name: "Spark",
-		desc: "Has a 30% chance to paralyze the target.",
-		shortDesc: "30% chance to paralyze the target.",
+		desc: "Has a 10% chance to paralyze the target.",
+		shortDesc: "Nearly always goes first. 10% chance to paralyze the target.",
 	},
 	sparklingaria: {
 		name: "Sparkling Aria",
@@ -7112,7 +7079,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	vinewhip: {
 		name: "Vine Whip",
-		shortDesc: "No additional effect.",
+		desc: "Has a 30% chance to make the target flinch.",
+		shortDesc: "30% chance to make the target flinch.",
 	},
 	visegrip: {
 		name: "Vise Grip",
@@ -7457,9 +7425,53 @@ export const MovesText: {[k: string]: MoveText} = {
 		shortDesc: "Has a 20% chance to confuse the target.",
 	},
 	excalibur: {
-		name: "Deathroll",
+		name: "Excalibur",
 		desc: "This move's type effectiveness against Dragon is changed to be super effective no matter what this move's type is.",
 		shortDesc: "Super effective against Dragon types.",
 	},
-
+	smite: {
+		name: "Smite",
+		desc: "Has a 20% chance to paralyse. Grounds opponent..",
+		shortDesc: "Has a 20% chance to paralyse. Grounds opponent.",
+	},
+	outburst: {
+		name: "Outburst",
+		desc: "The user faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+		shortDesc: "Hits adjacent Pokemon. The user faints.",
+	},
+	scorchedearth: {
+		name: "Scorched Earth",
+		desc: "This move combines Ground in its type effectiveness against the target.",
+		shortDesc: "Combines Ground in its type effectiveness.",
+	},
+	ironfangs: {
+		name: "Iron Fangs",
+		desc: "If this attack does not miss, the effects of Reflect, Light Screen, and Aurora Veil end for the target's side of the field before damage is calculated.",
+		shortDesc: "Destroys screens, unless the target is immune.",
+	},
+	lovelybite: {
+		name: "Lovely Bite",
+		desc: "Has a 10% chance to infatuate the target.",
+		shortDesc: "10% chance to infatuate target.",
+	},
+	shadowfangs: {
+		name: "Shadow Fangs",
+		desc: "Has a 10% chance to curse the target.",
+		shortDesc: "10% chance to curse target.",
+	},
+	jaggedfangs: {
+		name: "Jagged Fangs",
+		desc: "Has a 10% chance to raise the user's Attack by 1 stage.",
+		shortDesc: "10% chance to raise the user's Attack by 1.",
+	},
+	seismicfist: {
+		name: "Seismic Fist",
+		desc: "Has a 20% chance to lower the target's Defense by 1 stage.",
+		shortDesc: "20% chance to lower the target's Defense by 1.",
+	},
+	plasmapulse: {
+		name: "Plasma Pulse",
+		desc: "Power doubles if the target is statused. 10% chance to paralyse",
+		shortDesc: "10% chance to paralyse; power doubles if the target is statused.",
+	},
 };
