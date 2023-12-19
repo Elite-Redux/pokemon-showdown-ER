@@ -1138,7 +1138,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod > 0) {
 				this.debug('Filter neutralize');
-				return this.chainModify(0.75);
+				return this.chainModify(0.65);
 			}
 		},
 		isBreakable: true,
@@ -3125,7 +3125,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod > 0) {
 				this.debug('Prism Armor neutralize');
-				return this.chainModify(0.75);
+				return this.chainModify(0.65);
 			}
 		},
 		name: "Prism Armor",
@@ -4028,7 +4028,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod > 0) {
 				this.debug('Solid Rock neutralize');
-				return this.chainModify(0.75);
+				return this.chainModify(0.65);
 			}
 		},
 		isBreakable: true,
@@ -5346,9 +5346,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const noModifyType = [
 				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
 			];
-			if (move.type === 'Normal' && !noModifyType.includes(move.id) &&
+			if (move.type === 'Rock' && !noModifyType.includes(move.id) &&
 				!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
-				move.type = 'Rock';
+				move.type = 'Ice';
 				move.typeChangerBoosted = this.effect;
 			}
 		},
@@ -5914,7 +5914,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod > 0) {
 				this.debug('Permafrost neutralize');
-				return this.chainModify(0.75);
+				return this.chainModify(0.65);
 			}
 		},
 		isBreakable: true,
@@ -7245,7 +7245,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 408,
 		gen: 8,
 	},
-	noseferatu: {
+	nosferatu: {
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['contact']) {
 				return this.chainModify([4915, 4096]);
@@ -7256,7 +7256,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				move.drain = [1, 3]
 			}
 		},
-		name: "Noseferatu",
+		name: "Nosferatu",
 		rating: 3,
 		num: 409,
 		gen: 8,
@@ -7331,10 +7331,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			onModifyAtkPriority: 5,
 			onModifyAtk(atk, pokemon) {
 				const modifier = ((-0.2 * pokemon.activeTurns) + 1)
+				console.log(`attack modifier: ${modifier}`)
 				return this.chainModify(modifier >= 0.2 ? modifier : 0.2 );
 			},
 			onModifySpA(spa, pokemon) {
 				const modifier = ((-0.2 * pokemon.activeTurns) + 1)
+				console.log(`spa modifier: ${modifier}`)
 				return this.chainModify(modifier >= 0.2 ? modifier : 0.2 );
 			},
 			onEnd(target) {
@@ -7350,7 +7352,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onAfterMove(source, target, move) {
 			if (target.hp > 0 && target != source && move.category !== 'Status') {
 				this.add('-activate', source, 'ability: Fungal Infection');
-				target.addVolatile('leechseed');
+				target.addVolatile('leechseed', this.effectState.target);
 			}
 		},
 		name: "Fungal Infection",
@@ -7999,7 +8001,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onAfterMove(source, target, move) {
 			if (target.hp > 0 && target != source && move.drain) {
 				this.add('-activate', source, 'ability: Absorbant');
-				target.addVolatile('leechseed');
+				target.addVolatile('leechseed', this.effectState.target);
 			}
 		},
 		onModifyMove(move, target, source) {

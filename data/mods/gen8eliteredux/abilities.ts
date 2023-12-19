@@ -352,7 +352,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				if (this.activeMove.id !== 'struggle') return this.chainModify(1.5);
 			}
 		},
-		shortDesc: "This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it. Takes 30% less recoil damage.",
+		shortDesc: "This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it. Takes 50% less recoil damage.",
 	},
 	longreach: { 
 		inherit: true,
@@ -501,7 +501,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return this.chainModify(0.8)
 			}
 		},
-		desc: "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability. This Pokemon takes 10% less damage from Special attacks",
+		desc: "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability. This Pokemon takes 20% less damage from Special attacks",
 		shortDesc: "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore. 20% less damage from Special attacks",
 	},
 	overgrow: {
@@ -542,7 +542,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] ability: Pickup', '[of] ' + pokemon);
 				}
 			}
-		}
+		},
+		shortDesc: "This Pokemon removes all hazards on entry.",
+		desc: "This Pokemon removes all hazards on entry. This Pokemon is still affected by hazards on entry",
 	},
 	poisontouch: {
 		inherit: true,
@@ -705,10 +707,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onSourceModifyDamage(damage, source, target, move) {
 			this.debug('Shell Armor weaken')
-			return this.chainModify(0.9)
+			return this.chainModify(0.8)
 		},
-		shortDesc: "This Pokemon takes 10% less damage. Cannot be struck by a critical hit.",
-		desc: "This Pokemon takes 10% less damage. Cannot be struck by a critical hit.",
+		shortDesc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
+		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
 
 	},
 	slushrush: {

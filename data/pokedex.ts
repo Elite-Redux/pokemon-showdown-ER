@@ -12255,7 +12255,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 0.5,
 		weightkg: 8.3,
 		color: "Blue",
-		evos: ["Clawitzer"],
+		evos: ["Clawitzer", "Clawitzer-Redux"],
 		eggGroups: ["Water 1", "Water 3"],
 	},
 	clawitzer: {
@@ -12281,6 +12281,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.3,
 		weightkg: 35.3,
 		color: "White",
+		evoLevel: 37,
+		prevo: "Clauncher",
 		eggGroups: ["Water 1", "Water 3"],
 	},
 	helioptile: {
@@ -18092,6 +18094,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		weightkg: 120,
 		color: "White",
 		eggGroups: ["Water 1", "Field"],
+		gen: 8
 	},
 	missingno: {
 		num: 0,
@@ -18773,7 +18776,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		"heightm": 2.3,
 		"weightkg": 88.8,
 		"color": "Blue",
-		requiredItem: "Feralitatrite X",
+		requiredItem: "Feraligatrite X",
 
 
 	},
@@ -18804,7 +18807,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		"heightm": 2.3,
 		"weightkg": 88.8,
 		"color": "Blue",
-		requiredItem: "Feralitatrite Y"
+		requiredItem: "Feraligatrite Y"
 
 	},
 	"granbullmega": {
