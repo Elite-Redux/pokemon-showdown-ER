@@ -7351,8 +7351,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	fungalinfection: {
 		onAfterMove(source, target, move) {
 			if (target.hp > 0 && target != source && move.category !== 'Status') {
-				this.add('-activate', source, 'ability: Fungal Infection');
-				target.addVolatile('leechseed', this.effectState.target);
+				if (!target.volatiles['leechseed']) {
+					this.add('-activate', source, 'ability: Fungal Infection');
+					target.addVolatile('leechseed', this.effectState.target);	
+				}
 			}
 		},
 		name: "Fungal Infection",
@@ -8000,8 +8002,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	absorbant: {
 		onAfterMove(source, target, move) {
 			if (target.hp > 0 && target != source && move.drain) {
-				this.add('-activate', source, 'ability: Absorbant');
-				target.addVolatile('leechseed', this.effectState.target);
+				if (!target.volatiles['leechseed']) {
+					this.add('-activate', source, 'ability: Absorbant');
+					target.addVolatile('leechseed', this.effectState.target);
+				}
+
 			}
 		},
 		onModifyMove(move, target, source) {
