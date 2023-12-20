@@ -257,8 +257,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 						}
 					}
-
-					if (abilitySlot === undefined) abilitySlot = '0'
+					if (species.abilities[abilitySlot as string] === undefined) abilitySlot = '0'
 					this.setAbility(species.abilities[abilitySlot as string], null, true);
 					this.baseAbility = this.ability;
 				}
