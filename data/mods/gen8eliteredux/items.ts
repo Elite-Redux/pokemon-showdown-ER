@@ -873,7 +873,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	feralitgatritey: {
+	feraligatritey: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -881,7 +881,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	gyaradosmegay: {
+	gyaradositey: {
 		inherit: true,
 		isNonstandard: null,
 	},

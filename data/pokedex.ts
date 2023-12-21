@@ -19100,7 +19100,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		"heightm": 1.7,
 		"weightkg": 79.5,
 		"color": "Yellow",
-		requiredItem: "Sandslashite"
+		requiredItem: "Typhlosionite"
 
 	},
 	"krookodilemega": {
