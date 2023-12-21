@@ -7565,7 +7565,7 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 7,
 		isNonstandard: "Past",
 	},
-	gyaradosmegay: {
+	gyaradositey: {
 		name: "Gyaradosite Y",
 		spritenum: 622,
 		megaStone: "Gyarados-Mega-Y",
