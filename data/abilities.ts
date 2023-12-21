@@ -7330,7 +7330,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			},
 			onModifyAtkPriority: 5,
 			onModifyAtk(atk, pokemon) {
-				const modifier = ((-0.2 * pokemon.activeTurns) + 1)
+				const modifier = ((-0.2 * (pokemon.activeTurns) - 1) + 1)
 				console.log(`attack modifier: ${modifier}`)
 				return this.chainModify(modifier >= 0.2 ? modifier : 0.2 );
 			},
