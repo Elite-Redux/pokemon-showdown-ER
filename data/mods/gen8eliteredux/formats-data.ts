@@ -5160,7 +5160,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "DOU",			
 	},
 	"dewleon": {	
-		tier: "Uber",
+		tier: "AG",
 	   doublesTier: "DUber",			
    }
 
