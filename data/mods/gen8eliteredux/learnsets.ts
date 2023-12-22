@@ -31341,189 +31341,269 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			},
 			"inherit": true
 		},
-		"eevee": {
-			"learnset": {
-				"covet": [
-					"7L1",
-					"7M",
-					"7E"
-				],
-				"growl": [
-					"7L1"
-				],
-				"helpinghand": [
-					"7L1",
-					"7M"
-				],
-				"tackle": [
-					"7L1"
-				],
-				"tailwhip": [
-					"7L1"
-				],
-				"sandattack": [
-					"7L5"
-				],
-				"quickattack": [
-					"7L10"
-				],
-				"babydolleyes": [
-					"7L15"
-				],
-				"refresh": [
-					"7L20"
-				],
-				"swift": [
-					"7L20",
-					"7M"
-				],
-				"bite": [
-					"7L25"
-				],
-				"copycat": [
-					"7L30"
-				],
-				"batonpass": [
-					"7L35",
-					"7M"
-				],
-				"focusenergy": [
-					"7L36",
-					"7M"
-				],
-				"takedown": [
-					"7L40"
-				],
-				"charm": [
-					"7L45",
-					"7E"
-				],
-				"healbell": [
-					"7L45",
-					"7M"
-				],
-				"doubleedge": [
-					"7L50",
-					"7M"
-				],
-				"lastresort": [
-					"7L55",
-					"7M"
-				],
-				"extremespeed": [
-					"7L60",
-					"7E"
-				],
-				"toxic": [
-					"7T"
-				],
-				"hiddenpower": [
-					"7T"
-				],
-				"sunnyday": [
-					"7T"
-				],
-				"protect": [
-					"7T"
-				],
-				"raindance": [
-					"7T"
-				],
-				"frustration": [
-					"7T"
-				],
-				"irontail": [
-					"7T"
-				],
-				"return": [
-					"7T"
-				],
-				"dig": [
-					"7T"
-				],
-				"shadowball": [
-					"7T"
-				],
-				"reflect": [
-					"7T"
-				],
-				"facade": [
-					"7T"
-				],
-				"secretpower": [
-					"7T"
-				],
-				"rest": [
-					"7T"
-				],
-				"attract": [
-					"7T"
-				],
-				"sleeptalk": [
-					"7T"
-				],
-				"endure": [
-					"7T",
-					"7E"
-				],
-				"substitute": [
-					"7T"
-				],
-				"curse": [
-					"7T",
-					"7E"
-				],
-				"mimic": [
-					"7M"
-				],
-				"mudslap": [
-					"7M"
-				],
-				"bodyslam": [
-					"7M"
-				],
-				"swagger": [
-					"7M"
-				],
-				"hypervoice": [
-					"7M"
-				],
-				"storedpower": [
-					"7M",
-					"7E"
-				],
-				"weatherball": [
-					"7M"
-				],
-				"flail": [
-					"7E"
-				],
-				"tickle": [
-					"7E"
-				],
-				"wish": [
-					"7E"
-				],
-				"yawn": [
-					"7E"
-				],
-				"faketears": [
-					"7E"
-				],
-				"detect": [
-					"7E"
-				],
-				"naturalgift": [
-					"7E"
-				],
-				"synchronoise": [
-					"7E"
-				],
-				"captivate": [
-					"7E"
-				]
+		eevee: {
+			learnset: {
+				attract: ["8M", "7M", "7V", "6M", "5M", "5S2", "4M", "4S0", "3M"],
+				babydolleyes: ["9L15", "8L15", "7L9", "7S5", "6L9", "6S3", "6S4"],
+				batonpass: ["9M", "9L35", "8M", "8L35", "7L33", "7V", "6L33", "5L36", "4L36", "3L36"],
+				bide: ["7V"],
+				bite: ["9L25", "8L25", "8V", "7L17", "7V", "6L17", "5L29", "4L29", "4S0", "3L30"],
+				bodyslam: ["9M", "8M", "7V", "3T"],
+				calmmind: ["9M", "7M"],
+				captivate: ["7E", "6E", "4M"],
+				celebrate: ["8S6", "7S5", "6S3"],
+				charm: ["9M", "9L45", "8M", "8L45", "7L29", "7E", "7V", "6L29", "6E", "5L29", "5E", "5D", "4E", "3E"],
+				confide: ["7M", "6M"],
+				copycat: ["9L30", "8L30"],
+				covet: ["9L1", "8L1", "8S6", "7T", "7L1", "7E", "6T", "6L23", "6E", "5T", "5L21", "5E", "4E", "4S0"],
+				detect: ["9E", "8E", "7E", "7V", "6E", "5E", "4E"],
+				dig: ["9M", "8M", "8V", "6M", "5M", "4M", "3M"],
+				doubleedge: ["9L50", "8L50", "8V", "7L37", "7V", "6L37", "5L37", "3T"],
+				doublekick: ["9E", "8E", "8V"],
+				doubleteam: ["7M", "7V", "6M", "5M", "4M", "3M"],
+				echoedvoice: ["7M", "6M", "5M", "5S2"],
+				endure: ["9M", "8M", "7E", "7V", "6E", "5E", "4M", "4E", "3T", "3E"],
+				extremespeed: ['7L60', "7E"],
+				facade: ["9M", "8M", "8V", "7M", "6M", "5M", "4M", "3M"],
+				faketears: ["9M", "8M", "7E", "6E", "5E", "4E"],
+				flail: ["9E", "8E", "7E", "7V", "6E", "5E", "4E", "4S1", "3E"],
+				focusenergy: ["8M", "7V"],
+				frustration: ["7M", "7V", "6M", "5M", "4M", "3M"],
+				growl: ["9L1", "8L1", "8V", "7L1", "7V", "6L1", "5L15", "4L15", "3L16"],
+				headbutt: ["8V", "7V", "4T"],
+				healbell: ["7T", "6T", "5T", "4T"],
+				helpinghand: ["9M", "9L1", "8M", "8L1", "8V", "8S6", "7T", "7L1", "6T", "6L1", "6S4", "5T", "5L1", "4T", "4L1", "4S0", "3L1"],
+				hiddenpower: ["7M", "7V", "6M", "5M", "4M", "3M"],
+				hypervoice: ["9M", "8M", "7T", "6T", "5T"],
+				irontail: ["8M", "8V", "7T", "7V", "6T", "5T", "4M", "4S1", "3M"],
+				laserfocus: ["7T"],
+				lastresort: ["9L55", "8L55", "7T", "7L41", "6T", "6L41", "5T", "5L50", "4T", "4L50"],
+				mimic: ["7V", "3T"],
+				mudslap: ["9M", "9E", "8E", "7V", "4T", "3T"],
+				naturalgift: ["7E", "6E", "5E", "4M"],
+				payday: ["8M", "8V"],
+				protect: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				quickattack: ["9L10", "8L10", "8V", "7L13", "7V", "6L13", "6S4", "5L22", "4L22", "4S1", "3L23"],
+				rage: ["7V"],
+				raindance: ["9M", "8M", "7M", "7V", "6M", "5M", "4M", "3M"],
+				reflect: ["8V", "7V"],
+				refresh: ["7L20", "6L20"],
+				rest: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				retaliate: ["8M", "6M", "5M"],
+				return: ["7M", "7V", "6M", "5M", "5S2", "4M", "3M"],
+				round: ["8M", "7M", "6M", "5M"],
+				sandattack: ["9L5", "8L5", "8V", "7L5", "7V", "7S5", "6L5", "6S3", "5L8", "5D", "4L8", "3L8"],
+				secretpower: ["6M", "4M", "3M"],
+				shadowball: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				sing: ["5S2"],
+				skullbash: ["7V"],
+				sleeptalk: ["9M", "8M", "7M", "7V", "6M", "5T", "4M", "3T"],
+				curse: ["7T"],
+				snore: ["8M", "7T", "7V", "6T", "5T", "4T", "3T"],
+				storedpower: ["9M", "8M", "7E", "6E", "5E"],
+				substitute: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3T"],
+				sunnyday: ["9M", "8M", "7M", "7V", "6M", "5M", "4M", "3M"],
+				swagger: ["7M", "7V", "6M", "5M", "4M", "3T"],
+				swift: ["9M", "9L20", "8M", "8L20", "8V", "7L17", "7V", "6L10", "6S3", "6S4", "5D", "4T", "3T"],
+				synchronoise: ["7E", "6E", "5E"],
+				tackle: ["9L1", "8L1", "8V", "8S6", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
+				tailwhip: ["9L1", "8L1", "8V", "7L1", "7V", "6L1", "5L1", "4L1", "3L1"],
+				takedown: ["9M", "9L40", "8L40", "8V", "7L25", "7V", "6L25", "5L43", "4L43", "3L42"],
+				terablast: ["9M"],
+				tickle: ["9E", "8E", "7E", "6E", "5E", "4E", "3E"],
+				toxic: ["8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				trailblaze: ["9M"],
+				trumpcard: ["7L45", "6L45", "5L57", "4L57", "4S1"],
+				weatherball: ["8M"],
+				wish: ["9E", "8E", "7E", "6E", "5E", "4E", "3E"],
+				workup: ["8M", "7M", "5M"],
+				yawn: ["9E", "8E", "7E", "6E", "5E", "4E"],
+				//flareon
+				blazekick: ['7M'],
+				burningjealousy: ["8T"],
+				ember: ["9L0", "8L0", "8V", "7L1", "7V", "6L9", "6S1", "5L15", "4L15", "3L16"],
+				fireblast: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "5L71", "4M", "4L71", "3M"],
+				firefang: ["9M", "9L30", "8M", "8L30", "7L20", "6L20", "5L43", "4L43"],
+				firespin: ["9M", "9L35", "8M", "8L35", "8V", "7L25", "7V", "6L25", "5L36", "4L36", "3L36"],
+				flamecharge: ["7M", "6M", "5M"],
+				flamethrower: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M", "3L52"],
+				flareblitz: ["9M", "9L50", "8M", "8L50", "8V", "7L45", "7S2", "6L45"],
+				gigaimpact: ["9M", "8M", "7M", "6M", "5M", "4M"],
+				heatwave: ["9M", "8M", "7T", "6T", "5T", "4T"],
+				hyperbeam: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				incinerate: ["6M", "5M"],
+				lavaplume: ["9L40", "8L40", "7L37", "6L37", "5L78", "4L78"],
+				leer: ["7V", "3L47"],
+				overheat: ["9M", "8M", "7M", "6M", "5M", "4M", "3M"],
+				roar: ["7M", "7V", "6M", "5M", "4M", "3M"],
+				rocksmash: ["6M", "5M", "4M"],
+				scaryface: ["9M", "9L45", "8M", "8L45", "7L29", "6L29", "5L64", "4L64"],
+				scorchingsands: ["8T"],
+				smog: ["9L20", "8L20", "8V", "7L33", "7V", "6L33", "5L57", "4L57", "3L42"],
+				strength: ["6M", "5M", "4M"],
+				superpower: ["8M", "8V", "7T", "6T", "5T", "4T"],
+				willowisp: ["9M", "8M", "8V", "7M", "7S2", "6M", "5M", "4M"],
+				zapcannon: ["7V"],
+				//vaporeon
+				aquafang: ['7L42'],
+				acidarmor: ["9L45", "8L45", "8V", "7L29", "7V", "6L29", "5L64", "4L64", "3L47"],
+				aquaring: ["9L35", "8L35", "7L25", "6L25", "5L43", "4L43"],
+				aquatail: ["7T", "6T", "5T", "4T"],
+				aurorabeam: ["9L30", "8L30", "8V", "7L20", "7V", "6L20", "5L36", "4L36", "3L36"],
+				blizzard: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				brine: ["8M", "4M"],
+				bubblebeam: ["7V"],
+				chillingwater: ["9M"],
+				flipturn: ["8T"],
+				hail: ["8M", "7M", "6M", "5M", "4M", "3M"],
+				haze: ["9L20", "8L20", "8V", "7L33", "7V", "6L33", "5L57", "4L57", "3L42"],
+				hydropump: ["9M", "9L50", "8M", "8L50", "8V", "7L45", "7V", "6L45", "5L71", "4L71", "3L52"],
+				icebeam: ["9M", "8M", "8V", "7M", "7V", "7S2", "6M", "5M", "4M", "3M"],
+				icywind: ["9M", "8M", "7T", "7V", "6T", "5T", "4T", "3T"],
+				lifedew: ['7L43'],
+				liquidation: ["9M", "8M"],
+				mist: ["7V"],
+				muddywater: ["9L40", "8M", "8L40", "7L37", "6L37", "5L78", "4L78"],
+				scald: ["8M", "8V", "7M", "7S2", "6M", "5M"],
+				signalbeam: ["7T", "6T", "5T", "4T"],
+				surf: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				waterfall: ["9M", "8M", "8V", "7M", "7V", "6M", "5M", "4M", "3M"],
+				watergun: ["9L0", "8L0", "8V", "7L1", "7V", "6L9", "6S1", "5L15", "4L15", "3L16"],
+				waterpulse: ["9M", "9L25", "8L25", "7T", "7L17", "6T", "6L17", "4M", "3M"],
+				wavecrash: ['7L60'],
+				whirlpool: ["8M", "7V", "4M"],
+				//jolteon
+				agility: ["9M", "9L45", "8M", "8L45", "8V", "7L29", "7V", "6L29", "5L64", "4L64", "3L47"],
+				chargebeam: ["7M", "6M", "5M", "4M"],
+				discharge: ["9L40", "8L40", "7L37", "6L37", "5L78", "4L78"],
+				eerieimpulse: ["9M"],
+				electricterrain: ["9M"],
+				electroball: ["9M", "8M"],
+				falseswipe: ["9M"],
+				flash: ["7V", "6M", "5M", "4M", "3M"],
+				lightscreen: ["9M", "8M", "8V", "7M", "7S2", "6M", "5M", "4M"],
+				magnetrise: ["7T", "6T", "5T", "4T"],
+				pinmissile: ["9L35", "8M", "8L35", "8V", "7L25", "7V", "6L25", "5L36", "4L36", "3L36"],
+				risingvoltage: ["8T"],
+				shockwave: ["7T", "6T", "4M", "3M"],
+				thunder: ["9M", "9L50", "8M", "8L50", "8V", "7M", "7L45", "7V", "6M", "6L45", "5M", "5L71", "4M", "4L71", "3M", "3L52"],
+				thunderbolt: ["9M", "8M", "8V", "7M", "7V", "7S2", "6M", "5M", "4M", "3M"],
+				thunderfang: ["9M", "9L30", "8M", "8L30", "7L20", "6L20", "5L43", "4L43"],
+				thundershock: ["9L0", "8L0", "8V", "7L1", "7V", "6L9", "6S1", "5L15", "4L15", "3L16"],
+				thunderwave: ["9M", "9L20", "8M", "8L20", "8V", "7M", "7L33", "7V", "6M", "6L33", "5M", "5L57", "4M", "4L57", "3T", "3L42"],
+				voltswitch: ["9M", "8M", "7M", "7S2", "6M", "5M"],
+				wildcharge: ["9M", "8M", "7M", "6M", "5M"],
+				//espeon
+				allyswitch: ["8M", "7T"],
+				confuseray: ["9M"],
+				confusion: ["9L0", "8L0", "7L1", "7V", "6L9", "6S2", "5L15", "4L15", "3L16"],
+				cut: ["7V", "6M", "5M", "4M", "3M"],
+				dazzlinggleam: ["9M", "8M", "7M", "7S3", "6M"],
+				drainingkiss: ["9M"],
+				dreameater: ["7M", "7V", "6M", "5M", "4M", "3T"],
+				expandingforce: ["8T"],
+				futuresight: ["9L50", "8M", "8L50", "7L25", "6L25", "5L43", "4L43"],
+				grassknot: ["9M", "8M", "7M", "6M", "5M", "4M"],
+				imprison: ["9M"],
+				magicalleaf: ["9M"],
+				magiccoat: ["7T", "6T", "5T", "4T"],
+				magicroom: ["8M", "7T", "6T", "5T"],
+				morningsun: ["9L30", "8L30", "7L33", "7V", "6L33", "5L71", "4L71", "3L52", "3S0"],
+				nightmare: ["7V", "3T"],
+				powergem: ["9M"],
+				powerswap: ["9L35", "8M", "8L35", "7L45", "6L45", "5L78", "4L78"],
+				psybeam: ["9M", "9L25", "8L25", "7L20", "7V", "6L20", "5L36", "4L36", "3L36", "3S0"],
+				psychic: ["9M", "9L40", "8M", "8L40", "7M", "7L37", "7V", "7S3", "6M", "6L37", "5M", "5L64", "4M", "4L64", "3M", "3L47", "3S0"],
+				psychicfangs: ["9M", "8M"],
+				psychicterrain: ["9M"],
+				psychup: ["9L45", "8L45", "7M", "7L29", "7V", "6M", "6L29", "5M", "5L57", "4M", "4L57", "3T", "3L42", "3S0"],
+				psyshock: ["9M", "8M", "7M", "6M", "5M"],
+				skillswap: ["9M", "8M", "7T", "6T", "5T", "4M", "3M"],
+				telekinesis: ["7T", "5M"],
+				teleport: ['7M'],
+				trick: ["9M", "8M", "7T", "6T", "5T", "4T"],
+				trickroom: ["9M", "8M", "7M", "6M", "5M", "4M"],
+				zenheadbutt: ["9M", "8M", "7T", "6T", "5T", "4T"],
+				//umbreon
+				assurance: ["9L25", "8M", "8L25", "7L25", "6L25", "5L25", "4L43"],
+				crunch: ["9M", "8M"],
+				darkpulse: ["9M", "9L40", "8M", "8L40", "7M", "6M", "5T", "4M"],
+				feintattack: ["7L20", "7V", "6L20", "5L21", "4L36", "3L36", "3S0"],
+				foulplay: ["9M", "8M", "7T", "6T", "5T"],
+				guardswap: ["9L35", "8M", "8L35", "7L45", "6L45", "5L45", "4L78"],
+				lashout: ["8T"],
+				meanlook: ["9L50", "8L50", "7L37", "7V", "6L37", "5L37", "4L57", "3L42", "3S0"],
+				moonlight: ["9L30", "8L30", "7L33", "7V", "7S3", "6L33", "5L33", "4L71", "3L52", "3S0"],
+				payback: ["8M", "7M", "6M", "5M", "4M"],
+				pursuit: ["7L1", "7V", "6L9", "6S2", "5L15", "4L15", "3L16"],
+				screech: ["9L45", "8M", "8L45", "7L29", "7V", "6L29", "5L29", "4L64", "3L47", "3S0"],
+				snarl: ["9M", "9L0", "8M", "8L0", "7M", "7S3", "6M", "5M"],
+				snatch: ["7T", "6T", "5T", "4M", "3M"],
+				spite: ["7T", "6T", "5T", "4T"],
+				suckerpunch: ["4T"],
+				taunt: ["9M", "8M", "7M", "6M", "5M", "4M", "3M"],
+				thief: ["9M", "8M"],
+				throatchop: ["8M", "7T"],
+				torment: ["7M", "6M", "5M", "4M", "3M"],
+				wonderroom: ["8M", "7T", "6T", "5T"],
+				//leafeon
+				aerialace: ["9M", "7M", "6M", "5M", "4M"],
+				bulletseed: ["9M", "8M", "4M"],
+				earthpower: ['7M'],
+				energyball: ["9M", "8M", "7M", "6M", "5M", "4M"],
+				furycutter: ["4T"],
+				gigadrain: ["9M", "9L40", "8M", "8L40", "7T", "7L25", "6T", "6L25", "5T", "5L43", "4M", "4L43"],
+				grasswhistle: ["7L17", "6L17", "5L57", "4L57"],
+				grassyglide: ["8T"],
+				knockoff: ["7T", "6T", "5T", "4T"],
+				leafblade: ["9L50", "8M", "8L50", "7L45", "7S2", "6L45", "5L71", "4L71"],
+				leafstorm: ["9M", "8M"],
+				leechseed: ["9L20", "8L20"],
+				mudshot: ["9M"],
+				seedbomb: ["9M", "8M", "7T", "6T", "5T", "4T"],
+				solarbeam: ["9M", "8M", "7M", "6M", "5M", "4M"],
+				solarblade: ["8M"],
+				strengthsap: ['7L60'],
+				swordsdance: ["9M", "9L45", "8M", "8L45", "7M", "7L29", "7S2", "6M", "6L29", "5M", "5L78", "4M", "4L78"],
+				synthesis: ["9L30", "8L30", "7T", "7L33", "7S2", "6T", "6L33", "5T", "5L29", "4T", "4L29"],
+				worryseed: ["7T", "6T", "5T", "4T"],
+				xscissor: ["9M", "8M", "7M", "6M", "5M", "4M"],
+				//glaceon
+				auroraveil: ["7M", "7S2"],
+				avalanche: ["9M", "8M", "4M"],
+				barrier: ["7L29", "6L29", "5L78", "4L78"],
+				freezedry: ["9L40", "8L40", "7T"],
+				frostbreath: ["7M", "6M", "5M"],
+				icefang: ["9M", "9L30", "8M", "8L30", "7L20", "6L20", "5L43", "4L43"],
+				iceshard: ["9L20", "8L20", "7L25", "6L25", "5L36", "4L36"],
+				iciclecrash: ['7L60'],
+				iciclespear: ["8M"],
+				mirrorcoat: ["9L45", "8L45", "7L33", "6L33", "5L57", "4L57"],
+				sheercold: ['7L65'],
+				snowscape: ["9M", "9L35"],
+				tripleaxel: ["8T"],
+				//sylveon
+				disarmingvoice: ["9M", "9L0", "8L0", "7L1", "6L1", "6S1"],
+				fairywind: ["7L1", "6L9", "6S0"],
+				mistyexplosion: ["8T"],
+				mistyterrain: ["9M", "9L35", "8M", "8L35", "7L29", "6L29"],
+				moonblast: ["9L50", "8L50", "7L37", "6L37"],
+				mysticalfire: ["8M"],
+				playrough: ["9M", "8M"],
+				safeguard: ["8M", "7M", "6M"],
 			},
-			"inherit": true
+			eventData: [
+				{generation: 4, level: 10, gender: "F", nature: "Lonely", abilities: ["adaptability"], moves: ["covet", "bite", "helpinghand", "attract"], pokeball: "cherishball"},
+				{generation: 4, level: 50, shiny: true, gender: "M", nature: "Hardy", abilities: ["adaptability"], moves: ["irontail", "trumpcard", "flail", "quickattack"], pokeball: "cherishball"},
+				{generation: 5, level: 50, gender: "F", nature: "Hardy", abilities: ["adaptability"], moves: ["sing", "return", "echoedvoice", "attract"], pokeball: "cherishball"},
+				{generation: 6, level: 10, moves: ["celebrate", "sandattack", "babydolleyes", "swift"], pokeball: "cherishball"},
+				{generation: 6, level: 15, shiny: true, isHidden: true, moves: ["swift", "quickattack", "babydolleyes", "helpinghand"], pokeball: "cherishball"},
+				{generation: 7, level: 10, nature: "Jolly", moves: ["celebrate", "sandattack", "babydolleyes"], pokeball: "cherishball"},
+				{generation: 8, level: 5, gender: "M", nature: "Docile", abilities: ["runaway"], moves: ["celebrate", "covet", "helpinghand", "tackle"], pokeball: "cherishball"},
+			],
+			encounters: [
+				{generation: 1, level: 25},
+			],
 		},
 		"vaporeon": {
 			"learnset": {
