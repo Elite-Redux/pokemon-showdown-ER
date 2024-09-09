@@ -26,7 +26,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		gen: 8,
 	},
 	aquaring: {
-		inherit: true, 
+		inherit: true,
 		condition: {
 			onStart(pokemon) {
 				this.add('-start', pokemon, 'Aqua Ring');
@@ -49,7 +49,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		flags: {failencore: 1, nosleeptalk: 1, noassist: 1, failcopycat: 1, failinstruct: 1},
 	},
 	attract: {
-		inherit: true, 
+		inherit: true,
 		condition: {
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart(pokemon, source, effect) {
@@ -626,6 +626,43 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	mistyterrain: {
+		inherit: true,
+		condition: {
+			duration: 8,
+			durationCallback(source, effect) {
+				if (source?.hasItem('terrainextender')) {
+					return 12;
+				}
+				return 8;
+			},
+			onSetStatus(status, target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (effect && ((effect as Move).status || effect.id === 'yawn')) {
+					this.add('-activate', target, 'move: Misty Terrain');
+				}
+				return false;
+			},
+			onBasePower(basePower, attacker, defender, move) {
+				if (move.type === 'Fairy' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+					this.debug('misty terrain boost');
+					return this.chainModify(1.3);
+				}
+			},
+			onFieldStart(field, source, effect) {
+				if (effect?.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Misty Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Misty Terrain');
+				}
+			},
+			onFieldResidualOrder: 27,
+			onFieldResidualSubOrder: 7,
+			onFieldEnd() {
+				this.add('-fieldend', 'Misty Terrain');
+			},
+		},
+	},
 	moongeistbeam: {
 		inherit: true,
 		isNonstandard: null,
@@ -992,12 +1029,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	electricterrain: {
 		inherit: true,
 		condition: {
-			duration: 5,
+			duration: 8,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
-					return 8;
+					return 12;
 				}
-				return 5;
+				return 8;
 			},
 			onSetStatus(status, target, source, effect) {
 				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
@@ -1017,7 +1054,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onBasePower(basePower, attacker, defender, move) {
 				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
 					this.debug('electric terrain boost');
-					return this.chainModify(1.5);
+					return this.chainModify(1.3);
 				}
 			},
 			onFieldStart(field, source, effect) {
@@ -1092,12 +1129,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	grassyterrain: {
 		inherit: true,
 		condition: {
-			duration: 5,
+			duration: 8,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
-					return 8;
+					return 12;
 				}
-				return 5;
+				return 8;
 			},
 			onBasePower(basePower, attacker, defender, move) {
 				const weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
@@ -1107,7 +1144,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 				if (move.type === 'Grass' && attacker.isGrounded()) {
 					this.debug('grassy terrain boost');
-					return this.chainModify(1.5);
+					return this.chainModify(1.3);
 				}
 			},
 			onFieldStart(field, source, effect) {
@@ -1425,12 +1462,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	psychicterrain: {
 		inherit: true,
 		condition: {
-			duration: 5,
+			duration: 8,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
-					return 8;
+					return 12;
 				}
-				return 5;
+				return 8;
 			},
 			onTryHitPriority: 4,
 			onTryHit(target, source, effect) {
@@ -1451,7 +1488,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onBasePower(basePower, attacker, defender, move) {
 				if (move.type === 'Psychic' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
 					this.debug('psychic terrain boost');
-					return this.chainModify(1.5);
+					return this.chainModify(1.3);
 				}
 			},
 			onFieldStart(field, source, effect) {
