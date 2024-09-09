@@ -7,7 +7,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (!target.hp) return;
 			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
 				this.boost({atk: 12}, target, target);
-			} 
+			}
 		},
 		onDamagingHit(damage, target, source, move) {
 			if (damage && move?.effectType === 'Move') {
@@ -16,7 +16,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		desc: "This Pokemon's Attack is raised by 1 stage when hit. If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
 		shortDesc: "Ups attack on hit. If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
-		
+
 	},
 	battlearmor: {
 		inherit: true,
@@ -26,7 +26,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		shortDesc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
 		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
-		
+
 	},
 	battlebond: {
 		inherit: true,
@@ -54,7 +54,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 	},
 	bigpecks: {
-		inherit: true, 
+		inherit: true,
 		onTryBoost(boost, target, source, effect) {},
 		onBasePowerPriority: 21,
 		onBasePower(basePower, attacker, defender, move) {
@@ -71,7 +71,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Fire') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Blaze boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Blaze boost');
 					return this.chainModify(1.2);
@@ -83,7 +83,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Fire') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Blaze boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Blaze boost');
 					return this.chainModify(1.2);
@@ -150,7 +150,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		shortDesc: "This Pokemon can poison or badly poison a Pokemon regardless of its typing. Poison hits Steel super effectively",
 	},
-	
+
 	flamebody: {
 		inherit: true,
 		onModifyMove(move) {
@@ -173,8 +173,11 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return false;
 			}
 		},
-		desc: "While this Pokemon is burned, the power of its special attacks is multiplied by 1.5. Immune to burn damage",
-		shortDesc: "While this Pokemon is burned, its special attacks have 1.5x power. Immune to burn damage.",
+		onModifySpA(spa, source) {
+			if (source.status === 'brn') return this.modify(spa, 1.5);
+		},
+		desc: "While this Pokemon is burned, its Special Attack is multiplied by 1.5x. Immune to negative effects of burn.",
+		shortDesc: "Ups Sp. Atk by 1.5x if burned. Ignites in fog.",
 
 	},
 	friendguard: {
@@ -293,20 +296,20 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		desc: "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage. This Pokemon has their Accuracy multiplied by 1.2",
 		shortDesc: "20% accuracy boost. This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
-		
+
 	},
 	levitate: {
 		inherit: true,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.type === 'Flying') {
 				this.debug('Levitate boost');
-				return this.chainModify(1.25);	
+				return this.chainModify(1.25);
 				}
 		},
 		onModifySpA(atk, attacker, defender, move) {
 			if (move.type === 'Flying') {
 				this.debug('Levitate boost');
-				return this.chainModify(1.25);	
+				return this.chainModify(1.25);
 			}
 		},
 		desc: "This Pokemon is immune to Ground-type attacks and the effects of Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability. The effects of Gravity, Ingrain, Smack Down, Thousand Arrows, and Iron Ball nullify the immunity. Thousand Arrows can hit this Pokemon as if it did not have this Ability. While levitating, the power of this Pokemon's Flying-type moves are multiplied by 1.25",
@@ -349,12 +352,12 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onDamage(damage, target, source, effect) {
 			if (effect.id === 'recoil') {
 				if (!this.activeMove) throw new Error("Battle.activeMove is null");
-				if (this.activeMove.id !== 'struggle') return this.chainModify(1.5);
+				if (this.activeMove.id !== 'struggle') return this.chainModify(0.5);
 			}
 		},
 		shortDesc: "This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it. Takes 50% less recoil damage.",
 	},
-	longreach: { 
+	longreach: {
 		inherit: true,
 		onModifyMove(move, pokemon, target) {
 			if (move.flags['contact']) {
@@ -467,12 +470,12 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		onEnd(source) {
 			this.add('-end', source, 'ability: Neutralizing Gas');
-			
+
 			// FIXME this happens before the pokemon switches out, should be the opposite order.
 			// Not an easy fix since we cant use a supported event. Would need some kind of special event that
 			// gathers events to run after the switch and then runs them when the ability is no longer accessible.
 			// (If you're tackling this, do note extreme weathers have the same issue)
-			
+
 			// Mark this pokemon's ability as ending so Pokemon#ignoringAbility skips it
 			if (source.abilityState.ending) return;
 			source.abilityState.ending = true;
@@ -511,7 +514,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Grass') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Overgrow boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Overgrow boost');
 					return this.chainModify(1.2);
@@ -523,7 +526,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Grass') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Overgrow boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Overgrow boost');
 					return this.chainModify(1.2);
@@ -621,13 +624,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				if (attacker.gender === defender.gender) {
 					this.debug('Rivalry boost');
 					return this.chainModify(1.25);
-				} 
+				}
 			}
 		},
 		desc: "This Pokemon's attacks have their power multiplied by 1.25 against targets of the same gender. There is no modifier if either this Pokemon or the target is genderless.",
 		shortDesc: "This Pokemon's attacks do 1.25x on same gender targets.",
 	},
-	runaway: { 
+	runaway: {
 		inherit: true,
 		onAfterEachBoost(boost, target, source, effect) {
 			if (!source || target.isAlly(source)) {
@@ -659,7 +662,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		desc: "If Sandstorm is active, this Pokemon's Speed is boosted by 1.5. This Pokemon takes no damage from Sandstorm.",
 		shortDesc: "If Sandstorm is active, this Pokemon's Speed is boosted by 1.5; immunity to Sandstorm.",
-		
+
 	},
 	sapsipper: {
 		inherit: true,
@@ -682,7 +685,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move.type === 'Grass') {
 				if (target.getStat('atk') > target.getStat('spa')) this.boost({atk: 1}, this.effectState.target);
 				else this.boost({spa: 1}, this.effectState.target);
-				
+
 			}
 		},
 		desc: "This Pokemon is immune to Grass-type moves and raises its Highest attack by 1 stage when hit by a Grass-type move.",
@@ -722,7 +725,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		desc: "If Hail is active, this Pokemon's Speed is boosted by 1.5. This Pokemon takes no damage from Hail.",
 		shortDesc: "If Hail is active, this Pokemon's Speed is boosted by 1.5; immunity to Hail.",
-		
+
 	},
 	snowwarning: {
 		inherit: true,
@@ -784,7 +787,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Bug') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Swarm boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Swarm boost');
 					return this.chainModify(1.2);
@@ -796,7 +799,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Bug') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Swarm boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Swarm boost');
 					return this.chainModify(1.2);
@@ -836,7 +839,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Water') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Torrent boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Torrent boost');
 					return this.chainModify(1.2);
@@ -848,7 +851,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move && move.type === 'Water') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Torrent boost');
-					return this.chainModify(1.5);	
+					return this.chainModify(1.5);
 				} else {
 					this.debug('Lite Torrent boost');
 					return this.chainModify(1.2);
