@@ -18391,7 +18391,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onSideResidualOrder: 26,
 			onSideResidualSubOrder: 12,
-			onSideEnd(side) { 
+			onSideEnd(side) {
 				this.add('-sideend', side, 'move: Sticky Web');
 			}
 		},
@@ -19323,12 +19323,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onSideStart(this,side,source,effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-sidestart', side, 'move: Tailwind', '[persistent]');
-				} else if (effect?.effectType === 'Ability') { 
+				} else if (effect?.effectType === 'Ability') {
 					this.add('-sidestart', side, 'move: Tailwind', '[from] ability: ' + effect.name, '[of] ' + source);
 				} else {
 					this.add('-sidestart', side, 'move: Tailwind');
 				}
-				
+
 			},
 			onModifySpe(spe, pokemon) {
 				return this.chainModify(2);
@@ -21109,6 +21109,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1, weather: 1},
 		onModifyType(move, pokemon) {
+			if (pokemon.hasAbility('chloroplast')) {
+				move.type = 'Fire';
+				return;
+			}
 			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
@@ -21128,6 +21132,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 		},
 		onModifyMove(move, pokemon) {
+			if (pokemon.hasAbility('chloroplast')) {
+				move.basePower *= 2;
+				return;
+			}
 			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
@@ -21724,7 +21732,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	smite: {
 		num: 904,
-		accuracy: 85, 
+		accuracy: 85,
 		basePower: 120,
 		category: "Physical",
 		name: "Smite",
@@ -21978,8 +21986,4 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Cool",
 	}
-	
-
-
-
 };
