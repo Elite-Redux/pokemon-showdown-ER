@@ -1005,4 +1005,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Water Veil",
 		shortDesc: "Summons Aqua Ring on switch-in. This Pokemon cannot be burned. Gaining this Ability while burned cures it.",
 	},
+	damp: {
+		inherit: true,
+		onDamagingHit(damage, target, source, move) {
+			if (damage && move.flags['contact'] && !source.types.includes('water')) {
+				if (source.setType('water')) this.add('-ability', target, 'ability: Damp')
+			}
+		},
+		onFoeDamagingHit(damage, target, source, move) {
+			if (damage && move.flags['contact'] && !target.types.includes('water')) {
+				if (target.setType('water')) this.add('-ability', source, 'ability: Damp')
+			}
+		},
+	},
 };
