@@ -2,7 +2,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	bulbasaur: {
 		isNonstandard: "Past",
 		tier: "Illegal",
-		natDexTier: "LC",
+		natDexTier: "OU",
 	},
 	ivysaur: {
 		isNonstandard: "Past",
