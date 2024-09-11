@@ -1,12 +1,12 @@
 //TODO: Update Pokedex.
-export const Pokedex: {[k: string]: ModdedSpeciesData} = { 
-	bulbasaur: { 
+export const Pokedex: {[k: string]: ModdedSpeciesData} = {
+	bulbasaur: {
 		num: 1,
 		name: "Bulbasaur",
-		types: ["Grass", "Poison"],
+		types: ["Grass", "Electric"],
 		genderRatio: {M: 0.875, F: 0.125},
-		baseStats: {hp: 45, atk: 49, def: 49, spa: 65, spd: 65, spe: 45}, 
-		abilities: {0: "Chloroplast", 1: "Effect Spore", H: "Chlorophyll", I1: "Rough Skin", I2: "Thick Fat", I3: "Poison Touch"},
+		baseStats: {hp: 45, atk: 49, def: 49, spa: 65, spd: 65, spe: 45},
+		abilities: {0: "Superconductor", 1: "Effect Spore", H: "Chlorophyll", I1: "Rough Skin", I2: "Thick Fat", I3: "Poison Touch"},
 		heightm: 0.7,
 		weightkg: 6.9,
 		color: "Green",
@@ -4031,7 +4031,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		formeOrder: ["Slowking", "Slowking-Galar"],
 	},
 	//Has no innates, for some reason (at least in the github dex)
-	slowkinggalar: { 
+	slowkinggalar: {
 		num: 199,
 		name: "Slowking-Galar",
 		baseSpecies: "Slowking",
@@ -16626,19 +16626,19 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		abilities: {0: "Raging Boxer", I1: "No Guard", I2: "Iron Fist", I3: "Anger Point"},
 	},
 	kinglermega: {
-		inherit: true, 
+		inherit: true,
 		abilities: {0: "Tough Claws", I1: "Swift Swim", I2: "Hyper Cutter", I3: "Grip Pincer"},
 	},
 	laprasmega: {
-		inherit: true, 
+		inherit: true,
 		abilities: {0: "Liquid Voice", I1: "Ice Scales", I2: "Shell Armor", I3: "Self Sufficient"},
 	},
 	flygonmega: {
-		inherit: true, 
+		inherit: true,
 		abilities: {0: "Tinted Lens", I1: "Dragonfly", I2: "Sand Song", I3: "Sand Rush"},
 	},
 	kingdramega: {
-		inherit: true, 
+		inherit: true,
 		abilities: {0: "Swift Swim", I1: "Sea Guardian", I2: "Mega Launcher", I3: "Marvel Scale"},
 	},
 	"dewgongmega": {

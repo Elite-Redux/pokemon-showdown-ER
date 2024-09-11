@@ -17,6 +17,11 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 			shortDesc: "This Pokemon's Normal-type moves become Flying type and have 1.3x power.",
 		},
 	},
+	superconductor: {
+		name: "Superconductor",
+		desc: "This Pokemon's Steel-type moves become Electric-type moves and have their power multiplied by 1.2.",
+		shortDesc: "This Pokemon's Steel-type moves become Electric type and have 1.2x power.",
+	},
 	aftermath: {
 		name: "Aftermath",
 		desc: "If this Pokemon is knocked out with a contact move, that move's user loses 1/4 of its maximum HP, rounded down. If any active Pokemon has the Damp Ability, this effect is prevented.",
@@ -2147,7 +2152,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		activate: "  [POKEMON] underwent a heroic transformation!",
 	},
 
-	//IE 
+	//IE
 	chloroplast: {
 		name: "Chloroplast",
 		shortDesc: "This Pokemon uses moves as if under Sunny Day",
@@ -2180,7 +2185,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	rampage: {
 		name: "Rampage",
 		shortDesc: "This Pokemon doesn't recharge after a KO",
-	}, 
+	},
 	vengeance: {
 		name: "Vengeance",
 		shortDesc: "Boost Pokemon's Ghost moves by 20%, 50% when below 1/3 HP",
@@ -2214,7 +2219,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	christmasspirit: {
 		name: "Christmas Spirit",
 		shortDesc: "This Pokemon takes half damage during Hail."
-	}, 
+	},
 	exploitweakness: {
 		name: "Exploit Weakness",
 		shortDesc: "This Pokemon has its move's power boosted by 25% when opponent is statused."
@@ -2230,7 +2235,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	mysticpower: {
 		name: "Mystic Power",
 		shortDesc: "Gains STAB for all moves."
-	}, 
+	},
 	perfectionist: {
 		name: "Perfectionist",
 		shortDesc: "+1 crit ratio for moves under 50 power, +1 priority for moves under 25 power."
@@ -2246,7 +2251,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	auroraborealis: {
 		name: "Aurora Borealis",
 		shortDesc: "Gains STAB for Ice moves",
-	}, 
+	},
 	avenger: {
 		name: "Avenger",
 		shortDesc: "Boosts offenses by 50% if ally fainted last turn.",
@@ -2356,10 +2361,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Primal Armor",
 		shortDesc: "This Pokemon receives 1/2 damage from supereffective attacks.",
 	},
-	ragingboxer: { 
+	ragingboxer: {
 		name: "Raging Boxer",
 		shortDesc: "This Pokemon's punching moves hit twice. The second hit has its damage halved.",
-	}, 
+	},
 	airblower: {
 		name: "Air Blower",
 		shortDesc: "On switch-in, this Pokemon summons Tailwind for 3 turns.",
@@ -2414,14 +2419,14 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Soul Eater",
 		shortDesc: "This pokemon heals 1/4 hp if it knock out a Pokemon"
 	},
-	soullinker: { 
+	soullinker: {
 		name: "Soul Linker",
 		shortDesc: "This Pokemon recieves all damage it inflicts and shares all damage taken"
 	},
 	sweetdreams: {
 		name: "Sweet Dreams",
 		shortDesc: "This Pokemon heals 1/16 hp each turn if asleep"
-	}, 
+	},
 	badluck: {
 		name: "Bad Luck",
 		shortDesc: "Foes cannot land critical hits and have all accuracy lowered by 5%"
@@ -2481,7 +2486,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Twist Dimension",
 		shortDesc: "On switch-in, this Pokemon summons Trick Room for 3 turns.",
 
-	}, 
+	},
 	multiheaded: {
 		name: "Multi Headed",
 		desc: "This Pokemon gains an addition attack for each of its heads. For additional attacks, the first addition attack deals 20% of the intital hit, with each hit after dealing 15%.",
@@ -2505,7 +2510,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	flamingsoul: {
 		name: "Flaming Soul",
-		shortDesc: "If this Pokemon is at full HP, its Fire-type moves have their priority increased by 1.", 
+		shortDesc: "If this Pokemon is at full HP, its Fire-type moves have their priority increased by 1.",
 	},
 	sagepower: {
 		name: "Sage Power",
@@ -2515,7 +2520,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	bonezone: {
 		name: "Bone Zone",
 		shortDesc: "This Pokemon's bone moves ignore immunities and deal 2x damage if not very effective ",
-	},	
+	},
 	weathercontrol: {
 		name: "Weather Control",
 		shortDesc: "Opponent's weather-based moves are negated"
@@ -2584,7 +2589,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Giant Wings",
 		shortDesc: "This Pokemon's wind moves are boosted by 25%."
 	},
-	momentum: { 
+	momentum: {
 		name: "Momentum",
 		shortDesc: "This Pokemon's contact moves use the Speed stat for calculation."
 
@@ -2645,7 +2650,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 
 	},
 	//Elite Redux's Opportunist renamed to 'Expert Hunter' to avoid name confict with gen 9's Opportunist
-	experthunter: { 
+	experthunter: {
 		name: "Expert Hunter",
 		shortDesc: "This Pokemon goes first against foes below 50% HP."
 
@@ -2830,7 +2835,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	primalmaw: {
 		name: "Primal Maw",
 		shortDesc: "This Pokemon's biting moves hit twice. The second hit has its damage halved.",
-	}, 
+	},
 	sweepingedge: {
 		name: "Sweeping Edge",
 		shortDesc: "This Pokemon's single-target slicing moves hit both foes and never miss"
@@ -2841,7 +2846,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 
 		start: "[POKEMON]'s bliss negates field effects",
 
-	}, 
+	},
 	hydrocircuit: {
 		name: "Hydro Circuit",
 		shortDesc: "This Pokemon's Electric moves are boosted by 50%; Water moves drain 25% damge"
@@ -2874,7 +2879,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	voltrush: {
 		name: "Volt Rush",
-		shortDesc: "If this Pokemon is at full HP, its Electric-type moves have their priority increased by 1.", 
+		shortDesc: "If this Pokemon is at full HP, its Electric-type moves have their priority increased by 1.",
 	},
 	duneterror: {
 		name: "Dune Terror",
@@ -2891,16 +2896,16 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	atlas: {
 		name: "Atlas",
 		shortDesc: "On switch-in, this Pokemon sets Gravity for 8 turns. User moves last."
-	}, 
+	},
 	elementalcharge: {
 		name: "Elemental Charge",
 		shortDesc: "This Pokemon's moves have a 20% chance to BRN/FRZ/PARA depending on move type."
-	}, 
-	dualwield: { 
+	},
+	dualwield: {
 		name: "Dual Wield",
 		shortDesc: "This Pokemon's pulse moves hit twice. Each hit is at 75% power.",
 	},
-	ambush: { 
+	ambush: {
 		name: "Ambush",
 		shortDesc: "This Pokemon's first attack is guaranteed to be a critical hit.",
 	},
@@ -2908,11 +2913,11 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Jaws of Carnage",
 		shortDesc: "This pokemon heals 1/2 hp if it knock out a Pokemon"
 	},
-	angelswrath: { 
+	angelswrath: {
 		name: "Angel's Wrath",
 		shortDesc: "Drastically alters all of Cascoon's moves"
 	},
-	
+
 	prismaticfur: {
 		name: "Prismatic Fur",
 		shortDesc: "Color Change + Protean + Fur Coat + Ice Scales"
@@ -2924,7 +2929,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	gravitywell: {
 		name: "Gravity Well",
 		shortDesc: "On switch-in, this Pokemon sets Gravity for 5 turns."
-	}, 
+	},
 
 	// CAP
 	mountaineer: {
