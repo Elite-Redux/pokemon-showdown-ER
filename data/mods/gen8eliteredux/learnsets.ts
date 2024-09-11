@@ -13,6 +13,9 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 				"growth": [
 					"7L6"
 				],
+				"steelwing": [
+					"7L9",
+				],
 				"leechseed": [
 					"7L9"
 				],
