@@ -86,6 +86,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Superconductor",
 		rating: 4,
 		num: 600,
+		gen: 8
 	},
 	aftermath: {
 		name: "Aftermath",
