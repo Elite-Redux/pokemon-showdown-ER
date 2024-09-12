@@ -2930,6 +2930,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Gravity Well",
 		shortDesc: "On switch-in, this Pokemon sets Gravity for 5 turns."
 	},
+	shockingjaws: {
+		name: "Shocking Jaws",
+		shortDesc: "Biting moves have a 50% chance to paralyze the target."
+	},
 
 	// CAP
 	mountaineer: {

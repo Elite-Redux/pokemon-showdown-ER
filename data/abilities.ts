@@ -8448,7 +8448,21 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 454,
 		gen: 8,
 	},
-
+	shockingjaws: {
+		name: "Shocking Jaws",
+		rating: 3,
+		num: 455,
+		gen: 8,
+		onModifyMove(move, mon, target) {
+			if(!move?.flags['bite']) return;
+			if(move.secondaries) move.secondaries = [];
+			move.secondaries?.push({
+				chance: 50,
+				status: 'par',
+				ability: this.dex.abilities.get('shockingjaws')
+			});
+		}
+	},
 
 
 
