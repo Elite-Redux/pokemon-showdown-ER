@@ -1,0 +1,46 @@
+{
+	"folders": [
+		{
+			"path": "../../pokemon-showdown-client-ER"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "node_modules/typescript/lib"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [],
+		"compounds": [
+			{
+				"name": "[TWOPLAYER] Elite Redux Showdown Battle Testing",
+				"configurations": [
+					"[SERVER] Start Test Server",
+					"[BROWSER] Player 1 Session",
+					"[BROWSER] Player 2 Session"
+				],
+				"stopAll": true,
+				"presentation": {
+					"hidden": false,
+					"group": "COMBO",
+					"order": 1,
+				}
+			},
+			{
+				"name": "[SINGLEPLAYER] Elite Redux Showdown",
+				"configurations": [
+					"[SERVER] Start Test Server",
+					"[BROWSER] Player 1 Session",
+				],
+				"stopAll": true,
+				"presentation": {
+					"hidden": false,
+					"group": "COMBO",
+					"order": 1
+				}
+			}
+		]
+	},
+}
