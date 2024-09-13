@@ -2934,6 +2934,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Shocking Jaws",
 		shortDesc: "Biting moves have a 50% chance to paralyze the target."
 	},
+	cryomancy: {
+		name: "Cryomancy",
+		shortDesc: "Ice moves inflict frostbite 5x more often."
+	},
 
 	// CAP
 	mountaineer: {

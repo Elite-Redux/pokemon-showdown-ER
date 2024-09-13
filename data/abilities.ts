@@ -8464,6 +8464,19 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			});
 		}
 	},
+	cryomancy: {
+		name: "Cryomancy",
+		rating: 3,
+		num: 456,
+		gen: 8,
+		onModifyMovePriority: -2,
+		onModifyMove(move) {
+			if (!move.secondaries) return;
+			for (const secondary of move.secondaries) {
+				if (secondary.status?.includes('frz') && secondary.chance) secondary.chance *= 5;
+			}
+		}
+	},
 
 
 
