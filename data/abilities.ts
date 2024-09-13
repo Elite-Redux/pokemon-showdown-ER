@@ -8477,6 +8477,20 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 		}
 	},
+	phantompain: {
+		name: "Phantom Pain",
+		rating: 3,
+		num: 457,
+		gen: 8,
+		onModifyMovePriority: -5,
+		onModifyMove(move) {
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity['Ghost'] = true;
+			}
+		},
+
+	},
 
 
 

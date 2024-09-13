@@ -2938,6 +2938,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Cryomancy",
 		shortDesc: "Ice moves inflict frostbite 5x more often."
 	},
+	phantompain: {
+		name: "Phantom Pain",
+		shortDesc: "Ghost type moves can hit normal type pokemon for neutral damage."
+	},
 
 	// CAP
 	mountaineer: {

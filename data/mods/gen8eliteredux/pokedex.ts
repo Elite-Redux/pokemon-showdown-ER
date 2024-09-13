@@ -2154,7 +2154,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		forme: "Mega",
 		types: ["Ghost", "Poison"],
 		baseStats: {hp: 60, atk: 115, def: 80, spa: 170, spd: 95, spe: 130},
-		abilities: {0: "Shadow Tag", I1: "Vengeance", I2: "Soul Eater", I3: "Haunted Spirit"},
+		abilities: {0: "Phantom Pain", I1: "Vengeance", I2: "Soul Eater", I3: "Haunted Spirit"},
 		heightm: 1.4,
 		weightkg: 40.5,
 		color: "Purple",
