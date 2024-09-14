@@ -40,6 +40,18 @@ export interface EventMethods {
 	onBeforeSwitchOut?: (this: Battle, pokemon: Pokemon) => void;
 	onBeforeTurn?: (this: Battle, pokemon: Pokemon) => void;
 	onChangeBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
+	/**
+	 * This is called right before a stat boost goes off on a given target.
+	 * Here, you can do any modifications to the stat boost by modifying the boost parameter.
+	 * If you want to prevent a boost, you can "delete it", for example:
+	 *     delete boost.accuracy // prevents an accuracy boost.
+	 * @param this The active battle instance.
+	 * @param boost The boost that is being applied.
+	 * @param target The target of the boost.
+	 * @param source The source that initiated the boost (pokemon).
+	 * @param effect The effect that initiated the boost (ability/move/etc).
+	 * @returns void. Any side effects should be done on the boost parameter or the battle.
+	 */
 	onTryBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onChargeMove?: CommonHandlers['VoidSourceMove'];
 	onCriticalHit?: ((this: Battle, pokemon: Pokemon, source: null, move: ActiveMove) => boolean | void) | boolean;

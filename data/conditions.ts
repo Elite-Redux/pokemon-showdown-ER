@@ -111,6 +111,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				if (move.category == "Status") target.cureStatus();
 			}
 			
+			/// This modifies the heal by a multiple of 0, effectively preventing it.
 			return this.chainModify(0);
 		},
 		/**
