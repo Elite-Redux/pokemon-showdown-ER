@@ -60,8 +60,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 	 * - frontend/src/battle-animations.ts:updateStatBar():line 2727, where the status bar is rendered/updated on the client during battle.
 	 * - frontend/style/client.css:line 2070, where the status bar indicators are styled with colors in css.
 	 */
-	bleed: {
-		name: "bleed",
+	bld: {
+		name: "bld",
 		effectType: "Status",
 		/**
 		 * This is called when the status starts and is responsible for populating status activation messages on screen.
@@ -71,9 +71,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 		 */
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.effectType == "Ability") {
-				this.add("-status", target, "bleed", `[from] ability: ${sourceEffect.name}`, ` [of] ${source}`);
+				this.add("-status", target, "bld", `[from] ability: ${sourceEffect.name}`, ` [of] ${source}`);
 			} else if (sourceEffect && sourceEffect.effectType === 'Move') {
-				this.add('-status', target, 'bleed', '[from] move: ' + sourceEffect.name);
+				this.add('-status', target, 'bld', '[from] move: ' + sourceEffect.name);
 			}
 		},
 		/**
@@ -82,14 +82,14 @@ export const Conditions: {[k: string]: ConditionData} = {
 		 * If so, we block the heal but cure the bleed.
 		 * NOTE: This should cover non-self healing moves i.e. enemy or partner healing moves used on the bleeding pokemon 
 		 */
-		onBeforeMove(source, target, move) {
-			if (move.flags['heal'] && move.category == "Status") {
-				/// Outright block status healing moves.
-				this.add('cant', target, 'status: bleed', move);
-				target.cureStatus();
-				return false;
-			}
-		},
+		// onBeforeMove(source, target, move) {
+		// 	if (move.flags['heal'] && move.category == "Status") {
+		// 		/// Outright block status healing moves.
+		// 		this.add('cant', target, 'status: bleed', move);
+		// 		target.cureStatus();
+		// 		return false;
+		// 	}
+		// },
 		/**
 		 * This is called right before a pokemon is healed by any source.
 		 * In this case, we just prevent the healing.
@@ -98,8 +98,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 		 * The expected behavior is more nuanced.
 		 * It's possible that some conditional messages may be desired here, but more work is needed to iron out all those details.
 		 */
-		onTryHeal(damage, pokemon, source, effect) {
-			return false;
+		onTryHeal(amount, target, source, effect) {
+			if (effect.effectType == "Condition" && effect.id == "wish") {
+				this.add("-message", `${target.name}'s wish cured it's bleed!`);
+				target.cureStatus(true);
+			}
+
+			if (effect.effectType == "Move") {
+				const move = effect as Move;
+
+				if (move.basePower < 0) target.cureStatus();
+				if (move.category == "Status") target.cureStatus();
+			}
+			
+			return this.chainModify(0);
 		},
 		/**
 		 * This is called right before the statused target receives any kind of stat boosts. 
@@ -112,7 +124,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 				delete boost[i];
 			}
 
-			this.add('-fail', target, 'unboost', '[from] status: bleed', '[of] ' + target);
+			this.add('-fail', target, 'boost', '[from] status: bleed', '[of] ' + target);
 		},
 		/** 
 		 * This is (believed) to be used as an order in which status/item/weather residual effects resolve at the end of the battle.

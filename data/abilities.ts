@@ -8612,17 +8612,17 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			 * Handle type immunities to bleed (rock and ghost as of v2.1).
 			 * Weirdly, this function call returns true if the type is NOT immune, despite it's name.
 			 */
-			if (!this.dex.getImmunity("bleed", source)) return;
+			if (!this.dex.getImmunity("bld", source)) return;
 			if (move.category != "Special") return;
-			/**
-			 * This ability has a 30% chance to activate, here we short circuit if that random chance fails.
-			 */
-			if (!this.randomChance(3, 10)) return;
 			/**
 			 * This check prevents additional ability activation messages and failure messages 
 			 * from trying to activate bleed on a pokemon who is already bleeding.
 			 */
-			if (source.status == "bleed") return;
+			if (source.status == "bld") return;
+			/**
+			 * This ability has a 30% chance to activate, here we short circuit if that random chance fails.
+			 */
+			if (!this.randomChance(3, 10)) return;
 			/**
 			 * Popup an ability activation message before we bleed the move's source,
 			 * which indicates why the user bleed.
@@ -8642,12 +8642,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Spike Armor",
 		shortDesc: "30% chance to bleed on contact.",
 		onDamagingHit(damage, target, source, move) {
-			if (!this.dex.getImmunity("bleed", source)) return;
+			if (!this.dex.getImmunity("bld", source)) return;
 			if (move.flags["contact"] == null) return;
-			if (!this.randomChance(3, 10)) return;
-			if (source.status == "bleed") return;
+			// if (!this.randomChance(3, 10)) return;
+			if (source.status == "bld") return;
 			this.add("-activate", target, "ability: Spike Armor");
-			source.trySetStatus('bleed', target, this.dex.abilities.get("spikearmor"));
+			source.trySetStatus('bld', target, this.dex.abilities.get("spikearmor"));
 		}
 	}
 };
