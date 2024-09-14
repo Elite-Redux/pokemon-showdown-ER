@@ -8489,6 +8489,32 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				move.ignoreImmunity['Ghost'] = true;
 			}
 		},
+	},
+	purgatory: {
+		name: "Purgatory",
+		rating: 3,
+		num: 458,
+		gen: 8,
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move && move.type === 'Ghost') {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					return this.chainModify(1.8);
+				} else {
+					return this.chainModify(1.3);
+				}
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move && move.type === 'Ghost') {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					return this.chainModify(1.8);
+				} else {
+					return this.chainModify(1.3);
+				}
+			}
+		},
 
 	},
 

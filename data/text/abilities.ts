@@ -2942,6 +2942,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Phantom Pain",
 		shortDesc: "Ghost type moves can hit normal type pokemon for neutral damage."
 	},
+	purgatory: {
+		name: "Purgatory",
+		shortDesc: "Boost Pokemon's Ghost moves by 30%, 80% when below 1/3 HP."
+	},
 
 	// CAP
 	mountaineer: {
