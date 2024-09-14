@@ -2954,5 +2954,19 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Adrenaline Rush",
 		shortDesc: "KOs raise speed by +1.",
 		desc: "When this Pokemon directly knocks out an opponent, its speed raises by one stage.",
+	},
+	cryoproficiency: {
+		name: "Cryo Proficiency",
+		shortDesc: "Triggers hail when hit. 30% chance to frostbite on contact.",
+	},
+	voodoopower: {
+		name: "Voodoo Power",
+		shortDesc: "30% chance to bleed when hit by special attacks.",
+		activate: "  [POKEMON] caused a bleed!"
+	},
+	spikearmor: {
+		name: "Spike Armor",
+		shortDesc: "30% chance to bleed on contact.",
+		activate: "  [POKEMON] caused a bleed!"
 	}
 };
