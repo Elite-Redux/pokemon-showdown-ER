@@ -8644,7 +8644,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onDamagingHit(damage, target, source, move) {
 			if (!this.dex.getImmunity("bld", source)) return;
 			if (move.flags["contact"] == null) return;
-			// if (!this.randomChance(3, 10)) return;
+			if (!this.randomChance(3, 10)) return;
 			if (source.status == "bld") return;
 			this.add("-activate", target, "ability: Spike Armor");
 			source.trySetStatus('bld', target, this.dex.abilities.get("spikearmor"));
