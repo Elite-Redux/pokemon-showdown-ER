@@ -6479,9 +6479,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	 */
 	twistdimension: {
 		onStart(source) {
+			if (this.field.getPseudoWeather("trickroom")) return;
 			this.add('-activate', source, 'ability: Twist. Dimension');
 			/// Only activate trick room if it doesn't already exist, to prevent reverting an active one.
-			if (!this.field.getPseudoWeather("trickroom")) this.field.addPseudoWeather('trickroom', source, source.getAbility());
+			 this.field.addPseudoWeather('trickroom', source, source.getAbility());
 
 		},
 		name: "Twist. Dimension",
