@@ -8789,6 +8789,106 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(1.3);
 			}
 		},
+	},
+	pixiepower: {
+		name: "Pixie Power",
+		shortDesc: "Boosts Fairy moves by 33% and 1.2x accuracy.",
+		/// Display pixie power activation message.
+		onStart(pokemon) {
+			if (this.suppressingAbility(pokemon)) return;
+			this.add('-ability', pokemon, 'Pixie Power');
+		},
+		/// Fairy Aura boost.
+		onAnyBasePowerPriority: 20,
+		onAnyBasePower(basePower, source, target, move) {
+			if (target === source || move.category === 'Status' || move.type !== 'Fairy') return;
+			if (!move.auraBooster?.hasAbility('Pixie Power')) move.auraBooster = this.effectState.target;
+			if (move.auraBooster !== this.effectState.target) return;
+			/// TODO: Should aura break cancel this?
+			return this.chainModify([move.hasAuraBreak ? 3072 : 5448, 4096]);
+		},
+		/// Modified Compound Eyes boost.
+		onAnyModifyAccuracyPriority: -1,
+		onAnyModifyAccuracy(accuracy, target, source, move) {
+			if (typeof accuracy !== 'number') return;
+			/// TODO: Does the accuracy boost only apply to fairy type moves?
+			if (move.type !== "Fairy") return;
+			this.debug('pixiepower - enhancing accuracy');
+			return this.chainModify(1.2);
+		},
+	},
+	plasmalamp: {
+		name: "Plasma Lamp",
+		shortDesc: "Boost accuracy & power of Fire and Electric type moves by 1.2x.",
+		onStart(pokemon) {
+			if (this.suppressingAbility(pokemon)) return;
+			this.add('-ability', pokemon, 'Plasma Lamp');
+		},
+		/// Plasma Lamp boost.
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Electric' || move.type == "Fire") {
+				this.debug('Plasma Lamp boost');
+				return this.chainModify(1.2);
+			}
+		},
+		/// Modified Compound Eyes boost.
+		onSourceModifyAccuracy(accuracy, target, source, move) {
+			if (typeof accuracy !== 'number') return;
+			if (move.type !== "Fire" && move.type != "Electric") return;
+			this.debug('plasma lamp - enhancing accuracy');
+			return this.chainModify(1.2);
+		},
+	},
+	magmaeater: {
+		name: "Magma Eater",
+		shortDesc: "Combines Predator & Molten Down.",
+		/// Molten Down
+		onFoeEffectiveness(typeMod, target, type, move) {
+			if (type === 'Rock' && move.type === 'Fire') {
+				return 1;
+			}
+		},
+		/// Predator
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.add('-activate', source, 'Predator');
+				source.heal(source.baseMaxhp / 4);
+				this.add('-heal', source, source.getHealth, '[silent]')
+			}
+		},
+	},
+	superhotgoo: {
+		name: "Super Hot Goo",
+		shortDesc: "Inflicts burn and lower the speed on contact.",
+		/// Gooey.
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target, true)) {
+				this.add('-ability', target, 'Gooey');
+				this.boost({spe: -1}, source, target, null, true);
+			}
+			
+			if (this.checkMoveMakesContact(move, source, target)) {
+				// TODO: Is this a random chance like flame body or guaranteed?
+				// if (this.randomChance(3, 10)) {
+				source.trySetStatus('brn', target);
+				// }
+			}
+		},
+	},
+	nika: {
+		name: "Nika",
+		shortDesc: "Iron fist + Water moves function normally under sun.",
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['punch']) {
+				this.debug('Iron Fist boost');
+				this.chainModify(1.3);
+			}
+
+			if (move.type == "Water" && this.field.weather == "sunnyday") {
+				this.debug("water sun boost offset");
+				this.chainModify(1.5);
+			}
+		},
 	}
 	
 	// No pokemon appears to have this ability yet?

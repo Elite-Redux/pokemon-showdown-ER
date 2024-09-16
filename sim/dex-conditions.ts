@@ -277,6 +277,15 @@ export interface EventMethods {
 	onSourceLockMove?: string | ((this: Battle, pokemon: Pokemon) => void | string);
 	onSourceMaybeTrapPokemon?: (this: Battle, pokemon: Pokemon) => void;
 	onSourceModifyAccuracy?: CommonHandlers['ModifierMove'];
+	/**
+	 * This event is called to modify the source's attacks.
+	 * Useful for abilities to modify only the attacks of the pokemon with the ability.
+	 * @param this The battle instance.
+	 * @param amount The attack damage value.
+	 * @param source The source pokemon.
+	 * @param target The target of the attack.
+	 * @param move The move being used.
+	 */
 	onSourceModifyAtk?: CommonHandlers['ModifierSourceMove'];
 	onSourceModifyBoost?: (this: Battle, boosts: SparseBoostsTable, pokemon: Pokemon) => SparseBoostsTable | void;
 	onSourceModifyCritRatio?: CommonHandlers['ModifierSourceMove'];
@@ -354,6 +363,13 @@ export interface EventMethods {
 	onAnyAccuracy?: (
 		this: Battle, accuracy: number, target: Pokemon, source: Pokemon, move: ActiveMove
 	) => number | boolean | null | void;
+	/**
+	 * This is called right before *any* pokemon in the battle uses a move, and is meant to modify the base power.
+	 * @param basePower the current basePower value.
+	 * @param source The pokemon that initiated the move.
+	 * @param target The pokemon that is targeted by the move.
+	 * @param move The move being used.
+	 */
 	onAnyBasePower?: CommonHandlers['ModifierSourceMove'];
 	onAnyBeforeFaint?: (this: Battle, pokemon: Pokemon, effect: Effect) => void;
 	onAnyBeforeMove?: CommonHandlers['VoidSourceMove'];
