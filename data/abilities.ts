@@ -8517,6 +8517,44 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 
 	},
+	emanate: {
+		name: "Emanate",
+		rating: 3,
+		num: 459,
+		gen: 8,
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Normal' && !noModifyType.includes(move.id) &&
+				!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
+				move.type = 'Psychic';
+				move.typeChangerBoosted = this.effect;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.typeChangerBoosted === this.effect) return this.chainModify(1.1);
+		}
+	},
+	monkeybusiness: {
+		name: "Monkey Business",
+		rating: 3,
+		num: 460,
+		gen: 8,
+		onSwitchIn(pokemon) {
+			this.debug('Monkey switches in')
+			let nextMove = Dex.moves.get('tickle');
+			let targetLoc = 4
+			let target = pokemon.side.foes().forEach((a) => {if (pokemon.getLocOf(a) < targetLoc) targetLoc = pokemon.getLocOf(a)})
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(nextMove, pokemon, targetLoc, Dex.abilities.get('Monkey Business'), undefined, true);
+			}
+		},
+
+	},
+
 
 
 

@@ -2946,6 +2946,14 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Purgatory",
 		shortDesc: "Boost Pokemon's Ghost moves by 30%, 80% when below 1/3 HP."
 	},
+	emanate: {
+		name: "Emanate",
+		shortDesc: "This Pokemon's Normal-type moves become Fire type and get a 10% boost."
+	},
+	monkeybusiness: {
+		name: "Monkey Business",
+		shortDesc: "This Pokemon attacks with Tickle on switch-in."
+	},
 
 	// CAP
 	mountaineer: {
