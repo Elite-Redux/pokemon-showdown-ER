@@ -8485,7 +8485,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onModifyMovePriority: -5,
 		onModifyMove(move) {
 			if (!move.ignoreImmunity) move.ignoreImmunity = {};
-			if (move.ignoreImmunity !== true) {
+			if (move.ignoreImmunity !== true && !Object.keys(move.ignoreImmunity).includes('Ghost')) {
 				move.ignoreImmunity['Ghost'] = true;
 			}
 		},
