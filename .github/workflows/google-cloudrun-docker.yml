@@ -45,6 +45,7 @@ env:
   REGION: "us-central1"
   SERVICE: "er-showdown-backend"
   WORKLOAD_IDENTITY_PROVIDER: "projects/926545055857/locations/global/workloadIdentityPools/github-cd/providers/github-cd"
+  REPOSITORY_ID: "er-showdown-backend"
 
 jobs:
   deploy:
@@ -81,7 +82,7 @@ jobs:
 
       - name: "Build and Push Container"
         run: |-
-          DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
+          DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
           docker build --tag "${DOCKER_TAG}" .
           docker push "${DOCKER_TAG}"
       - name: "Deploy to Cloud Run"
