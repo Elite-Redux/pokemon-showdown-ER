@@ -17,6 +17,7 @@ WORKDIR /er-showdown/
 
 COPY --from=builder --chown=node:node /er-showdown/config ./config
 COPY --from=builder --chown=node:node /er-showdown/dist ./dist
+COPY --from=builder --chown=node:node /er-showdown/server/static ./server/static
 COPY --from=builder --chown=node:node /er-showdown/node_modules ./node_modules
 COPY --from=builder --chown=node:node /er-showdown/pokemon-showdown ./
 
