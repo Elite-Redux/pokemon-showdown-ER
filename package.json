@@ -87,6 +87,7 @@
     "node-fetch": "^2.7.0",
     "nodemon": "^3.1.4",
     "smogon": "^2.2.1",
+    "sockjs-client": "^1.6.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.0.4"
   }

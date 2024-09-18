@@ -8,15 +8,15 @@
  * @license MIT
  */
 
-import * as fs from 'fs';
-import * as net from 'net';
-import * as path from 'path';
-import * as repl from 'repl';
-import {crashlogger} from './crashlogger';
-import {FS} from './fs';
+import * as fs from "fs";
+import * as net from "net";
+import * as path from "path";
+import * as repl from "repl";
+import { crashlogger } from "./crashlogger";
+import { FS } from "./fs";
 declare const Config: any;
 
-export const Repl = new class {
+export const Repl = new (class {
 	/**
 	 * Contains the pathnames of all active REPL sockets.
 	 */
@@ -28,7 +28,7 @@ export const Repl = new class {
 		if (Repl.listenersSetup) return;
 		Repl.listenersSetup = true;
 		// Clean up REPL sockets and child processes on forced exit.
-		process.once('exit', code => {
+		process.once("exit", (code) => {
 			for (const s of Repl.socketPathnames) {
 				try {
 					fs.unlinkSync(s);
@@ -38,20 +38,23 @@ export const Repl = new class {
 				process.exitCode = 0;
 			}
 		});
-		if (!process.listeners('SIGHUP').length) {
-			process.once('SIGHUP', () => process.exit(128 + 1));
+		if (!process.listeners("SIGHUP").length) {
+			process.once("SIGHUP", () => process.exit(128 + 1));
 		}
-		if (!process.listeners('SIGINT').length) {
-			process.once('SIGINT', () => process.exit(128 + 2));
+		if (!process.listeners("SIGINT").length) {
+			process.once("SIGINT", () => process.exit(128 + 2));
 		}
 		(global as any).heapdump = (targetPath?: string) => {
-			if (!targetPath) targetPath = `${filename}-${new Date().toISOString()}`;
+			if (!targetPath)
+				targetPath = `${filename}-${new Date().toISOString()}`;
 			let handler;
 			try {
-				handler = require('node-oom-heapdump')();
+				handler = require("node-oom-heapdump")();
 			} catch (e: any) {
-				if (e.code !== 'MODULE_NOT_FOUND') throw e;
-				throw new Error(`node-oom-heapdump is not installed. Run \`npm install --no-save node-oom-heapdump\` and try again.`);
+				if (e.code !== "MODULE_NOT_FOUND") throw e;
+				throw new Error(
+					`node-oom-heapdump is not installed. Run \`npm install --no-save node-oom-heapdump\` and try again.`
+				);
 			}
 			return handler.createHeapSnapshot(targetPath);
 		};
@@ -63,7 +66,8 @@ export const Repl = new class {
 	 * non-global context.
 	 */
 	start(filename: string, evalFunction: (input: string) => any) {
-		const config = typeof Config !== 'undefined' ? Config : {};
+		let config = typeof Config !== "undefined" ? Config : {};
+		if (config.Config != null) config = config.Config; // In certain scenarios (team-validator-async.ts) the config global object gets nested. Handle that here.
 		if (config.repl !== undefined && !config.repl) return;
 
 		// TODO: Windows does support the REPL when using named pipes. For now,
@@ -71,10 +75,14 @@ export const Repl = new class {
 
 		Repl.setupListeners(filename);
 
-		if (filename === 'app') {
+		if (filename === "app") {
 			// Clean up old REPL sockets.
 			const directory = path.dirname(
-				path.resolve(FS.ROOT_PATH, config.replsocketprefix || 'logs/repl', 'app')
+				path.resolve(
+					FS.ROOT_PATH,
+					config.replsocketprefix || "logs/repl",
+					"app"
+				)
 			);
 			let files;
 			try {
@@ -86,60 +94,70 @@ export const Repl = new class {
 					const stat = fs.statSync(pathname);
 					if (!stat.isSocket()) continue;
 
-					const socket = net.connect(pathname, () => {
-						socket.end();
-						socket.destroy();
-					}).on('error', () => {
-						fs.unlink(pathname, () => {});
-					});
+					const socket = net
+						.connect(pathname, () => {
+							socket.end();
+							socket.destroy();
+						})
+						.on("error", () => {
+							fs.unlink(pathname, () => {});
+						});
 				}
 			}
 		}
 
-		const server = net.createServer(socket => {
-			repl.start({
-				input: socket,
-				output: socket,
-				eval(cmd, context, unusedFilename, callback) {
-					try {
-						return callback(null, evalFunction(cmd));
-					} catch (e: any) {
-						return callback(e, undefined);
-					}
-				},
-			}).on('exit', () => socket.end());
-			socket.on('error', () => socket.destroy());
+		const server = net.createServer((socket) => {
+			repl
+				.start({
+					input: socket,
+					output: socket,
+					eval(cmd, context, unusedFilename, callback) {
+						try {
+							return callback(null, evalFunction(cmd));
+						} catch (e: any) {
+							return callback(e, undefined);
+						}
+					},
+				})
+				.on("exit", () => socket.end());
+			socket.on("error", () => socket.destroy());
 		});
 
-		const pathname = path.resolve(FS.ROOT_PATH, Config.replsocketprefix || 'logs/repl', filename);
+		const pathname = path.resolve(
+			FS.ROOT_PATH,
+			Config.replsocketprefix || "logs/repl",
+			filename
+		);
 		try {
 			server.listen(pathname, () => {
 				fs.chmodSync(pathname, Config.replsocketmode || 0o600);
 				Repl.socketPathnames.add(pathname);
 			});
 
-			server.once('error', (err: NodeJS.ErrnoException) => {
+			server.once("error", (err: NodeJS.ErrnoException) => {
 				server.close();
 				if (err.code === "EADDRINUSE") {
-					fs.unlink(pathname, _err => {
+					fs.unlink(pathname, (_err) => {
 						if (_err && _err.code !== "ENOENT") {
 							crashlogger(_err, `REPL: ${filename}`);
 						}
 					});
 				} else if (err.code === "EACCES") {
-					if (process.platform !== 'win32') {
-						console.error(`Could not start REPL server "${filename}": Your filesystem doesn't support Unix sockets (everything else will still work)`);
+					if (process.platform !== "win32") {
+						console.error(
+							`Could not start REPL server "${filename}": Your filesystem doesn't support Unix sockets (everything else will still work)`
+						);
 					}
 				} else {
 					crashlogger(err, `REPL: ${filename}`);
 				}
 			});
 
-			server.once('close', () => {
+			server.once("close", () => {
 				Repl.socketPathnames.delete(pathname);
 			});
 		} catch (err) {
 			console.error(`Could not start REPL server "${filename}": ${err}`);
 		}
 	}
-};
+})();

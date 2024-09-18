@@ -21,6 +21,8 @@ COPY --from=builder --chown=node:node /er-showdown/server/static ./server/static
 COPY --from=builder --chown=node:node /er-showdown/node_modules ./node_modules
 COPY --from=builder --chown=node:node /er-showdown/pokemon-showdown ./
 
+COPY ./tools/elite-redux/gcp/config.js ./config/config.js
+
 RUN mkdir ./logs \
 	&& touch ./logs/chatlog-access.txt \
 	&& touch ./logs/errors.txt \
