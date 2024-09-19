@@ -430,9 +430,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 			shortDesc: "10% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
 		},
 	},
-	electricsurge: {
-		name: "Electric Surge",
-		shortDesc: "On switch-in, this Pokemon summons Electric Terrain.",
+	electrosurge: {
+		name: "Electro Surge",
+		shortDesc: "Casts Electric Terrain on entry. Lasts 8 turns.",
 	},
 	electromorphosis: {
 		name: "Electromorphosis",
@@ -2950,4 +2950,55 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 
 		activate: "  [POKEMON] extends [MOVE] by 2 turns!",
 	},
+	adrenalinerush: {
+		name: "Adrenaline Rush",
+		shortDesc: "KOs raise speed by +1.",
+		desc: "When this Pokemon directly knocks out an opponent, its speed raises by one stage.",
+	},
+	cryoproficiency: {
+		name: "Cryo Proficiency",
+		shortDesc: "Triggers hail when hit. 30% chance to frostbite on contact.",
+	},
+	voodoopower: {
+		name: "Voodoo Power",
+		shortDesc: "30% chance to bleed when hit by special attacks.",
+		activate: "  [POKEMON] caused a bleed!"
+	},
+	spikearmor: {
+		name: "Spike Armor",
+		shortDesc: "30% chance to bleed on contact.",
+		activate: "  [POKEMON] caused a bleed!"
+	},
+	kunoichisblade: {
+		name: "Kunoichi's Blade",
+		shortDesc: "Boost weaker moves and increases the frequency of multi-hit moves.",
+		start: "  [POKEMON] sharpened it's blade!"
+	},
+	junglesguard: {
+		name: "Jungle's Guard",
+		shortDesc: "Grass-types on user side: immune to status/stat drops from enemy.",
+		start: "  [POKEMON] is guarding it's jungle friends!"
+	},
+	pixiepower: {
+		name: "Pixie Power",
+		shortDesc: "Boosts Fairy moves by 33% and 1.2x accuracy.",
+		start: "  [POKEMON] is emanating pixie power!",
+	},
+	plasmalamp: {
+		name: "Plasma Lamp",
+		shortDesc: "Boost accuracy & power of Fire and Electric type moves by 1.2x.",
+		start: "  [POKEMON]'s plasma lamp is powering it up!"
+	},
+	magmaeater: {
+		name: "Magma Eater",
+		shortDesc: "Combines Predator & Molten Down."
+	},
+	superhotgoo: {
+		name: "Super Hot Goo",
+		shortDesc: "Inflicts burn and lower the speed on contact."
+	},
+	nika: {
+		name: "Nika",
+		shortDesc: "Iron fist + Water moves function normally under sun."
+	}
 };

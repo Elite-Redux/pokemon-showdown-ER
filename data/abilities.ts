@@ -257,6 +257,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: 165,
 	},
+	/**
+	 * Seems correct according to elite redux dex.
+	 */
 	asoneglastrier: {
 		onPreStart(pokemon) {
 			this.add('-ability', pokemon, 'As One');
@@ -279,6 +282,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3.5,
 		num: 266,
 	},
+	/**
+	 * Seems correct according to elite redux dex.
+	 */
 	asonespectrier: {
 		onPreStart(pokemon) {
 			this.add('-ability', pokemon, 'As One');
@@ -486,6 +492,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: 167,
 	},
+	/**
+	 * Looks correct according to elite redux dex
+	 */
 	chillingneigh: {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
@@ -741,6 +750,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: 291,
 	},
+	/**
+	 * Seems to be implemented properly based on the elite redux dex.
+	 */
 	curiousmedicine: {
 		onStart(pokemon) {
 			for (const ally of pokemon.adjacentAllies()) {
@@ -998,6 +1010,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3.5,
 		num: 88,
 	},
+	/**
+	 * Looks correct according to elite redux dex
+	 */
 	dragonsmaw: {
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
@@ -1106,11 +1121,14 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: 27,
 	},
-	electricsurge: {
+	/**
+	 * Updating this to "Electro Surge" to match elite redux ability name.
+	 */
+	electrosurge: {
 		onStart(source) {
 			this.field.setTerrain('electricterrain');
 		},
-		name: "Electric Surge",
+		name: "Electro Surge",
 		rating: 4,
 		num: 226,
 	},
@@ -2023,7 +2041,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['punch']) {
 				this.debug('Iron Fist boost');
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.3);
 			}
 		},
 		name: "Iron Fist",
@@ -4056,6 +4074,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: 116,
 	},
+	/**
+	 * Doesn't seem to be any changes to soul-heart since 1.6, so looks good.
+	 */
 	soulheart: {
 		onAnyFaintPriority: 1,
 		onAnyFaint() {
@@ -4865,6 +4886,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3.5,
 		num: 10,
 	},
+	/**
+	 * Looks like wandering spirit is already implemented correctly according to the dex.
+	 */
 	wanderingspirit: {
 		onDamagingHit(damage, target, source, move) {
 			const additionalBannedAbilities = ['hungerswitch', 'illusion', 'neutralizinggas', 'wonderguard'];
@@ -5558,6 +5582,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 322,
 		gen: 8,
 	},
+	/**
+	 * Looks correct according to elite redux dex.
+	 */
 	letsroll: {
 		onStart(pokemon) {
 			this.boost({def: 1}, pokemon);
@@ -6447,10 +6474,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 360,
 		gen: 8,
 	},
+	/**
+	 * Trick room needs to only last 3 turns from this ability.
+	 */
 	twistdimension: {
 		onStart(source) {
+			if (this.field.getPseudoWeather("trickroom")) return;
 			this.add('-activate', source, 'ability: Twist. Dimension');
-			this.field.addPseudoWeather('trickroom', source, source.getAbility());
+			/// Only activate trick room if it doesn't already exist, to prevent reverting an active one.
+			 this.field.addPseudoWeather('trickroom', source, source.getAbility());
 
 		},
 		name: "Twist. Dimension",
@@ -6717,7 +6749,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['kick']) {
 				this.debug('Striker boost');
-				return this.chainModify([5325, 4096]);
+				return this.chainModify(1.3);
 			}
 		},
 		name: "Striker",
@@ -7639,6 +7671,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		gen: 8,
 
 	},
+	/// Seems correctly implemented per v2.1 elite redux.
 	kingswrath: {
 		onAnyAfterEachBoost(boost, target, source) {
 			let statsLowered = false;
@@ -7659,6 +7692,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		gen: 8,
 
 	},
+	/// Seems correctly implemented per v2.1 elite redux.
 	queensmourning: {
 		onAnyAfterEachBoost(boost, target, source) {
 			let statsLowered = false;
@@ -8267,6 +8301,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 451,
 		gen: 8,
 	},
+	// Not updated since 1.6 -- looks complete
 	angelswrath: { //oh boy, here we go
 		onModifyMove(move, pokemon, target) {
 			if (!move.secondaries) {
@@ -8530,4 +8565,343 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: -4,
 	},
+	evaporate: {
+		onTryHit(target, source, move) {
+			if (!move.type.toLowerCase().includes("water")) return;
+			this.add("-immune", target, "[from] ability: Evaporate");
+			this.add('-activate', target, 'move: Mist');
+			target.side.addSideCondition("mist")
+			return null;
+		},
+		name: "Evaporate",
+		shortDesc: "Takes no damage and sets Mist if hit by water."
+	},
+	lumberjack: {
+		name: "Lumberjack",
+		shortDesc: "1.5x damage to Grass types.",
+		onModifyAtk(atk, attacker, defender, move) {
+			if (defender.types.find((type) => type.toLowerCase().includes("grass")) == null) return;
+			this.debug("lumberjack boost");
+			return this.chainModify(1.5);
+		}
+	},
+	furnace: {
+		name: "Furnace",
+		shortDesc: "User gains +2 speed when hit by rocks",
+		onDamagingHit(damage, target, source, move) {
+			if (!damage || !move.type.toLowerCase().includes("rock")) return;
+			this.boost({spe: 2}, target, target, this.dex.abilities.get("furnace"));
+		}
+	},
+	ragingmoth: {
+		name: "Raging Moth",
+		shortDesc: "Fire moves hit twice, both hits at 75% power.",
+		onPrepareHit(source, target, move) {
+			if (move.category === 'Status' || move.multihit || move.flags['noparentalbond'] || move.flags['charge'] ||
+			move.flags['futuremove'] || move.spreadHit || move.isZ || move.isMax) return;
+			move.multihit = 2;
+			move.multihitType = 'ragingmoth';
+		},
+		// Damage modifier implemented in BattleActions#modifyDamage()
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (move.multihitType === 'dual' && move.id === 'secretpower' && move.hit < 2) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(effect => effect.volatileStatus === 'flinch');
+			}
+		},
+	},
+	adrenalinerush: {
+		name: "Adrenaline Rush",
+		shortDesc: "KOs raise speed by +1.",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({spe: 1}, source, source, this.dex.abilities.get("adrenalinerush"));
+			}
+		},
+	},
+	cryoproficiency: {
+		name: "Cryo Proficiency",
+		shortDesc: "Triggers hail when hit. 30% chance to frostbite on contact.",
+		onDamagingHit(damage, target, source, move) {
+			if (this.randomChance(3, 10)) {
+				source.trySetStatus('frz', target, target.getAbility());
+			}
+
+			this.field.setWeather("hail");
+		}
+	},
+	/**
+	 * New voodoo power ability which sets the bleed condition with a 30% chance on hit by special attack.
+	 */
+	voodoopower: {
+		name: "Voodoo Power",
+		shortDesc: "30% chance to bleed when hit by special attacks.",
+		/**
+		 * This is called right after the pokemon with this ability is hit by a damaging move.
+		 * In this case, the target is the pokemon with the ability, and the source is the user that damaged us.
+		 * Hence, we add the bleed status to the source if the conditions are right.
+		 * Here, we check the logic for applying bleed with the right input conditions.
+		 */
+		onDamagingHit(damage, target, source, move) {
+			/**
+			 * Handle type immunities to bleed (rock and ghost as of v2.1).
+			 * Weirdly, this function call returns true if the type is NOT immune, despite it's name.
+			 */
+			if (!this.dex.getImmunity("bld", source)) return;
+			if (move.category != "Special") return;
+			/**
+			 * This check prevents additional ability activation messages and failure messages 
+			 * from trying to activate bleed on a pokemon who is already bleeding.
+			 */
+			if (source.status == "bld") return;
+			/**
+			 * This ability has a 30% chance to activate, here we short circuit if that random chance fails.
+			 */
+			if (!this.randomChance(3, 10)) return;
+			/**
+			 * Popup an ability activation message before we bleed the move's source,
+			 * which indicates why the user bleed.
+			 */
+			this.add('-activate', target, 'ability: Voodoo Power');
+			/**
+			 * Add the actual status to the target. In theory even though we're using "try" setStatus,
+			 * our checks should guarantee success.
+			 * There are several other variations of adding statuses to pokemon from abilities,
+			 * but this was the only one that gave good success with not random poorly formatted status messages
+			 * popping up in the battle log as a result.
+			 */
+			source.trySetStatus('bleed', target, this.dex.abilities.get("voodoopower"));
+		}
+	},
+	spikearmor: {
+		name: "Spike Armor",
+		shortDesc: "30% chance to bleed on contact.",
+		onDamagingHit(damage, target, source, move) {
+			if (!this.dex.getImmunity("bld", source)) return;
+			if (move.flags["contact"] == null) return;
+			if (!this.randomChance(3, 10)) return;
+			if (source.status == "bld") return;
+			this.add("-activate", target, "ability: Spike Armor");
+			source.trySetStatus('bld', target, this.dex.abilities.get("spikearmor"));
+		}
+	},
+	fairytale: {
+		name: "Fairy Tale",
+		shortDesc: "Adds Fairy type to itself.",
+		onStart(pokemon) {
+			if (!pokemon.types.includes('Fairy')) {
+				if (!pokemon.addType('Fairy')) return;
+				this.add('-start', pokemon, 'typeadd', 'Fairy', '[from] ability: Fairy Tale');
+			}
+		},
+	},
+	kunoichisblade: {
+		name: "Kunoichi's Blade",
+		shortDesc: "Boost weaker moves and increases the frequency of multi-hit moves.",
+		/// Technician
+		onBasePowerPriority: 30,
+		onBasePower(basePower, attacker, defender, move) {
+			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
+			this.debug('Base Power: ' + basePowerAfterMultiplier);
+			if (basePowerAfterMultiplier <= 60) {
+				this.debug('Technician boost');
+				return this.chainModify(1.5);
+			}
+		},
+		/// Skill Link
+		onModifyMove(move) {
+			if (move.multihit && Array.isArray(move.multihit) && move.multihit.length) {
+				move.multihit = move.multihit[1];
+			}
+			if (move.multiaccuracy) {
+				delete move.multiaccuracy;
+			}
+		},
+	},
+	combatspecialist: {
+		name: "Combat Specialist",
+		shortDesc: "Boost the power of punching and kicking moves by 1.3x.",
+		/// Iron Fist
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['punch']) {
+				this.debug('Iron Fist boost');
+				return this.chainModify(1.3);
+			}
+			if (move.flags['kick']) {
+				this.debug('Striker boost');
+				return this.chainModify(1.3);
+			}
+		},
+	},
+	/// This is just copied from flower veil which seemed to behave the same.
+	junglesguard: {
+		name: "Jungle's Guard",
+		shortDesc: "Grass-types on user side: immune to status/stat drops from enemy.",
+		onAllyTryBoost(boost, target, source, effect) {
+			if ((source && target === source) || !target.hasType('Grass')) return;
+			let showMsg = false;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i]! < 0) {
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !(effect as ActiveMove).secondaries) {
+				const effectHolder = this.effectState.target;
+				this.add('-block', target, "ability: Jungle's Guard", '[of] ' + effectHolder);
+			}
+		},
+		onAllySetStatus(status, target, source, effect) {
+			if (target.hasType('Grass') && source && target !== source && effect && effect.id !== 'yawn') {
+				this.debug('interrupting setStatus with Jungle Guard');
+				if (effect.name === 'Synchronize' || (effect.effectType === 'Move' && !effect.secondaries)) {
+					const effectHolder = this.effectState.target;
+					this.add('-block', target, "ability: Jungle's Guard", '[of] ' + effectHolder);
+				}
+				return null;
+			}
+		},
+		onAllyTryAddVolatile(status, target) {
+			if (target.hasType('Grass') && status.id === 'yawn') {
+				this.debug('Jungles Guard blocking yawn');
+				const effectHolder = this.effectState.target;
+				this.add('-block', target, "ability: Jungle's Guard", '[of] ' + effectHolder);
+				return null;
+			}
+		},
+	},
+	huntershorn: {
+		name: "Hunter's Horn",
+		shortDesc: "Boost horn moves and heals 1/4 hp when defeating an enemy.",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.add('-activate', source, "Hunter's Horn");
+				source.heal(source.baseMaxhp / 4);
+				this.add('-heal', source, source.getHealth, '[silent]')
+			}
+		},
+		/// TODO: What should the modifier for hunter's horn be?
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['horn']) {
+				this.debug("Hunter's horn boost");
+				return this.chainModify(1.3);
+			}
+		},
+	},
+	pixiepower: {
+		name: "Pixie Power",
+		shortDesc: "Boosts Fairy moves by 33% and 1.2x accuracy.",
+		/// Display pixie power activation message.
+		onStart(pokemon) {
+			if (this.suppressingAbility(pokemon)) return;
+			this.add('-ability', pokemon, 'Pixie Power');
+		},
+		/// Fairy Aura boost.
+		onAnyBasePowerPriority: 20,
+		onAnyBasePower(basePower, source, target, move) {
+			if (target === source || move.category === 'Status' || move.type !== 'Fairy') return;
+			if (!move.auraBooster?.hasAbility('Pixie Power')) move.auraBooster = this.effectState.target;
+			if (move.auraBooster !== this.effectState.target) return;
+			/// TODO: Should aura break cancel this?
+			return this.chainModify([move.hasAuraBreak ? 3072 : 5448, 4096]);
+		},
+		/// Modified Compound Eyes boost.
+		onAnyModifyAccuracyPriority: -1,
+		onAnyModifyAccuracy(accuracy, target, source, move) {
+			if (typeof accuracy !== 'number') return;
+			/// TODO: Does the accuracy boost only apply to fairy type moves?
+			if (move.type !== "Fairy") return;
+			this.debug('pixiepower - enhancing accuracy');
+			return this.chainModify(1.2);
+		},
+	},
+	plasmalamp: {
+		name: "Plasma Lamp",
+		shortDesc: "Boost accuracy & power of Fire and Electric type moves by 1.2x.",
+		onStart(pokemon) {
+			if (this.suppressingAbility(pokemon)) return;
+			this.add('-ability', pokemon, 'Plasma Lamp');
+		},
+		/// Plasma Lamp boost.
+		onSourceModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Electric' || move.type == "Fire") {
+				this.debug('Plasma Lamp boost');
+				return this.chainModify(1.2);
+			}
+		},
+		/// Modified Compound Eyes boost.
+		onSourceModifyAccuracy(accuracy, target, source, move) {
+			if (typeof accuracy !== 'number') return;
+			if (move.type !== "Fire" && move.type != "Electric") return;
+			this.debug('plasma lamp - enhancing accuracy');
+			return this.chainModify(1.2);
+		},
+	},
+	magmaeater: {
+		name: "Magma Eater",
+		shortDesc: "Combines Predator & Molten Down.",
+		/// Molten Down
+		onFoeEffectiveness(typeMod, target, type, move) {
+			if (type === 'Rock' && move.type === 'Fire') {
+				return 1;
+			}
+		},
+		/// Predator
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.add('-activate', source, 'Predator');
+				source.heal(source.baseMaxhp / 4);
+				this.add('-heal', source, source.getHealth, '[silent]')
+			}
+		},
+	},
+	superhotgoo: {
+		name: "Super Hot Goo",
+		shortDesc: "Inflicts burn and lower the speed on contact.",
+		/// Gooey.
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target, true)) {
+				this.add('-ability', target, 'Gooey');
+				this.boost({spe: -1}, source, target, null, true);
+			}
+			
+			if (this.checkMoveMakesContact(move, source, target)) {
+				// TODO: Is this a random chance like flame body or guaranteed?
+				// if (this.randomChance(3, 10)) {
+				source.trySetStatus('brn', target);
+				// }
+			}
+		},
+	},
+	nika: {
+		name: "Nika",
+		shortDesc: "Iron fist + Water moves function normally under sun.",
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['punch']) {
+				this.debug('Iron Fist boost');
+				this.chainModify(1.3);
+			}
+
+			if (move.type == "Water" && this.field.weather == "sunnyday") {
+				this.debug("water sun boost offset");
+				this.chainModify(1.5);
+			}
+		},
+	}
+	
+	// No pokemon appears to have this ability yet?
+	// archmage: {
+	// 	name: "Archmage",
+	// 	shortDesc: "30% chance of adding a type related effect to each move.",
+	// }
 };
+
+/**
+ * "archmage",
+  "kunoichi'sblade",
+  "combatspecialist",
+  "jungle'sguard",
+  "hunter'shorn",
+ */
