@@ -41,7 +41,7 @@ on:
       - '"master"'
 
 env:
-  PROJECT_ID: "stately-planet-436000-q5"
+  PROJECT_ID: "er-showdown-backend"
   REGION: "us-central1"
   SERVICE: "er-showdown-backend"
   WORKLOAD_IDENTITY_PROVIDER: "projects/926545055857/locations/global/workloadIdentityPools/github-cd/providers/github-cd"
