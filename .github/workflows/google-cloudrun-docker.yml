@@ -42,7 +42,7 @@ on:
 
 env:
   PROJECT_ID: "${{ secrets.GCP_PROJECT_ID }}"
-  REGION: "us-central1"
+  REGION: "us-central-1"
   SERVICE: "er-showdown-backend"
   WORKLOAD_IDENTITY_PROVIDER: "projects/926545055857/locations/global/workloadIdentityPools/github-cd/providers/github-cd"
   REPOSITORY_ID: "er-showdown-backend"
@@ -87,15 +87,13 @@ jobs:
           DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
           docker build --tag "${DOCKER_TAG}" .
           docker push "${DOCKER_TAG}"
-      - name: "Deploy to Cloud Run"
-        # END - Docker auth and build
 
+      - name: "Deploy to Cloud Run"
         uses: "google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17" # google-github-actions/deploy-cloudrun@v2
         with:
           service: "${{ env.SERVICE }}"
           region: "${{ env.REGION }}"
           # NOTE: If using a pre-built image, update the image name below:
-
           image: "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
           
       # If required, use the Cloud Run URL output in later steps
