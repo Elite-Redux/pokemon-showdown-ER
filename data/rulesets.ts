@@ -631,6 +631,29 @@ export const Rulesets: {[k: string]: FormatData} = {
 			}
 		},
 	},
+	forcemonotypeER: {
+		effectType: "ValidatorRule",
+		name: 'Force Monotype (ER)',
+		desc: "Forced monotype",
+		onBegin() {
+			this.add('rule', 'Monotype Clause: All pokemon on a team must share a type');
+		},
+		onValidateTeam(team, format) {
+			var valid = false;
+			for(const type of this.dex.types.names()){
+				for(const mon of team){
+					const species = this.dex.species.get(mon.species);
+					if(!species.types.includes(type)){
+						break;
+					}
+				}
+				valid = true;
+			}
+			if(!valid){
+				return ["Your team must share a type."];
+			}
+		},
+	},
 	nicknameclause: {
 		effectType: 'ValidatorRule',
 		name: 'Nickname Clause',

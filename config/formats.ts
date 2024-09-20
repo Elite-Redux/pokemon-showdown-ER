@@ -772,24 +772,8 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles"],
+		ruleset: ["Standard Doubles", "Force Monotype (ER)"],
 		banlist: ["DUber", "Shadow Tag", "Arena Trap"],
-
-		onValidateTeam(team, format) {
-			var valid = false;
-			for(const type of this.dex.types.names()){
-				for(const mon of team){
-					const species = this.dex.species.get(mon.species);
-					if(!species.types.includes(type)){
-						break;
-					}
-				}
-				valid = true;
-			}
-			if(!valid){
-				return ["Your team must share a type."];
-			}
-		},
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
