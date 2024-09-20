@@ -631,7 +631,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			}
 		},
 	},
-	forcemonotypeER: {
+	forcemonotypeer: {
 		effectType: "ValidatorRule",
 		name: 'Force Monotype (ER)',
 		desc: "Forced monotype",
