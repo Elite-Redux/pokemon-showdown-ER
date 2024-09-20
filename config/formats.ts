@@ -775,6 +775,21 @@ export const Formats: FormatList = [
 		ruleset: ["Standard Doubles"],
 		banlist: ["DUber", "Shadow Tag", "Arena Trap"],
 
+		onValidateTeam(team, format) {
+			var valid = false;
+			for(const type of this.dex.types.names()){
+				for(const mon of team){
+					const species = this.dex.species.get(mon.species);
+					if(!species.types.includes(type)){
+						break;
+					}
+				}
+				valid = true;
+			}
+			if(!valid){
+				return ["Your team must share a type."];
+			}
+		},
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
@@ -797,10 +812,10 @@ export const Formats: FormatList = [
 					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
 				}
 			}
-			const type = this.dex.types.get(this.ruleTable.valueRules.get('forcemonotype')!)
-			if (!species.types.map(this.toID).includes(type.id)) {
-				return [`${set.species} must have ${type.name} type.`];
-			}
+			// const type = this.dex.types.get(this.ruleTable.valueRules.get('forcemonotype')!)
+			// if (!species.types.map(this.toID).includes(type.id)) {
+			// 	return [`${set.species} must have ${type.name} type.`];
+			// }
 		},
 		onBegin() {
 			for (const pokemon of this.getAllPokemon()) {
