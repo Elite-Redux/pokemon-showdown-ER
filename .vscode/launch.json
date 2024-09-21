@@ -7,8 +7,9 @@
     {
       "name": "[TOOLS] Generate ER Learnsets",
       "request": "launch",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "generate-er-learnsets"],
+      "program": "${workspaceFolder}/tools/elite-redux/dex-parser/generate-learnsets.ts",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
+      "skipFiles": ["<node_internals>/**"],
       "type": "node",
       "presentation": {
         "hidden": false,
@@ -21,7 +22,7 @@
       "name": "[TOOLS] Generate ER Pokedex",
       "request": "launch",
       "program": "${workspaceFolder}/tools/elite-redux/dex-parser/generate-pokedex.ts",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/tsx",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
       "skipFiles": ["<node_internals>/**"],
       "type": "node",
       "presentation": {
