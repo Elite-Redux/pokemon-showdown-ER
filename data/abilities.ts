@@ -11069,7 +11069,24 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.damage(source.baseMaxhp / 10, source, source);
 			}
 		},
-	}
+	},
+	egoist: {
+		name: "Egoist",
+		shortDesc: "Raises its own stats when foes raise theirs.",
+		onFoeAfterBoost(boost, target, source, effect) {
+			this.boost(boost, this.effectState.target);
+		}
+	},
+	terminalvelocity: {
+		name: "Terminal Velocity",
+		shortDesc: "Special moves use 20% of its Speed stat additionally.",
+		onModifySpA(spa, attacker, defender, move) {
+				return this.chainModify(
+					(spa + attacker.getStat("spe") * 0.2) / (spa ? spa : 1)
+				);
+		},
+	},
+	
 
 	// No pokemon appears to have this ability yet?
 	// archmage: {
