@@ -8238,7 +8238,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 384,
 		gen: 8,
 	},
-	
+
 	grippincer: {
 		onAfterMoveSecondarySelf(source, target, move) {
 			if (!move || !target || source.switchFlag === true) return;
@@ -8329,7 +8329,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					for (const secondary of move.secondaries) {
 						if (secondary.chance) secondary.chance *= 2;
 					}
-				},
+				}
 				if (move.secondary) {
 					this.debug("doubling secondary chance");
 					if (secondary.chance) secondary.chance *= 2;
