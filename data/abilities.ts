@@ -4597,7 +4597,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === "Grass") {
-				if (!this.boost({ atk: 1 })) {
+				if (!this.boost({ atk: 1 }) && !this.boost({ spa: 1 })) {
 					this.add("-immune", target, "[from] ability: Sap Sipper");
 				}
 				return null;
@@ -4607,7 +4607,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (source === this.effectState.target || !target.isAlly(source))
 				return;
 			if (move.type === "Grass") {
-				this.boost({ atk: 1 }, this.effectState.target);
+				if (this.effectState.target.getStat("atk") > this.effectState.target.getStat("spa")){
+					this.boost({ atk: 1 }, this.effectState.target);
+				}
+				else{
+					this.boost({ spa: 1 }, this.effectState.target);
+				}
 			}
 		},
 		isBreakable: true,
@@ -5220,8 +5225,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	stormdrain: {
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === "Water") {
-				if (!this.boost({ spa: 1 })) {
-					this.add("-immune", target, "[from] ability: Storm Drain");
+				if(target.getStat("atk") > target.getStat("spa")){
+					if (!this.boost({ atk: 1 })) {
+						this.add("-immune", target, "[from] ability: Storm Drain");
+					}
+				}
+				else{
+					if (!this.boost({ spa: 1 })) {
+						this.add("-immune", target, "[from] ability: Storm Drain");
+					}
 				}
 				return null;
 			}
@@ -10784,6 +10796,146 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
+	crownedsword: {
+		name: "Crowned Sword",
+		shortDesc: "Combines Intrepid Sword & Anger Point",
+		onStart(pokemon) {
+			if (this.effectState.swordBoost) return;
+			this.effectState.swordBoost = true;
+			this.boost({ atk: 1 }, pokemon);
+		},
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
+				this.boost({ atk: 12 }, target, target);
+			}
+		},
+	},
+	crownedshield: {
+		name: "Crowned Shield",
+		shortDesc: "Combines Dauntless Shield & Stamina",
+		onStart(pokemon) {
+			if (this.effectState.shieldBoost) return;
+			this.effectState.shieldBoost = true;
+			this.boost({ def: 1 }, pokemon);
+		},
+		onDamagingHit(damage, target, source, effect) {
+			this.boost({ def: 1 });
+		},
+	},
+	crownedking: {
+		name: "Crowned King",
+		shortDesc: "Combines Unnerve & Grim Neigh & Chilling Neigh",
+		onPreStart(pokemon) {
+			this.add("-ability", pokemon, "Unnerve");
+			this.effectState.unnerved = true;
+		},
+		onStart(pokemon) {
+			if (this.effectState.unnerved) return;
+			this.add("-ability", pokemon, "Unnerve");
+			this.effectState.unnerved = true;
+		},
+		onEnd() {
+			this.effectState.unnerved = false;
+		},
+		onFoeTryEatItem() {
+			return !this.effectState.unnerved;
+		},
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === "Move") {
+				this.boost({ spa: length }, source);
+				this.boost({ atk: length }, source);
+			}
+		},
+	},
+
+	berserkDNA: {
+		name: "Berserk DNA",
+		shortDesc: "Sharply ups highest attacking stat but confuses on entry.",
+		onStart(pokemon) {
+				if(pokemon.getStat("atk") > pokemon.getStat("spa")) {
+					this.boost({atk: 2}, pokemon);
+				}
+				else {
+					this.boost({spa: 2}, pokemon);
+				}
+				pokemon.trySetStatus("confusion");
+		},
+	},
+
+	claptrap: {
+		name: "Clap Trap",
+		shortDesc: "Counters contact with 50BP Snap Trap.",
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				const moveMutations = {
+					basePower: 100 / 2,
+					self: {},
+				};
+
+				this.effectState.additionalAttack = true;
+				this.actions.runAdditionalMove(
+					Dex.moves.get("snaptrap"),
+					target,
+					source,
+					moveMutations
+				);
+				this.effectState.additionalAttack = false;
+			}
+		},
+	},
+	permanence: {
+		name: "Permanence",
+		shortDesc: "Foes can't heal in any way.",
+	},
+	hubris: {
+		name: "Hubris",
+		shortDesc: "KOs raise SpA by +1.",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === "Move") {
+				this.boost({ spa: length }, source);
+			}
+		},
+	},
+	cosmicdaze: {
+		name: "Cosmic Daze",
+		shortDesc: "2x damage vs confused. Enemies take 2x confusion damage.",
+		onFoeModifyDamage(damage, source, target, move) {
+			if(move.name === "confused"){
+				return this.chainModify(2);
+			}
+		},
+		onModifyDamage(damage, source, target, move) {
+			if(target.status === "confusion"){
+				return this.chainModify(2);
+			}
+		}
+	},
+
+	mindseye: {
+		name: "Mind's Eye",
+		shortDesc: "Hits Ghost-type Pokémon. Accuracy can't be lowered.",
+		onModifyMove(move) {
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity["Fighting"] = true;
+				move.ignoreImmunity["Normal"] = true;
+			}
+		},
+	},
+
+	bloodprice: {
+		name: "Blood Price",
+		shortDesc: "Does 30% more damage but lose 10% HP when attacking.",
+		onModifyDamage(damage, source, target, move) {
+			return this.chainModify(1.3);
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				this.damage(source.baseMaxhp / 10, source, source);
+			}
+		},
+	}
 
 	// No pokemon appears to have this ability yet?
 	// archmage: {
