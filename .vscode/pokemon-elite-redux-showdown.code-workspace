@@ -5,6 +5,9 @@
 		},
 		{
 			"path": ".."
+		},
+		{
+			"path": "../../pokemon-showdown-loginserver-ER"
 		}
 	],
 	"settings": {
