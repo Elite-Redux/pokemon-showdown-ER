@@ -784,7 +784,7 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles", "Sleep Cause Mod"],
+		ruleset: ["Standard Doubles", "Sleep Clause Mod"],
 		banlist: ["DUber", "Shadow Tag", "Arena Trap"],
 
 		//ER Scripts
