@@ -785,7 +785,7 @@ export const Formats: FormatList = [
 		mod: "gen8eliteredux",
 		gameType: "doubles",
 		ruleset: ["Standard Doubles", "Sleep Clause Mod"],
-		banlist: ["DUber", "Shadow Tag", "Arena Trap"],
+		banlist: ["DUber"],
 
 		//ER Scripts
 		onValidateSet(set) {
@@ -930,8 +930,8 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles", "Force Monotype (ER)"],
-		banlist: ["DUber", "Shadow Tag", "Arena Trap"],
+		ruleset: ["Standard Doubles", "Force Monotype (ER)", "Sleep Clause Mod"],
+		banlist: ["DUber"],
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
