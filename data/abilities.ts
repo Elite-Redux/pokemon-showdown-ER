@@ -8226,22 +8226,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 384,
 		gen: 8,
 	},
-	momentum: {
-		onModifyMove(move) {
-			if (move.flags["contact"]) {
-				move.overrideOffensiveStat = "spe";
-			}
-		},
-		onBasePower(bp, source, target, move) {
-			if (source.hasAbility("speedforce")) {
-				this.chainModify(1.2);
-			}
-		},
-		name: "Momentum",
-		rating: 4,
-		num: 385,
-		gen: 8,
-	},
+	
 	grippincer: {
 		onAfterMoveSecondarySelf(source, target, move) {
 			if (!move || !target || source.switchFlag === true) return;
@@ -8332,6 +8317,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					for (const secondary of move.secondaries) {
 						if (secondary.chance) secondary.chance *= 2;
 					}
+				},
+				if (move.secondary) {
+					this.debug("doubling secondary chance");
+					if (secondary.chance) secondary.chance *= 2;
 				}
 				if (move.self?.chance) move.self.chance *= 2;
 			}
@@ -10784,18 +10773,149 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
-
-	// No pokemon appears to have this ability yet?
-	// archmage: {
-	// 	name: "Archmage",
-	// 	shortDesc: "30% chance of adding a type related effect to each move.",
-	// }
+	mindcrush: {
+		name: "Mind Crush",
+		shortDesc: "Biting moves use SpAtk and deal 50% more damage.",
+		onModifyMove(move) {
+			if (move.flags['bite']) {
+				move.overrideOffensiveStat = "spa"
+			}
+		},
+		onBasePower(bp, source, target, move) {
+			if (move.flags['bite']) {
+				this.chainModify(1.5)
+			}
+		},
+	},
+	vengefulspirit: {
+		name: "Vengeful Spirit",
+		shortDesc: "Haunted Spirit + Vengeance.",
+		//Haunted Spirit
+		onDamagingHitOrder: 2,
+		onDamagingHit(damage, target, source, move) {
+			if (!target.hp && !source.getVolatile("curse")) {
+				this.add("-activate", target, "Haunted Spirit");
+				source.addVolatile("curse");
+			}
+		},
+		//Vengeance
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move && move.type === "Ghost") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Full Vengeance boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Lite Vengeance boost");
+					return this.chainModify(1.2);
+				}
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move && move.type === "Ghost") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Full Vengeance boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Lite Vengeance boost");
+					return this.chainModify(1.2);
+				}
+			}
+		},
+	},
+	//TODO: test this shit because it definitely doesn't work
+	tacticalretreat: {
+		name: "Tactical Retreat",
+		shortDesc: "Flees when stats are lowered.",
+		onAfterEachBoost(boost, target, source, effect) {
+			let statsLowered = false;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i]! < 0) {
+					statsLowered = true;
+				}
+			}
+			if (statsLowered) {
+				if (
+					!this.canSwitch(target.side) ||
+					target.forceSwitchFlag ||
+					target.switchFlag
+				)
+					return;
+				for (const side of this.sides) {
+					for (const active of side.active) {
+						active.switchFlag = false;
+					}
+				}
+				target.switchFlag = true;
+				this.add("-activate", target, "ability: Tactical Retreat");
+			}
+		},
+	},
+	tidalrush: {
+		name: "Tidal Rush",
+		shortDesc: "Water moves get +1 priority. Requires full HP.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type === "Water" && pokemon.hp === pokemon.maxhp)
+				return priority + 1;
+		},
+	},
+	guilttrip: {
+		name: "Guilt Trip",
+		shortDesc: "Sharply lowers attacker's Attack and SpAtk when fainting.",
+		onDamagingHitOrder: 2,
+		onDamagingHit(damage, target, source, move) {
+			if (!target.hp) {
+				this.add("-ability", target, "Guilt Trip");
+				this.boost({ spa: -2}, source, target, null, true)
+				this.boost({ atk: -2}, source, target, null, true)
+			}
+		}
+	},
+	stygianrush: {
+		name: "Stygian Rush",
+		shortDesc: "Dark moves get +1 priority. Requires full HP.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type === "Dark" && pokemon.hp === pokemon.maxhp)
+				return priority + 1;
+		},
+	},
+	readiedaction: {
+		name: "Readied Action",
+		shortDesc: "Doubles attack on first turn.",
+		onModifyAtk(atk, source, target, move) {
+			if (source.activeMoveActions === 0) {
+				return this.chainModify(2.0);
+			}
+		}
+	},
+	subdue: {
+		name: "Subdue",
+		shortDesc: "Doubles the power of stat dropping moves.",
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.secondaries) {
+				for (const secondary of move.secondaries) {
+					if (secondary.boosts) {
+						let i: BoostID;
+						for (i in secondary.boosts) {
+							if (secondary.boosts[i] && secondary.boosts[i] < 0) {
+								return this.chainModify(2.0)
+							}
+						}
+					}
+				}
+			};
+			if (move.secondary) {
+				if (move.secondary.boosts) {
+					let i: BoostID;
+					for (i in move.secondary.boosts) {
+						if (move.secondary.boosts[i] && move.secondary.boosts[i] < 0) {
+							return this.chainModify(2.0)
+						}
+					}
+				}
+			}
+		}
+	}
 };
-
-/**
- * "archmage",
-  "kunoichi'sblade",
-  "combatspecialist",
-  "jungle'sguard",
-  "hunter'shorn",
- */
