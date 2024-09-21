@@ -86,6 +86,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Superconductor",
 		rating: 4,
 		num: 600,
+		gen: 8
 	},
 	aftermath: {
 		name: "Aftermath",
@@ -8482,6 +8483,111 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: 454,
 		gen: 8,
+	},
+	shockingjaws: {
+		name: "Shocking Jaws",
+		rating: 3,
+		num: 455,
+		gen: 8,
+		onModifyMove(move, mon, target) {
+			if(!move?.flags['bite']) return;
+			if(move.secondaries) move.secondaries = [];
+			move.secondaries?.push({
+				chance: 50,
+				status: 'par',
+				ability: this.dex.abilities.get('shockingjaws')
+			});
+		}
+	},
+	cryomancy: {
+		name: "Cryomancy",
+		rating: 3,
+		num: 456,
+		gen: 8,
+		onModifyMovePriority: -2,
+		onModifyMove(move) {
+			if (!move.secondaries) return;
+			for (const secondary of move.secondaries) {
+				if (secondary.status?.includes('frz') && secondary.chance) secondary.chance *= 5;
+			}
+		}
+	},
+	phantompain: {
+		name: "Phantom Pain",
+		rating: 3,
+		num: 457,
+		gen: 8,
+		onModifyMovePriority: -5,
+		onModifyMove(move) {
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true && !Object.keys(move.ignoreImmunity).includes('Ghost')) {
+				move.ignoreImmunity['Ghost'] = true;
+			}
+		},
+	},
+	purgatory: {
+		name: "Purgatory",
+		rating: 3,
+		num: 458,
+		gen: 8,
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move && move.type === 'Ghost') {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					return this.chainModify(1.8);
+				} else {
+					return this.chainModify(1.3);
+				}
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move && move.type === 'Ghost') {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					return this.chainModify(1.8);
+				} else {
+					return this.chainModify(1.3);
+				}
+			}
+		},
+
+	},
+	emanate: {
+		name: "Emanate",
+		rating: 3,
+		num: 459,
+		gen: 8,
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Normal' && !noModifyType.includes(move.id) &&
+				!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
+				move.type = 'Psychic';
+				move.typeChangerBoosted = this.effect;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.typeChangerBoosted === this.effect) return this.chainModify(1.1);
+		}
+	},
+	monkeybusiness: {
+		name: "Monkey Business",
+		rating: 3,
+		num: 460,
+		gen: 8,
+		onSwitchIn(pokemon) {
+			this.debug('Monkey switches in')
+			let nextMove = Dex.moves.get('tickle');
+			let targetLoc = 4
+			let target = pokemon.side.foes().forEach((a) => {if (pokemon.getLocOf(a) < targetLoc) targetLoc = pokemon.getLocOf(a)})
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(nextMove, pokemon, targetLoc, Dex.abilities.get('Monkey Business'), undefined, true);
+			}
+		},
+
 	},
 
 

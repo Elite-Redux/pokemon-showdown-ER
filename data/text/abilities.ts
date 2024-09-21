@@ -2930,6 +2930,30 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Gravity Well",
 		shortDesc: "On switch-in, this Pokemon sets Gravity for 5 turns."
 	},
+	shockingjaws: {
+		name: "Shocking Jaws",
+		shortDesc: "Biting moves have a 50% chance to paralyze the target."
+	},
+	cryomancy: {
+		name: "Cryomancy",
+		shortDesc: "Ice moves inflict frostbite 5x more often."
+	},
+	phantompain: {
+		name: "Phantom Pain",
+		shortDesc: "Ghost type moves can hit normal type pokemon for neutral damage."
+	},
+	purgatory: {
+		name: "Purgatory",
+		shortDesc: "Boost Pokemon's Ghost moves by 30%, 80% when below 1/3 HP."
+	},
+	emanate: {
+		name: "Emanate",
+		shortDesc: "This Pokemon's Normal-type moves become Fire type and get a 10% boost."
+	},
+	monkeybusiness: {
+		name: "Monkey Business",
+		shortDesc: "This Pokemon attacks with Tickle on switch-in."
+	},
 
 	// CAP
 	mountaineer: {
