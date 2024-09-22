@@ -3638,6 +3638,42 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	yukionna: {
 			name: "Yuki Onna",
 			shortDesc: "Scare + Intimidate. 10% chance to infatuate on hit."
+		},
+	doombringer: {
+		name: "Doombringer",
+		shortDesc: "Uses Doom Desire on switch-in."
+	},
+	arcaneforce: {
+			name: "Arcane Force",
+			shortDesc: "All moves gain STAB. Ups 'supereffective' by 10%."
+		},
+	freezingpoint: {
+			name: "Freezing Point",
+			shortDesc: "30% chance to get frostbitten on contact."
+		},
+	peacefulslumber: {
+			name: "Peaceful Slumber",
+			shortDesc: "Combines Sweet Dreams & Self Sufficient."
+		},
+	enlightened: {
+			name: "Enlightened",
+			shortDesc: "Combines Emanate & Inner Focus."
+		},
+	tippingpoint: {
+			name: "Tipping Point",
+			shortDesc: "Getting hit raises Sp. Atk. Critical hits maximize Sp. Atk."
+		},
+	superstrain: {
+			name: "Super Strain",
+			shortDesc: "KOs lower Attack by +1. Take 25% recoil damage."
+		},
+	primandproper: {
+			name: "Prim and Proper",
+			shortDesc: "Combines Wonder Skin & Cute Charm."
+		},
+	soothingaroma: {
+			name: "Soothing Aroma",
+			shortDesc: "Cures party status on entry."
 		}
 
 

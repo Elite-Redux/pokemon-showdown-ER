@@ -171,6 +171,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({ atk: 12 }, target, target);
 			}
+			else if(move?.effectType === "Move") {
+				this.boost({ atk: 1 }, target, target);
+			}
 		},
 		name: "Anger Point",
 		rating: 1,
@@ -11711,4 +11714,166 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			});
 		},
 	},
+	doombringer: {
+		name: "Doombringer",
+		shortDesc: "Uses Doom Desire on switch-in.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("doomdesire");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	arcaneforce: {
+		name: "Arcane Force",
+		shortDesc: "All moves gain STAB. Ups “supereffective” by 10%.",
+		onModifyMove(move) {
+			move.forceSTAB = true;
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (typeMod > 2) {
+				return typeMod + 0.1;
+			}
+		},
+	},
+	freezingpoint: {
+		name: "Freezing Point",
+		shortDesc: "30% chance to get frostbitten on contact.",
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				if (this.randomChance(3, 10)) {
+					target.trySetStatus("frz", source);
+				}
+			}
+		},
+	},
+	peacefulslumber: {
+		name: "Peaceful Slumber",
+		shortDesc: "Combines Sweet Dreams & Self Sufficient.",
+		onResidualOrder: 30,
+		onResidualSubOrder: 4,
+		onResidual(pokemon) {
+			if (pokemon.status === "slp" || pokemon.hasAbility("comatose")) {
+				this.heal(pokemon.baseMaxhp / 16);
+			}
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+	},
+	enlightened: {
+		name: "Enlightened",
+		shortDesc: "Combines Emanate & Inner Focus.",
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				"judgment",
+				"multiattack",
+				"naturalgift",
+				"revelationdance",
+				"technoblast",
+				"terrainpulse",
+				"weatherball",
+			];
+			if (
+				move.type === "Normal" &&
+				!noModifyType.includes(move.id) &&
+				!(move.isZ && move.category !== "Status") &&
+				!(move.name === "Tera Blast" && pokemon.terastallized)
+			) {
+				move.type = "Psychic";
+				move.typeChangerBoosted = this.effect;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.typeChangerBoosted === this.effect)
+				return this.chainModify(1.1);
+		},
+		onTryAddVolatile(status, pokemon) {
+			if (status.id === "flinch") return null;
+		},
+		onTryBoost(boost, target, source, effect) {
+			if (effect.name === "Intimidate" && boost.atk) {
+				delete boost.atk;
+				this.add(
+					"-fail",
+					target,
+					"unboost",
+					"Attack",
+					"[from] ability: Inner Focus",
+					"[of] " + target
+				);
+			}
+		},
+	},
+	tippingpoint: {
+		name: "Tipping Point",
+		shortDesc: "Getting hit raises Sp. Atk. Critical hits maximize Sp. Atk.",
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
+				this.boost({ spa: 12 }, target, target);
+			}
+			else if(move?.effectType === "Move") {
+				this.boost({ spa: 1 }, target, target);
+			}
+		},
+	},
+	superstrain: {
+		name: "Super Strain",
+		shortDesc: "KOs lower Attack by +1. Take 25% recoil damage.",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === "Move") {
+				this.boost({ atk: -1 }, source);
+			}
+		},
+		onModifyDamage(damage, source, target, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				this.damage(source.baseMaxhp / 4, source, source);
+			}
+		},
+	},
+	primandproper: {
+		name: "Prim and Proper",
+		shortDesc: "Combines Wonder Skin & Cute Charm.",
+		onModifyAccuracyPriority: 10,
+		onModifyAccuracy(accuracy, target, source, move) {
+			if (move.category === "Status" && typeof accuracy === "number") {
+				this.debug("Wonder Skin - setting accuracy to 50");
+				return 50;
+			}
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				if (this.randomChance(3, 10)) {
+					source.addVolatile("attract", this.effectState.target);
+				}
+			}
+		},
+		isBreakable: true,
+	},
+	soothingaroma: {
+		name: "Soothing Aroma",
+		shortDesc: "Cures party status on entry.",
+		onStart(pokemon) {
+			for (const ally of pokemon.side.pokemon) {
+				if (ally !== pokemon) {
+					ally.cureStatus();
+				}
+			}
+		},
+	},
+	
 };
