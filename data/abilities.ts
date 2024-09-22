@@ -1,4 +1,6 @@
 import { MoveTarget } from "../sim/dex-moves";
+import { toID } from "../sim/dex-data";
+import { Condition } from "../sim/dex-conditions";
 /*
 
 Ratings and how they work:
@@ -170,8 +172,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!target.hp) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({ atk: 12 }, target, target);
-			}
-			else if(move?.effectType === "Move") {
+			} else if (move?.effectType === "Move") {
 				this.boost({ atk: 1 }, target, target);
 			}
 		},
@@ -2334,7 +2335,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.debug("compoundeyes - enhancing accuracy");
 			return this.chainModify(1.2);
 		},
-
 	},
 	illusion: {
 		onBeforeSwitchIn(pokemon) {
@@ -5115,8 +5115,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!target.hp) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({ atk: 12 }, target, target);
-			}
-			else if(move?.effectType === "Move" ){
+			} else if (move?.effectType === "Move") {
 				this.boost({ atk: 1 }, target, target);
 			}
 		},
@@ -11213,8 +11212,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!target.hp) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({ def: 12 }, target, target);
-			}
-			else if(move?.effectType === "Move" ){
+			} else if (move?.effectType === "Move") {
 				this.boost({ def: 1 }, target, target);
 			}
 		},
@@ -11223,20 +11221,20 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Spiteful",
 		shortDesc: "Reduces attacker's PP on contact.",
 		onHit(target, source, move) {
-			if(move.flags["contact"]){
-				if(source.lastMove){
-					if(source.lastMove.pp > 0){
+			if (move.flags["contact"]) {
+				if (source.lastMove) {
+					if (source.lastMove.pp > 0) {
 						source.lastMove.pp--;
 					}
 				}
 			}
-		}
+		},
 	},
 	twostep: {
 		name: "Two Step",
 		shortDesc: "Triggers 50BP Revelation Dance after using a Dance move.",
 		onAfterMove(source, target, move) {
-			if (this.effectState.additionalAttack || !(move.flags["dance"])) return;
+			if (this.effectState.additionalAttack || !move.flags["dance"]) return;
 			const moveMutations = {
 				basePower: 50,
 			};
@@ -11257,16 +11255,16 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!move.flags["contact"]) {
 				move.overrideOffensiveStat = "spe";
 			}
-		}
+		},
 	},
 	saltcircle: {
 		name: "Salt Circle",
 		shortDesc: "Prevents opposing pokemon from fleeing on entry.",
 		onStart(pokemon) {
-			for(const target of pokemon.side.foe.active){
+			for (const target of pokemon.side.foe.active) {
 				target.tryTrap(true);
 			}
-		}
+		},
 	},
 	airborne: {
 		name: "Airborne",
@@ -11330,7 +11328,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	banshee: {
 		name: "Banshee",
-		shortDesc: "Normal-type moves become Ghost- type moves and get a 1.2x boost.",
+		shortDesc:
+			"Normal-type moves become Ghost- type moves and get a 1.2x boost.",
 		onModifyMove(move) {
 			if (move.type === "Normal") {
 				move.type = "Ghost";
@@ -11345,7 +11344,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	chromecoat: {
 		name: "Chrome Coat",
-		shortDesc: "Reduces special damage taken by 40%, but decreases Speed by 10%.",
+		shortDesc:
+			"Reduces special damage taken by 40%, but decreases Speed by 10%.",
 		onModifyDamage(damage, source, target, move) {
 			if (move.category === "Special") {
 				return this.chainModify(0.6);
@@ -11480,7 +11480,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	fertilize: {
 		name: "Fertilize",
-		shortDesc: "Normal-type moves become Grass- type moves and get a 1.1x boost.",
+		shortDesc:
+			"Normal-type moves become Grass- type moves and get a 1.1x boost.",
 		onModifyMove(move) {
 			if (move.type === "Normal") {
 				move.type = "Grass";
@@ -11620,15 +11621,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyCritRatio(critRatio, source, target, move) {
 			if (move?.name === "spacialrend") {
 				return critRatio + 12;
-			}
-			else{
+			} else {
 				return critRatio + 1;
 			}
 		},
 	},
 	refridgerate: {
 		name: "Refridgerate",
-		shortDesc: "Normal-type moves become Ice- type moves and get a 1.1x boost.",
+		shortDesc:
+			"Normal-type moves become Ice- type moves and get a 1.1x boost.",
 		onModifyMove(move) {
 			if (move.type === "Normal") {
 				move.type = "Ice";
@@ -11825,8 +11826,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!target.hp) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({ spa: 12 }, target, target);
-			}
-			else if(move?.effectType === "Move") {
+			} else if (move?.effectType === "Move") {
 				this.boost({ spa: 1 }, target, target);
 			}
 		},
@@ -11974,7 +11974,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	sandguard: {
 		name: "Sand Guard",
-		shortDesc: "Blocks priority and reduces special damage taken by 1/2 in sand.",
+		shortDesc:
+			"Blocks priority and reduces special damage taken by 1/2 in sand.",
 		onFoeTryMove(target, source, move) {
 			const targetAllExceptions = [
 				"perishsong",
@@ -11991,7 +11992,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const dazzlingHolder = this.effectState.target;
 			if (
 				(source.isAlly(dazzlingHolder) || move.target === "all") &&
-				move.priority > 0.1 && this.field.isWeather("sandstorm")) {
+				move.priority > 0.1 &&
+				this.field.isWeather("sandstorm")
+			) {
 				this.attrLastMove("[still]");
 				this.add(
 					"cant",
@@ -12189,7 +12192,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	coldplasma: {
 		name: "Cold Plasma",
 		shortDesc: "Electric type moves now inflict burn instead of paralysis.",
-
 	},
 	archer: {
 		name: "Archer",
@@ -12200,6 +12202,151 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.debug("Archer boost");
 				return this.chainModify(1.3);
 			}
+		},
+	},
+	rockhardwill: {
+		name: "Rockhard Will",
+		shortDesc: "Boosts Rock-type moves by 1.2x, or 1.5x when under 1/3 HP.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Rock") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Rockhard Will boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Rockhard Will boost");
+					return this.chainModify(1.2);
+				}
+			}
+		},
+	},
+	demolitionist: {
+		name: "Demolitionist",
+		shortDesc:
+			"Readied Action + Ignores Protect + screens break on readied turn",
+		onModifyAtk(atk, source, target, move) {
+			if (source.activeMoveActions === 0) {
+				return this.chainModify(2.0);
+			}
+		},
+		//Ignores Protect
+		onModifyMove(move) {
+			if (move.flags["contact"]) delete move.flags["protect"];
+		},
+		//Foe screens break
+		onStart(pokemon) {
+			if (pokemon.side.foe.active[0].side.sideConditions["reflect"]) {
+				pokemon.side.foe.active[0].side.removeSideCondition("reflect");
+			}
+			if (pokemon.side.foe.active[0].side.sideConditions["lightscreen"]) {
+				pokemon.side.foe.active[0].side.removeSideCondition("lightscreen");
+			}
+			if (pokemon.side.foe.active[0].side.sideConditions["auroraveil"]) {
+				pokemon.side.foe.active[0].side.removeSideCondition("auroraveil");
+			}
+		},
+	},
+	flamingmaw: {
+		name: "Flaming Maw",
+		shortDesc: "Strong Jaw + Flaming Jaws",
+		onBasePowerPriority: 19,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["bite"]) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifyMove(move, mon, target) {
+			if (!move?.flags["bite"]) return;
+			if (move.secondaries) move.secondaries = [];
+			move.secondaries?.push({
+				chance: 50,
+				status: "brn",
+			});
+		},
+	},
+	balloonbomb: {
+		name: "Balloon Bomb",
+		shortDesc: "Aftermath + Inflatable",
+		onDamagingHitOrder: 1,
+		onDamagingHit(damage, target, source, move) {
+			if (
+				!target.hp &&
+				this.checkMoveMakesContact(move, source, target, true)
+			) {
+				this.damage(source.baseMaxhp / 4, source, target);
+			}
+		},
+		onTryHit(target, source, move) {
+			if (
+				target !== source &&
+				(move.type === "Flying" || move.type === "Fire")
+			) {
+				if (!this.boost({ def: 1, spd: 1 })) {
+					this.add("-immune", target, "[from] ability: Inflatable");
+					return null;
+				}
+			}
+		},
+		isBreakable: true,
+	},
+	appleenlightenment: {
+		name: "Apple Enlightenment",
+		shortDesc: "Fur coat + Magic Guard.",
+		onModifyDefPriority: 6,
+		onModifyDef(def) {
+			return this.chainModify(2);
+		},
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType !== "Move") {
+				if (effect.effectType === "Ability")
+					this.add("-activate", source, "ability: " + effect.name);
+				return false;
+			}
+		},
+		isBreakable: true,
+	},
+	rejection: {
+		name: "Rejection",
+		shortDesc: "Applies Quash on switch-in.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("quash");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	entrance: {
+		name: "Entrance",
+		shortDesc: "Confusion also inflicts infatuation.",
+	},
+	poisonpuppeteer: {
+		name: "Poison Puppeteer",
+		shortDesc: "Poison also inflicts confusion.",
+	},
+	toxicchain: {
+		name: "Toxic Chain",
+		shortDesc: "Moves have a 30% chance to badly poison the foe.",
+		onModifyMove(move) {
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: "tox",
+			});
 		},
 	},
 };

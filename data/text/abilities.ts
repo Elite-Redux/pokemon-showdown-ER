@@ -3718,4 +3718,41 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		name: "Accelerate",
 		shortDesc: "Moves that need a charge turn are now used instantly.",
 	},
+	rockhardwill: {
+		name: "Rockhard Will",
+		shortDesc: "Boosts Rock-type moves by 1.2x, or 1.5x when under 1/3 HP.",
+	},
+	demolitionist: {
+		name: "Demolitionist",
+		shortDesc:
+			"Readied Action + Ignores Protect + screens break on readied turn",
+	},
+	flamingmaw: {
+		name: "Flaming Maw",
+		shortDesc: "Strong Jaw + Flaming Jaws",
+	},
+	balloonbomb: {
+		name: "Balloon Bomb",
+		shortDesc: "Aftermath + Inflatable",
+	},
+	appleenlightenment: {
+		name: "Apple Enlightenment",
+		shortDesc: "Fur coat + Magic Guard.",
+	},
+	rejection: {
+		name: "Rejection",
+		shortDesc: "Applies Quash on switch-in.",
+	},
+	entrance: {
+		name: "Entrance",
+		shortDesc: "Confusion also inflicts infatuation.",
+	},
+	poisonpuppeteer: {
+		name: "Poison Puppeteer",
+		shortDesc: "Poison also inflicts confusion.",
+	},
+	toxicchain: {
+		name: "Toxic Chain",
+		shortDesc: "Moves have a 30% chance to badly poison the foe.",
+	},
 };
