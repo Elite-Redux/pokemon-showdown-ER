@@ -11346,7 +11346,153 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			return this.chainModify(0.9);
 		},
 	},
+	monstermash: {
+		name: "Monster Mash",
+		shortDesc: "Casts Trick-or-Treat on entry.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("trickortreat");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	powderburst: {
+		name: "Powder Burst",
+		shortDesc: "Casts Powder on entry.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("powder");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	ponypower: {
+		name: "Pony Power",
+		shortDesc: "Combines Keen Edge & Mystic Blades.",
+		onBasePowerPriority: 25,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["slicing"]) {
+				return this.chainModify([5325, 4096]);
+			}
+		},
+		onModifyMove(move) {
+			move.forceSTAB = true;
+		},
+	},
+	combustion: {
+		name: "Combustion",
+		shortDesc: "Boosts the power of Fire-type moves by 1.5x.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Fire") {
+				this.debug("Combustion boost");
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	telekinetic: {
+		name: "Telekinetic",
+		shortDesc: "Casts Telekinesis on entry.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("telekinesis");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	fighter: {
+		name: "Fighter",
+		shortDesc: "Boosts Fight.-type moves by 1.2x, or 1.5x when below 1/3 HP.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Fighting") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Fighter boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Fighter boost");
+					return this.chainModify(1.2);
+				}
+			}
+		},
+	},
+	purelove: {
+		name: "Pure Love",
+		shortDesc: "Infatuates on contact. Heal 25% damage vs infatuated.",
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				source.addVolatile("attract", target);
+			}
+		},
+		onAfterMoveSecondarySelf(source, target, move) {
+			if (source.status === "attract") {
+				this.heal(source.baseMaxhp / 4, source, source);
+			}
+		},
+	},
+	fertilize: {
+		name: "Fertilize",
+		shortDesc: "Normal-type moves become Grass- type moves and get a 1.1x boost.",
+		onModifyMove(move) {
+			if (move.type === "Normal") {
+				move.type = "Grass";
+			}
+		},
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Grass") {
+				this.debug("Fertilize boost");
+				return this.chainModify(1.1);
+			}
+		},
+	},
+	determination: {
+		name: "Determination",
+		shortDesc: "Ups Special Attack by 50% if suffering.",
+		onModifyAtkPriority: 5,
+		onModifySpA(atk, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(1.5);
+			}
+		},
+	},
 	
-
-
 };

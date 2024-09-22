@@ -3562,6 +3562,43 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	chromecoat: {
 			name: "Chrome Coat",
 			shortDesc: "Reduces special damage taken by 40%, but decreases Speed by 10%."
+		},
+	monstermash: {
+			name: "Monster Mash",
+			shortDesc: "Casts Trick-or-Treat on entry."
+		},
+	powderburst: {
+			name: "Powder Burst",
+			shortDesc: "Casts Powder on entry."
+		},
+	ponypower: {
+			name: "Pony Power",
+			shortDesc: "Combines Keen Edge & Mystic Blades."
+		},
+	combustion: {
+			name: "Combustion",
+			shortDesc: "Boosts the power of Fire-type moves by 1.5x."
+		},
+	telekinetic: {
+			name: "Telekinetic",
+			shortDesc: "Casts Telekinesis on entry."
+		},
+	fighter: {
+			name: "Fighter",
+			shortDesc: "Boosts Fighting-type moves by 1.2x, or 1.5x when below 1/3 HP."
+		},
+	purelove: {
+			name: "Pure Love",
+			shortDesc: "Infatuates on contact. Heals 25% damage vs. infatuated."
+		},
+	fertilize: {
+			name: "Fertilize",
+			shortDesc: "Normal-type moves become Grass-type and get a 1.1x boost."
+		},
+	determination: {
+			name: "Determination",
+			shortDesc: "Ups Special Attack by 50% if suffering."
 		}
+
 
 };
