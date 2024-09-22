@@ -1,3 +1,4 @@
+import { MoveTarget } from "../sim/dex-moves";
 /*
 
 Ratings and how they work:
@@ -4607,10 +4608,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (source === this.effectState.target || !target.isAlly(source))
 				return;
 			if (move.type === "Grass") {
-				if (this.effectState.target.getStat("atk") > this.effectState.target.getStat("spa")){
+				if (
+					this.effectState.target.getStat("atk") >
+					this.effectState.target.getStat("spa")
+				) {
 					this.boost({ atk: 1 }, this.effectState.target);
-				}
-				else{
+				} else {
 					this.boost({ spa: 1 }, this.effectState.target);
 				}
 			}
@@ -5099,8 +5102,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 242,
 	},
 	stamina: {
-		onDamagingHit(damage, target, source, effect) {
-			this.boost({ def: 1 });
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
+				this.boost({ atk: 12 }, target, target);
+			}
+			else if(move?.effectType === "Move" ){
+				this.boost({ atk: 1 }, target, target);
+			}
 		},
 		name: "Stamina",
 		rating: 3.5,
@@ -5225,12 +5234,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	stormdrain: {
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === "Water") {
-				if(target.getStat("atk") > target.getStat("spa")){
+				if (target.getStat("atk") > target.getStat("spa")) {
 					if (!this.boost({ atk: 1 })) {
 						this.add("-immune", target, "[from] ability: Storm Drain");
 					}
-				}
-				else{
+				} else {
 					if (!this.boost({ spa: 1 })) {
 						this.add("-immune", target, "[from] ability: Storm Drain");
 					}
@@ -10789,13 +10797,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Mind Crush",
 		shortDesc: "Biting moves use SpAtk and deal 50% more damage.",
 		onModifyMove(move) {
-			if (move.flags['bite']) {
-				move.overrideOffensiveStat = "spa"
+			if (move.flags["bite"]) {
+				move.overrideOffensiveStat = "spa";
 			}
 		},
 		onBasePower(bp, source, target, move) {
-			if (move.flags['bite']) {
-				this.chainModify(1.5)
+			if (move.flags["bite"]) {
+				this.chainModify(1.5);
 			}
 		},
 	},
@@ -10880,10 +10888,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onDamagingHit(damage, target, source, move) {
 			if (!target.hp) {
 				this.add("-ability", target, "Guilt Trip");
-				this.boost({ spa: -2}, source, target, null, true)
-				this.boost({ atk: -2}, source, target, null, true)
+				this.boost({ spa: -2 }, source, target, null, true);
+				this.boost({ atk: -2 }, source, target, null, true);
 			}
-		}
+		},
 	},
 	stygianrush: {
 		name: "Stygian Rush",
@@ -10900,7 +10908,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (source.activeMoveActions === 0) {
 				return this.chainModify(2.0);
 			}
-		}
+		},
 	},
 	subdue: {
 		name: "Subdue",
@@ -10912,23 +10920,26 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 						let i: BoostID;
 						for (i in secondary.boosts) {
 							if (secondary.boosts[i] && secondary.boosts[i] < 0) {
-								return this.chainModify(2.0)
+								return this.chainModify(2.0);
 							}
 						}
 					}
 				}
-			};
+			}
 			if (move.secondary) {
 				if (move.secondary.boosts) {
 					let i: BoostID;
 					for (i in move.secondary.boosts) {
-						if (move.secondary.boosts[i] && move.secondary.boosts[i] < 0) {
-							return this.chainModify(2.0)
+						if (
+							move.secondary.boosts[i] &&
+							move.secondary.boosts[i] < 0
+						) {
+							return this.chainModify(2.0);
 						}
 					}
 				}
 			}
-		}
+		},
 	},
 	crownedsword: {
 		name: "Crowned Sword",
@@ -10987,13 +10998,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Berserk DNA",
 		shortDesc: "Sharply ups highest attacking stat but confuses on entry.",
 		onStart(pokemon) {
-				if(pokemon.getStat("atk") > pokemon.getStat("spa")) {
-					this.boost({atk: 2}, pokemon);
-				}
-				else {
-					this.boost({spa: 2}, pokemon);
-				}
-				pokemon.trySetStatus("confusion");
+			if (pokemon.getStat("atk") > pokemon.getStat("spa")) {
+				this.boost({ atk: 2 }, pokemon);
+			} else {
+				this.boost({ spa: 2 }, pokemon);
+			}
+			pokemon.trySetStatus("confusion");
 		},
 	},
 
@@ -11035,15 +11045,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Cosmic Daze",
 		shortDesc: "2x damage vs confused. Enemies take 2x confusion damage.",
 		onFoeModifyDamage(damage, source, target, move) {
-			if(move.name === "confused"){
+			if (move.name === "confused") {
 				return this.chainModify(2);
 			}
 		},
 		onModifyDamage(damage, source, target, move) {
-			if(target.status === "confusion"){
+			if (target.status === "confusion") {
 				return this.chainModify(2);
 			}
-		}
+		},
 	},
 
 	mindseye: {
@@ -11075,22 +11085,161 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Raises its own stats when foes raise theirs.",
 		onFoeAfterBoost(boost, target, source, effect) {
 			this.boost(boost, this.effectState.target);
-		}
+		},
 	},
 	terminalvelocity: {
 		name: "Terminal Velocity",
 		shortDesc: "Special moves use 20% of its Speed stat additionally.",
 		onModifySpA(spa, attacker, defender, move) {
-				return this.chainModify(
-					(spa + attacker.getStat("spe") * 0.2) / (spa ? spa : 1)
+			return this.chainModify(
+				(spa + attacker.getStat("spe") * 0.2) / (spa ? spa : 1)
+			);
+		},
+	},
+	monsterhunter: {
+		name: "Monster Hunter",
+		shortDesc: "Deals 1.5x damage to Dark-types.",
+		onModifyDamage(damage, source, target, move) {
+			if (target.hasType("Dark")) {
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	flamingjaws: {
+		name: "Flaming Jaws",
+		shortDesc: "Biting moves have 50% chance to burn the target.",
+		onModifyMove(move, mon, target) {
+			if (!move?.flags["bite"]) return;
+			if (move.secondaries) move.secondaries = [];
+			move.secondaries?.push({
+				chance: 50,
+				status: "brn",
+			});
+		},
+	},
+	bassboosted: {
+		name: "Bass Boosted",
+		shortDesc: "Combines Amplifier & Punk Rock.",
+		onModifyMove(move) {
+			if (
+				move.flags["sound"] &&
+				(move.target === "normal" || move.target === "any")
+			) {
+				move.target = "allAdjacentFoes";
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["sound"]) {
+				this.debug("Amplifier boost");
+				this.chainModify(1.3);
+				this.debug("Punk Rock boost");
+				return this.chainModify([5325, 4096]);
+			}
+		},
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.flags["sound"]) {
+				this.debug("Punk Rock weaken");
+				return this.chainModify(0.5);
+			}
+		},
+	},
+	earlygrave: {
+		name: "Early Grave",
+		shortDesc:
+			"At full HP, gives +1 priority to this Pokémon's Ghost-type moves.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type === "Ghost" && pokemon.hp === pokemon.maxhp)
+				return priority + 1;
+		},
+	},
+	phantomthief: {
+		name: "Phantom Thief",
+		shortDesc: "Uses 40BP Spectral Thief on switch-in.",
+	},
+	devourer: {
+		name: "Devourer",
+		shortDesc: "Combines Strong Jaw & Primal Maw.",
+		onBasePowerPriority: 19,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["bite"]) {
+				return this.chainModify(1.5);
+			}
+		},
+		onPrepareHit(source, target, move) {
+			if (
+				move.category === "Status" ||
+				move.multihit ||
+				move.flags["noparentalbond"] ||
+				move.flags["charge"] ||
+				move.flags["futuremove"] ||
+				move.spreadHit ||
+				move.isZ ||
+				move.isMax
+			)
+				return;
+			if (move.flags["bite"]) {
+				move.multihit = 2;
+				move.multihitType = "maw";
+			}
+		},
+		// Damage modifier implemented in BattleActions#modifyDamage()
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (
+				move.multihitType === "maw" &&
+				move.id === "secretpower" &&
+				move.hit < 2
+			) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(
+					(effect) => effect.volatileStatus === "flinch"
 				);
+			}
+		},
+	},
+	fortitude: {
+		name: "Fortitude",
+		shortDesc: "Boosts SpDef +1 when hit. Maxes SpDef on crit.",
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
+				this.boost({ def: 12 }, target, target);
+			}
+			else if(move?.effectType === "Move" ){
+				this.boost({ def: 1 }, target, target);
+			}
+		},
+	},
+	spiteful: {
+		name: "Spiteful",
+		shortDesc: "Reduces attacker's PP on contact.",
+		onHit(target, source, move) {
+			if(move.flags["contact"]){
+				if(source.lastMove){
+					if(source.lastMove.pp > 0){
+						source.lastMove.pp--;
+					}
+				}
+			}
+		}
+	},
+	twostep: {
+		name: "Two Step",
+		shortDesc: "Triggers 50BP Revelation Dance after using a Dance move.",
+		onAfterMove(source, target, move) {
+			if (this.effectState.additionalAttack || !(move.flags["dance"])) return;
+			const moveMutations = {
+				basePower: 50,
+			};
+			this.effectState.additionalAttack = true;
+			this.actions.runAdditionalMove(
+				Dex.moves.get("eruption"),
+				source,
+				target,
+				moveMutations
+			);
+			this.effectState.additionalAttack = false;
 		},
 	},
 	
-
-	// No pokemon appears to have this ability yet?
-	// archmage: {
-	// 	name: "Archmage",
-	// 	shortDesc: "30% chance of adding a type related effect to each move.",
-	// }
 };

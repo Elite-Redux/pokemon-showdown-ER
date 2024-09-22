@@ -3499,4 +3499,40 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		name: "Terminal Velocity",
 		shortDesc: "Special moves use 20% of its Speed stat additionally.",
 	},
+	monsterhunter: {
+		name: "Monster Hunter",
+		shortDesc: "Deals 1.5x damage to Dark-types."
+	},
+	flamingjaws: {
+			name: "Flaming Jaws",
+			shortDesc: "Biting moves have 50% chance to burn the target."
+		},
+	bassboosted: {
+			name: "Bass Boosted",
+			shortDesc: "Combines Amplifier & Punk Rock."
+		},
+	earlygrave: {
+			name: "Early Grave",
+			shortDesc: "+1 priority to Ghost-type moves at full HP."
+		},
+	phantomthief: {
+			name: "Phantom Thief",
+			shortDesc: "Uses 40BP Spectral Thief on switch-in."
+		},
+	devourer: {
+			name: "Devourer",
+			shortDesc: "Combines Strong Jaw & Primal Maw."
+		},
+	fortitude: {
+			name: "Fortitude",
+			shortDesc: "Boosts SpDef +1 when hit. Maxes SpDef on crit."
+		},
+	spiteful: {
+			name: "Spiteful",
+			shortDesc: "Reduces attacker's PP on contact."
+		},
+	twostep: {
+			name: "Two Step",
+			shortDesc: "Triggers 50BP Revelation Dance after using a Dance move."
+		},
 };
