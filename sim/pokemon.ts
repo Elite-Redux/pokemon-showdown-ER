@@ -593,7 +593,7 @@ export class Pokemon {
 		let speed = this.getStat('spe', false, false);
 		if (this.battle.field.getPseudoWeather('trickroom') && !this.battle.field.suppressingRoom()) {
 			speed = 10000 - speed;
-		} 
+		}
 		return this.battle.trunc(speed, 13);
 	}
 
@@ -826,7 +826,7 @@ export class Pokemon {
 			this.itemState.knockedOff || // Gen 3-4
 			(this.battle.gen >= 5 && !this.isActive) ||
 			(!this.getItem().ignoreKlutz && this.hasAbility('klutz')) ||
-			this.volatiles['embargo'] || 
+			this.volatiles['embargo'] ||
 			(this.battle.field.pseudoWeather['magicroom'] && !this.battle.field.suppressingRoom())
 		);
 	}
@@ -1998,7 +1998,7 @@ export class Pokemon {
 		if (item === 'ironball') return true;
 		// If a Fire/Flying type uses Burn Up and Roost, it becomes ???/Flying-type, but it's still grounded.
 		if (!negateImmunity && this.hasType('Flying') && !(this.hasType('???') && 'roost' in this.volatiles)) return false;
-		if ((this.hasAbility('levitate') || this.hasAbility('dragonfly')) && !this.battle.suppressingAbility(this)) return null;
+		if ((this.hasAbility('levitate') || this.hasAbility('dragonfly')) || this.hasAbility('aerialist') && !this.battle.suppressingAbility(this)) return null;
 		if ('magnetrise' in this.volatiles) return false;
 		if ('telekinesis' in this.volatiles) return false;
 		return item !== 'airballoon';

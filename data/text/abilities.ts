@@ -3755,4 +3755,85 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		name: "Toxic Chain",
 		shortDesc: "Moves have a 30% chance to badly poison the foe.",
 	},
+	terashell: {
+		name: "Tera Shell",
+		shortDesc: "All hits will be not very effective while at full HP."
+	},
+	aerialist: {
+			name: "Aerialist",
+			shortDesc: "Combines Levitate & Flock."
+		},
+	contempt: {
+			name: "Contempt",
+			shortDesc: "Ignores opposing stat changes. Boosts Attack when stat lowered."
+		},
+	desertspirit: {
+			name: "Desert Spirit",
+			shortDesc: "Summons sand on entry. Ground moves hit airborne in sand."
+		},
+	flourish: {
+			name: "Flourish",
+			shortDesc: "Boosts Grass moves by 50% in grassy terrain."
+		},
+	lawnmower: {
+			name: "Lawnmower",
+			shortDesc: "Removes terrain on switch-in. Stat up if terrain removed."
+		},
+	mythicalarrows: {
+			name: "Mythical Arrows",
+			shortDesc: "Arrow moves become special and deal 30% more damage."
+		},
+	brawlingwyvern: {
+			name: "Brawling Wyvern",
+			shortDesc: "Dragon type moves become punching moves."
+		},
+	deadpower: {
+			name: "Dead Power",
+			shortDesc: "1.5x Attack boost. 20% chance to curse on contact moves."
+		},
+	malicious: {
+			name: "Malicious",
+			shortDesc: "Lowers the foe's highest Attack and Defense stat."
+		},
+	ole: {
+		name: "Ole!",
+		shortDesc: "20% chance to evade physical moves."
+	},
+	radiojam: {
+			name: "Radio Jam",
+			shortDesc: "Sound-based moves inflict disable."
+		},
+	noisecancel: {
+			name: "Noise Cancel",
+			shortDesc: "Protects the party from sound-based moves."
+		},
+	hauntingfrenzy: {
+			name: "Haunting Frenzy",
+			shortDesc: "20% chance to flinch the opponent. +1 speed on kill."
+		},
+	moltenblades: {
+			name: "Molten Blades",
+			shortDesc: "Keen Edge + Keen Edge moves have a 20% chance to burn."
+		},
+	minioncontrol: {
+			name: "Minion Control",
+			shortDesc: "Moves hit an extra time for each healthy party member."
+		},
+	celestialblessing: {
+			name: "Celestial Blessing",
+			shortDesc: "Recovers 1/12 of its health each turn under Misty Terrain."
+		},
+	blademaster: {
+			name: "Blade Master",
+			shortDesc: "Combines Sweeping Edge & Keen Edge."
+		},
+	catastrophe: {
+			name: "Catastrophe",
+			shortDesc: "Sun boosts Water. Rain boosts Fire."
+		},
+	ironserpent: {
+			name: "Iron Serpent",
+			shortDesc: "Ups “supereffective” by 33%."
+		},
+
 };

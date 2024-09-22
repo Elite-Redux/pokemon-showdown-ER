@@ -12349,4 +12349,355 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			});
 		},
 	},
+	terashell: {
+		name: "Tera Shell",
+		shortDesc: "All hits will be not very effective while at full HP.",
+		onEffectiveness(typeMod, target, type, move) {
+			if(target){
+				if (target.hp >= target.maxhp) {
+					if (typeMod > 0) return 0.5;
+				}
+			}
+		},
+	},
+	aerialist: {
+		name: "Aerialist",
+		shortDesc: "Combines Levitate & Flock.",
+		//Levitate defined in sim/pokemon.ts
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move && move.type === "Flying") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Flock Circuit boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Flock Circuit boost");
+					return this.chainModify(1.2);
+				}
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move && move.type === "Flying") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Flock Circuit boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Flock Circuit boost");
+					return this.chainModify(1.2);
+				}
+			}
+		},
+	},
+	contempt: {
+		name: "Contempt",
+		shortDesc: "Ignores opposing stat changes. Boosts Attack when stat lowered.",
+		onAnyModifyBoost(boosts, pokemon) {
+			const unawareUser = this.effectState.target;
+			if (unawareUser === pokemon) return;
+			if (
+				unawareUser === this.activePokemon &&
+				pokemon === this.activeTarget
+			) {
+				boosts["def"] = 0;
+				boosts["spd"] = 0;
+				boosts["evasion"] = 0;
+			}
+			if (
+				pokemon === this.activePokemon &&
+				unawareUser === this.activeTarget
+			) {
+				boosts["atk"] = 0;
+				boosts["def"] = 0;
+				boosts["spa"] = 0;
+				boosts["accuracy"] = 0;
+			}
+		},
+		onAfterEachBoost(boost, target, source, effect) {
+			if (!source || target.isAlly(source)) {
+				if (effect.id === "stickyweb") {
+					this.hint(
+						"Court Change Sticky Web counts as lowering your own Speed, and Contempt only affects stats lowered by foes.",
+						true,
+						source.side
+					);
+				}
+				return;
+			}
+			let statsLowered = false;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i]! < 0) {
+					statsLowered = true;
+				}
+			}
+			if (statsLowered) {
+				this.boost({ atk: 1 }, target, target, null, false, true);
+			}
+		},
+		isBreakable: true,
+	},
+	desertspirit: {
+		name: "Desert Spirit",
+		shortDesc: "Summons sand on entry. Ground moves hit airborne in sand.",
+		onStart(source) {
+			this.field.setWeather("sandstorm");
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (this.field.isWeather("sandstorm") && type === "Ground") {
+				if(target){
+					if (target.hasType("Flying")) {
+						return 1;
+					}
+				}
+			}
+		},
+	},
+	flourish: {
+		name: "Flourish",
+		shortDesc: "Boosts Grass moves by 50% in grassy terrain.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (this.field.isTerrain("grassyterrain") && move.type === "Grass") {
+				this.debug("Flourish boost");
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	lawnmower: {
+		name: "Lawnmower",
+		shortDesc: "Removes terrain on switch-in. Stat up if terrain removed.",
+		onStart(source) {
+			if(this.field.terrain){
+				this.field.clearTerrain();
+				this.boost({ atk: 1, spa: 1, def: 1, spd: 1, spe: 1 }, source);
+			}
+		},
+	},
+	mythicalarrows: {
+		name: "Mythical Arrows",
+		shortDesc: "Arrow moves become special and deal 30% more damage.",
+		onModifyMove(move) {
+			if (move.flags["arrow"]) {
+				move.category = "Special";
+			}
+		},
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["arrow"]) {
+				this.debug("Mythical Arrows boost");
+				return this.chainModify(1.3);
+			}
+		},
+	},
+	brawlingwyvern: {
+		name: "Brawling Wyvern",
+		shortDesc: "Dragon type moves become punching moves.",
+		onModifyMove(move) {
+			if (move.type === "Dragon") {
+				move.flags["punch"] = 1;
+			}
+		},
+	},
+	deadpower: {
+		name: "Dead Power",
+		shortDesc: "1.5x Attack boost. 20% chance to curse on contact moves.",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk) {
+			return this.chainModify(1.5);
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				if (this.randomChance(2, 10)) {
+					target.trySetStatus("curse", source);
+				}
+			}
+		},
+	},
+	malicious: {
+		name: "Malicious",
+		shortDesc: "Lowers the foe's highest Attack and Defense stat.",
+		onStart(pokemon) {
+			//grab all foes
+			let foes = pokemon.side.foes();
+			//grab the highest attack and defense stat
+			for (const foe of foes) {
+				if(foe.getStat("atk") > foe.getStat("spa")){
+					this.boost({ atk: -1 }, foe, pokemon);
+				} else {
+					this.boost({ spa: -1 }, foe, pokemon);
+				}
+				if(foe.getStat("def") > foe.getStat("spd")){
+					this.boost({ def: -1 }, foe, pokemon);
+				} else {
+					this.boost({ spd: -1 }, foe, pokemon);
+				}
+			}
+		},
+	},
+	ole: {
+		name: "Ole!",
+		shortDesc: "20% chance to evade physical moves.",
+		onTryHit(target, source, move) {
+			if (move.category === "Physical") {
+				if (this.randomChance(2, 10)) {
+					this.add("-miss", target);
+					return null;
+				}
+			}
+		},
+	},
+	radiojam: {
+		name: "Radio Jam",
+		shortDesc: "Sound-based moves inflict disable.",
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags["sound"]) {
+				target.addVolatile("disable", source);
+			}
+		},
+	},
+	noisecancel: {
+		name: "Noise Cancel",
+		shortDesc: "Protects the party from sound-based moves.",
+		//Protect ally
+		onTryHitSide(target, source, move) {
+			if (move.flags["sound"]) {
+				this.add("-immune", target, "[from] ability: Noise Cancel");
+				return null;
+			}
+		},
+	},
+	hauntingfrenzy: {
+		name: "Haunting Frenzy",
+		shortDesc: "20% chance to flinch the opponent. +1 speed on kill.",
+		onModifyMove(move) {
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 20,
+				volatileStatus: "flinch",
+			});
+		},
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === "Move") {
+				this.boost({ spe: 1 }, source);
+			}
+		},
+	},
+	moltenblades: {
+		name: "Molten Blades",
+		shortDesc: "Keen Edge + Keen Edge moves have a 20% chance to burn.",
+		onBasePowerPriority: 25,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["slicing"]) {
+				return this.chainModify([5325, 4096]);
+			}
+		},
+		onModifyMove(move) {
+			if (move.flags["slicing"]) {
+				if (!move.secondaries) {
+					move.secondaries = [];
+				}
+				move.secondaries.push({
+					chance: 20,
+					status: "brn",
+				});
+			}
+		},
+	},
+	minioncontrol: {
+		name: "Minion Control",
+		shortDesc: "Moves hit an extra time for each healthy party member.",
+		onPrepareHit(source, target, move) {
+			if (
+				move.category === "Status" ||
+				move.multihit ||
+				move.flags["noparentalbond"] ||
+				move.flags["charge"] ||
+				move.flags["futuremove"] ||
+				move.spreadHit ||
+				move.isZ ||
+				move.isMax
+			)
+				return;
+
+			let allyCount = 0;
+			for (const ally of source.side.pokemon) {
+				if(ally !== source){
+					if (ally.hp > 0) {
+						allyCount++;
+					}
+				}
+			}
+			move.multihit = allyCount;
+			move.multihitType = "minion";
+		},
+		// Damage modifier implemented in BattleActions#modifyDamage()
+		onSourceModifySecondaries(secondaries, target, source, move) {
+			if (
+				move.multihitType === "minion" &&
+				move.id === "secretpower" &&
+				move.hit < 2
+			) {
+				// hack to prevent accidentally suppressing King's Rock/Razor Fang
+				return secondaries.filter(
+					(effect) => effect.volatileStatus === "flinch"
+				);
+			}
+		},
+	},
+	celestialblessing: {
+		name: "Celestial Blessing",
+		shortDesc: "Recovers 1/12 of its health each turn under Misty Terrain.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (this.field.isTerrain("mistyterrain")) {
+				this.heal(pokemon.baseMaxhp / 12);
+			}
+		},
+	},
+	blademaster: {
+		name: "Blade Master",
+		shortDesc: "Combines Sweeping Edge & Keen Edge.",
+		onModifyMove(move) {
+			if (move.flags["slicing"]) {
+				move.accuracy = true;
+				if (move.target === "normal" || move.target === "any")
+					move.target = "allAdjacentFoes";
+			}
+		},
+		onBasePowerPriority: 25,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["slicing"]) {
+				return this.chainModify([5325, 4096]);
+			}
+		},
+	},
+	catastrophe: {
+		name: "Catastrophe",
+		shortDesc: "Sun boosts Water. Rain boosts Fire.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (this.field.isWeather("sunnyday") && move.type === "Water") {
+				this.debug("Catastrophe boost");
+				return this.chainModify(2);
+			}
+			if (this.field.isWeather("raindance") && move.type === "Fire") {
+				this.debug("Catastrophe boost");
+				return this.chainModify(2);
+			}
+		},
+	},
+	ironserpent: {
+		name: "Iron Serpent",
+		shortDesc: "Ups “supereffective” by 33%.",
+		onEffectiveness(typeMod, target, type, move) {
+			if (typeMod > 2) {
+				return typeMod + 0.33;
+			}
+		},
+	},
+	
 };
