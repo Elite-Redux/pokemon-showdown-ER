@@ -11875,5 +11875,298 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
-	
+	naturalrecovery: {
+		name: "Natural Recovery",
+		shortDesc: "Combines Natural Cure & Regenerator.",
+		onCheckShow(pokemon) {
+			// This is complicated
+			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
+			// since you can see how many of your opponent's pokemon are statused.
+			// The only ambiguous situation happens in Doubles/Triples, where multiple pokemon
+			// that could have Natural Cure switch out, but only some of them get cured.
+			if (pokemon.side.active.length === 1) return;
+			if (pokemon.showCure === true || pokemon.showCure === false) return;
+
+			const cureList = [];
+			let noCureCount = 0;
+			for (const curPoke of pokemon.side.active) {
+				// pokemon not statused
+				if (!curPoke?.status) {
+					// this.add('-message', "" + curPoke + " skipped: not statused or doesn't exist");
+					continue;
+				}
+				if (curPoke.showCure) {
+					// this.add('-message', "" + curPoke + " skipped: Natural Cure already known");
+					continue;
+				}
+				const species = curPoke.species;
+				// pokemon can't get Natural Cure
+				if (!Object.values(species.abilities).includes("Natural Cure")) {
+					// this.add('-message', "" + curPoke + " skipped: no Natural Cure");
+					continue;
+				}
+				// pokemon's ability is known to be Natural Cure
+				if (!species.abilities["1"] && !species.abilities["H"]) {
+					// this.add('-message', "" + curPoke + " skipped: only one ability");
+					continue;
+				}
+				// pokemon isn't switching this turn
+				if (curPoke !== pokemon && !this.queue.willSwitch(curPoke)) {
+					// this.add('-message', "" + curPoke + " skipped: not switching");
+					continue;
+				}
+
+				if (curPoke.hasAbility("naturalcure")) {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (and is)");
+					cureList.push(curPoke);
+				} else {
+					// this.add('-message', "" + curPoke + " confirmed: could be Natural Cure (but isn't)");
+					noCureCount++;
+				}
+			}
+
+			if (!cureList.length || !noCureCount) {
+				// It's possible to know what pokemon were cured
+				for (const pkmn of cureList) {
+					pkmn.showCure = true;
+				}
+			} else {
+				// It's not possible to know what pokemon were cured
+
+				// Unlike a -hint, this is real information that battlers need, so we use a -message
+				this.add(
+					"-message",
+					"(" +
+						cureList.length +
+						" of " +
+						pokemon.side.name +
+						"'s pokemon " +
+						(cureList.length === 1 ? "was" : "were") +
+						" cured by Natural Cure.)"
+				);
+
+				for (const pkmn of cureList) {
+					pkmn.showCure = false;
+				}
+			}
+		},
+		onSwitchOut(pokemon) {
+			pokemon.heal(pokemon.baseMaxhp / 3);
+			if (!pokemon.status) return;
+
+			// if pokemon.showCure is undefined, it was skipped because its ability
+			// is known
+			if (pokemon.showCure === undefined) pokemon.showCure = true;
+
+			if (pokemon.showCure)
+				this.add(
+					"-curestatus",
+					pokemon,
+					pokemon.status,
+					"[from] ability: Natural Cure"
+				);
+			pokemon.clearStatus();
+
+			// only reset .showCure if it's false
+			// (once you know a Pokemon has Natural Cure, its cures are always known)
+			if (!pokemon.showCure) pokemon.showCure = undefined;
+		},
+	},
+	sandguard: {
+		name: "Sand Guard",
+		shortDesc: "Blocks priority and reduces special damage taken by 1/2 in sand.",
+		onFoeTryMove(target, source, move) {
+			const targetAllExceptions = [
+				"perishsong",
+				"flowershield",
+				"rototiller",
+			];
+			if (
+				move.target === "foeSide" ||
+				(move.target === "all" && !targetAllExceptions.includes(move.id))
+			) {
+				return;
+			}
+
+			const dazzlingHolder = this.effectState.target;
+			if (
+				(source.isAlly(dazzlingHolder) || move.target === "all") &&
+				move.priority > 0.1 && this.field.isWeather("sandstorm")) {
+				this.attrLastMove("[still]");
+				this.add(
+					"cant",
+					dazzlingHolder,
+					"ability: Sand Guard",
+					move,
+					"[of] " + target
+				);
+				return false;
+			}
+		},
+		onModifyDamage(damage, source, target, move) {
+			if (this.field.isWeather("sandstorm") && move.category === "Special") {
+				return this.chainModify(0.5);
+			}
+		},
+	},
+	trickster: {
+		name: "Trickster",
+		shortDesc: "Uses Disable on switch-in.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("disable");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	berserkerrage: {
+		name: "Berserker Rage",
+		shortDesc: "Combines Berserk & Rampage.",
+		onDamage(damage, target, source, effect) {
+			if (
+				effect.effectType === "Move" &&
+				!effect.multihit &&
+				!effect.negateSecondary &&
+				!(effect.hasSheerForce && source.hasAbility("sheerforce"))
+			) {
+				this.effectState.checkedBerserk = false;
+			} else {
+				this.effectState.checkedBerserk = true;
+			}
+		},
+		onTryEatItem(item) {
+			const healingItems = [
+				"aguavberry",
+				"enigmaberry",
+				"figyberry",
+				"iapapaberry",
+				"magoberry",
+				"sitrusberry",
+				"wikiberry",
+				"oranberry",
+				"berryjuice",
+			];
+			if (healingItems.includes(item.id)) {
+				return this.effectState.checkedBerserk;
+			}
+			return true;
+		},
+		onAfterMoveSecondary(target, source, move) {
+			this.effectState.checkedBerserk = true;
+			if (!source || source === target || !target.hp || !move.totalDamage)
+				return;
+			const lastAttackedBy = target.getLastAttackedBy();
+			if (!lastAttackedBy) return;
+			const damage = move.multihit
+				? move.totalDamage
+				: lastAttackedBy.damage;
+			if (
+				target.hp <= target.maxhp / 2 &&
+				target.hp + damage > target.maxhp / 2
+			) {
+				this.boost({ spa: 1 }, target, target);
+			}
+		},
+		onAfterMove(source, target, move) {
+			if (target && target.hp <= 0) {
+				if (source.volatiles["mustrecharge"]) {
+					source.removeVolatile("mustrecharge");
+				}
+			}
+		},
+	},
+	dustcloud: {
+		name: "Dust Cloud",
+		shortDesc: "Attacks with Sand Attack on switch-in.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("sandattack");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	moonspirit: {
+		name: "Moon Spirit",
+		shortDesc: "Fairy & Dark gains STAB. Moonlight recovers 75% HP.",
+		onModifyMove(move) {
+			if (move.type === "Fairy" || move.type === "Dark") {
+				move.forceSTAB = true;
+			}
+		},
+		onTryHeal(damage, target, source, effect) {
+			if (effect.id === "moonlight") {
+				return this.chainModify(0.75);
+			}
+		},
+	},
+	generator: {
+		name: "Generator",
+		shortDesc: "Charges up on entry.",
+		onStart(pokemon) {
+			this.boost({ spa: 1 }, pokemon);
+		},
+	},
+	itchydefense: {
+		name: "Itchy Defense",
+		shortDesc: "Causes infestation when hit by a contact move.",
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				source.addVolatile("infestation", target);
+			}
+		},
+	},
+	frostburn: {
+		name: "Frost Burn",
+		shortDesc: "Triggers 40BP Ice Beam after using a Fire-type move.",
+		onAfterMove(source, target, move) {
+			if (this.effectState.additionalAttack || !(move.type === "Fire"))
+				return;
+			const moveMutations = {
+				basePower: 40,
+			};
+			this.effectState.additionalAttack = true;
+			this.actions.runAdditionalMove(
+				Dex.moves.get("icebeam"),
+				source,
+				target,
+				moveMutations
+			);
+			this.effectState.additionalAttack = false;
+		},
+	},
+	accelerate: {
+		name: "Accelerate",
+		shortDesc: "Moves that need a charge turn are now used instantly.",
+		onChargeMove(pokemon, target, move) {
+			this.add("-activate", pokemon, "ability: Accelerate");
+			return false;
+		},
+	},
+
 };

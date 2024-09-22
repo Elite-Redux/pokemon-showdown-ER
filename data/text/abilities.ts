@@ -3501,180 +3501,221 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	monsterhunter: {
 		name: "Monster Hunter",
-		shortDesc: "Deals 1.5x damage to Dark-types."
+		shortDesc: "Deals 1.5x damage to Dark-types.",
 	},
 	flamingjaws: {
-			name: "Flaming Jaws",
-			shortDesc: "Biting moves have 50% chance to burn the target."
-		},
+		name: "Flaming Jaws",
+		shortDesc: "Biting moves have 50% chance to burn the target.",
+	},
 	bassboosted: {
-			name: "Bass Boosted",
-			shortDesc: "Combines Amplifier & Punk Rock."
-		},
+		name: "Bass Boosted",
+		shortDesc: "Combines Amplifier & Punk Rock.",
+	},
 	earlygrave: {
-			name: "Early Grave",
-			shortDesc: "+1 priority to Ghost-type moves at full HP."
-		},
+		name: "Early Grave",
+		shortDesc: "+1 priority to Ghost-type moves at full HP.",
+	},
 	phantomthief: {
-			name: "Phantom Thief",
-			shortDesc: "Uses 40BP Spectral Thief on switch-in."
-		},
+		name: "Phantom Thief",
+		shortDesc: "Uses 40BP Spectral Thief on switch-in.",
+	},
 	devourer: {
-			name: "Devourer",
-			shortDesc: "Combines Strong Jaw & Primal Maw."
-		},
+		name: "Devourer",
+		shortDesc: "Combines Strong Jaw & Primal Maw.",
+	},
 	fortitude: {
-			name: "Fortitude",
-			shortDesc: "Boosts SpDef +1 when hit. Maxes SpDef on crit."
-		},
+		name: "Fortitude",
+		shortDesc: "Boosts SpDef +1 when hit. Maxes SpDef on crit.",
+	},
 	spiteful: {
-			name: "Spiteful",
-			shortDesc: "Reduces attacker's PP on contact."
-		},
+		name: "Spiteful",
+		shortDesc: "Reduces attacker's PP on contact.",
+	},
 	twostep: {
-			name: "Two Step",
-			shortDesc: "Triggers 50BP Revelation Dance after using a Dance move."
-		},
+		name: "Two Step",
+		shortDesc: "Triggers 50BP Revelation Dance after using a Dance move.",
+	},
 	impulse: {
 		name: "Impulse",
-		shortDesc: "Non-contact moves use the Speed stat for damage."
-		},
+		shortDesc: "Non-contact moves use the Speed stat for damage.",
+	},
 	saltcircle: {
-			name: "Salt Circle",
-			shortDesc: "Prevents opposing Pokémon from fleeing on entry."
-		},
+		name: "Salt Circle",
+		shortDesc: "Prevents opposing Pokémon from fleeing on entry.",
+	},
 	airborne: {
-			name: "Airborne",
-			shortDesc: "Boosts own & ally's Flying-type moves by 1.3x."
-		},
+		name: "Airborne",
+		shortDesc: "Boosts own & ally's Flying-type moves by 1.3x.",
+	},
 	showdownmode: {
-			name: "Showdown Mode",
-			shortDesc: "Combines Ambush & Violent Rush."
-		},
+		name: "Showdown Mode",
+		shortDesc: "Combines Ambush & Violent Rush.",
+	},
 	webspinner: {
-			name: "Web Spinner",
-			shortDesc: "Uses String Shot on switch-in."
-		},
+		name: "Web Spinner",
+		shortDesc: "Uses String Shot on switch-in.",
+	},
 	banshee: {
-			name: "Banshee",
-			shortDesc: "Normal-type moves become Ghost-type and get a 1.2x boost."
-		},
+		name: "Banshee",
+		shortDesc: "Normal-type moves become Ghost-type and get a 1.2x boost.",
+	},
 	chromecoat: {
-			name: "Chrome Coat",
-			shortDesc: "Reduces special damage taken by 40%, but decreases Speed by 10%."
-		},
+		name: "Chrome Coat",
+		shortDesc:
+			"Reduces special damage taken by 40%, but decreases Speed by 10%.",
+	},
 	monstermash: {
-			name: "Monster Mash",
-			shortDesc: "Casts Trick-or-Treat on entry."
-		},
+		name: "Monster Mash",
+		shortDesc: "Casts Trick-or-Treat on entry.",
+	},
 	powderburst: {
-			name: "Powder Burst",
-			shortDesc: "Casts Powder on entry."
-		},
+		name: "Powder Burst",
+		shortDesc: "Casts Powder on entry.",
+	},
 	ponypower: {
-			name: "Pony Power",
-			shortDesc: "Combines Keen Edge & Mystic Blades."
-		},
+		name: "Pony Power",
+		shortDesc: "Combines Keen Edge & Mystic Blades.",
+	},
 	combustion: {
-			name: "Combustion",
-			shortDesc: "Boosts the power of Fire-type moves by 1.5x."
-		},
+		name: "Combustion",
+		shortDesc: "Boosts the power of Fire-type moves by 1.5x.",
+	},
 	telekinetic: {
-			name: "Telekinetic",
-			shortDesc: "Casts Telekinesis on entry."
-		},
+		name: "Telekinetic",
+		shortDesc: "Casts Telekinesis on entry.",
+	},
 	fighter: {
-			name: "Fighter",
-			shortDesc: "Boosts Fighting-type moves by 1.2x, or 1.5x when below 1/3 HP."
-		},
+		name: "Fighter",
+		shortDesc:
+			"Boosts Fighting-type moves by 1.2x, or 1.5x when below 1/3 HP.",
+	},
 	purelove: {
-			name: "Pure Love",
-			shortDesc: "Infatuates on contact. Heals 25% damage vs. infatuated."
-		},
+		name: "Pure Love",
+		shortDesc: "Infatuates on contact. Heals 25% damage vs. infatuated.",
+	},
 	fertilize: {
-			name: "Fertilize",
-			shortDesc: "Normal-type moves become Grass-type and get a 1.1x boost."
-		},
+		name: "Fertilize",
+		shortDesc: "Normal-type moves become Grass-type and get a 1.1x boost.",
+	},
 	determination: {
-			name: "Determination",
-			shortDesc: "Ups Special Attack by 50% if suffering."
-		},
+		name: "Determination",
+		shortDesc: "Ups Special Attack by 50% if suffering.",
+	},
 	mysticblades: {
 		name: "Mystic Blades",
-		shortDesc: "Keen edge moves become special and deal 30% more damage."
+		shortDesc: "Keen edge moves become special and deal 30% more damage.",
 	},
 	changeofheart: {
-			name: "Change of Heart",
-			shortDesc: "Uses Heart Swap on switch-in."
-		},
+		name: "Change of Heart",
+		shortDesc: "Uses Heart Swap on switch-in.",
+	},
 	hightide: {
-			name: "High Tide",
-			shortDesc: "Triggers 50 BP Surf after using a Water-type move."
-		},
+		name: "High Tide",
+		shortDesc: "Triggers 50 BP Surf after using a Water-type move.",
+	},
 	seaborne: {
-			name: "Seaborne",
-			shortDesc: "Combines Drizzle & Swift Swim."
-		},
+		name: "Seaborne",
+		shortDesc: "Combines Drizzle & Swift Swim.",
+	},
 	purifyingwaters: {
-			name: "Purifying Waters",
-			shortDesc: "Combines Hydration & Water Veil."
-		},
+		name: "Purifying Waters",
+		shortDesc: "Combines Hydration & Water Veil.",
+	},
 	heavenasunder: {
-			name: "Heaven Asunder",
-			shortDesc: "Spacial Rend always crits. Ups crit level by +1."
-		},
+		name: "Heaven Asunder",
+		shortDesc: "Spacial Rend always crits. Ups crit level by +1.",
+	},
 	refridgerate: {
-			name: "Refridgerate",
-			shortDesc: "Normal-type moves become Ice-type and get a 1.1x boost."
-		},
+		name: "Refridgerate",
+		shortDesc: "Normal-type moves become Ice-type and get a 1.1x boost.",
+	},
 	refridgerator: {
-			name: "Refridgerator",
-			shortDesc: "Combines Refrigerate & Illuminate."
-		},
+		name: "Refridgerator",
+		shortDesc: "Combines Refrigerate & Illuminate.",
+	},
 	suppress: {
-			name: "Suppress",
-			shortDesc: "Casts Torment on entry."
-		},
+		name: "Suppress",
+		shortDesc: "Casts Torment on entry.",
+	},
 	yukionna: {
-			name: "Yuki Onna",
-			shortDesc: "Scare + Intimidate. 10% chance to infatuate on hit."
-		},
+		name: "Yuki Onna",
+		shortDesc: "Scare + Intimidate. 10% chance to infatuate on hit.",
+	},
 	doombringer: {
 		name: "Doombringer",
-		shortDesc: "Uses Doom Desire on switch-in."
+		shortDesc: "Uses Doom Desire on switch-in.",
 	},
 	arcaneforce: {
-			name: "Arcane Force",
-			shortDesc: "All moves gain STAB. Ups 'supereffective' by 10%."
-		},
+		name: "Arcane Force",
+		shortDesc: "All moves gain STAB. Ups 'supereffective' by 10%.",
+	},
 	freezingpoint: {
-			name: "Freezing Point",
-			shortDesc: "30% chance to get frostbitten on contact."
-		},
+		name: "Freezing Point",
+		shortDesc: "30% chance to get frostbitten on contact.",
+	},
 	peacefulslumber: {
-			name: "Peaceful Slumber",
-			shortDesc: "Combines Sweet Dreams & Self Sufficient."
-		},
+		name: "Peaceful Slumber",
+		shortDesc: "Combines Sweet Dreams & Self Sufficient.",
+	},
 	enlightened: {
-			name: "Enlightened",
-			shortDesc: "Combines Emanate & Inner Focus."
-		},
+		name: "Enlightened",
+		shortDesc: "Combines Emanate & Inner Focus.",
+	},
 	tippingpoint: {
-			name: "Tipping Point",
-			shortDesc: "Getting hit raises Sp. Atk. Critical hits maximize Sp. Atk."
-		},
+		name: "Tipping Point",
+		shortDesc: "Getting hit raises Sp. Atk. Critical hits maximize Sp. Atk.",
+	},
 	superstrain: {
-			name: "Super Strain",
-			shortDesc: "KOs lower Attack by +1. Take 25% recoil damage."
-		},
+		name: "Super Strain",
+		shortDesc: "KOs lower Attack by +1. Take 25% recoil damage.",
+	},
 	primandproper: {
-			name: "Prim and Proper",
-			shortDesc: "Combines Wonder Skin & Cute Charm."
-		},
+		name: "Prim and Proper",
+		shortDesc: "Combines Wonder Skin & Cute Charm.",
+	},
 	soothingaroma: {
-			name: "Soothing Aroma",
-			shortDesc: "Cures party status on entry."
-		}
-
-
+		name: "Soothing Aroma",
+		shortDesc: "Cures party status on entry.",
+	},
+	naturalrecovery: {
+		name: "Natural Recovery",
+		shortDesc: "Combines Natural Cure & Regenerator.",
+	},
+	sandguard: {
+		name: "Sand Guard",
+		shortDesc:
+			"Blocks priority and reduces special damage taken by 1/2 in sand.",
+	},
+	trickster: {
+		name: "Trickster",
+		shortDesc: "Uses Disable on switch-in.",
+	},
+	berserkerrage: {
+		name: "Berserker Rage",
+		shortDesc: "Combines Berserk & Rampage.",
+	},
+	dustcloud: {
+		name: "Dust Cloud",
+		shortDesc: "Attacks with Sand Attack on switch-in.",
+	},
+	moonspirit: {
+		name: "Moon Spirit",
+		shortDesc: "Fairy & Dark gain STAB. Moonlight recovers 75% HP.",
+	},
+	generator: {
+		name: "Generator",
+		shortDesc: "Charges up on entry.",
+	},
+	itchydefense: {
+		name: "Itchy Defense",
+		shortDesc: "Causes infestation when hit by a contact move.",
+	},
+	frostburn: {
+		name: "Frost Burn",
+		shortDesc: "Triggers 40BP Ice Beam after using a Fire-type move.",
+	},
+	accelerate: {
+		name: "Accelerate",
+		shortDesc: "Moves that need a charge turn are now used instantly.",
+	},
 };
