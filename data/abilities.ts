@@ -2324,8 +2324,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	illuminate: {
 		name: "Illuminate",
-		rating: 0,
-		num: 35,
+		shortDesc: "Grants a 1.2x accuracy boost.",
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy) {
+			if (typeof accuracy !== "number") return;
+			this.debug("compoundeyes - enhancing accuracy");
+			return this.chainModify(1.2);
+		},
+
 	},
 	illusion: {
 		onBeforeSwitchIn(pokemon) {
@@ -11494,5 +11500,215 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
-	
+	mysticblades: {
+		name: "Mystic Blades",
+		shortDesc: "Keen edge moves become special and deal 30% more damage.",
+		onModifyMove(move) {
+			if (move.flags["slicing"]) {
+				move.overrideDefensiveStat = "spd";
+			}
+		},
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["slicing"]) {
+				this.debug("Mystic Blades boost");
+				return this.chainModify(1.3);
+			}
+		},
+	},
+	changeofheart: {
+		name: "Change of Heart",
+		shortDesc: "Uses Heart Swap on switch-in.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("heartswap");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	hightide: {
+		name: "High Tide",
+		shortDesc: "Triggers 50 BP Surf after using a Water-type move.",
+		onAfterMove(source, target, move) {
+			if (this.effectState.additionalAttack || !(move.type === "Water"))
+				return;
+			const moveMutations = {
+				basePower: 50,
+			};
+			this.effectState.additionalAttack = true;
+			this.actions.runAdditionalMove(
+				Dex.moves.get("surf"),
+				source,
+				target,
+				moveMutations
+			);
+			this.effectState.additionalAttack = false;
+		},
+	},
+	seaborne: {
+		name: "Seaborne",
+		shortDesc: "Combines Drizzle & Swift Swim.",
+		onStart(source) {
+			for (const action of this.queue) {
+				if (
+					action.choice === "runPrimal" &&
+					action.pokemon === source &&
+					source.species.id === "kyogre"
+				)
+					return;
+				if (action.choice !== "runSwitch" && action.choice !== "runPrimal")
+					break;
+			}
+			this.field.setWeather("raindance");
+		},
+		onModifySpe(spe, pokemon) {
+			if (
+				["raindance", "primordialsea"].includes(pokemon.effectiveWeather())
+			) {
+				return this.chainModify(2);
+			}
+		},
+	},
+	purifyingwaters: {
+		name: "Purifying Waters",
+		shortDesc: "Combines Hydration & Water Veil.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 3,
+		onResidual(pokemon) {
+			if (
+				pokemon.status &&
+				["raindance", "primordialsea"].includes(pokemon.effectiveWeather())
+			) {
+				this.debug("hydration");
+				this.add("-activate", pokemon, "ability: Hydration");
+				pokemon.cureStatus();
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status === "brn") {
+				this.add("-activate", pokemon, "ability: Water Veil");
+				pokemon.cureStatus();
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (status.id !== "brn") return;
+			if ((effect as Move)?.status) {
+				this.add("-immune", target, "[from] ability: Water Veil");
+			}
+			return false;
+		},
+		isBreakable: true,
+	},
+	heavenasunder: {
+		name: "Heaven Asunder",
+		shortDesc: "Spacial Rend always crits. Ups crit level by +1.",
+		onModifyCritRatio(critRatio, source, target, move) {
+			if (move?.name === "spacialrend") {
+				return critRatio + 12;
+			}
+			else{
+				return critRatio + 1;
+			}
+		},
+	},
+	refridgerate: {
+		name: "Refridgerate",
+		shortDesc: "Normal-type moves become Ice- type moves and get a 1.1x boost.",
+		onModifyMove(move) {
+			if (move.type === "Normal") {
+				move.type = "Ice";
+			}
+		},
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Ice") {
+				this.debug("Refridgerate boost");
+				return this.chainModify(1.1);
+			}
+		},
+	},
+	refridgerator: {
+		name: "Refridgerator",
+		shortDesc: "Combines Refrigerate & Illuminate.",
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy) {
+			if (typeof accuracy !== "number") return;
+			this.debug("compoundeyes - enhancing accuracy");
+			return this.chainModify(1.2);
+		},
+		onModifyMove(move) {
+			if (move.type === "Normal") {
+				move.type = "Ice";
+			}
+		},
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Ice") {
+				this.debug("Refridgerate boost");
+				return this.chainModify(1.1);
+			}
+		},
+	},
+	suppress: {
+		name: "Suppress",
+		shortDesc: "Casts Torment on entry",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("torment");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	yukionna: {
+		name: "Yuki Onna",
+		shortDesc: "Scare + Intimidate. 10% chance to infatuate on hit.",
+		onStart(pokemon) {
+			let activated = false;
+			for (const target of pokemon.adjacentFoes()) {
+				if (!activated) {
+					this.add("-ability", pokemon, "Yuki Onna", "boost");
+					activated = true;
+				}
+				if (target.volatiles["substitute"]) {
+					this.add("-immune", target);
+				} else {
+					this.boost({ spa: -1, atk: -1 }, target, pokemon, null, true);
+				}
+			}
+		},
+		onModifyMove(move) {
+			if (!move?.flags["contact"] || move.target === "self") return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 10,
+				status: "attract",
+				ability: this.dex.abilities.get("yukionna"),
+			});
+		},
+	},
 };

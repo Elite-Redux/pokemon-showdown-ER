@@ -3598,6 +3598,46 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	determination: {
 			name: "Determination",
 			shortDesc: "Ups Special Attack by 50% if suffering."
+		},
+	mysticblades: {
+		name: "Mystic Blades",
+		shortDesc: "Keen edge moves become special and deal 30% more damage."
+	},
+	changeofheart: {
+			name: "Change of Heart",
+			shortDesc: "Uses Heart Swap on switch-in."
+		},
+	hightide: {
+			name: "High Tide",
+			shortDesc: "Triggers 50 BP Surf after using a Water-type move."
+		},
+	seaborne: {
+			name: "Seaborne",
+			shortDesc: "Combines Drizzle & Swift Swim."
+		},
+	purifyingwaters: {
+			name: "Purifying Waters",
+			shortDesc: "Combines Hydration & Water Veil."
+		},
+	heavenasunder: {
+			name: "Heaven Asunder",
+			shortDesc: "Spacial Rend always crits. Ups crit level by +1."
+		},
+	refridgerate: {
+			name: "Refridgerate",
+			shortDesc: "Normal-type moves become Ice-type and get a 1.1x boost."
+		},
+	refridgerator: {
+			name: "Refridgerator",
+			shortDesc: "Combines Refrigerate & Illuminate."
+		},
+	suppress: {
+			name: "Suppress",
+			shortDesc: "Casts Torment on entry."
+		},
+	yukionna: {
+			name: "Yuki Onna",
+			shortDesc: "Scare + Intimidate. 10% chance to infatuate on hit."
 		}
 
 
