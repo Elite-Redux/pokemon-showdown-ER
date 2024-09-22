@@ -3535,4 +3535,33 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 			name: "Two Step",
 			shortDesc: "Triggers 50BP Revelation Dance after using a Dance move."
 		},
+	impulse: {
+		name: "Impulse",
+		shortDesc: "Non-contact moves use the Speed stat for damage."
+		},
+	saltcircle: {
+			name: "Salt Circle",
+			shortDesc: "Prevents opposing Pokémon from fleeing on entry."
+		},
+	airborne: {
+			name: "Airborne",
+			shortDesc: "Boosts own & ally's Flying-type moves by 1.3x."
+		},
+	showdownmode: {
+			name: "Showdown Mode",
+			shortDesc: "Combines Ambush & Violent Rush."
+		},
+	webspinner: {
+			name: "Web Spinner",
+			shortDesc: "Uses String Shot on switch-in."
+		},
+	banshee: {
+			name: "Banshee",
+			shortDesc: "Normal-type moves become Ghost-type and get a 1.2x boost."
+		},
+	chromecoat: {
+			name: "Chrome Coat",
+			shortDesc: "Reduces special damage taken by 40%, but decreases Speed by 10%."
+		}
+
 };

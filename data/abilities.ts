@@ -11241,5 +11241,112 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.effectState.additionalAttack = false;
 		},
 	},
+	impulse: {
+		name: "Impulse",
+		shortDesc: "Non-contact moves use the Speed stat for damage.",
+		onModifyMove(move) {
+			if (!move.flags["contact"]) {
+				move.overrideOffensiveStat = "spe";
+			}
+		}
+	},
+	saltcircle: {
+		name: "Salt Circle",
+		shortDesc: "Prevents opposing pokemon from fleeing on entry.",
+		onStart(pokemon) {
+			for(const target of pokemon.side.foe.active){
+				target.tryTrap(true);
+			}
+		}
+	},
+	airborne: {
+		name: "Airborne",
+		shortDesc: "Boosts own & ally's Flying-type moves by 1.3x.",
+		onAllyBasePowerPriority: 22,
+		onAllyBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Flying") {
+				this.debug("Airborne boost");
+				return this.chainModify(1.3);
+			}
+		},
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Flying") {
+				this.debug("Airborne boost");
+				return this.chainModify(1.3);
+			}
+		},
+	},
+	showdownmode: {
+		name: "Showdown Mode",
+		shortDesc: "Combines Ambush & Violent Rush.",
+		onModifyMove(move, attacker, defender) {
+			if (defender && !defender.activeTurns) {
+				move.willCrit = true;
+			}
+		},
+		onModifyAtk(atk, source, target, move) {
+			if (source.activeMoveActions === 0) {
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpe(spe, source) {
+			if (source.activeMoveActions === 0) {
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	webspinner: {
+		name: "Web Spinner",
+		shortDesc: "Uses String Shot on switch-in.",
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("stringshot");
+			let targetLoc = 4;
+			let target = pokemon.side.foes().forEach((a) => {
+				if (pokemon.getLocOf(a) < targetLoc)
+					targetLoc = pokemon.getLocOf(a);
+			});
+			if (targetLoc < 4 && targetLoc > 0) {
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					targetLoc,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			}
+			pokemon.activeMoveActions = 0;
+		},
+	},
+	banshee: {
+		name: "Banshee",
+		shortDesc: "Normal-type moves become Ghost- type moves and get a 1.2x boost.",
+		onModifyMove(move) {
+			if (move.type === "Normal") {
+				move.type = "Ghost";
+			}
+		},
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.type === "Ghost") {
+				this.debug("Banshee boost");
+				return this.chainModify(1.2);
+			}
+		},
+	},
+	chromecoat: {
+		name: "Chrome Coat",
+		shortDesc: "Reduces special damage taken by 40%, but decreases Speed by 10%.",
+		onModifyDamage(damage, source, target, move) {
+			if (move.category === "Special") {
+				return this.chainModify(0.6);
+			}
+		},
+		onModifySpe(spe, pokemon) {
+			return this.chainModify(0.9);
+		},
+	},
 	
+
+
 };
