@@ -79,6 +79,9 @@ export interface MoveFlags {
 	bone?: 1; //Affected by Bone Based
 	horn?: 1; //Affected by Mighty Horn and Hardened Sheath
 	counter?: 1; //Indicates move is result of an ability.
+	hammer?: 1; //Hammer based move
+	slam?: 1; //Slam based move
+	arrow?: 1; //Arrow based move
 }
 
 export interface HitEffect {

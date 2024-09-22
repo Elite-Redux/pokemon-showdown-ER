@@ -12168,5 +12168,38 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			return false;
 		},
 	},
+	inverseroom: {
+		name: "Inverse Room",
+		shortDesc: "Sets up the Inverse field condition for 3 turns upon entry.",
+		onStart(source) {
+			this.field.addPseudoWeather("inverseroom", source);
+		},
+	},
+	superslammer: {
+		name: "Super Slammer",
+		shortDesc: "Boosts the power of hammer and slamming moves by 1.3x.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["hammer"] || move.flags["slam"]) {
+				this.debug("Super Slammer boost");
+				return this.chainModify(1.3);
+			}
+		},
+	},
+	coldplasma: {
+		name: "Cold Plasma",
+		shortDesc: "Electric type moves now inflict burn instead of paralysis.",
 
+	},
+	archer: {
+		name: "Archer",
+		shortDesc: "Boosts the power of arrow moves by 1.3x.",
+		onBasePowerPriority: 22,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags["arrow"]) {
+				this.debug("Archer boost");
+				return this.chainModify(1.3);
+			}
+		},
+	},
 };
