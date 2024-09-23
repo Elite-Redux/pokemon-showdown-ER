@@ -12940,4 +12940,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
+	momentum: {
+		name: "Momentum",
+		shortDesc: "Contact moves use the Speed stat for damage calculation.",
+		onModifyMove(move) {
+			if (move.flags["contact"]) {
+				move.overrideOffensiveStat = "spe";
+			}
+		},
+	},
 };
