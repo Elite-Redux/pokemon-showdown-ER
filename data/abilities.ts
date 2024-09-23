@@ -1,6 +1,7 @@
 import { MoveTarget } from "../sim/dex-moves";
 import { toID } from "../sim/dex-data";
 import { Condition } from "../sim/dex-conditions";
+import { Side } from '../sim/side';
 /*
 
 Ratings and how they work:
@@ -12699,5 +12700,131 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
-	
+	wingedking: {
+		name: "Winged King",
+		shortDesc: "Ups “supereffective” by 33%.",
+		onEffectiveness(typeMod, target, type, move) {
+			if (typeMod > 2) {
+				return typeMod + 0.33;
+			}
+		},
+	},
+	sunbasking: {
+		name: "Sun Basking",
+		shortDesc: "Immune to status conditions if sun is active.",
+		onUpdate(pokemon) {
+			if (pokemon.status) {
+				this.add("-activate", pokemon, "ability: Sun Basking");
+				pokemon.cureStatus();
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (!status) return;
+			if ((effect as Move)?.status) {
+				this.add("-immune", target, "[from] ability: Sun Basking");
+			}
+			return false;
+		},
+	},
+	gallantry: {
+		name: "Gallantry",
+		shortDesc: "Gets no damage for first hit",
+		onDamage(damage, target, source, effect) {
+			if (effect.effectType === "Move") {
+				if((!target.gallantyActivated)){
+					target.gallantyActivated = true;
+					return 0;
+				}
+			}
+		},
+	},
+	thickskin: {
+		name: "Thick Skin",
+		shortDesc: "Takes 25% less damage from Super-effective moves.",
+		onSourceModifyDamage(damage, source, target, move) {
+			if (this.dex.getEffectiveness(move.type, target) > 1){
+				return this.chainModify(0.75);
+			}
+		}
+	},
+	sharingiscaring: {
+		name: "Sharing is Caring",
+		shortDesc: "Stat changes are shared between all battlers.",
+		onAfterBoost(boost, target, source, effect) {
+			for (const pokemon of source.side.active) {
+				if (pokemon !== source) {
+					this.boost(boost, pokemon, source, effect, false, true);
+				}
+			}
+			for (const pokemon of target.side.active) {
+				if (pokemon !== source) {
+					this.boost(boost, pokemon, source, effect, false, true);
+				}
+			}
+		},
+	},
+	sharpedges: {
+		name: "Sharp Edges",
+		shortDesc: "1/6 HP damage when touched.",
+		onDamagingHitOrder: 1,
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target, true)) {
+				this.damage(source.baseMaxhp / 6, source, target);
+			}
+		},
+	},
+	rapidresponse: {
+		name: "Rapid Response",
+		shortDesc: "Boosts Speed by 50% + SpAtk by 20% on first turn.",
+		onModifySpA(atk, source, target, move) {
+			if (source.activeMoveActions === 0) {
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpe(spe, source) {
+			if (source.activeMoveActions === 0) {
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	watchyourstep: {
+		name: "Watch Your Step",
+		shortDesc: "Spreads two layers of Spikes on switch-in.",
+		onStart(pokemon) {
+			const side = pokemon.side.foe;
+			const spikes = side.sideConditions["spikes"];
+			if ((!spikes || spikes.layers < 3)) {
+				this.add("-activate", pokemon, "ability: Watch your Step");
+				side.addSideCondition("spikes", pokemon);
+			}
+			if ((!spikes || spikes.layers < 3)) {
+				this.add("-activate", pokemon, "ability: Watch your Step");
+				side.addSideCondition("spikes", pokemon);
+			}
+		},
+	},
+	firescales: {
+		name: "Fire Scales",
+		shortDesc: "Halves damage taken by Special moves. Does NOT double Sp.Def.",
+		onModifyDamage(damage, source, target, move) {
+			if (move.category === "Special") {
+				return this.chainModify(0.5);
+			}
+		},
+	},
+	illwill: {
+		name: "Ill Will",
+		shortDesc: "Deletes the PP of the move that faints this Pokemon.",
+		onFaint(target, source, effect) {
+			if (effect.effectType === "Move") {
+				this.add("-ability", target, "Ill Will");
+				this.add("-message", target.name + " deleted the PP of " + effect.name + "!");
+				target.side.foe.active[0].moveSlots.forEach((slot) => {
+					if (slot.id === effect.id) {
+						slot.pp = 0;
+					}
+				});
+			}
+		},
+	},
 };

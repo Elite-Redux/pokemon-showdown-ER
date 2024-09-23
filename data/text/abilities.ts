@@ -3835,5 +3835,46 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 			name: "Iron Serpent",
 			shortDesc: "Ups “supereffective” by 33%."
 		},
+	wingedking: {
+		name: "Winged King",
+		shortDesc: "Ups “supereffective” by 33%."
+	},
+	sunbasking: {
+			name: "Sun Basking",
+			shortDesc: "Immune to status conditions if sun is active."
+		},
+	gallantry: {
+			name: "Gallantry",
+			shortDesc: "Gets no damage for first hit."
+		},
+	thickskin: {
+			name: "Thick Skin",
+			shortDesc: "Takes 25% less damage from super-effective moves."
+		},
+	sharingiscaring: {
+			name: "Sharing is Caring",
+			shortDesc: "Stat changes are shared between all battlers."
+		},
+	sharpedges: {
+			name: "Sharp Edges",
+			shortDesc: "1/6 HP damage when touched."
+		},
+	rapidresponse: {
+			name: "Rapid Response",
+			shortDesc: "Boosts Speed by 50% and Sp. Atk by 20% on the first turn."
+		},
+	watchyourstep: {
+			name: "Watch Your Step",
+			shortDesc: "Spreads two layers of Spikes on switch-in."
+		},
+	firescales: {
+			name: "Fire Scales",
+			shortDesc: "Halves damage taken from Special moves."
+		},
+	illwill: {
+			name: "Ill Will",
+			shortDesc: "Deletes the PP of the move that faints this Pokémon."
+		}
+
 
 };
