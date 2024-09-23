@@ -1,7 +1,7 @@
 import { MoveTarget } from "../sim/dex-moves";
 import { toID } from "../sim/dex-data";
 import { Condition } from "../sim/dex-conditions";
-import { Side } from '../sim/side';
+import { Side } from "../sim/side";
 /*
 
 Ratings and how they work:
@@ -8349,7 +8349,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 				if (move.secondary) {
 					this.debug("doubling secondary chance");
-					if (secondary.chance) secondary.chance *= 2;
+					// TODO: Fixed an invalid reference bug here.
+					// if (secondary.chance) secondary.chance *= 2;
+					if (move.secondary.chance) move.secondary.chance *= 2;
 				}
 				if (move.self?.chance) move.self.chance *= 2;
 			}
@@ -10928,7 +10930,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					if (secondary.boosts) {
 						let i: BoostID;
 						for (i in secondary.boosts) {
-							if (secondary.boosts[i] && secondary.boosts[i] < 0) {
+							if (secondary.boosts[i] && secondary.boosts[i]! < 0) {
 								return this.chainModify(2.0);
 							}
 						}
@@ -10941,7 +10943,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					for (i in move.secondary.boosts) {
 						if (
 							move.secondary.boosts[i] &&
-							move.secondary.boosts[i] < 0
+							move.secondary.boosts[i]! < 0
 						) {
 							return this.chainModify(2.0);
 						}
@@ -11040,6 +11042,29 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	permanence: {
 		name: "Permanence",
 		shortDesc: "Foes can't heal in any way.",
+		onStart(source) {
+			for (const foe of source.foes()) {
+				foe.addVolatile(
+					"healingblocked",
+					this.effectState.target,
+					Dex.abilities.get("permanence"),
+					"healingblocked"
+				);
+			}
+		},
+		onFoeSwitchIn(foe) {
+			foe.addVolatile(
+				"healingblocked",
+				this.effectState.target,
+				Dex.abilities.get("permanence"),
+				"healingblocked"
+			);
+		},
+		onEnd(source) {
+			for (const foe of source.foes()) {
+				foe.removeVolatile("healingblocked");
+			}
+		},
 	},
 	hubris: {
 		name: "Hubris",
@@ -12193,6 +12218,26 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	coldplasma: {
 		name: "Cold Plasma",
 		shortDesc: "Electric type moves now inflict burn instead of paralysis.",
+		onModifyMove(move, source, target) {
+			if (move.type !== "Electric") return;
+			if (
+				move.secondary &&
+				move.secondary.status &&
+				move.secondary.status == "par"
+			) {
+				// Replace individual paralyze effect chances with brn.
+				move.secondary.status = "brn";
+			}
+			if (move.secondaries) {
+				for (let i = 0; i < move.secondaries.length; i++) {
+					const secondary = move.secondaries[i];
+					// Ignore any secondaries that aren't paralysis chance.
+					if (!secondary.status || secondary.status != "par") return;
+					// Replace the paralysis with burn.
+					move.secondaries[i].status = "brn";
+				}
+			}
+		},
 	},
 	archer: {
 		name: "Archer",
@@ -12350,11 +12395,74 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			});
 		},
 	},
+	aftershock: {
+		name: "Aftershock",
+		shortDesc: "Triggers Magnitude 4-7 after using a damaging move.",
+		onAfterMove(source, target, move) {
+			this.add("-activate", source, "ability: Aftershock");
+			const aftershock = Dex.moves.get("magnitude");
+			/// Magnitude 4-7 is 0->65.
+			/// Defined in moves.ts onModifyMove.
+			const i = this.random(65);
+
+			if (i < 5) {
+				move.magnitude = 4;
+				move.basePower = 10;
+			} else if (i < 15) {
+				move.magnitude = 5;
+				move.basePower = 30;
+			} else if (i < 35) {
+				move.magnitude = 6;
+				move.basePower = 50;
+			} else if (i < 65) {
+				move.magnitude = 7;
+				move.basePower = 70;
+			}
+
+			this.actions.useMove(aftershock, source, target);
+		},
+	},
+	retriever: {
+		name: "Retriever",
+		shortDesc: "Retrieves item on switch-out",
+
+		onSwitchOut(pokemon) {
+			// TODO: Should retriever support knocked off items?
+			if (!pokemon.hasAbility("Retriever")) return;
+			if (!pokemon.lastItem) return;
+			pokemon.setItem(pokemon.lastItem);
+			pokemon.lastItem = "";
+
+			this.add(
+				"-item",
+				pokemon,
+				pokemon.getItem(),
+				"[from] ability: Retriever"
+			);
+		},
+	},
+	/// No business logic required here.
+	/// Check the partiallytrapped condition in conditions.ts.
+	grappler: {
+		name: "Grappler",
+		shortDesc: "Trapping moves last 6 turns. Trapping deals 1/6 HP.",
+	},
+	parroting: {
+		name: "Parroting",
+		shortDesc: "Copies sound moves used by others. Immune to sound.",
+		onAnyAfterMove(source, target, move) {
+			/// Don't activate on ourself.
+			if (source === this.effectState.target) return;
+			if (!move.flags.sound) return;
+			this.add("-activate", this.effectState.target, "ability: Parroting");
+			this.actions.useMove(move, this.effectState.target, target);
+		},
+	},
 	terashell: {
 		name: "Tera Shell",
 		shortDesc: "All hits will be not very effective while at full HP.",
 		onEffectiveness(typeMod, target, type, move) {
-			if(target){
+			if (target) {
 				if (target.hp >= target.maxhp) {
 					if (typeMod > 0) return 0.5;
 				}
@@ -12392,7 +12500,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	contempt: {
 		name: "Contempt",
-		shortDesc: "Ignores opposing stat changes. Boosts Attack when stat lowered.",
+		shortDesc:
+			"Ignores opposing stat changes. Boosts Attack when stat lowered.",
 		onAnyModifyBoost(boosts, pokemon) {
 			const unawareUser = this.effectState.target;
 			if (unawareUser === pokemon) return;
@@ -12446,7 +12555,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onEffectiveness(typeMod, target, type, move) {
 			if (this.field.isWeather("sandstorm") && type === "Ground") {
-				if(target){
+				if (target) {
 					if (target.hasType("Flying")) {
 						return 1;
 					}
@@ -12469,7 +12578,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Lawnmower",
 		shortDesc: "Removes terrain on switch-in. Stat up if terrain removed.",
 		onStart(source) {
-			if(this.field.terrain){
+			if (this.field.terrain) {
 				this.field.clearTerrain();
 				this.boost({ atk: 1, spa: 1, def: 1, spd: 1, spe: 1 }, source);
 			}
@@ -12523,12 +12632,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			let foes = pokemon.side.foes();
 			//grab the highest attack and defense stat
 			for (const foe of foes) {
-				if(foe.getStat("atk") > foe.getStat("spa")){
+				if (foe.getStat("atk") > foe.getStat("spa")) {
 					this.boost({ atk: -1 }, foe, pokemon);
 				} else {
 					this.boost({ spa: -1 }, foe, pokemon);
 				}
-				if(foe.getStat("def") > foe.getStat("spd")){
+				if (foe.getStat("def") > foe.getStat("spd")) {
 					this.boost({ def: -1 }, foe, pokemon);
 				} else {
 					this.boost({ spd: -1 }, foe, pokemon);
@@ -12625,7 +12734,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 
 			let allyCount = 0;
 			for (const ally of source.side.pokemon) {
-				if(ally !== source){
+				if (ally !== source) {
 					if (ally.hp > 0) {
 						allyCount++;
 					}
@@ -12731,7 +12840,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Gets no damage for first hit",
 		onDamage(damage, target, source, effect) {
 			if (effect.effectType === "Move") {
-				if((!target.gallantyActivated)){
+				if (!target.gallantyActivated) {
 					target.gallantyActivated = true;
 					return 0;
 				}
@@ -12742,10 +12851,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Thick Skin",
 		shortDesc: "Takes 25% less damage from Super-effective moves.",
 		onSourceModifyDamage(damage, source, target, move) {
-			if (this.dex.getEffectiveness(move.type, target) > 1){
+			if (this.dex.getEffectiveness(move.type, target) > 1) {
 				return this.chainModify(0.75);
 			}
-		}
+		},
 	},
 	sharingiscaring: {
 		name: "Sharing is Caring",
@@ -12793,11 +12902,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const side = pokemon.side.foe;
 			const spikes = side.sideConditions["spikes"];
-			if ((!spikes || spikes.layers < 3)) {
+			if (!spikes || spikes.layers < 3) {
 				this.add("-activate", pokemon, "ability: Watch your Step");
 				side.addSideCondition("spikes", pokemon);
 			}
-			if ((!spikes || spikes.layers < 3)) {
+			if (!spikes || spikes.layers < 3) {
 				this.add("-activate", pokemon, "ability: Watch your Step");
 				side.addSideCondition("spikes", pokemon);
 			}
@@ -12805,7 +12914,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	firescales: {
 		name: "Fire Scales",
-		shortDesc: "Halves damage taken by Special moves. Does NOT double Sp.Def.",
+		shortDesc:
+			"Halves damage taken by Special moves. Does NOT double Sp.Def.",
 		onModifyDamage(damage, source, target, move) {
 			if (move.category === "Special") {
 				return this.chainModify(0.5);
@@ -12818,7 +12928,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onFaint(target, source, effect) {
 			if (effect.effectType === "Move") {
 				this.add("-ability", target, "Ill Will");
-				this.add("-message", target.name + " deleted the PP of " + effect.name + "!");
+				this.add(
+					"-message",
+					target.name + " deleted the PP of " + effect.name + "!"
+				);
 				target.side.foe.active[0].moveSlots.forEach((slot) => {
 					if (slot.id === effect.id) {
 						slot.pp = 0;

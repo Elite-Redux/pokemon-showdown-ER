@@ -23621,7 +23621,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	// },
 	meganiummega: {
 		abilities: {
-			"0": "Misty Surge",
+			"0": "Permanence",
 			I1: "Forest Rage",
 			I2: "Absorbant",
 			I3: "Triage",
