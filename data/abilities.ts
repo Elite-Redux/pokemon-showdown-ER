@@ -5115,9 +5115,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onHit(target, source, move) {
 			if (!target.hp) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
-				this.boost({ atk: 12 }, target, target);
+				this.boost({ def: 12 }, target, target);
 			} else if (move?.effectType === "Move") {
-				this.boost({ atk: 1 }, target, target);
+				this.boost({ def: 1 }, target, target);
 			}
 		},
 		name: "Stamina",
