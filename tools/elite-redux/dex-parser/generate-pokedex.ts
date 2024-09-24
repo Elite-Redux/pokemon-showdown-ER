@@ -1,5 +1,5 @@
 import { DexParser } from "./dex-parser";
-import { TypescriptFileGenerator, writeFileData } from "./generator-utils";
+import { writeFileData } from "./generator-utils";
 
 const config = {
 	outputFile: "./pokedex-output.ts",
