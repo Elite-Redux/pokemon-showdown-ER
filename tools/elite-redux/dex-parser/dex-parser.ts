@@ -150,15 +150,19 @@ export class DexParser {
 			this.learnsets[id] = { learnset: learnset };
 			this.pokedex[id] = {
 				name: pokemon.name.replace(" ", "-"),
+				num: pokemon.id,
 				types: pokemon.stats.types.map(
 					(index) => this.gameData!.typeT[index]
 				),
-				num: pokemon.id,
 				abilities: this.getAbilityData(pokemon),
 				baseStats: this.getBaseStats(pokemon),
 				eggGroups: this.getEggGroups(pokemon),
 				// TODO: Can we prefill this value?
-				weightkg: this.showdownData.Pokedex[id]?.weightkg,
+				weightkg:
+					this.showdownData.Pokedex[id].weightkg !== null &&
+					this.showdownData.Pokedex[id].weightkg !== undefined
+						? this.showdownData.Pokedex[id].weightkg
+						: 0,
 				heightm: this.showdownData.Pokedex[id]?.heightm,
 				color: this.showdownData.Pokedex[id]?.color,
 				...this.getEvolutionData(pokemon),
@@ -441,16 +445,22 @@ export class DexParser {
 			.filter((ability) => ability.name != "-------")
 			.map(this.getAbilityId);
 		return {
-			0: dexAbilities[0],
-			1: dexAbilities.length >= 2 ? dexAbilities[1] : undefined,
-			H: dexAbilities.length >= 3 ? dexAbilities[2] : undefined,
-			S: dexAbilities.length >= 4 ? dexAbilities[3] : undefined,
-			I1: dexInnates.length >= 1 ? dexInnates[0] : undefined,
-			I2: dexInnates.length >= 2 ? dexInnates[1] : undefined,
-			I3: dexInnates.length >= 3 ? dexInnates[2] : undefined,
+			0: this.formatAbility(dexAbilities[0]),
+			1: dexAbilities.length >= 2 ? this.formatAbility(dexAbilities[1]) : undefined,
+			H: dexAbilities.length >= 3 ? this.formatAbility(dexAbilities[2]) : undefined,
+			S: dexAbilities.length >= 4 ? this.formatAbility(dexAbilities[3]) : undefined,
+			I1: dexInnates.length >= 1 ? this.formatAbility(dexInnates[0]) : undefined,
+			I2: dexInnates.length >= 2 ? this.formatAbility(dexInnates[1]) : undefined,
+			I3: dexInnates.length >= 3 ? this.formatAbility(dexInnates[2]) : undefined,
 		};
 	}
 
+	private formatAbility(ability: string): string {
+		return ability
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+	}
 	/**
 	 * Get the showdown base stats from an online dex pokemon.
 	 * @param pokemon The dex pokemon.
@@ -501,7 +511,7 @@ export class DexParser {
 			.filter((spec) => !spec.startsWith("ITEM_"))
 			.filter((level) => level != null);
 		let data = {
-			evoLevel: evoLevels.length > 0 ? parseInt(evoLevels[0]) : undefined,
+			evoLevel: evoLevels.length > 0 ? parseInt(evoLevels[0]) : 0,
 			evoItem: evoItems.length > 0 ? evoItems[0] : undefined,
 
 			evos: pokemon.evolutions
