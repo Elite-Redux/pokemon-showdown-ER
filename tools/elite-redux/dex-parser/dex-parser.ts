@@ -16,6 +16,7 @@ import { ModdedLearnsetData } from "../../../sim/dex-species";
 import { SpeciesData } from "../../../sim/dex-species";
 import { MoveTarget } from "../../../sim/dex-moves";
 import { DexTableData, ModdedDex } from "../../../sim/dex";
+import { toID } from "../../../sim/dex-data";
 
 type StatIDExceptHP = "atk" | "def" | "spa" | "spd" | "spe";
 type StatID = "hp" | StatIDExceptHP;
@@ -96,7 +97,7 @@ export class DexParser {
 		this.showdownData = dex.data;
 		this.config = config ?? {
 			dexDataUrl:
-				"https://forwardfeed.github.io/ER-nextdex/static/js/data/gameDataVBeta2.1.json",
+				"https://forwardfeed.github.io/ER-nextdex/static/js/data/gameDataV2.1.json",
 			// TODO: Is this still valid for ER?
 			learnsetGenPrefix: "7",
 		};
@@ -144,11 +145,11 @@ export class DexParser {
 	private parsePokemon() {
 		for (const pokemon of this.gameData!.species) {
 			const learnset = this.generateLearnset(pokemon);
-			const id = pokemon.name.toLowerCase();
-			if (id == "??????????") continue;
+			if (pokemon.name == "??????????") continue;
+			const id = toID(pokemon.name);
 			this.learnsets[id] = { learnset: learnset };
 			this.pokedex[id] = {
-				name: pokemon.name,
+				name: pokemon.name.replace(" ", "-"),
 				types: pokemon.stats.types.map(
 					(index) => this.gameData!.typeT[index]
 				),
@@ -207,6 +208,14 @@ export class DexParser {
 				return "Special";
 			case "STATUS":
 				return "Status";
+			case "USE_HIGHEST_OFFENSE":
+			case "USE_HIGHEST_DAMAGE":
+				/// Leave them as special. The move flag highestOffense will denote this.
+				return "Special";
+			case "HITS_DEF":
+			case "HITS_SPDEF":
+				/// We will set a move flag for this as well.
+				return "Special";
 			default:
 				throw new Error(
 					`FATAL: Unrecognized move split value ${category} for ${move.name}`
@@ -259,6 +268,20 @@ export class DexParser {
 		);
 	}
 
+	private getDefensiveStatOveride(
+		move: compactMove
+	): StatIDExceptHP | undefined {
+		const category = this.gameData!.splitT[move.split];
+		switch (category) {
+			case "HITS_SPDEF":
+				return "spd";
+			case "HITS_DEF":
+				return "def";
+		}
+
+		return undefined;
+	}
+
 	/**
 	 * Parse the move flags from the ER dex data structure.
 	 * Returns a partial of move data object because not all move flag related fields are stored on the move flags object.
@@ -278,7 +301,10 @@ export class DexParser {
 		const flagData = move.flags.map((flag) =>
 			this.gameData!.flagsT[flag].toLowerCase()
 		);
+		const category = this.gameData!.splitT[move.split];
+
 		return {
+			overrideDefensiveStat: this.getDefensiveStatOveride(move),
 			breaksProtect: flagData.includes("protect affected"),
 			critRatio: flagData.includes("high crit") ? 2 : undefined,
 			willCrit: flagData.includes("always_crit") ? true : undefined,
@@ -323,6 +349,8 @@ export class DexParser {
 				bone: flagData.includes("bone based") ? 1 : undefined,
 				defrost: flagData.includes("thaw user") ? 1 : undefined,
 				bypasssub: flagData.includes("hit in substitute") ? 1 : undefined,
+				highestOffense: category == "USE_HIGHEST_OFFENSE" ? 1 : undefined,
+				highestDamage: category == "USE_HIGHEST_DAMAGE" ? 1 : undefined,
 			},
 		};
 	}
@@ -333,7 +361,7 @@ export class DexParser {
 	 * @returns The proper move id.
 	 */
 	private getShowdownMoveId(move: compactMove): string {
-		return move.NAME.toLowerCase().replace("move_", "").replace("_", "");
+		return toID(move.NAME.replace("MOVE_", ""));
 	}
 
 	/**

@@ -82,6 +82,8 @@ export interface MoveFlags {
 	hammer?: 1; //Hammer based move
 	slam?: 1; //Slam based move
 	arrow?: 1; //Arrow based move
+	highestOffense?: 1; //Move uses highest offensive stat for damage calc (ex tri attack)
+	highestDamage?: 1; //Move uses special or physical damage, whichever is more effective (ex shell side arm)
 }
 
 export interface HitEffect {
