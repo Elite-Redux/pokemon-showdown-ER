@@ -18454,18 +18454,6 @@ export const Pokedex: { [speciesid: string]: SpeciesData } = {
 		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
-	dewleon: {
-		num: 1011,
-		name: "Dewleon",
-		types: ["Ice", "Normal"],
-		baseStats: { hp: 90, atk: 90, def: 70, spa: 95, spd: 120, spe: 95 },
-		abilities: { 0: "Prismatic Fur" },
-		heightm: 1.7,
-		weightkg: 120,
-		color: "White",
-		eggGroups: ["Water 1", "Field"],
-		gen: 8,
-	},
 	missingno: {
 		num: 0,
 		name: "MissingNo.",
