@@ -731,7 +731,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 20,
 		evos: ["Raticate"],
 	},
-	rattataalolan: {
+	rattataalola: {
 		name: "Rattata-Alolan",
 		num: 1551,
 		types: ["Dark", "Normal"],
@@ -784,7 +784,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Rattata",
 	},
-	raticatealolan: {
+	raticatealola: {
 		name: "Raticate-Alolan",
 		num: 1552,
 		types: ["Dark", "Normal"],
@@ -976,7 +976,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Pikachu",
 	},
-	raichualolan: {
+	raichualola: {
 		name: "Raichu-Alolan",
 		num: 1553,
 		types: ["Electric", "Psychic"],
@@ -1029,7 +1029,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 22,
 		evos: ["Sandslash"],
 	},
-	sandshrewalolan: {
+	sandshrewalola: {
 		name: "Sandshrew-Alolan",
 		num: 1554,
 		types: ["Ice", "Steel"],
@@ -1111,7 +1111,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Sandslash",
 	},
-	sandslashalolan: {
+	sandslashalola: {
 		name: "Sandslash-Alolan",
 		num: 1555,
 		types: ["Ice", "Steel"],
@@ -1415,7 +1415,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 20,
 		evos: ["Ninetales"],
 	},
-	vulpixalolan: {
+	vulpixalola: {
 		name: "Vulpix-Alolan",
 		num: 1556,
 		types: ["Ice", "Ice"],
@@ -1468,7 +1468,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Vulpix",
 	},
-	ninetalesalolan: {
+	ninetalesalola: {
 		name: "Ninetales-Alolan",
 		num: 1557,
 		types: ["Ice", "Fairy"],
@@ -1826,7 +1826,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 26,
 		evos: ["Dugtrio"],
 	},
-	diglettalolan: {
+	diglettalola: {
 		name: "Diglett-Alolan",
 		num: 1558,
 		types: ["Ground", "Steel"],
@@ -1879,7 +1879,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Diglett",
 	},
-	dugtrioalolan: {
+	dugtrioalola: {
 		name: "Dugtrio-Alolan",
 		num: 1559,
 		types: ["Ground", "Steel"],
@@ -1932,7 +1932,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 28,
 		evos: ["Persian"],
 	},
-	meowthalolan: {
+	meowthalola: {
 		name: "Meowth-Alolan",
 		num: 1560,
 		types: ["Dark", "Dark"],
@@ -1957,7 +1957,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 28,
 		evos: ["Persian Alolan"],
 	},
-	meowthgalarian: {
+	meowthgalar: {
 		name: "Meowth-Galarian",
 		num: 1569,
 		types: ["Steel", "Steel"],
@@ -2038,7 +2038,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Meowth",
 	},
-	persianalolan: {
+	persianalola: {
 		name: "Persian-Alolan",
 		num: 1561,
 		types: ["Dark", "Dark"],
@@ -2701,7 +2701,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 23,
 		evos: ["Graveler"],
 	},
-	geodudealolan: {
+	geodudealola: {
 		name: "Geodude-Alolan",
 		num: 1562,
 		types: ["Rock", "Electric"],
@@ -2754,7 +2754,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: ["Golem"],
 		prevo: "Geodude",
 	},
-	graveleralolan: {
+	graveleralola: {
 		name: "Graveler-Alolan",
 		num: 1563,
 		types: ["Rock", "Electric"],
@@ -2808,7 +2808,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Graveler",
 	},
-	golemalolan: {
+	golemalola: {
 		name: "Golem-Alolan",
 		num: 1564,
 		types: ["Rock", "Electric"],
@@ -2889,7 +2889,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Ponyta",
 	},
-	ponytagalarian: {
+	ponytagalar: {
 		name: "Ponyta-Galarian",
 		num: 1570,
 		types: ["Fire", "Fairy"],
@@ -2914,7 +2914,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 36,
 		evos: ["Rapidash Galarian"],
 	},
-	rapidashgalarian: {
+	rapidashgalar: {
 		name: "Rapidash-Galarian",
 		num: 1571,
 		types: ["Fire", "Fairy"],
@@ -2967,7 +2967,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 36,
 		evos: ["Slowbro", "Slowking"],
 	},
-	slowpokegalarian: {
+	slowpokegalar: {
 		name: "Slowpoke-Galarian",
 		num: 1572,
 		types: ["Psychic", "Psychic"],
@@ -3021,7 +3021,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: ["Slowbro Mega"],
 		prevo: "Slowpoke",
 	},
-	slowbrogalarian: {
+	slowbrogalar: {
 		name: "Slowbro-Galarian",
 		num: 1573,
 		types: ["Poison", "Psychic"],
@@ -3157,7 +3157,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	farfetchdgalarian: {
+	farfetchdgalar: {
 		name: "Farfetchd-Galarian",
 		num: 1574,
 		types: ["Fighting", "Fighting"],
@@ -3376,7 +3376,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 36,
 		evos: ["Muk"],
 	},
-	grimeralolan: {
+	grimeralola: {
 		name: "Grimer-Alolan",
 		num: 1565,
 		types: ["Poison", "Dark"],
@@ -3384,7 +3384,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Regenerator",
 			"1": "Poison Touch",
 			H: "Self Sufficient",
-			I1: "Power Of Alchemy",
+			I1: "Power of Alchemy",
 			I2: "Liquified",
 			I3: "Corrosion",
 		},
@@ -3429,7 +3429,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Grimer",
 	},
-	mukalolan: {
+	mukalola: {
 		name: "Muk-Alolan",
 		num: 1566,
 		types: ["Poison", "Dark"],
@@ -3437,7 +3437,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Regenerator",
 			"1": "Poison Touch",
 			H: "Self Sufficient",
-			I1: "Power Of Alchemy",
+			I1: "Power of Alchemy",
 			I2: "Liquified",
 			I3: "Corrosion",
 		},
@@ -3898,7 +3898,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Exeggcute",
 	},
-	exeggutoralolan: {
+	exeggutoralola: {
 		name: "Exeggutor-Alolan",
 		num: 1567,
 		types: ["Grass", "Dragon"],
@@ -3979,7 +3979,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Cubone",
 	},
-	marowakalolan: {
+	marowakalola: {
 		name: "Marowak-Alolan",
 		num: 1568,
 		types: ["Fire", "Ghost"],
@@ -4904,7 +4904,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Primal Maw",
 			I1: "Swift Swim",
 			I2: "Shell Armor",
-			I3: "Jaws Of Carnage",
+			I3: "Jaws of Carnage",
 		},
 		baseStats: {
 			hp: 130,
@@ -9387,7 +9387,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Zigzagoon",
 	},
-	zigzagoongalarian: {
+	zigzagoongalar: {
 		name: "Zigzagoon-Galarian",
 		num: 1582,
 		types: ["Dark", "Normal"],
@@ -9412,7 +9412,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 20,
 		evos: ["Linoone Galarian"],
 	},
-	linoonegalarian: {
+	linoonegalar: {
 		name: "Linoone-Galarian",
 		num: 1583,
 		types: ["Dark", "Normal"],
@@ -11278,7 +11278,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Speed Boost",
 			I1: "Strong Jaw",
 			I2: "Hyper Aggressive",
-			I3: "Jaws Of Carnage",
+			I3: "Jaws of Carnage",
 		},
 		baseStats: {
 			hp: 70,
@@ -14376,7 +14376,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Shocking Jaws",
 			"1": "Shocking Jaws",
 			H: "Shocking Jaws",
-			I1: "Jaws Of Carnage",
+			I1: "Jaws of Carnage",
 			I2: "Fae Hunter",
 			I3: "Merciless",
 		},
@@ -17185,7 +17185,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Seaborne",
 			"1": "Power Spot",
 			H: "Healer",
-			I1: "Change Of Heart",
+			I1: "Change of Heart",
 			I2: "Parental Bond",
 			I3: "High Tide",
 		},
@@ -19492,7 +19492,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Dune Terror",
 			I1: "Metallic",
 			I2: "Moxie",
-			I3: "Jaws Of Carnage",
+			I3: "Jaws of Carnage",
 		},
 		baseStats: {
 			hp: 95,
@@ -19590,7 +19590,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	darumakagalarian: {
+	darumakagalar: {
 		name: "Darumaka-Galarian",
 		num: 1584,
 		types: ["Ice", "Ice"],
@@ -19615,7 +19615,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 35,
 		evos: ["Darmanitan Galarian"],
 	},
-	darmanitangalarian: {
+	darmanitangalar: {
 		name: "Darmanitan-Galarian",
 		num: 1585,
 		types: ["Ice", "Ice"],
@@ -19641,7 +19641,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Darumaka Galarian",
 	},
-	darmanitanzenmodegalarian: {
+	darmanitanzenmodegalar: {
 		name: "Darmanitan-Zen Mode Galarian",
 		num: 1669,
 		types: ["Ice", "Fire"],
@@ -19886,7 +19886,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Yamask",
 	},
-	yamaskgalarian: {
+	yamaskgalar: {
 		name: "Yamask-Galarian",
 		num: 1586,
 		types: ["Ground", "Ghost"],
@@ -28990,7 +28990,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Grip Pincer",
 			I1: "Beast Boost",
 			I2: "Thick Fat",
-			I3: "Jaws Of Carnage",
+			I3: "Jaws of Carnage",
 		},
 		baseStats: {
 			hp: 223,
@@ -34622,7 +34622,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Friend Guard",
 			I1: "Guard Dog",
 			I2: "Strong Jaw",
-			I3: "Jaws Of Carnage",
+			I3: "Jaws of Carnage",
 		},
 		baseStats: {
 			hp: 60,
@@ -34649,7 +34649,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Friend Guard",
 			I1: "Guard Dog",
 			I2: "Strong Jaw",
-			I3: "Jaws Of Carnage",
+			I3: "Jaws of Carnage",
 		},
 		baseStats: {
 			hp: 80,
@@ -36206,7 +36206,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		num: 1000,
 		types: ["Steel", "Ghost"],
 		abilities: {
-			"0": "Sharing Is Caring",
+			"0": "Sharing is Caring",
 			"1": "Prankster",
 			H: "Friend Guard",
 			I1: "Good As Gold",
@@ -36237,7 +36237,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Grass Pelt",
 			"1": "Soul Linker",
 			H: "Pressure",
-			I1: "Tablets Of Ruin",
+			I1: "Tablets of Ruin",
 			I2: "Spiteful",
 			I3: "Absorbant",
 		},
@@ -36264,7 +36264,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Unaware",
 			"1": "Hyper Aggressive",
 			H: "Snow Warning",
-			I1: "Sword Of Ruin",
+			I1: "Sword of Ruin",
 			I2: "Arctic Fur",
 			I3: "Strong Jaw",
 		},
@@ -36292,7 +36292,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Aftershock",
 			"1": "Loose Rocks",
 			H: "Bad Luck",
-			I1: "Vessel Of Ruin",
+			I1: "Vessel of Ruin",
 			I2: "Pressure",
 			I3: "Thick Skin",
 		},
@@ -36319,7 +36319,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Blaze",
 			"1": "Fire Scales",
 			H: "Evaporate",
-			I1: "Beads Of Ruin",
+			I1: "Beads of Ruin",
 			I2: "Turboblaze",
 			I3: "Molten Down",
 		},
@@ -37214,7 +37214,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	weezinggalarian: {
+	weezinggalar: {
 		name: "Weezing-Galarian",
 		num: 1575,
 		types: ["Poison", "Fairy"],
@@ -37240,7 +37240,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Koffing",
 	},
-	mrmimegalarian: {
+	mrmimegalar: {
 		name: "Mr-Mime Galarian",
 		num: 1576,
 		types: ["Ice", "Psychic"],
@@ -37266,7 +37266,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: ["Mr.Rime"],
 		prevo: "MimeJr.",
 	},
-	articunogalarian: {
+	articunogalar: {
 		name: "Articuno-Galarian",
 		num: 1577,
 		types: ["Psychic", "Flying"],
@@ -37291,7 +37291,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	zapdosgalarian: {
+	zapdosgalar: {
 		name: "Zapdos-Galarian",
 		num: 1578,
 		types: ["Fighting", "Flying"],
@@ -37316,7 +37316,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	moltresgalarian: {
+	moltresgalar: {
 		name: "Moltres-Galarian",
 		num: 1579,
 		types: ["Dark", "Flying"],
@@ -37341,7 +37341,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	slowkinggalarian: {
+	slowkinggalar: {
 		name: "Slowking-Galarian",
 		num: 1580,
 		types: ["Poison", "Psychic"],
@@ -37367,7 +37367,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Slowpoke Galarian",
 	},
-	corsolagalarian: {
+	corsolagalar: {
 		name: "Corsola-Galarian",
 		num: 1581,
 		types: ["Ghost", "Ghost"],
@@ -37392,7 +37392,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 36,
 		evos: ["Cursola"],
 	},
-	stunfiskgalarian: {
+	stunfiskgalar: {
 		name: "Stunfisk-Galarian",
 		num: 1587,
 		types: ["Ground", "Steel"],
@@ -37417,7 +37417,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	growlithehisuian: {
+	growlithehisui: {
 		name: "Growlithe-Hisuian",
 		num: 1810,
 		types: ["Fire", "Rock"],
@@ -37442,7 +37442,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 45,
 		evos: ["Arcanine Hisuian"],
 	},
-	arcaninehisuian: {
+	arcaninehisui: {
 		name: "Arcanine-Hisuian",
 		num: 1811,
 		types: ["Fire", "Rock"],
@@ -37468,7 +37468,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Growlithe Hisuian",
 	},
-	voltorbhisuian: {
+	voltorbhisui: {
 		name: "Voltorb-Hisuian",
 		num: 1812,
 		types: ["Electric", "Grass"],
@@ -37493,7 +37493,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 30,
 		evos: ["Electrode Hisuian"],
 	},
-	electrodehisuian: {
+	electrodehisui: {
 		name: "Electrode-Hisuian",
 		num: 1813,
 		types: ["Electric", "Grass"],
@@ -37519,7 +37519,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Voltorb Hisuian",
 	},
-	typhlosionhisuian: {
+	typhlosionhisui: {
 		name: "Typhlosion-Hisuian",
 		num: 1814,
 		types: ["Fire", "Ghost"],
@@ -37545,7 +37545,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Quilava",
 	},
-	qwilfishhisuian: {
+	qwilfishhisui: {
 		name: "Qwilfish-Hisuian",
 		num: 1809,
 		types: ["Dark", "Poison"],
@@ -37570,7 +37570,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 28,
 		evos: ["Overqwil"],
 	},
-	sneaselhisuian: {
+	sneaselhisui: {
 		name: "Sneasel-Hisuian",
 		num: 1815,
 		types: ["Poison", "Fighting"],
@@ -37595,7 +37595,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 36,
 		evos: ["Sneasler"],
 	},
-	samurotthisuian: {
+	samurotthisui: {
 		name: "Samurott-Hisuian",
 		num: 1816,
 		types: ["Water", "Dark"],
@@ -37621,7 +37621,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Dewott",
 	},
-	lilliganthisuian: {
+	lilliganthisui: {
 		name: "Lilligant-Hisuian",
 		num: 1817,
 		types: ["Grass", "Fighting"],
@@ -37647,7 +37647,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Petilil",
 	},
-	zoruahisuian: {
+	zoruahisui: {
 		name: "Zorua-Hisuian",
 		num: 1823,
 		types: ["Normal", "Ghost"],
@@ -37670,7 +37670,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 30,
 		evos: ["Zoroark Hisuian"],
 	},
-	zoroarkhisuian: {
+	zoroarkhisui: {
 		name: "Zoroark-Hisuian",
 		num: 1824,
 		types: ["Normal", "Ghost"],
@@ -37694,7 +37694,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Zorua Hisuian",
 	},
-	braviaryhisuian: {
+	braviaryhisui: {
 		name: "Braviary-Hisuian",
 		num: 1818,
 		types: ["Psychic", "Flying"],
@@ -37720,7 +37720,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Rufflet",
 	},
-	sliggoohisuian: {
+	sliggoohisui: {
 		name: "Sliggoo-Hisuian",
 		num: 1819,
 		types: ["Dragon", "Steel"],
@@ -37746,7 +37746,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: ["Goodra Hisuian"],
 		prevo: "Goomy",
 	},
-	goodrahisuian: {
+	goodrahisui: {
 		name: "Goodra-Hisuian",
 		num: 1820,
 		types: ["Dragon", "Steel"],
@@ -37772,7 +37772,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Sliggoo Hisuian",
 	},
-	avalugghisuian: {
+	avalugghisui: {
 		name: "Avalugg-Hisuian",
 		num: 1821,
 		types: ["Ice", "Rock"],
@@ -37798,7 +37798,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Bergmite",
 	},
-	decidueyehisuian: {
+	decidueyehisui: {
 		name: "Decidueye-Hisuian",
 		num: 1822,
 		types: ["Grass", "Fighting"],
