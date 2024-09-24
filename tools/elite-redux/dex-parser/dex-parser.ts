@@ -498,8 +498,9 @@ export class DexParser {
 			.map((spec) => spec.replace("ITEM_", "").toLowerCase());
 		const evoLevels = pokemon.evolutions
 			.map((evolution) => evolution.rs)
+			.filter((spec) => !spec.startsWith("ITEM_"))
 			.filter((level) => level != null);
-		return {
+		let data = {
 			evoLevel: evoLevels.length > 0 ? parseInt(evoLevels[0]) : undefined,
 			evoItem: evoItems.length > 0 ? evoItems[0] : undefined,
 
@@ -507,6 +508,17 @@ export class DexParser {
 				.map((evolution) => this.gameData!.species[evolution.in]?.name)
 				.filter((value) => value != null),
 		};
+
+		// JSON can't specify undefined and nulls will make typescript complain, so just delete any undefined keys.
+		if (data.evoLevel == null) {
+			delete data["evoLevel"];
+		}
+
+		if (data.evoItem == null) {
+			delete data["evoItem"];
+		}
+
+		return data;
 	}
 
 	private findPrevo(pokemon: CompactSpecie): string | undefined {
