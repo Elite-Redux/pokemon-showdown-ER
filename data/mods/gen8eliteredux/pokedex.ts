@@ -9022,7 +9022,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		evoItem: "sceptilite",
-		evos: ["Sceptile Mega"],
+		otherFormes: ["Sceptile-Mega"],
 		prevo: "Grovyle",
 	},
 	sceptilemega: {
@@ -9050,8 +9050,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.9,
 		color: "Green",
 		evoLevel: 0,
-		evos: [],
-		prevo: "Sceptile",
+		requiredItem: "Sceptilite",
 	},
 	torchic: {
 		name: "Torchic",
