@@ -9021,8 +9021,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.7,
 		color: "Green",
 		evoLevel: 0,
-		evoItem: "sceptilite",
 		otherFormes: ["Sceptile-Mega"],
+		formeOrder: ["Sceptile", "Sceptile-Mega"],
 		prevo: "Grovyle",
 	},
 	sceptilemega: {
