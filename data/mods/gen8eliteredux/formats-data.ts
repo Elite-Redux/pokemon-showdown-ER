@@ -806,7 +806,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	},
 	articuno: {
 		tier: "OU",
-		doublesTier: "DOU",
+		doublesTier: "DUber",
 	},
 	zapdos: {
 		tier: "OU",
@@ -3808,7 +3808,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	},
 	grimmsnarl: {
 		tier: "UU",
-		doublesTier: "DOU",
+		doublesTier: "DUber",
 	},
 	grimmsnarlgmax: {
 		tier: "OU",
@@ -3922,10 +3922,10 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		tier: "OU",
 	},
 	eternatus: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	eternatuseternamax: {
-		tier: "OU",
+		tier: "Illegal",
 	},
 	kubfu: {
 		tier: "OU",
@@ -4345,7 +4345,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	//Unused ...for now
 	missingno: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	syclar: {
 		isNonstandard: "CAP",
@@ -4633,79 +4633,79 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	},
 	pokestarsmeargle: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarufo: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarufo2: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarbrycenman: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarmt: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarmt2: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestartransport: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestargiant: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestargiant2: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarhumanoid: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarmonster: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarf00: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarf002: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarspirit: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarblackdoor: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarwhitedoor: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarblackbelt: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestargiantpropo2: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	pokestarufopropu2: {
 		isNonstandard: "Custom",
-		tier: "OU",
+		tier: "Illegal",
 	},
 	basculinwhitestriped: {
 		isNonstandard: "Future",
