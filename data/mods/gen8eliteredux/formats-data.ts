@@ -5121,9 +5121,6 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	larvitarredux: {
 		tier: "OU",
 	},
-	scizorredux: {
-		tier: "OU",
-	},
 	ironexo: {
 		tier: "OU",
 	},

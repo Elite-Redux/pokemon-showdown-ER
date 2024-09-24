@@ -40289,28 +40289,6 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 30,
 		evos: ["Pupitar Redux"],
 	},
-	scizorredux: {
-		name: "Scizor-Redux",
-		num: 2577,
-		types: ["Bug", "Fairy"],
-		abilities: {
-			"0": "Static",
-			"1": "Flash Fire",
-			H: "Ripen",
-		},
-		baseStats: {
-			hp: 110,
-			atk: 115,
-			def: 80,
-			spa: 50,
-			spd: 90,
-			spe: 90,
-		},
-		eggGroups: ["Undiscovered", "Undiscovered"],
-		weightkg: 0,
-		evoLevel: 0,
-		evos: [],
-	},
 	ironexo: {
 		name: "IronExo",
 		num: 2564,
