@@ -5068,7 +5068,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		tier: "OU",
 	},
 	kecleong: {
-		tier: "OU",
+		tier: "AG",
 	},
 	phantowl: {
 		tier: "OU",
