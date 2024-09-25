@@ -143,11 +143,55 @@ export class DexParser {
 	 * Load all pokemon data from the elite redux json file.
 	 */
 	private parsePokemon() {
+		const originalFormLookup: { [id: string]: CompactSpecie } = {};
+
+		for (const pokemon of this.gameData!.species) {
+			if (pokemon.name == "??????????") continue;
+			if (pokemon.forms && pokemon.forms.length > 1) {
+				for (const formIndex of pokemon.forms.slice(1)) {
+					const original = this.gameData!.species[pokemon.forms[0]];
+					if (formIndex < 0) continue;
+					const form = this.gameData!.species[formIndex];
+					if (form.name == "??????????") continue;
+					const id = toID(form.name);
+					originalFormLookup[id] = original;
+				}
+			}
+		}
+
 		for (const pokemon of this.gameData!.species) {
 			const learnset = this.generateLearnset(pokemon);
 			if (pokemon.name == "??????????") continue;
-			const id = toID(pokemon.name);
+
+			const id = toID(pokemon.NAME.replace("SPECIES_", ""))
+				.replace("alolan", "alola")
+				.replace("galarian", "galar")
+				.replace("♀", "f");
 			this.learnsets[id] = { learnset: learnset };
+
+			let showdownData: SpeciesData | undefined =
+				this.showdownData.Pokedex[id];
+			let weightKg = showdownData?.weightkg;
+			let heightM = showdownData?.heightm;
+			let color = showdownData?.color;
+
+			if (showdownData == null) {
+				const original = originalFormLookup[toID(pokemon.name)];
+
+				if (original != null) {
+					weightKg = this.showdownData.Pokedex[id]?.weightkg;
+					heightM = this.showdownData.Pokedex[id]?.heightm;
+					color = this.showdownData.Pokedex[id]?.color;
+				} else {
+					console.log(
+						`FATAL: Cannot find showdown data for pokemon ${id} to fill in weightKg, heightM and color!`
+					);
+					weightKg = 100;
+					heightM = 7;
+					color = "black";
+				}
+			}
+
 			this.pokedex[id] = {
 				name: pokemon.name.replace(" ", "-"),
 				num: pokemon.id,
@@ -158,13 +202,9 @@ export class DexParser {
 				baseStats: this.getBaseStats(pokemon),
 				eggGroups: this.getEggGroups(pokemon),
 				// TODO: Can we prefill this value?
-				weightkg:
-					this.showdownData.Pokedex[id].weightkg !== null &&
-					this.showdownData.Pokedex[id].weightkg !== undefined
-						? this.showdownData.Pokedex[id].weightkg
-						: 0,
-				heightm: this.showdownData.Pokedex[id]?.heightm,
-				color: this.showdownData.Pokedex[id]?.color,
+				weightkg: weightKg ?? 100,
+				heightm: heightM ?? 7,
+				color: color ?? "black",
 				...this.getEvolutionData(pokemon),
 				prevo: this.findPrevo(pokemon),
 			};
@@ -446,20 +486,40 @@ export class DexParser {
 			.map(this.getAbilityId);
 		return {
 			0: this.formatAbility(dexAbilities[0]),
-			1: dexAbilities.length >= 2 ? this.formatAbility(dexAbilities[1]) : undefined,
-			H: dexAbilities.length >= 3 ? this.formatAbility(dexAbilities[2]) : undefined,
-			S: dexAbilities.length >= 4 ? this.formatAbility(dexAbilities[3]) : undefined,
-			I1: dexInnates.length >= 1 ? this.formatAbility(dexInnates[0]) : undefined,
-			I2: dexInnates.length >= 2 ? this.formatAbility(dexInnates[1]) : undefined,
-			I3: dexInnates.length >= 3 ? this.formatAbility(dexInnates[2]) : undefined,
+			1:
+				dexAbilities.length >= 2
+					? this.formatAbility(dexAbilities[1])
+					: undefined,
+			H:
+				dexAbilities.length >= 3
+					? this.formatAbility(dexAbilities[2])
+					: undefined,
+			S:
+				dexAbilities.length >= 4
+					? this.formatAbility(dexAbilities[3])
+					: undefined,
+			I1:
+				dexInnates.length >= 1
+					? this.formatAbility(dexInnates[0])
+					: undefined,
+			I2:
+				dexInnates.length >= 2
+					? this.formatAbility(dexInnates[1])
+					: undefined,
+			I3:
+				dexInnates.length >= 3
+					? this.formatAbility(dexInnates[2])
+					: undefined,
 		};
 	}
 
 	private formatAbility(ability: string): string {
 		return ability
-        .split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-        .join(' ');
+			.split(" ")
+			.map(
+				(word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+			)
+			.join(" ");
 	}
 	/**
 	 * Get the showdown base stats from an online dex pokemon.
@@ -511,7 +571,7 @@ export class DexParser {
 			.filter((spec) => !spec.startsWith("ITEM_"))
 			.filter((level) => level != null);
 		let data = {
-			evoLevel: evoLevels.length > 0 ? parseInt(evoLevels[0]) : 0,
+			evoLevel: evoLevels.length > 0 ? parseInt(evoLevels[0]) : undefined,
 			evoItem: evoItems.length > 0 ? evoItems[0] : undefined,
 
 			evos: pokemon.evolutions
@@ -520,12 +580,12 @@ export class DexParser {
 		};
 
 		// JSON can't specify undefined and nulls will make typescript complain, so just delete any undefined keys.
-		if (data.evoLevel == null) {
-			delete data["evoLevel"];
+		if (data.evoLevel == null || isNaN(data.evoLevel)) {
+			delete data.evoLevel;
 		}
 
 		if (data.evoItem == null) {
-			delete data["evoItem"];
+			delete data.evoItem;
 		}
 
 		return data;
