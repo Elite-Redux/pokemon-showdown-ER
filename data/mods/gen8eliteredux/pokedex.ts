@@ -444,8 +444,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.1,
 		color: "White",
 		evoLevel: 0,
-		evoItem: "butterfrenite",
-		evos: ["Butterfree Mega"],
+		otherFormes: ["Butterfree-Mega"],
+        formeOrder: ["Butterfree", "Butterfree-Mega"],
 		prevo: "Metapod",
 	},
 	butterfreemega: {
@@ -473,8 +473,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.1,
 		color: "White",
 		evoLevel: 0,
-		evos: [],
-		prevo: "Butterfree",
+		requiredItem: "Butterfrenite",
 	},
 	weedle: {
 		name: "Weedle",
@@ -1073,8 +1072,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1,
 		color: "Yellow",
 		evoLevel: 0,
-		evoItem: "sandslashite",
-		evos: ["Sandslash Mega"],
+		otherFormes: ["Sandslash-Mega"],
+        formeOrder: ["Sandslashe", "Sandslash-Mega"],
 		prevo: "Sandshrew",
 	},
 	sandslashmega: {
@@ -1102,8 +1101,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1,
 		color: "Yellow",
 		evoLevel: 0,
-		evos: [],
-		prevo: "Sandslash",
+		requiredItem: "Sandslashite",
 	},
 	sandslashalola: {
 		name: "Sandslash-Alolan",
@@ -1209,8 +1207,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.3,
 		color: "Blue",
 		evoLevel: 0,
-		evoItem: "nidoqueenite",
-		evos: ["Nidoqueen Mega"],
+		otherFormes: ["Nidoqueen-Mega"],
+        formeOrder: ["Nidoqueen", "Nidoqueen-Mega"],
 		prevo: "Nidorina",
 	},
 	nidoqueenmega: {
@@ -1238,8 +1236,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.3,
 		color: "Blue",
 		evoLevel: 0,
-		evos: [],
-		prevo: "Nidoqueen",
+		requiredItem: "Nidoqueenite",
 	},
 	nidorino: {
 		name: "Nidorino",
@@ -1294,8 +1291,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.4,
 		color: "Purple",
 		evoLevel: 0,
-		evoItem: "nidokingite",
-		evos: ["Nidoking Mega"],
+		otherFormes: ["Nidoking-Mega"],
+        formeOrder: ["Nidoking", "Nidoking-Mega"],
 		prevo: "Nidorino",
 	},
 	nidokingmega: {
@@ -1323,8 +1320,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.4,
 		color: "Purple",
 		evoLevel: 0,
-		evos: [],
-		prevo: "Nidoking",
+		requiredItem: "Nidokingite",
 	},
 	clefairy: {
 		name: "Clefairy",
