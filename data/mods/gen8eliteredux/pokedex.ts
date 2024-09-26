@@ -3742,7 +3742,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Kingler-Mega"],
-        formeOrder: ["Kingler", "Kingler-Mega"]
+      formeOrder: ["Kingler", "Kingler-Mega"],
 		prevo: "Krabby",
 	},
 	kinglermega: {
