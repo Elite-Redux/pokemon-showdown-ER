@@ -568,6 +568,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	beedrillmega: {
 		name: "Beedrill-Mega",
 		baseSpecies: "Beedrill",
+		forme: "Mega",
 		num: 1505,
 		types: ["Bug", "Poison"],
 		abilities: {

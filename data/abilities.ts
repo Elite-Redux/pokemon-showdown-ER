@@ -5922,6 +5922,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-ability", pokemon, "Vessel of Ruin");
 		},
 		onAnyModifySpA(spa, source, target, move) {
+			if(!move) return;
 			const abilityHolder = this.effectState.target;
 			if (source.hasAbility("Vessel of Ruin")) return;
 			if (!move.ruinedSpA) move.ruinedSpA = abilityHolder;
