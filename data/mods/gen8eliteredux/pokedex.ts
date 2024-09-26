@@ -24372,6 +24372,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	},
 	aegislashblade: {
 		name: "Aegislash-Blade",
+		baseSpecies: "Aegislash",
+		forme: "Blade",
 		num: 1731,
 		types: ["Steel", "Ghost"],
 		abilities: {
@@ -24394,8 +24396,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 53,
 		heightm: 1.7,
 		color: "Brown",
-		evoLevel: 0,
-		evos: [],
+		requiredAbility: "Stance Change",
+		battleOnly: "Aegislash",
 	},
 	spritzee: {
 		name: "Spritzee",
