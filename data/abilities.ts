@@ -7859,29 +7859,44 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.isMax
 			)
 				return;
-			const twoHeaded = [
-				"doduo",
-				"weezing",
-				"girafarig",
-				"mawile",
-				"zweilous",
-				"doublade",
-				"binacle",
-				"zweilous",
-			];
-			const threeHeaded = [
-				"dugtrio",
-				"dugtrioalola",
-				"magneton",
-				"dodrio",
-				"exeggutor",
-				"exeggutoralola",
-				"mawilemega",
-				"combee",
-				"magnezone",
-				"barbaracle",
-				"hydreigon",
-			];
+				const twoHeaded = [
+					"doduo",
+					"weezing",
+					"girafarig",
+					"mawile",
+					"zweilous",
+					"doublade",
+					"binacle",
+					"vanilluxe",
+					"zweilous",
+					"scovillain",
+					"mawileredux",
+					"zweilousredux",
+					"doduoredux",
+				];
+				const threeHeaded = [
+					"dugtrio",
+					"dugtrioalola",
+					"magneton",
+					"dodrio",
+					"exeggutor",
+					"exeggutoralola",
+					"mawilemega",
+					"combee",
+					"magnezone",
+					"barbaracle",
+					"hydreigon",
+					"wugtrio",
+					"dodrioredux",
+					"hydregionredux",
+					"ironjugulis",
+					"sandyshocks",
+					"mawilemegaredux",
+					"shucklemega",
+					"magnezonemega",
+					"barbaracle",
+					"klinklang",
+				];
 			if (twoHeaded.includes(source.species.id)) {
 				move.multihit = 2;
 				move.multihitType = "headed";
