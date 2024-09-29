@@ -334,7 +334,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Blastoise-Mega"],
-        formeOrder: ["Blastoise", "Blastoise-Mega"],
+		formeOrder: ["Blastoise", "Blastoise-Mega"],
 		prevo: "Wartortle",
 	},
 	blastoisemega: {
@@ -445,7 +445,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Butterfree-Mega"],
-        formeOrder: ["Butterfree", "Butterfree-Mega"],
+		formeOrder: ["Butterfree", "Butterfree-Mega"],
 		prevo: "Metapod",
 	},
 	butterfreemega: {
@@ -556,7 +556,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Beedrill-Mega"],
-        formeOrder: ["Beedrill", "Beedrill-Mega"],
+		formeOrder: ["Beedrill", "Beedrill-Mega"],
 		prevo: "Kakuna",
 	},
 	beedrillmega: {
@@ -667,7 +667,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Pidgeot-Mega"],
-        formeOrder: ["Pidgeot", "Pidgeot-Mega"],
+		formeOrder: ["Pidgeot", "Pidgeot-Mega"],
 		prevo: "Pidgeotto",
 	},
 	pidgeotmega: {
@@ -1073,7 +1073,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Sandslash-Mega"],
-        formeOrder: ["Sandslashe", "Sandslash-Mega"],
+		formeOrder: ["Sandslashe", "Sandslash-Mega"],
 		prevo: "Sandshrew",
 	},
 	sandslashmega: {
@@ -1208,7 +1208,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Nidoqueen-Mega"],
-        formeOrder: ["Nidoqueen", "Nidoqueen-Mega"],
+		formeOrder: ["Nidoqueen", "Nidoqueen-Mega"],
 		prevo: "Nidorina",
 	},
 	nidoqueenmega: {
@@ -1292,7 +1292,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Nidoking-Mega"],
-        formeOrder: ["Nidoking", "Nidoking-Mega"],
+		formeOrder: ["Nidoking", "Nidoking-Mega"],
 		prevo: "Nidorino",
 	},
 	nidokingmega: {
@@ -2383,7 +2383,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Alakazam-Mega"],
-        formeOrder: ["Alakazam", "Alakazam-Mega"],
+		formeOrder: ["Alakazam", "Alakazam-Mega"],
 		prevo: "Kadabra",
 	},
 	alakazammega: {
@@ -2494,7 +2494,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Machamp-Mega"],
-        formeOrder: ["Machamp", "Machamp-Mega"],
+		formeOrder: ["Machamp", "Machamp-Mega"],
 		prevo: "Machoke",
 	},
 	machampmega: {
@@ -3006,7 +3006,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Pink",
 		evoLevel: 0,
 		otherFormes: ["Slowbro-Mega"],
-        formeOrder: ["Slowbro", "Slowbro-Mega"],
+		formeOrder: ["Slowbro", "Slowbro-Mega"],
 		prevo: "Slowpoke",
 	},
 	slowbrogalar: {
@@ -3305,7 +3305,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Dewgong-Mega"],
-        formeOrder: ["Dewgong", "Dewgong-Mega"],
+		formeOrder: ["Dewgong", "Dewgong-Mega"],
 		prevo: "Seel",
 	},
 	dewgongmega: {
@@ -3577,7 +3577,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Gengar-Mega"],
-        formeOrder: ["Gengar", "Gengar-Mega"],
+		formeOrder: ["Gengar", "Gengar-Mega"],
 		prevo: "Haunter",
 	},
 	gengarmega: {
@@ -3742,7 +3742,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Kingler-Mega"],
-        formeOrder: ["Kingler", "Kingler-Mega"]
+		formeOrder: ["Kingler", "Kingler-Mega"],
 		prevo: "Krabby",
 	},
 	kinglermega: {
@@ -4015,7 +4015,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Hitmonlee-Mega"],
-        formeOrder: ["Hitmonlee", "Hitmonlee-Mega"],
+		formeOrder: ["Hitmonlee", "Hitmonlee-Mega"],
 		prevo: "Tyrogue",
 	},
 	hitmonleemega: {
@@ -4071,7 +4071,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Hitmonchan-Mega"],
-        formeOrder: ["Hitmonchan", "Hitmonchan-Mega"],
+		formeOrder: ["Hitmonchan", "Hitmonchan-Mega"],
 		prevo: "Tyrogue",
 	},
 	hitmonchanmega: {
@@ -4319,7 +4319,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Kangaskhan-Mega"],
-        formeOrder: ["Kangaskhan", "Kangaskhan-Mega"],
+		formeOrder: ["Kangaskhan", "Kangaskhan-Mega"],
 	},
 	kangaskhanmega: {
 		name: "Kangaskhan-Mega",
@@ -4678,7 +4678,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Pinsir-Mega"],
-        formeOrder: ["Pinsir", "Pinsir-Mega"],
+		formeOrder: ["Pinsir", "Pinsir-Mega"],
 	},
 	pinsirmega: {
 		name: "Pinsir-Mega",
@@ -4786,8 +4786,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 6.5,
 		color: "Blue",
 		evoLevel: 0,
-		otherFormes: ["Gyarados-Mega","Gyarados-Mega-Y"],
-        formeOrder: ["Gyarados", "Gyarados-Mega","Gyarados-Mega-Y"],
+		otherFormes: ["Gyarados-Mega", "Gyarados-Mega-Y"],
+		formeOrder: ["Gyarados", "Gyarados-Mega", "Gyarados-Mega-Y"],
 		prevo: "Magikarp",
 	},
 	gyaradosmega: {
@@ -4869,8 +4869,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2.5,
 		color: "Blue",
 		evoLevel: 0,
-		otherFormes: ["Lapras-Mega","Lapras-Mega-Y"],
-        formeOrder: ["Lapras","Lapras-Mega","Lapras-Mega-Y"],
+		otherFormes: ["Lapras-Mega", "Lapras-Mega-Y"],
+		formeOrder: ["Lapras", "Lapras-Mega", "Lapras-Mega-Y"],
 	},
 	laprasmegax: {
 		name: "Lapras-Mega X",
@@ -5236,7 +5236,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Aerodactyl-Mega"],
-        formeOrder: ["Aerodactyl", "Aerodactyl-Mega"],
+		formeOrder: ["Aerodactyl", "Aerodactyl-Mega"],
 	},
 	aerodactylmega: {
 		name: "Aerodactyl-Mega",
@@ -5456,7 +5456,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Dragonite-Mega"],
-        formeOrder: ["Dragonite", "Dragonite-Mega"],
+		formeOrder: ["Dragonite", "Dragonite-Mega"],
 		prevo: "Dragonair",
 	},
 	dragonitemega: {
@@ -5511,8 +5511,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2,
 		color: "Purple",
 		evoLevel: 0,
-		otherFormes: ["Mewtwo-Mega-X","Mewtwo-Mega-Y"],
-        formeOrder: ["Mewtwo", "Mewtwo-Mega-X","Mewtwo-Mega-Y"],
+		otherFormes: ["Mewtwo-Mega-X", "Mewtwo-Mega-Y"],
+		formeOrder: ["Mewtwo", "Mewtwo-Mega-X", "Mewtwo-Mega-Y"],
 	},
 	mewtwomegax: {
 		name: "Mewtwo-Mega X",
@@ -5676,7 +5676,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		otherFormes: ["Meganium-Mega"],
-        formeOrder: ["Meganium", "Meganium-Mega"],
+		formeOrder: ["Meganium", "Meganium-Mega"],
 		prevo: "Bayleef",
 	},
 	meganiummega: {
@@ -5787,7 +5787,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Typhlosion-Mega"],
-        formeOrder: ["Typhlosion", "Typhlosion-Mega"],
+		formeOrder: ["Typhlosion", "Typhlosion-Mega"],
 		prevo: "Quilava",
 	},
 	typhlosionmega: {
@@ -5897,8 +5897,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2.3,
 		color: "Blue",
 		evoLevel: 0,
-		otherFormes: ["Feraligatr-Mega-X","Feraligatr-Mega-Y"],
-        formeOrder: ["Feraligatr", "Feraligatr-Mega-X","Feraligatr-Mega-Y"],
+		otherFormes: ["Feraligatr-Mega-X", "Feraligatr-Mega-Y"],
+		formeOrder: ["Feraligatr", "Feraligatr-Mega-X", "Feraligatr-Mega-Y"],
 		prevo: "Croconaw",
 	},
 	feraligatrmegax: {
@@ -6201,7 +6201,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Crobat-Mega"],
-        formeOrder: ["Crobat", "Crobat-Mega"],
+		formeOrder: ["Crobat", "Crobat-Mega"],
 		prevo: "Golbat",
 	},
 	crobatmega: {
@@ -6284,7 +6284,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Lanturn-Mega"],
-        formeOrder: ["Lanturn", "Lanturn-Mega"],
+		formeOrder: ["Lanturn", "Lanturn-Mega"],
 		prevo: "Chinchou",
 	},
 	lanturnmega: {
@@ -6586,7 +6586,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Ampharos-Mega"],
-        formeOrder: ["Ampharos", "Ampharos-Mega"],
+		formeOrder: ["Ampharos", "Ampharos-Mega"],
 		prevo: "Flaaffy",
 	},
 	ampharosmega: {
@@ -7001,7 +7001,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Quagsire-Mega"],
-        formeOrder: ["Quagsire", "Quagsire-Mega"],
+		formeOrder: ["Quagsire", "Quagsire-Mega"],
 		prevo: "Wooper",
 	},
 	quagsiremega: {
@@ -7140,7 +7140,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Pink",
 		evoLevel: 0,
 		otherFormes: ["Slowking-Mega"],
-        formeOrder: ["Slowking", "Slowking-Mega"],
+		formeOrder: ["Slowking", "Slowking-Mega"],
 		prevo: "Slowpoke",
 	},
 	slowkingmega: {
@@ -7410,7 +7410,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Steelix-Mega"],
-        formeOrder: ["Steelix", "Steelix-Mega"],
+		formeOrder: ["Steelix", "Steelix-Mega"],
 		prevo: "Onix",
 	},
 	steelixmega: {
@@ -7493,7 +7493,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Grabull-Mega"],
-        formeOrder: ["Grabull", "Grabull-Mega"],
+		formeOrder: ["Grabull", "Grabull-Mega"],
 		prevo: "Snubbull",
 	},
 	granbullmega: {
@@ -7576,7 +7576,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Scizor-Mega"],
-        formeOrder: ["Scizor", "Scizor-Mega"],
+		formeOrder: ["Scizor", "Scizor-Mega"],
 		prevo: "Scyther",
 	},
 	scizormega: {
@@ -7632,7 +7632,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Shuckle-Mega"],
-        formeOrder: ["Shuckle", "Shuckle-Mega"],
+		formeOrder: ["Shuckle", "Shuckle-Mega"],
 	},
 	shucklemega: {
 		name: "Shuckle-Mega",
@@ -7687,7 +7687,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Heracross-Mega"],
-        formeOrder: ["Heracross", "Heracross-Mega"],
+		formeOrder: ["Heracross", "Heracross-Mega"],
 	},
 	heracrossmega: {
 		name: "Heracross-Mega",
@@ -8071,7 +8071,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Skarmory-Mega"],
-        formeOrder: ["Skarmory", "Skarmory-Mega"],
+		formeOrder: ["Skarmory", "Skarmory-Mega"],
 	},
 	skarmorymega: {
 		name: "Skarmory-Mega",
@@ -8153,7 +8153,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Black",
 		evoLevel: 0,
 		otherFormes: ["Houndoom-Mega"],
-        formeOrder: ["Houndoom", "Houndoom-Mega"],
+		formeOrder: ["Houndoom", "Houndoom-Mega"],
 		prevo: "Houndour",
 	},
 	houndoommega: {
@@ -8209,7 +8209,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Kingdra-Mega"],
-        formeOrder: ["Kingdra", "Kingdra-Mega","Kingdra-Mega-Y"],
+		formeOrder: ["Kingdra", "Kingdra-Mega", "Kingdra-Mega-Y"],
 		prevo: "Seadra",
 	},
 	kingdramegay: {
@@ -8455,7 +8455,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Hitmontop-Mega"],
-        formeOrder: ["Hitmontop", "Hitmontop-Mega"],
+		formeOrder: ["Hitmontop", "Hitmontop-Mega"],
 		prevo: "Tyrogue",
 	},
 	hitmontopmega: {
@@ -8783,7 +8783,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		otherFormes: ["Tyranitar-Mega"],
-        formeOrder: ["Tyranitar", "Tyranitar-Mega"],
+		formeOrder: ["Tyranitar", "Tyranitar-Mega"],
 		prevo: "Pupitar",
 	},
 	tyranitarmega: {
@@ -9197,7 +9197,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Swampert-Mega"],
-        formeOrder: ["Swampert", "Swampert-Mega"],
+		formeOrder: ["Swampert", "Swampert-Mega"],
 		prevo: "Marshtomp",
 	},
 	swampertmega: {
@@ -9939,7 +9939,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Gardevoir-Mega"],
-        formeOrder: ["Gardevoir", "Gardevoir-Mega"],
+		formeOrder: ["Gardevoir", "Gardevoir-Mega"],
 		prevo: "Kirlia",
 	},
 	gardevoirmega: {
@@ -10077,7 +10077,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		otherFormes: ["Breloom-Mega"],
-        formeOrder: ["Breloom", "Breloom-Mega"],
+		formeOrder: ["Breloom", "Breloom-Mega"],
 		prevo: "Shroomish",
 	},
 	breloommega: {
@@ -10187,7 +10187,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Slaking-Mega"],
-        formeOrder: ["Slaking", "Slaking-Mega"],
+		formeOrder: ["Slaking", "Slaking-Mega"],
 		prevo: "Vigoroth",
 	},
 	slakingmega: {
@@ -10298,7 +10298,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Shedinja-Mega"],
-        formeOrder: ["Shedinja", "Shedinja-Mega"],
+		formeOrder: ["Shedinja", "Shedinja-Mega"],
 		prevo: "Nincada",
 	},
 	shedinjamega: {
@@ -10601,7 +10601,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Sableye-Mega"],
-        formeOrder: ["Sableye", "Sableye-Mega"],
+		formeOrder: ["Sableye", "Sableye-Mega"],
 	},
 	sableyemega: {
 		name: "Sableye-Mega",
@@ -10656,8 +10656,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Black",
 		evoLevel: 0,
 		otherFormes: ["Mawile-Mega"],
-        formeOrder: ["Mawile", "Mawile-Mega"],
-
+		formeOrder: ["Mawile", "Mawile-Mega"],
 	},
 	mawilemega: {
 		name: "Mawile-Mega",
@@ -10767,7 +10766,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Aggron-Mega"],
-        formeOrder: ["Aggron", "Aggron-Mega"],
+		formeOrder: ["Aggron", "Aggron-Mega"],
 		prevo: "Lairon",
 	},
 	aggronmega: {
@@ -10850,7 +10849,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Medicham-Mega"],
-        formeOrder: ["Medicham", "Medicham-Mega"],
+		formeOrder: ["Medicham", "Medicham-Mega"],
 		prevo: "Meditite",
 	},
 	medichammega: {
@@ -10933,7 +10932,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Manectric-Mega"],
-        formeOrder: ["Manectric", "Manectric-Mega"],
+		formeOrder: ["Manectric", "Manectric-Mega"],
 		prevo: "Electrike",
 	},
 	manectricmega: {
@@ -11152,7 +11151,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Purple",
 		evoLevel: 0,
 		otherFormes: ["Swalot-Mega"],
-        formeOrder: ["Swalot", "Swalot-Mega"],
+		formeOrder: ["Swalot", "Swalot-Mega"],
 		prevo: "Gulpin",
 	},
 	swalotmega: {
@@ -11235,7 +11234,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Sharpedo-Mega"],
-        formeOrder: ["Sharpedo", "Sharpedo-Mega"],
+		formeOrder: ["Sharpedo", "Sharpedo-Mega"],
 		prevo: "Carvanha",
 	},
 	sharpedomega: {
@@ -11373,7 +11372,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Camerupt-Mega"],
-        formeOrder: ["Camerupt", "Camerupt-Mega"],
+		formeOrder: ["Camerupt", "Camerupt-Mega"],
 		prevo: "Numel",
 	},
 	cameruptmega: {
@@ -11593,7 +11592,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		otherFormes: ["Flygon-Mega"],
-        formeOrder: ["Flygon", "Flygon-Mega"],
+		formeOrder: ["Flygon", "Flygon-Mega"],
 		prevo: "Vibrava",
 	},
 	flygonmega: {
@@ -11731,7 +11730,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Altaria-Mega"],
-        formeOrder: ["Altaria", "Altaria-Mega"],
+		formeOrder: ["Altaria", "Altaria-Mega"],
 		prevo: "Swablu",
 	},
 	altariamega: {
@@ -12197,7 +12196,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Pink",
 		evoLevel: 0,
 		otherFormes: ["Milotic-Mega"],
-        formeOrder: ["Milotic", "Milotic-Mega"],
+		formeOrder: ["Milotic", "Milotic-Mega"],
 		prevo: "Feebas",
 	},
 	miloticmega: {
@@ -12415,7 +12414,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Black",
 		evoLevel: 0,
 		otherFormes: ["Banette-Mega"],
-        formeOrder: ["Banette", "Banette-Mega"],
+		formeOrder: ["Banette", "Banette-Mega"],
 		prevo: "Shuppet",
 	},
 	banettemega: {
@@ -12581,7 +12580,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Absol-Mega"],
-        formeOrder: ["Absol", "Absol-Mega"],
+		formeOrder: ["Absol", "Absol-Mega"],
 	},
 	absolmega: {
 		name: "Absol-Mega",
@@ -12690,7 +12689,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Glalie-Mega"],
-        formeOrder: ["Glalie", "Glalie-Mega"],
+		formeOrder: ["Glalie", "Glalie-Mega"],
 		prevo: "Snorunt",
 	},
 	glaliemega: {
@@ -12912,7 +12911,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Relicanth-Mega"],
-        formeOrder: ["Relicanth", "Relicanth-Mega"],
+		formeOrder: ["Relicanth", "Relicanth-Mega"],
 	},
 	relicanthmega: {
 		name: "Relicanth-Mega",
@@ -13049,7 +13048,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Salamence-Mega"],
-        formeOrder: ["Salamence", "Salamence-Mega"],
+		formeOrder: ["Salamence", "Salamence-Mega"],
 		prevo: "Shelgon",
 	},
 	salamencemega: {
@@ -13160,7 +13159,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Metagross-Mega"],
-        formeOrder: ["Metagross", "Metagross-Mega"],
+		formeOrder: ["Metagross", "Metagross-Mega"],
 		prevo: "Metang",
 	},
 	metagrossmega: {
@@ -13297,7 +13296,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Latias-Mega"],
-        formeOrder: ["Latias", "Latias-Mega"],
+		formeOrder: ["Latias", "Latias-Mega"],
 	},
 	latiasmega: {
 		name: "Latias-Mega",
@@ -13352,7 +13351,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Latios-Mega"],
-        formeOrder: ["Latios", "Latios-Mega"],
+		formeOrder: ["Latios", "Latios-Mega"],
 	},
 	latiosmega: {
 		name: "Latios-Mega",
@@ -13519,7 +13518,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: null,
 		otherFormes: ["Rayquaza-Mega"],
-        formeOrder: ["Rayquaza", "Rayquaza-Mega"],
+		formeOrder: ["Rayquaza", "Rayquaza-Mega"],
 	},
 	rayquazamega: {
 		name: "Rayquaza-Mega",
@@ -13765,7 +13764,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		otherFormes: ["Torterra-Mega"],
-        formeOrder: ["Torterra", "Torterra-Mega"],
+		formeOrder: ["Torterra", "Torterra-Mega"],
 		prevo: "Grotle",
 	},
 	torterramega: {
@@ -13876,7 +13875,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Infernape-Mega"],
-        formeOrder: ["Infernape", "Infernape-Mega"],
+		formeOrder: ["Infernape", "Infernape-Mega"],
 		prevo: "Monferno",
 	},
 	infernapemega: {
@@ -13987,7 +13986,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Empoleon-Mega"],
-        formeOrder: ["Empoleon", "Empoleon-Mega"],
+		formeOrder: ["Empoleon", "Empoleon-Mega"],
 		prevo: "Prinplup",
 	},
 	empoleonmega: {
@@ -14291,7 +14290,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Luxray-Mega"],
-        formeOrder: ["Luxray", "Luxray-Mega"],
+		formeOrder: ["Luxray", "Luxray-Mega"],
 		prevo: "Luxio",
 	},
 	luxraymega: {
@@ -15081,7 +15080,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Lopunny-Mega"],
-        formeOrder: ["Lopunny", "Lopunny-Mega"],
+		formeOrder: ["Lopunny", "Lopunny-Mega"],
 		prevo: "Buneary",
 	},
 	lopunnymega: {
@@ -15575,7 +15574,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Garchomp-Mega"],
-        formeOrder: ["Garchomp", "Garchomp-Mega"],
+		formeOrder: ["Garchomp", "Garchomp-Mega"],
 		prevo: "Gabite",
 	},
 	garchompmega: {
@@ -15685,7 +15684,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		otherFormes: ["Lucario-Mega"],
-        formeOrder: ["Lucario", "Lucario-Mega"],
+		formeOrder: ["Lucario", "Lucario-Mega"],
 		prevo: "Riolu",
 	},
 	lucariomega: {
@@ -16042,7 +16041,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Abomasnow-Mega"],
-        formeOrder: ["Abomasnow", "Abomasnow-Mega"],
+		formeOrder: ["Abomasnow", "Abomasnow-Mega"],
 		prevo: "Snover",
 	},
 	abomasnowmega: {
@@ -16126,7 +16125,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Gray",
 		evoLevel: 0,
 		otherFormes: ["Magnezone-Mega"],
-        formeOrder: ["Magnezone", "Magnezone-Mega"],
+		formeOrder: ["Magnezone", "Magnezone-Mega"],
 		prevo: "Magneton",
 	},
 	magnezonemega: {
@@ -16518,7 +16517,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Gallade-Mega"],
-        formeOrder: ["Gallade", "Gallade-Mega"],
+		formeOrder: ["Gallade", "Gallade-Mega"],
 		prevo: "Kirlia",
 	},
 	gallademega: {
@@ -16630,7 +16629,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "White",
 		evoLevel: 0,
 		otherFormes: ["Froslass-Mega"],
-        formeOrder: ["Froslass", "Froslass-Mega"],
+		formeOrder: ["Froslass", "Froslass-Mega"],
 		prevo: "Snorunt",
 	},
 	rotom: {
@@ -18737,7 +18736,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Pink",
 		evoLevel: 0,
 		otherFormes: ["Audino-Mega"],
-        formeOrder: ["Audino", "Audino-Mega"],
+		formeOrder: ["Audino", "Audino-Mega"],
 	},
 	audinomega: {
 		name: "Audino-Mega",
@@ -19397,7 +19396,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Krookodile-Mega"],
-        formeOrder: ["Krookodile", "Krookodile-Mega"],
+		formeOrder: ["Krookodile", "Krookodile-Mega"],
 		prevo: "Krokorok",
 	},
 	krookodilemega: {
@@ -19718,7 +19717,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Scrafty-Mega"],
-        formeOrder: ["Scrafty", "Scrafty-Mega"],
+		formeOrder: ["Scrafty", "Scrafty-Mega"],
 		prevo: "Scraggy",
 	},
 	sigilyph: {
@@ -21358,7 +21357,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Haxorus-Mega"],
-        formeOrder: ["Haxorus", "Haxorus-Mega"],
+		formeOrder: ["Haxorus", "Haxorus-Mega"],
 		prevo: "Fraxure",
 	},
 	haxorusmega: {
@@ -25646,7 +25645,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Pink",
 		evoLevel: 0,
 		otherFormes: ["Diancie-Mega"],
-        formeOrder: ["Diancie", "Diancie-Mega"],
+		formeOrder: ["Diancie", "Diancie-Mega"],
 	},
 	dianciemega: {
 		name: "Diancie-Mega",
@@ -26086,7 +26085,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Black",
 		evoLevel: 0,
 		otherFormes: ["Toucannon-Mega"],
-        formeOrder: ["Toucannon", "Toucannon-Mega"],
+		formeOrder: ["Toucannon", "Toucannon-Mega"],
 		prevo: "Trumbeak",
 	},
 	toucannonmega: {
@@ -29000,7 +28999,6 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 350,
 		heightm: 4.2,
 		color: "Blue",
-		evoLevel: null,
 		evos: ["Necrozma Ultra"],
 		prevo: "Necrozma",
 	},

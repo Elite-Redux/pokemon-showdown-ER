@@ -5128,7 +5128,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMovePriority: 1,
 		onModifyMove(move, attacker, defender) {
 			if (
-				(attacker.species.baseSpecies !== "Aegislash" && attacker.species.baseSpecies !== "Aegislash-Redux") ||
+				(attacker.species.baseSpecies !== "Aegislash" &&
+					attacker.species.baseSpecies !== "Aegislash-Redux") ||
 				attacker.transformed
 			)
 				return;
@@ -5137,10 +5138,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.id === "kingsshield" ? "Aegislash" : "Aegislash-Blade";
 
 			if (attacker.species.baseSpecies === "Aegislash-Redux") {
-				if(move.category === "Special") {
+				if (move.category === "Special") {
 					targetForme = "Aegislash-Redux";
 				} else {
-					if(move.category === "Status"){
+					if (move.category === "Status") {
 						return;
 					}
 					targetForme = "Aegislash-Blade-Redux";
@@ -11201,6 +11202,17 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	phantomthief: {
 		name: "Phantom Thief",
 		shortDesc: "Uses 40BP Spectral Thief on switch-in.",
+		onSourceSwitchIn(pokemon) {
+			this.add("-activate", pokemon, "ability: Phantom Thief");
+			const move: Move = {
+				...Dex.moves.get("spectralthief"),
+				basePower: 40,
+			};
+
+			const target = pokemon.foes()[0];
+
+			this.actions.useMove(move, pokemon, target);
+		},
 	},
 	devourer: {
 		name: "Devourer",
