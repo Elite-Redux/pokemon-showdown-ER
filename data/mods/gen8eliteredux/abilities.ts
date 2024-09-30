@@ -56,8 +56,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	bigpecks: {
 		inherit: true,
 		onTryBoost(boost, target, source, effect) {},
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags['contact']) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -280,7 +279,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	illusion: {
 		inherit: true,
-		onBasePower(power, source) {
+		onModifyDamage(power, source) {
 			if (source.illusion) {
 				this.debug('Illusion - power boost');
 				return this.chainModify([5325, 4096]);
@@ -324,8 +323,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	ironfist: {
 		inherit: true,
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags['punch']) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -423,7 +421,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				delete move.flags['contact'];
 			}
 		},
-		onBasePower(bp, source, target, move) {
+		onModifyDamage(bp, source, target, move) {
 			const unmodifiedMove = this.dex.moves.get(move);
 			//In ER, this boost only applies to Physical moves. Sorry, Vacuum Wave
 			if (!unmodifiedMove.flags['contact'] && move.category === 'Physical') {
@@ -679,8 +677,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	rivalry: {
 		inherit: true,
-		onBasePowerPriority: 24,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (attacker.gender && defender.gender) {
 				if (attacker.gender === defender.gender) {
 					this.debug('Rivalry boost');

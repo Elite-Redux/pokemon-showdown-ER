@@ -73,8 +73,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -104,8 +103,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -149,8 +147,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 76,
 	},
 	analytic: {
-		onBasePowerPriority: 21,
-		onBasePower(basePower, pokemon) {
+		onModifyDamage(basePower, pokemon) {
 			let boosted = true;
 			for (const target of this.getAllActive()) {
 				if (target === pokemon) continue;
@@ -1470,8 +1467,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 49,
 	},
 	flareboost: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (attacker.status === "brn" && move.category === "Special") {
 				return this.chainModify(1.5);
 			}
@@ -1842,8 +1838,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -2520,8 +2515,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 160,
 	},
 	ironfist: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["punch"]) {
 				this.debug("Iron Fist boost");
 				return this.chainModify(1.3);
@@ -2893,8 +2887,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 63,
 	},
 	megalauncher: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["pulse"]) {
 				return this.chainModify(1.5);
 			}
@@ -3384,8 +3377,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -3751,8 +3743,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -4095,8 +4086,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 227,
 	},
 	punkrock: {
-		onBasePowerPriority: 7,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["sound"]) {
 				this.debug("Punk Rock boost");
 				return this.chainModify([5325, 4096]);
@@ -4354,8 +4344,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 222,
 	},
 	reckless: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.recoil || move.hasCrashDamage) {
 				this.debug("Reckless boost");
 				return this.chainModify([4915, 4096]);
@@ -4387,8 +4376,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -4460,8 +4448,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 247,
 	},
 	rivalry: {
-		onBasePowerPriority: 24,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (attacker.gender && defender.gender) {
 				if (attacker.gender === defender.gender) {
 					this.debug("Rivalry boost");
@@ -4522,8 +4509,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 50,
 	},
 	sandforce: {
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (this.field.isWeather("sandstorm")) {
 				if (
 					move.type === "Rock" ||
@@ -4762,8 +4748,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 23,
 	},
 	sharpness: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["slicing"]) {
 				this.debug("Shapness boost");
 				return this.chainModify(1.5);
@@ -4798,8 +4783,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.hasSheerForce = true;
 			}
 		},
-		onBasePowerPriority: 21,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.hasSheerForce) return this.chainModify([5325, 4096]);
 		},
 		name: "Sheer Force",
@@ -5261,8 +5245,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 114,
 	},
 	strongjaw: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["bite"]) {
 				return this.chainModify(1.5);
 			}
@@ -5331,8 +5314,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				"[silent]"
 			);
 		},
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (this.effectState.fallen) {
 				const powMod = [4096, 4506, 4915, 5325, 5734, 6144];
 				this.debug(
@@ -5529,8 +5511,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 221,
 	},
 	technician: {
-		onBasePowerPriority: 30,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			const basePowerAfterMultiplier = this.modify(
 				basePower,
 				this.event.modifier
@@ -5646,8 +5627,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 67,
 	},
 	toughclaws: {
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["contact"]) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -5657,8 +5637,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 181,
 	},
 	toxicboost: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (
 				(attacker.status === "psn" || attacker.status === "tox") &&
 				move.category === "Physical"
@@ -6368,8 +6347,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	keenedge: {
-		onBasePowerPriority: 25,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["slicing"]) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -6391,8 +6369,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	powerfists: {
-		onBasePowerPriority: 26,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["punch"]) {
 				this.debug("Powerfists power boost");
 				return this.chainModify([5325, 4096]);
@@ -6497,8 +6474,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -6529,8 +6505,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -6579,8 +6554,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	exploitweakness: {
-		onBasePowerPriority: 27,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (defender.status) {
 				return this.chainModify(1.25);
 			}
@@ -6848,8 +6822,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -6905,7 +6878,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	dreamcatcher: {
-		onBasePower(bp, source, target, move) {
+		onModifyDamage(bp, source, target, move) {
 			for (const target of source.foes()) {
 				if (target.status === "slp") {
 					return this.chainModify(2);
@@ -6971,8 +6944,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -7083,8 +7055,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -7282,8 +7253,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -7972,8 +7942,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	fieldexplorer: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["field"]) {
 				this.debug("Field Explorer boost");
 				return this.chainModify(1.25);
@@ -7985,8 +7954,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	striker: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["kick"]) {
 				this.debug("Striker boost");
 				return this.chainModify(1.3);
@@ -8061,8 +8029,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	//
 	//},
 	giantwings: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["wind"]) {
 				this.debug("Giant Wings boost");
 				return this.chainModify(1.25);
@@ -8223,8 +8190,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.target = "allAdjacentFoes";
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["sound"]) {
 				this.debug("Amplifier boost");
 				return this.chainModify(1.3);
@@ -8302,8 +8268,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -8338,8 +8303,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -8382,8 +8346,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	mightyhorn: {
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["horn"]) {
 				this.debug("Mighty Horn boost");
 				return this.chainModify([5325, 4096]);
@@ -8449,8 +8412,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	ironbarrage: {
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["pulse"]) {
 				return this.chainModify(1.5);
 			}
@@ -8469,7 +8431,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	steelbarrel: {
-		onBasePowerPriority: 19,
 		onDamage(damage, target, source, effect) {
 			if (effect.id === "recoil") {
 				if (!this.activeMove) throw new Error("Battle.activeMove is null");
@@ -8631,7 +8592,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	nosferatu: {
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["contact"]) {
 				return this.chainModify([4915, 4096]);
 			}
@@ -8668,8 +8629,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -8700,8 +8660,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -8772,7 +8731,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			)
 				return;
 			const moveMutations = {
-				basePower: 40 * 0.8,
 				flags: { ...Dex.moves.get("machpunch").flags, counter: 1 },
 			};
 			this.effectState.additionalAttack = true;
@@ -8785,9 +8743,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.effectState.additionalAttack = false;
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (move.flags["contact"]) {
-				return this.chainModify(0.8);
-			}
+			return this.chainModify(0.8);
 		},
 		isBreakable: true,
 		name: "Parry",
@@ -8797,18 +8753,22 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	roundhouse: {
 		onModifyMove(move, pokemon, target) {
-			if (move.flags["kick"]) move.accuracy = true;
-		},
-		onBeforeMove(pokemon, target, move) {
-			const def = target.getStat("def", false, true);
-			const spd = target.getStat("spd", false, true);
+			if (!move.flags["kick"]) return;
+
+			move.accuracy = true;
+
+			if (!target) return;
+
+			const def = target.calculateStat("def", target.boosts["def"], 1, target, pokemon, move, 0);
+			const spd = target.calculateStat("spd", target.boosts["spd"], 1, target, pokemon, move, 0);
+
 			if (def > spd) {
 				move.overrideDefensiveStat = "spd";
 			} else {
 				move.overrideDefensiveStat = "def";
 			}
 		},
-		name: "Parry",
+		name: "Roundhouse",
 		rating: 3,
 		num: 414,
 		gen: 8,
@@ -8835,8 +8795,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -9050,8 +9009,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
@@ -9167,7 +9125,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	prettyprincess: {
-		onBasePower(damage, source, target) {
+		onModifyDamage(damage, source, target) {
 			let willBoost = false;
 			let i: BoostID;
 			for (i in target.boosts) {
@@ -9409,7 +9367,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	hydrocircuit: {
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Electric") {
 				return this.chainModify(1.5);
 			}
@@ -10035,8 +9993,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify(1.1);
 		},
@@ -10313,8 +10270,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc:
 			"Boost weaker moves and increases the frequency of multi-hit moves.",
 		/// Technician
-		onBasePowerPriority: 30,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			const basePowerAfterMultiplier = this.modify(
 				basePower,
 				this.event.modifier
@@ -10343,8 +10299,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Combat Specialist",
 		shortDesc: "Boost the power of punching and kicking moves by 1.3x.",
 		/// Iron Fist
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["punch"]) {
 				this.debug("Iron Fist boost");
 				return this.chainModify(1.3);
@@ -10429,7 +10384,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		/// TODO: What should the modifier for hunter's horn be?
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["horn"]) {
 				this.debug("Hunter's horn boost");
 				return this.chainModify(1.3);
@@ -10531,7 +10486,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	nika: {
 		name: "Nika",
 		shortDesc: "Iron fist + Water moves function normally under sun.",
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["punch"]) {
 				this.debug("Iron Fist boost");
 				this.chainModify(1.3);
@@ -10551,7 +10506,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.overrideOffensiveStat = "spa";
 			}
 		},
-		onBasePower(bp, source, target, move) {
+		onModifyDamage(bp, source, target, move) {
 			if (move.flags["bite"]) {
 				this.chainModify(1.5);
 			}
@@ -10656,7 +10611,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	subdue: {
 		name: "Subdue",
 		shortDesc: "Doubles the power of stat dropping moves.",
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.secondaries) {
 				for (const secondary of move.secondaries) {
 					if (secondary.boosts) {
@@ -10892,8 +10847,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.target = "allAdjacentFoes";
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["sound"]) {
 				this.debug("Amplifier boost");
 				this.chainModify(1.3);
@@ -10924,8 +10878,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	devourer: {
 		name: "Devourer",
 		shortDesc: "Combines Strong Jaw & Primal Maw.",
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["bite"]) {
 				return this.chainModify(1.5);
 			}
@@ -11032,8 +10985,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return this.chainModify(1.3);
 			}
 		},
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Flying") {
 				this.debug("Airborne boost");
 				return this.chainModify(1.3);
@@ -11097,7 +11049,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.type = "Ghost";
 			}
 		},
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Ghost") {
 				this.debug("Banshee boost");
 				return this.chainModify(1.2);
@@ -11166,21 +11118,22 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	ponypower: {
 		name: "Pony Power",
 		shortDesc: "Combines Keen Edge & Mystic Blades.",
-		onBasePowerPriority: 25,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["slicing"]) {
-				return this.chainModify([5325, 4096]);
+				return this.chainModify(1.3*1.3);
 			}
 		},
 		onModifyMove(move) {
-			move.forceSTAB = true;
+			if (move.flags["slicing"]) {
+				move.overrideDefensiveStat = 'spd';
+				move.overrideOffensiveStat = 'spa';
+			}
 		},
 	},
 	combustion: {
 		name: "Combustion",
 		shortDesc: "Boosts the power of Fire-type moves by 1.5x.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Fire") {
 				this.debug("Combustion boost");
 				return this.chainModify(1.5);
@@ -11213,8 +11166,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	fighter: {
 		name: "Fighter",
 		shortDesc: "Boosts Fight.-type moves by 1.2x, or 1.5x when below 1/3 HP.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Fighting") {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug("Fighter boost");
@@ -11249,7 +11201,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.type = "Grass";
 			}
 		},
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Grass") {
 				this.debug("Fertilize boost");
 				return this.chainModify(1.1);
@@ -11273,7 +11225,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.overrideDefensiveStat = "spd";
 			}
 		},
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["slicing"]) {
 				this.debug("Mystic Blades boost");
 				return this.chainModify(1.3);
@@ -11396,7 +11348,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.type = "Ice";
 			}
 		},
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Ice") {
 				this.debug("Refridgerate boost");
 				return this.chainModify(1.1);
@@ -11417,7 +11369,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.type = "Ice";
 			}
 		},
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Ice") {
 				this.debug("Refridgerate boost");
 				return this.chainModify(1.1);
@@ -11558,8 +11510,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
+		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify(1.1);
 		},
@@ -11942,8 +11893,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	superslammer: {
 		name: "Super Slammer",
 		shortDesc: "Boosts the power of hammer and slamming moves by 1.3x.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["hammer"] || move.flags["slam"]) {
 				this.debug("Super Slammer boost");
 				return this.chainModify(1.3);
@@ -11977,8 +11927,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	archer: {
 		name: "Archer",
 		shortDesc: "Boosts the power of arrow moves by 1.3x.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["arrow"]) {
 				this.debug("Archer boost");
 				return this.chainModify(1.3);
@@ -11988,8 +11937,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	rockhardwill: {
 		name: "Rockhard Will",
 		shortDesc: "Boosts Rock-type moves by 1.2x, or 1.5x when under 1/3 HP.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Rock") {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug("Rockhard Will boost");
@@ -12286,8 +12234,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	flourish: {
 		name: "Flourish",
 		shortDesc: "Boosts Grass moves by 50% in grassy terrain.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (this.field.isTerrain("grassyterrain") && move.type === "Grass") {
 				this.debug("Flourish boost");
 				return this.chainModify(1.5);
@@ -12309,11 +12256,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Arrow moves become special and deal 30% more damage.",
 		onModifyMove(move) {
 			if (move.flags["arrow"]) {
-				move.category = "Special";
+				move.overrideOffensiveStat = 'spa';
+				move.overrideDefensiveStat = 'spd';
 			}
 		},
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["arrow"]) {
 				this.debug("Mythical Arrows boost");
 				return this.chainModify(1.3);
@@ -12323,6 +12270,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	brawlingwyvern: {
 		name: "Brawling Wyvern",
 		shortDesc: "Dragon type moves become punching moves.",
+		onModifyMovePriority: 10,
 		onModifyMove(move) {
 			if (move.type === "Dragon") {
 				move.flags["punch"] = 1;
@@ -12418,8 +12366,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	moltenblades: {
 		name: "Molten Blades",
 		shortDesc: "Keen Edge + Keen Edge moves have a 20% chance to burn.",
-		onBasePowerPriority: 25,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["slicing"]) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -12498,8 +12445,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					move.target = "allAdjacentFoes";
 			}
 		},
-		onBasePowerPriority: 25,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["slicing"]) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -12508,8 +12454,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	catastrophe: {
 		name: "Catastrophe",
 		shortDesc: "Sun boosts Water. Rain boosts Fire.",
-		onBasePowerPriority: 22,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (this.field.isWeather("sunnyday") && move.type === "Water") {
 				this.debug("Catastrophe boost");
 				return this.chainModify(2);

@@ -285,7 +285,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			const [secondaryStat, secondaryBoost] = this.battle.runEvent('GetSecondaryStat', source, target, move) as [StatIDExceptHP, number] || [];
 			let bonusStat = 0;
-			if (secondaryStat && secondaryBoost > 0)
+			if (secondaryStat && secondaryBoost > 0 && move.name !== "Body Press" && move.name !== "Behemoth Bash")
 			{
 				let secondaryBoost = attacker.boosts[secondaryStat]
 				if (ignoreNegativeOffensive && secondaryBoost < 0) secondaryBoost = 0;

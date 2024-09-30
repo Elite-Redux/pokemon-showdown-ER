@@ -101,6 +101,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	behemothbash: {
+		inherit: true,
+		overrideOffensiveStat: 'def',
+	},
 	belch: {
 		inherit: true,
 		flags: {protect: 1, failmefirst: 1, nosleeptalk: 1, noassist: 1, failcopycat: 1, failinstruct: 1},
