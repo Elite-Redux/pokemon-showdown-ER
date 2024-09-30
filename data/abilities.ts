@@ -433,8 +433,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 237,
 	},
 	battery: {
-		onAllyBasePowerPriority: 22,
-		onAllyBasePower(basePower, attacker, defender, move) {
+		onAllyModifyDamage(basePower, attacker, defender, move) {
 			if (
 				attacker !== this.effectState.target &&
 				move.category === "Special"
@@ -1002,8 +1001,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add("-ability", pokemon, "Dark Aura");
 		},
-		onAnyBasePowerPriority: 20,
-		onAnyBasePower(basePower, source, target, move) {
+		onAnyModifyDamage(basePower, source, target, move) {
 			if (
 				target === source ||
 				move.category === "Status" ||
@@ -1320,8 +1318,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return null;
 			}
 		},
-		onSourceBasePowerPriority: 17,
-		onSourceBasePower(basePower, attacker, defender, move) {
+		onSourceModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Fire") {
 				return this.chainModify(1.25);
 			}
@@ -1425,8 +1422,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add("-ability", pokemon, "Fairy Aura");
 		},
-		onAnyBasePowerPriority: 20,
-		onAnyBasePower(basePower, source, target, move) {
+		onAnyModifyDamage(basePower, source, target, move) {
 			if (
 				target === source ||
 				move.category === "Status" ||
@@ -2097,8 +2093,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 131,
 	},
 	heatproof: {
-		onSourceBasePowerPriority: 18,
-		onSourceBasePower(basePower, attacker, defender, move) {
+		onSourceModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Fire") {
 				return this.chainModify(0.5);
 			}
@@ -3881,8 +3876,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 223,
 	},
 	powerspot: {
-		onAllyBasePowerPriority: 22,
-		onAllyBasePower(basePower, attacker, defender, move) {
+		onAllyModifyDamage(basePower, attacker, defender, move) {
 			if (attacker !== this.effectState.target) {
 				this.debug("Power Spot boost");
 				return this.chainModify([5325, 4096]);
@@ -5156,8 +5150,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 200,
 	},
 	steelyspirit: {
-		onAllyBasePowerPriority: 22,
-		onAllyBasePower(basePower, attacker, defender, move) {
+		onAllyModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Steel") {
 				this.debug("Steely Spirit boost");
 				return this.chainModify(1.5);
@@ -10400,8 +10393,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-ability", pokemon, "Pixie Power");
 		},
 		/// Fairy Aura boost.
-		onAnyBasePowerPriority: 20,
-		onAnyBasePower(basePower, source, target, move) {
+		onAnyModifyDamage(basePower, source, target, move) {
 			if (
 				target === source ||
 				move.category === "Status" ||
@@ -10978,8 +10970,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	airborne: {
 		name: "Airborne",
 		shortDesc: "Boosts own & ally's Flying-type moves by 1.3x.",
-		onAllyBasePowerPriority: 22,
-		onAllyBasePower(basePower, attacker, defender, move) {
+		onAllyModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Flying") {
 				this.debug("Airborne boost");
 				return this.chainModify(1.3);
