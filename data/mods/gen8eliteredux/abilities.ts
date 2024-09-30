@@ -774,6 +774,27 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
 
 	},
+	slowstart: {
+		inherit: true,
+		condition: {
+			duration: 5,
+			onResidualOrder: 28,
+			onResidualSubOrder: 2,
+			onStart(target) {
+				this.add("-start", target, "ability: Slow Start");
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, pokemon) {
+				return this.chainModify(0.5);
+			},
+			onModifySpe(spe, pokemon) {
+				return this.chainModify(0.5);
+			},
+			onEnd(target) {
+				this.add("-end", target, "Slow Start");
+			},
+		},
+	},
 	slushrush: {
 		inherit: true,
 		onModifySpe(spe, pokemon) {
@@ -844,6 +865,26 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return null;
 				}
 			}
+	},
+	supremeoverlord: {
+		inherit: true,
+		onModifyDamage() {},
+		onModifyAtk(basePower, attacker, defender, move) {
+			if (this.effectState.fallen) {
+				this.debug(
+					`Supreme Overlord boost: ${1+.1*this.effectState.fallen}/4096`
+				);
+				return this.chainModify(1+.1*this.effectState.fallen);
+			}
+		},
+		onModifySpA(basePower, attacker, defender, move) {
+			if (this.effectState.fallen) {
+				this.debug(
+					`Supreme Overlord boost: ${1+.1*this.effectState.fallen}/4096`
+				);
+				return this.chainModify(1+.1*this.effectState.fallen);
+			}
+		},
 	},
 	surgesurfer: {
 		inherit: true,
