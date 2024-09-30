@@ -65,11 +65,31 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.battle.debug(`Parental Bond modifier: ${bondModifier}`);
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
 			}
+			else if ((move.multihitType === 'boxer' || move.multihitType === 'maw') && move.hit > 1) {
+				// Boxer & Primal Maw modifier
+				const bondModifier = 0.5
+				this.battle.debug(`Raging Boxer / Primal Maw modifier: ${bondModifier}`);
+				baseDamage = this.battle.modify(baseDamage, bondModifier);
+			}
 			else if(move.multihitType === "minion" && move.hit > 1) {
 				// Minion modifier
 				const minionModifier = 0.1;
 				this.battle.debug(`Minion modifier: ${minionModifier}`);
 				baseDamage = this.battle.modify(baseDamage, minionModifier);
+			} else if (move.multihitType === 'headed') {
+				let bondModifier;
+				if (move.hit === 2) bondModifier = 0.2;
+				if (move.hit >= 3) bondModifier = 0.15;
+				if (bondModifier) {
+					this.battle.debug(`Multi-Headed modifier: ${bondModifier}`);
+					baseDamage = this.battle.modify(baseDamage, bondModifier);
+				}
+			} else if (move.multihitType === 'dual') {
+				const bondModifier = 0.75
+				baseDamage = this.battle.modify(baseDamage, bondModifier);
+			} else if (move.multihitType == "ragingmoth") {
+				const bondModifier = 0.75;
+				baseDamage = this.battle.modify(baseDamage, bondModifier);
 			}
 
 			// weather modifier
