@@ -17425,7 +17425,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	arceusflying: {
 		name: "Arceus-Flying",
 		num: 1651,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Multitype",
 			"1": "Multitype",
@@ -22327,7 +22327,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	tornadus: {
 		name: "Tornadus",
 		num: 641,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Air Blower",
 			"1": "Cloud Nine",
@@ -22354,7 +22354,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	tornadustherian: {
 		name: "Tornadus-Therian",
 		num: 1676,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Air Blower",
 			"1": "Cloud Nine",
@@ -27610,7 +27610,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	silvallyflying: {
 		name: "Silvally-Flying",
 		num: 1752,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Unaware",
 			"1": "Cloud Nine",
@@ -29785,7 +29785,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	rookidee: {
 		name: "Rookidee",
 		num: 821,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Keen Eye",
 			"1": "Reckless",
@@ -29812,7 +29812,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	corvisquir: {
 		name: "Corvisquir",
 		num: 822,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Keen Eye",
 			"1": "Reckless",
@@ -32880,7 +32880,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	buizelredux: {
 		name: "Buizel-Redux",
 		num: 2527,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Technician",
 			"1": "Aerilate",
@@ -32905,7 +32905,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	floatzelredux: {
 		name: "Floatzel-Redux",
 		num: 2528,
-		types: ["Flying", "Flying"],
+		types: ["Flying"],
 		abilities: {
 			"0": "Technician",
 			"1": "Speed Force",
