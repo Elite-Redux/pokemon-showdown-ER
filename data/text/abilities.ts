@@ -1650,7 +1650,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	rkssystem: {
 		name: "RKS System",
 		shortDesc:
-			"If this Pokemon is a Silvally, its type changes to match its held Memory.",
+			"If this Pokemon is a Silvally, its type changes to match its held Memory. Protean + Adaptability.",
 	},
 	rockhead: {
 		name: "Rock Head",
