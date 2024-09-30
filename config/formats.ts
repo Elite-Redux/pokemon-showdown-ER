@@ -28,7 +28,7 @@ export const Formats: FormatList = [
 		name: "Elite Redux LC",
 		desc: `LC for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard"],
+		ruleset: ["Little Cup"],
 		banlist: [
 			"Uber",
 			"AG",
