@@ -4486,6 +4486,28 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	rkssystem: {
 		// RKS System's type-changing itself is implemented in statuses.js
+		onPrepareHit(source, target, move) {
+			if (
+				move.hasBounced ||
+				move.flags["futuremove"] ||
+				move.sourceEffect === "snatch"
+			)
+				return;
+			const type = move.type;
+			if (type && type !== "???" && source.getTypes().join() !== type) {
+				if (!source.setType(type)) return;
+				this.add(
+					"-start",
+					source,
+					"typechange",
+					type,
+					"[from] ability: RKS System"
+				);
+			}
+		},
+		onModifyMove(move) {
+			move.stab = 2;
+		},
 		isPermanent: true,
 		name: "RKS System",
 		rating: 4,
