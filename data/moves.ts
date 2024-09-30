@@ -3969,7 +3969,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 45,
 		category: "Physical",
-		name: "Dual Wingbeat",
+		name: "Double Kick",
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
