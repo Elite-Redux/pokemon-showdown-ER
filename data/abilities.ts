@@ -12831,7 +12831,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Iron Serpent",
 		shortDesc: "Ups “supereffective” by 33%.",
 		onEffectiveness(typeMod, target, type, move) {
-			if (typeMod > 2) {
+			if (typeMod >= 2) {
 				return typeMod + 0.33;
 			}
 		},
@@ -12840,7 +12840,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Winged King",
 		shortDesc: "Ups “supereffective” by 33%.",
 		onEffectiveness(typeMod, target, type, move) {
-			if (typeMod > 2) {
+			if (typeMod >= 2) {
 				return typeMod + 0.33;
 			}
 		},
