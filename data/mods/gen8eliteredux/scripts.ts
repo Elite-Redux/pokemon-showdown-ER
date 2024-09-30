@@ -283,21 +283,21 @@ export const Scripts: ModdedBattleScriptsData = {
 				defBoosts = 0;
 			}
 
-			const [secondaryStat, secondaryBoost] = this.battle.runEvent('GetSecondaryStat', source, target, move) as [StatIDExceptHP, number] || [];
 			let bonusStat = 0;
-			if (secondaryStat && secondaryBoost > 0 && move.name !== "Body Press" && move.name !== "Behemoth Bash")
+			for (const [secondaryStat, secondaryBoost] of move.secondaryOffensiveStats || [])
 			{
-				let secondaryBoost = attacker.boosts[secondaryStat]
-				if (ignoreNegativeOffensive && secondaryBoost < 0) secondaryBoost = 0;
-				else if (move.ignoreOffensive) secondaryBoost = 0;
-				else if (secondaryStat === attackStat) secondaryBoost = 0;
-				bonusStat = attacker.calculateStat(secondaryStat, secondaryBoost, secondaryBoost, source, target, move, 0);
+				if (secondaryStat && secondaryBoost > 0 && this.dex.getActiveMove(move.baseMove || "")?.overrideOffensiveStat !== "def")
+				{
+					let secondaryBoost = attacker.boosts[secondaryStat]
+					if (ignoreNegativeOffensive && secondaryBoost < 0) secondaryBoost = 0;
+					else if (move.ignoreOffensive) secondaryBoost = 0;
+					else if (secondaryStat === attackStat) secondaryBoost = 0;
+					bonusStat += attacker.calculateStat(secondaryStat, secondaryBoost, secondaryBoost, source, target, move, 0);
+				}
 			}
 
 			let attack = attacker.calculateStat(attackStat, atkBoosts, 1, source, target, move, bonusStat);
 			let defense = defender.calculateStat(defenseStat, defBoosts, 1, target, source, move, 0);
-
-			attackStat = (category === 'Physical' ? 'atk' : 'spa');
 
 			if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'def') {
 				defense = this.battle.clampIntRange(Math.floor(defense / 2), 1);

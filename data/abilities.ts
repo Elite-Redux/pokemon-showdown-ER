@@ -7158,9 +7158,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	juggernaut: {
 		onModifyAtkPriority: 11,
-		onGetSecondaryStat(attacker, defender, move)
+		onModifyMove(move)
 		{
-			if (move.flags["contact"]) return ["def", 0.2];
+			if (move.flags["contact"]) move.secondaryOffensiveStats = [["def", 0.2]];
 		},
 		onUpdate(pokemon) {
 			if (pokemon.status === "par") {
@@ -7850,8 +7850,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	speedforce: {
-		onGetSecondaryStat(attacker, defender, move) {
-			if (move.flags["contact"]) return ["spe", 0.2];
+		onModifyMove(move) {
+			if (move.flags["contact"]) move.secondaryOffensiveStats = [["spe", 0.2]];
 		},
 		name: "Speed Force",
 		rating: 4,
@@ -7995,9 +7995,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	powercore: {
-		onGetSecondaryStat(attacker, defender, move) {
-			if (move.category === 'Physical') return ['def', 0.2];
-			else if (move.category === 'Special') return ['spd', 0.2];
+		onModifyMove(move) {
+			if (move.category === 'Physical') move.secondaryOffensiveStats = [['def', 0.2]];
+			else if (move.category === 'Special') move.secondaryOffensiveStats = [['spd', 0.2]];
 		},
 		name: "Power Core",
 		rating: 3.5,
@@ -10803,8 +10803,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	terminalvelocity: {
 		name: "Terminal Velocity",
 		shortDesc: "Special moves use 20% of its Speed stat additionally.",
-		onGetSecondaryStat(attacker, defender, move) {
-			if (!move.flags["contact"]) return ["spe", 0.2];
+		onModifyMove(move) {
+			if (!move.flags["contact"]) move.secondaryOffensiveStats = [["spe", 0.2]];
 		},
 	},
 	monsterhunter: {
