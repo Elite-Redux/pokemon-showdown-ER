@@ -87,7 +87,10 @@ export interface EventMethods {
 	onModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onModifySpD?: CommonHandlers['ModifierMove'];
 	onModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onModifySpeSecondary?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onModifySpeFull?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
 	onModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void;
+	onGetSecondaryStat?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: ActiveMove) => [StatIDExceptHP, number] | void;
 	onMoveAborted?: CommonHandlers['VoidMove'];
 	onNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean;
 	onOverrideAction?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: ActiveMove) => string | void;

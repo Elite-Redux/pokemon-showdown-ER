@@ -581,7 +581,10 @@ export class Pokemon {
 		statName: StatIDExceptHP,
 		boost: number,
 		modifier?: number,
-		statUser?: Pokemon
+		statUser?: Pokemon,
+		statTarget?: Pokemon,
+		move?: ActiveMove,
+		bonusStat: number = 0,
 	) {
 		statName = toID(statName) as StatIDExceptHP;
 		// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid

@@ -632,7 +632,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	furcoat: {
 		name: "Fur Coat",
-		shortDesc: "This Pokemon's Defense is doubled.",
+		shortDesc: "This Pokemon's takes half damage from physical attacks.",
 	},
 	galewings: {
 		name: "Gale Wings",
