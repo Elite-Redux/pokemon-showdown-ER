@@ -4266,10 +4266,10 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		tier: "OU",
 	},
 	koraidon: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	miraidon: {
-		tier: "OU",
+		tier: "Uber",
 	},
 	tinkatink: {
 		tier: "OU",
