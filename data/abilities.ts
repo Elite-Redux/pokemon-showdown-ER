@@ -12448,6 +12448,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Aftershock",
 		shortDesc: "Triggers Magnitude 4-7 after using a damaging move.",
 		onAfterMove(source, target, move) {
+			if(!move || move.category === "Status") return;
 			this.add("-activate", source, "ability: Aftershock");
 			const aftershock = Dex.moves.get("magnitude");
 			/// Magnitude 4-7 is 0->65.

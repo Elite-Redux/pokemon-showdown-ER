@@ -3234,9 +3234,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 			"This Pokemon's status moves cannot miss; Nulls Pokemon's Psychic weaknesses",
 	},
 	equinox: {
-		name: "Gifted Mind",
+		name: "Equinox",
 		shortDesc:
-			"This Pokemon's status moves cannot miss; Nulls Pokemon's Psychic weaknesses",
+			"This pokemon's lower attacking stat is raised to its higher attacking stat.",
 	},
 	absorbant: {
 		name: "Absorbant",

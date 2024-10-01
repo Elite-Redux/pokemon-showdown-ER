@@ -33,7 +33,9 @@ export const Formats: FormatList = [
 			"Uber",
 			"AG",
 			"OU",
-			"UU"
+			"UU",
+			"Fearmonger",
+			"Watch Your Step",
 		],
 		debug: true,
 
@@ -332,15 +334,8 @@ export const Formats: FormatList = [
 		banlist: [
 			"Uber",
 			"AG",
-			"King's Rock",
-			"Baton Pass",
-			"Shadow Tag",
-			"Arena Trap",
-			"Aeroblast",
-			"Alakazite",
-			"Blastoisinite",
-			"Moody",
-			"Power Construct",
+			"Fearmonger",
+			"Watch Your Step",
 		],
 		debug: true,
 
@@ -487,7 +482,9 @@ export const Formats: FormatList = [
 		desc: `UU For Elite Redux`,
 		mod: "gen8eliteredux",
 		ruleset: ["Elite Redux OU"],
-		banlist: ["OU", "UUBL"],
+		banlist: ["OU", "UUBL", 
+			"Fearmonger",
+			"Watch Your Step",],
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
@@ -927,7 +924,11 @@ export const Formats: FormatList = [
 		mod: "gen8eliteredux",
 		gameType: "doubles",
 		ruleset: ["Standard Doubles", "Sleep Clause Mod"],
-		banlist: ["DUber", "DOU","DUU"],
+		banlist: ["DUber", "DOU","DUU", "Air Blower",
+			"Twist. Dimensions",
+			"Fearmonger",
+			"North Wind",
+			"Watch Your Step",],
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
@@ -1072,7 +1073,11 @@ export const Formats: FormatList = [
 		mod: "gen8eliteredux",
 		gameType: "doubles",
 		ruleset: ["Standard Doubles", "Sleep Clause Mod"],
-		banlist: ["DUber"],
+		banlist: ["DUber", "Air Blower",
+			"Twist. Dimensions",
+			"Fearmonger",
+			"North Wind",
+			"Watch Your Step",],
 
 		//ER Scripts
 		onValidateSet(set) {
@@ -1218,7 +1223,11 @@ export const Formats: FormatList = [
 		mod: "gen8eliteredux",
 		gameType: "doubles",
 		ruleset: ["Standard Doubles", "Force Monotype (ER)", "Sleep Clause Mod"],
-		banlist: ["DUber"],
+		banlist: ["DUber", "Air Blower",
+			"Twist. Dimensions",
+			"Fearmonger",
+			"North Wind",
+			"Watch Your Step",],
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
