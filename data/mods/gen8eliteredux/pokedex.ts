@@ -19650,9 +19650,11 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evos: [],
 		prevo: "Darumaka",
 	},
-	darmanitanzenmode: {
-		name: "Darmanitan-Zen Mode",
+	darmanitanzen: {
+		name: "Darmanitan Zen",
 		num: 1668,
+		baseSpecies: "Darmanitan",
+		forme: "Zen",
 		types: ["Fire", "Psychic"],
 		abilities: {
 			"0": "Sheer Force",
@@ -19672,8 +19674,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		},
 		eggGroups: ["Field", "Field"],
 		weightkg: 0,
-		evoLevel: 0,
-		evos: [],
+		requiredAbility: "Zen Mode",
+		battleOnly: "Darmanitan",
 	},
 	darumakagalar: {
 		name: "Darumaka-Galar",
@@ -19727,8 +19729,10 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		prevo: "Darumaka Galar",
 	},
 	darmanitanzenmodegalar: {
-		name: "Darmanitan-Zen Mode Galar",
+		name: "Darmanitan-Galar-Zen",
 		num: 1669,
+		baseSpecies: "Darmanitan",
+		forme: "Galar-Zen",
 		types: ["Ice", "Fire"],
 		abilities: {
 			"0": "Gorilla Tactics",
@@ -19748,8 +19752,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		},
 		eggGroups: ["Field", "Field"],
 		weightkg: 0,
-		evoLevel: 0,
-		evos: [],
+		requiredAbility: "Zen Mode",
+		battleOnly: "Darmanitan-Galar",
 	},
 	maractus: {
 		name: "Maractus",
