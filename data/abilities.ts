@@ -168,10 +168,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	angerpoint: {
 		onHit(target, source, move) {
 			if (!target.hp) return;
-			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
-				this.boost({ atk: 12 }, target, target);
-			} else if (move?.effectType === "Move") {
-				this.boost({ atk: 1 }, target, target);
+			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
+				this.boost({atk: 12}, target, target);
+			}
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (damage && move?.effectType === 'Move') {
+				this.boost({atk: 1}, target, target);
 			}
 		},
 		name: "Anger Point",
@@ -447,6 +450,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 217,
 	},
 	battlearmor: {
+		onSourceModifyDamage(damage, source, target, move) {
+			this.debug('Battle Armor weaken')
+			return this.chainModify(0.8)
+		},
 		onCriticalHit: false,
 		isBreakable: true,
 		name: "Battle Armor",
@@ -3430,19 +3437,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 12,
 	},
 	opportunist: {
-		onFoeAfterBoost(boost, target, source, effect) {
-			if (effect?.name === "Opportunist" || effect?.name === "Mirror Herb")
-				return;
-			const pokemon = this.effectState.target;
-			const positiveBoosts: Partial<BoostsTable> = {};
-			let i: BoostID;
-			for (i in boost) {
-				if (boost[i]! > 0) {
-					positiveBoosts[i] = boost[i];
-				}
-			}
-			if (Object.keys(positiveBoosts).length < 1) return;
-			this.boost(positiveBoosts, pokemon);
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.category === "Status") return priority;
+			if (target.hp <= target.maxhp / 2) return priority + 1;
 		},
 		name: "Opportunist",
 		rating: 3,

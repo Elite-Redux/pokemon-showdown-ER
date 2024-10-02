@@ -1,33 +1,6 @@
 import { TriumvirateModeTrivia } from "../../../server/chat-plugins/trivia/trivia";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
-	angerpoint: {
-		inherit: true,
-		onHit(target, source, move) {
-			if (!target.hp) return;
-			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
-				this.boost({atk: 12}, target, target);
-			}
-		},
-		onDamagingHit(damage, target, source, move) {
-			if (damage && move?.effectType === 'Move') {
-				this.boost({atk: 1}, target, target);
-			}
-		},
-		desc: "This Pokemon's Attack is raised by 1 stage when hit. If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
-		shortDesc: "Ups attack on hit. If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
-
-	},
-	battlearmor: {
-		inherit: true,
-		onSourceModifyDamage(damage, source, target, move) {
-			this.debug('Battle Armor weaken')
-			return this.chainModify(0.8)
-		},
-		shortDesc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
-		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
-
-	},
 	battlebond: {
 		inherit: true,
 		onSourceAfterFaint(length, target, source, effect) {
