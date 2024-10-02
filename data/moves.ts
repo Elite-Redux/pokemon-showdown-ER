@@ -1921,18 +1921,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	bubblebeam: {
 		num: 61,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 25,
 		category: "Special",
 		name: "Bubble Beam",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, pulse: 1},
-		secondary: {
-			chance: 10,
-			boosts: {
-				spe: -1,
-			},
-		},
+		secondary: null,
+		multihit: [2,5],
 		target: "normal",
 		type: "Water",
 		contestType: "Beautiful",
@@ -12596,18 +12592,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	mudslap: {
 		num: 189,
 		accuracy: 100,
-		basePower: 20,
+		basePower: 25,
 		category: "Special",
 		name: "Mud-Slap",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			boosts: {
-				accuracy: -1,
-			},
-		},
+		secondary: null,
+		multihit: [2,5],
 		target: "normal",
 		type: "Ground",
 		contestType: "Cute",
