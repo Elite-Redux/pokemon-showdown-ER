@@ -3439,6 +3439,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	opportunist: {
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move?.category === "Status") return priority;
+			if(!target) return priority;
 			if (target.hp <= target.maxhp / 2) return priority + 1;
 		},
 		name: "Opportunist",

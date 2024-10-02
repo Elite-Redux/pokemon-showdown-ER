@@ -441,8 +441,11 @@ export class TeamValidator {
 			}
 		}
 		if (set.name){
-			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink','nibba']
-			for (const word in bannedWords){
+			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink','nibba'];
+			//console.log(set.name);
+			for (const i in bannedWords){
+				const word = bannedWords[i];
+				//console.log(set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a'));
 				if (set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a').includes(word)){
 					problems.push(`Nickname "${set.name}" cannot contain the word "${word}"`);
 					break;

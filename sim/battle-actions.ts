@@ -1899,7 +1899,7 @@ export class BattleActions {
 		pokemon.formeChange(speciesid, pokemon.getItem(), true);
 		try  {
 			//Despite the any type error, this should be fine
-			pokemon.ability = pokemon.species.abilities[ind];
+			pokemon.setAbility(pokemon.species.abilities[ind]);
 		}
 		catch (e) {
 			console.log(e);
