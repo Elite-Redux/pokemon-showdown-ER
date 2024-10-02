@@ -1879,10 +1879,31 @@ export class BattleActions {
 	runMegaEvo(pokemon: Pokemon) {
 		const speciesid = pokemon.canMegaEvo || pokemon.canUltraBurst;
 		if (!speciesid) return false;
-
+		const ab = pokemon.ability;
+		const abs = pokemon.species.abilities;
+		let ind;
+		switch (ab) {
+			case abs['0']:
+				ind = 0;
+				break;
+			case abs['1']:
+				ind = 1;
+				break;
+			case abs['H']:
+				ind = 'H';
+				break;
+			default:
+				ind = 0;
+		}
 		this.battle.runEvent('BeforeMega', pokemon);
 		pokemon.formeChange(speciesid, pokemon.getItem(), true);
-
+		try  {
+			//Despite the any type error, this should be fine
+			pokemon.ability = pokemon.species.abilities[ind];
+		}
+		catch (e) {
+			console.log(e);
+		}
 		// Limit one mega evolution
 		const wasMega = pokemon.canMegaEvo;
 		for (const ally of pokemon.side.pokemon) {
@@ -1892,7 +1913,6 @@ export class BattleActions {
 				ally.canUltraBurst = null;
 			}
 		}
-
 		this.battle.runEvent('AfterMega', pokemon);
 		return true;
 	}
