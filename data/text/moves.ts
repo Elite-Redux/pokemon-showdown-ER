@@ -4605,8 +4605,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisontail: {
 		name: "Poison Tail",
-		desc: "Has a 10% chance to poison the target and a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio. 10% chance to poison.",
+		desc: "If both the user and the target have not fainted, the target is forced to switch out and be replaced with a random unfainted ally. This effect fails if the target used Ingrain previously, has the Suction Cups Ability, or this move hit a substitute. Has a 10% chance to poison.",
+		shortDesc: "Forces the target to switch to a random ally. 10% Poison chance.",
 	},
 	pollenpuff: {
 		name: "Pollen Puff",
