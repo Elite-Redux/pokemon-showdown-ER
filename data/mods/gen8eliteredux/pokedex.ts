@@ -7104,7 +7104,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		num: 196,
 		types: ["Psychic"],
 		abilities: {
-			"0": "Soul-heart",
+			"0": "Soul-Heart",
 			"1": "Sage Power",
 			H: "Psychic Surge",
 			I1: "Magic Bounce",
@@ -10015,7 +10015,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		types: ["Psychic", "Fairy"],
 		abilities: {
 			"0": "Queenly Majesty",
-			"1": "Soul-heart",
+			"1": "Soul-Heart",
 			H: "Psychic Surge",
 			I1: "Serene Grace",
 			I2: "Magic Guard",
@@ -10050,7 +10050,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Pixilate",
 			I1: "Serene Grace",
 			I2: "Magic Guard",
-			I3: "Soul-heart",
+			I3: "Soul-Heart",
 		},
 		baseStats: {
 			hp: 68,
@@ -13083,7 +13083,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"0": "Unaware",
 			"1": "Swift Swim",
 			H: "Shield Dust",
-			I1: "Soul-heart",
+			I1: "Soul-Heart",
 			I2: "Multiscale",
 			I3: "Serene Grace",
 		},
@@ -16465,7 +16465,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		abilities: {
 			"0": "Pixilate",
 			"1": "Self Sufficient",
-			H: "Soul-heart",
+			H: "Soul-Heart",
 			I1: "Super Luck",
 			I2: "Serene Grace",
 			I3: "Giant Wings",
@@ -23414,7 +23414,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		abilities: {
 			"0": "Intimidate",
 			"1": "Competitive",
-			H: "Soul-heart",
+			H: "Soul-Heart",
 			I1: "Hubris",
 			I2: "Opportunist",
 			I3: "Predator",
@@ -24248,7 +24248,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Sage Power",
 			I1: "Psychic Mind",
 			I2: "Infiltrator",
-			I3: "Soul-heart",
+			I3: "Soul-Heart",
 		},
 		baseStats: {
 			hp: 94,
@@ -25596,7 +25596,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Self Sufficient",
 			I1: "Fairy Aura",
 			I2: "Illuminate",
-			I3: "Soul-heart",
+			I3: "Soul-Heart",
 		},
 		baseStats: {
 			hp: 126,
@@ -25623,7 +25623,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			H: "Self Sufficient",
 			I1: "Fairy Aura",
 			I2: "Illuminate",
-			I3: "Soul-heart",
+			I3: "Soul-Heart",
 		},
 		baseStats: {
 			hp: 126,
@@ -29219,7 +29219,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"1": "Pixilate",
 			H: "Clear Body",
 			I1: "Mirror Armor",
-			I2: "Soul-heart",
+			I2: "Soul-Heart",
 			I3: "Power Core",
 		},
 		baseStats: {
@@ -29246,7 +29246,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			"1": "Pixilate",
 			H: "Mirror Armor",
 			I1: "Clear Body",
-			I2: "Soul-heart",
+			I2: "Soul-Heart",
 			I3: "Power Core",
 		},
 		baseStats: {
