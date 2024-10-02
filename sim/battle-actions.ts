@@ -348,6 +348,7 @@ export class BattleActions {
 	}
 
 	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: any) {
+		if (pokemon.usedExtraMove) return;
 		type MutableMove = {-readonly [K in keyof Move]: Move[K]};
 		const nextMutableMove: MutableMove = move;
 		if (moveMutations) {
@@ -357,7 +358,9 @@ export class BattleActions {
 		}
 		const nextMove: Move = nextMutableMove;
 		const targetLoc = pokemon.getLocOf(target);
+		pokemon.usedExtraMove = true;
 		this.runMove(nextMove, pokemon, targetLoc, null, undefined, true);
+		pokemon.usedExtraMove = false;
 	}
 	/**
 	 * useMove is the "inside" move caller. It handles effects of the
@@ -1203,7 +1206,8 @@ export class BattleActions {
 						didAnything = this.combineResults(didAnything, null);
 						continue;
 					}
-					const amount = target.baseMaxhp * moveData.heal[0] / moveData.heal[1];
+					let amount = target.baseMaxhp * moveData.heal[0] / moveData.heal[1];
+					amount = this.battle.runEvent('TryHeal', target, source, move, amount);
 					const d = target.heal((this.battle.gen < 5 ? Math.floor : Math.round)(amount));
 					if (!d && d !== 0) {
 						this.battle.add('-fail', source);
