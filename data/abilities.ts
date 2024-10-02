@@ -167,12 +167,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	angerpoint: {
 		onHit(target, source, move) {
+			if(move.category === "Status") return;
 			if (!target.hp) return;
 			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
 				this.boost({atk: 12}, target, target);
 			}
 		},
 		onDamagingHit(damage, target, source, move) {
+			if(move.category === "Status") return;
 			if (damage && move?.effectType === 'Move') {
 				this.boost({atk: 1}, target, target);
 			}
@@ -5091,6 +5093,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	stamina: {
 		onHit(target, source, move) {
 			if (!target.hp) return;
+			if(move.category === "Status") return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({ def: 12 }, target, target);
 			} else if (move?.effectType === "Move") {
