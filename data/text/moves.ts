@@ -1154,8 +1154,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	crosschop: {
 		name: "Cross Chop",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. Higher chance for a critical hit..",
+		shortDesc: "Hits 2 times in one turn. High critical hit ratio.",
 	},
 	crosspoison: {
 		name: "Cross Poison",
@@ -7391,8 +7391,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	scorchedearth: {
 		name: "Scorched Earth",
-		desc: "This move combines Ground in its type effectiveness against the target.",
-		shortDesc: "Combines Ground in its type effectiveness.",
+		desc: "This move combines Ground in its type effectiveness against the target. Has a 10% chance to burn the target.",
+		shortDesc: "Combines Ground in its type effectiveness. 10% chance to burn the target.",
 	},
 	ironfangs: {
 		name: "Iron Fangs",

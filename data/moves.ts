@@ -3184,13 +3184,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	crosschop: {
 		num: 238,
-		accuracy: 80,
+		accuracy: 40,
 		basePower: 100,
 		category: "Physical",
 		name: "Cross Chop",
-		pp: 5,
+		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		multihit: 2,
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
@@ -21852,7 +21853,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	scorchedearth: {
 		num: 906,
 		accuracy: 100,
-		basePower: 100,
+		basePower: 70,
 		category: "Special",
 		name: "Scorched Earth",
 		pp: 10,
@@ -21861,7 +21862,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return typeMod + this.dex.getEffectiveness('Ground', type);
 		},
 		priority: 0,
-		secondary: null,
+		secondary: {
+			status: 'brn',
+			chance: 10
+		},
 		target: "any",
 		type: "Fire",
 		zMove: {basePower: 170},
