@@ -4582,8 +4582,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisongas: {
 		name: "Poison Gas",
-		desc: "Poisons the target.",
-		shortDesc: "Poisons the foe(s).",
+		desc: "Super effective vs Flying. Hits both foes. Has a 30% chance to poison.",
+		shortDesc: "Super effective vs Flying. Hits both foes. 30% chance to poison.",
 		gen2: {
 			shortDesc: "Poisons the target.",
 		},
@@ -5756,8 +5756,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	sludge: {
 		name: "Sludge",
-		desc: "Has a 30% chance to poison the target.",
-		shortDesc: "30% chance to poison the target.",
+		desc: "Super-effective on Water. Has a 30% chance to poison the target.",
+		shortDesc: "Super-effective on Water. 30% poison chance.",
 		gen1: {
 			desc: "Has a 40% chance to poison the target.",
 			shortDesc: "40% chance to poison the target.",

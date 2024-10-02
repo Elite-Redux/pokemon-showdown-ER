@@ -50,14 +50,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 	acid: {
 		num: 51,
 		accuracy: 100,
-		basePower: 40,
+		basePower: 70,
 		category: "Special",
 		name: "Acid",
 		pp: 30,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		// Note: This does not work
+		ignoreImmunity: {'Steel': true},
+		onEffectiveness(typeMod, target, type, move) {
+			if (move.type !== 'Poison') return;
+			if (!target) return;
+			if (!target.runImmunity('Poison')) {
+				if (target.hasType('Steel')) return 1;
+			}
+		},
 		secondary: {
-			chance: 10,
+			chance: 30,
 			boosts: {
 				spd: -1,
 			},
@@ -13705,14 +13714,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 	poisongas: {
 		num: 139,
 		accuracy: 90,
-		basePower: 0,
-		category: "Status",
+		basePower: 70,
+		category: "Special",
 		name: "Poison Gas",
-		pp: 40,
+		pp: 15,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1},
-		status: 'psn',
-		secondary: null,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if(type == 'Flying') return 1;
+		},
+		secondary: {
+			chance: 30,
+			status: 'psn'
+		},
 		target: "allAdjacentFoes",
 		type: "Poison",
 		zMove: {boost: {def: 1}},
@@ -17313,12 +17327,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 	sludge: {
 		num: 124,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 70,
 		category: "Special",
 		name: "Sludge",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if(type == 'Water') return 1;
+		},
 		secondary: {
 			chance: 30,
 			status: 'psn',
