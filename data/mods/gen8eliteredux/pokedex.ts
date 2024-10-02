@@ -31611,6 +31611,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	zacian: {
 		name: "Zacian",
 		num: 888,
+		baseForme: "Hero",
 		types: ["Fairy"],
 		abilities: {
 			"0": "Scare",
@@ -31632,12 +31633,13 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 110,
 		heightm: 2.8,
 		color: "Blue",
-		evoLevel: 0,
-		evoItem: "rusted_sword",
-		evos: ["Zacian Crowned Sword"],
+		otherFormes: ["Zacian-Crowned"],
+		formeOrder: ["Zacian", "Zacian-Crowned"],
+		cannotDynamax: true,
 	},
 	zamazenta: {
 		name: "Zamazenta",
+		baseForme: "Hero",
 		num: 889,
 		types: ["Fighting"],
 		abilities: {
@@ -31660,9 +31662,9 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 210,
 		heightm: 2.9,
 		color: "Red",
-		evoLevel: 0,
-		evoItem: "rusted_shield",
-		evos: ["Zamazenta Crowned Shield"],
+		otherFormes: ["Zamazenta-Crowned"],
+		formeOrder: ["Zamazenta", "Zamazenta-Crowned"],
+		cannotDynamax: true,
 	},
 	eternatus: {
 		name: "Eternatus",
@@ -39732,8 +39734,10 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	zaciancrownedsword: {
-		name: "Zacian-Crowned Sword",
+	zaciancrowned: {
+		name: "Zacian-Crowned",
+		baseSpecies: "Zacian",
+		forme: "Crowned",
 		num: 1802,
 		types: ["Fairy", "Steel"],
 		abilities: {
@@ -39752,12 +39756,14 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		},
 		eggGroups: ["Undiscovered", "Undiscovered"],
 		weightkg: 0,
-		evoLevel: 0,
-		evos: [],
-		prevo: "Zacian",
+		requiredItem: "Rusted Sword",
+		battleOnly: "Zacian",
+		cannotDynamax: true,
 	},
-	zamazentacrownedshield: {
-		name: "Zamazenta-Crowned Shield",
+	zamazentacrowned: {
+		name: "Zamazenta-Crowned",
+		baseSpecies: "Zamazenta",
+		forme: "Crowned",
 		num: 1803,
 		types: ["Fighting", "Steel"],
 		abilities: {
@@ -39776,9 +39782,9 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		},
 		eggGroups: ["Undiscovered", "Undiscovered"],
 		weightkg: 0,
-		evoLevel: 0,
-		evos: [],
-		prevo: "Zamazenta",
+		requiredItem: "Rusted Shield",
+		battleOnly: "Zamazenta",
+		cannotDynamax: true,
 	},
 	eternatuseternamax: {
 		name: "Eternatus-Eternamax",
