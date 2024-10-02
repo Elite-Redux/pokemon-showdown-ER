@@ -185,6 +185,8 @@ export const Formats: FormatList = [
 		banlist: [
 			"Uber",
 			"AG",
+			"Watch Your Step",
+			"Fearmonger",
 		],
 		debug: true,
 

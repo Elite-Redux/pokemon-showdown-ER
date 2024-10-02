@@ -440,6 +440,15 @@ export class TeamValidator {
 				problems.push(`Nickname "${set.name}" too long (should be 18 characters or fewer)`);
 			}
 		}
+		if (set.name){
+			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink','nibba']
+			for (const word in bannedWords){
+				if (set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a').includes(word)){
+					problems.push(`Nickname "${set.name}" cannot contain the word "${word}"`);
+					break;
+				}
+			}
+		}
 		set.name = dex.getName(set.name);
 		let item = dex.items.get(Utils.getString(set.item));
 		set.item = item.name;
