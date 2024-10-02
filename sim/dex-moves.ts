@@ -317,6 +317,7 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	 * uses modifiers that match the new stat
 	 */
 	overrideDefensiveStat?: StatIDExceptHP;
+	secondaryOffensiveStats?: [[StatIDExceptHP, number]];
 	forceSTAB?: boolean;
 	ignoreAbility?: boolean;
 	ignoreAccuracy?: boolean;
