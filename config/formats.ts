@@ -484,9 +484,7 @@ export const Formats: FormatList = [
 		desc: `UU For Elite Redux`,
 		mod: "gen8eliteredux",
 		ruleset: ["Elite Redux OU"],
-		banlist: ["OU", "UUBL", 
-			"Fearmonger",
-			"Watch Your Step",],
+		banlist: ["OU", "UUBL",],
 		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
