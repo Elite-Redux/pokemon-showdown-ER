@@ -715,7 +715,8 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user steals the target's held Berry if it is holding one and eats it immediately, gaining its effects unless the user's item is being ignored. Items lost to this move can be regained with Recycle.",
 		},
 
-		removeItem: "  [SOURCE] stole and ate its target's [ITEM]!",
+		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
+		removeItem: "  [SOURCE] knocked off [POKEMON]'s [ITEM]!"
 	},
 	bugbuzz: {
 		name: "Bug Buzz",
@@ -4569,7 +4570,7 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user steals the target's held Berry if it is holding one and eats it immediately, gaining its effects unless the user's item is being ignored. Items lost to this move can be regained with Recycle.",
 		},
 
-		removeItem: "#bugbite",
+		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
 	},
 	poisonfang: {
 		name: "Poison Fang",
