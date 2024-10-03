@@ -14849,34 +14849,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 	rage: {
 		num: 99,
 		accuracy: 100,
-		basePower: 20,
+		basePower: 120,
 		category: "Physical",
-		
 		name: "Rage",
-		pp: 20,
+		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
 		self: {
-			volatileStatus: 'rage',
+			volatileStatus: 'lockedmove',
 		},
-		condition: {
-			onStart(pokemon) {
-				this.add('-singlemove', pokemon, 'Rage');
-			},
-			onHit(target, source, move) {
-				if (target !== source && move.category !== 'Status') {
-					this.boost({atk: 1});
-				}
-			},
-			onBeforeMovePriority: 100,
-			onBeforeMove(pokemon) {
-				this.debug('removing Rage before attack');
-				pokemon.removeVolatile('rage');
-			},
+		onAfterMove(pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
 		},
 		secondary: null,
-		target: "normal",
-		type: "Normal",
+		target: "randomNormal",
+		type: "Fighting",
 		contestType: "Tough",
 	},
 	ragefist: {
@@ -15090,28 +15079,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 	razorwind: {
 		num: 13,
 		accuracy: 100,
-		basePower: 90,
+		basePower: 70,
 		category: "Special",
 		isNonstandard: null,
 		name: "Razor Wind",
 		pp: 10,
 		priority: 0,
+		onModifyPriority(priority, source, target, move) {
+			if(source.side.sideConditions['tailwind']) return priority + 1;
+		},
 		flags: {charge: 1, protect: 1, mirror: 1, nosleeptalk: 1, failinstruct: 1, wind: 1},
-		onTryMove(attacker, defender, move) {
-			if (attacker.removeVolatile(move.id)) {
-				return;
-			}
-			this.add('-prepare', attacker, move.name);
-			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
-				return;
-			}
-			attacker.addVolatile('twoturnmove', defender);
-			return null;
+		onEffectiveness(typeMod, target, type, move) {
+			if(type == 'Rock') return 1;
 		},
 		critRatio: 2,
 		secondary: null,
-		target: "allAdjacentFoes",
-		type: "Normal",
+		target: "normal",
+		type: "Flying",
 		contestType: "Cool",
 	},
 	recover: {

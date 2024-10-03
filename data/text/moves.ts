@@ -4902,8 +4902,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	rage: {
 		name: "Rage",
-		desc: "Once this move is successfully used, the user's Attack is raised by 1 stage every time it is hit by another Pokemon's attack as long as this move is chosen for use.",
-		shortDesc: "Raises the user's Attack by 1 if hit during use.",
+		desc: "The user spends two or three turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect or the second turn of a three-turn effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
 		gen3: {
 			desc: "Once this move is used and unless the target protected itself, the user's Attack is raised by 1 stage every time it is hit by another Pokemon's attack as long as this move is chosen for use.",
 		},
@@ -4982,8 +4982,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	razorwind: {
 		name: "Razor Wind",
-		desc: "Has a higher chance for a critical hit. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, then hits foe(s) turn 2. High crit ratio.",
+		desc: "This move's type effectiveness against Rock is changed to be super effective no matter what this move's type is. If the user's side has Tailwind, this move has its priority increased by 1. Has a higher chance for a critical hit.",
+		shortDesc: "Super effective vs Rock. +1 priority in tailwind. High crit.",
 		gen4: {
 			desc: "Has a higher chance for a critical hit. This attack charges on the first turn and executes on the second.",
 		},
