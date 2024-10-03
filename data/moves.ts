@@ -5415,7 +5415,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			}
 		},
-		onModifyMove(move) {
+		onModifyMove(move, pokemon) {
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Water';
 				move.forceSTAB = true;
@@ -6292,7 +6292,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'frenzyplant') pokemon.addVolatile('frenzyplant');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('frenzyplant')) {
+			if (pokemon.removeVolatile('gigatonhammer')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Frenzy Plant again in a row.");
 			}
 		},
@@ -11880,16 +11880,24 @@ export const Moves: {[moveid: string]: MoveData} = {
 	meteorassault: {
 		num: 794,
 		accuracy: 100,
-		basePower: 150,
+		basePower: 140,
 		category: "Physical",
-		
 		name: "Meteor Assault",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, recharge: 1, mirror: 1, failinstruct: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		flags: {protect: 1, mirror: 1, failinstruct: 1, slicing: 1},
+		onDisableMove(pokemon) {
+			if (pokemon.lastMove?.id === 'meteorassault') pokemon.disableMove('meteorassault');
 		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.lastMove?.id === 'meteorassault') pokemon.addVolatile('meteorassault');
+		},
+		onAfterMove(pokemon) {
+			if (pokemon.removeVolatile('gigatonhammer')) {
+				this.add('-hint', "Some effects can force a Pokemon to use Meteor Assault again in a row.");
+			}
+		},
+
 		secondary: null,
 		target: "normal",
 		type: "Fighting",
@@ -21016,7 +21024,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			}
 		},
-		onModifyMove(move) {
+		onModifyMove(move, pokemon) {
 			if (move.sourceEffect === 'grasspledge') {
 				move.type = 'Grass';
 				move.forceSTAB = true;

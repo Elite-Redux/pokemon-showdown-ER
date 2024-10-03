@@ -3922,8 +3922,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	meteorassault: {
 		name: "Meteor Assault",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		shortDesc: "Cannot be used twice in a row.",
 	},
 	meteorbeam: {
 		name: "Meteor Beam",
