@@ -4014,7 +4014,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	mindreader: {
 		name: "Mind Reader",
 		desc: "Until the end of the next turn, the target cannot avoid the user's moves, even if the target is in the middle of a two-turn move. The effect ends if either the user or the target leaves the field. Fails if this effect is active for the user.",
-		shortDesc: "User's next move will not miss the target.",
+		shortDesc: "Dodges all attacks and lowers the SpDef of attackers. May fail if used in succession.",
 		gen4: {
 			desc: "Until the end of the next turn, the target cannot avoid the user's moves, even if the target is in the middle of a two-turn move. When this effect is started against the target, this and Lock-On's effects end for every other Pokemon against that target. If the target leaves the field using Baton Pass, the replacement remains under this effect. If the user leaves the field using Baton Pass, this effect is restarted against the same target for the replacement. The effect ends if either the user or the target leaves the field.",
 		},
@@ -4826,8 +4826,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	punishment: {
 		name: "Punishment",
-		desc: "Power is equal to 60+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power.",
-		shortDesc: "60 power +20 for each of the target's stat boosts.",
+		desc: "Power is equal to 60+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power. Ignores the target's stat stage changes.",
+		shortDesc: "60 power +20 for each of the target's stat boosts. Ignores the target's stat stage changes.",
 	},
 	purify: {
 		name: "Purify",
