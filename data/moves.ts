@@ -1432,8 +1432,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	blastburn: {
 		num: 307,
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 130,
 		category: "Special",
 		name: "Blast Burn",
 		pp: 5,
@@ -1446,7 +1446,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'blastburn') pokemon.addVolatile('blastburn');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
+			if (pokemon.removeVolatile('blastburn')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Blast Burn again in a row.");
 			}
 		},
@@ -6278,8 +6278,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	frenzyplant: {
 		num: 338,
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 130,
 		category: "Special",
 		name: "Frenzy Plant",
 		pp: 5,
@@ -6292,7 +6292,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'frenzyplant') pokemon.addVolatile('frenzyplant');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
+			if (pokemon.removeVolatile('frenzyplant')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Frenzy Plant again in a row.");
 			}
 		},
@@ -9179,8 +9179,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	hydrocannon: {
 		num: 308,
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 130,
 		category: "Special",
 		name: "Hydro Cannon",
 		pp: 5,
@@ -9193,7 +9193,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'hydrocannon') pokemon.addVolatile('hydrocannon');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
+			if (pokemon.removeVolatile('hydrocannon')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Hydro Cannon again in a row.");
 			}
 		},
