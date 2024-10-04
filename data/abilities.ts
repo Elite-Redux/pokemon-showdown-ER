@@ -8456,7 +8456,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				if (this.activeMove.id !== "struggle") return null;
 			}
 		},
-		name: "Iron Barrage",
+		name: "Steel Barrel",
 		rating: 3,
 		num: 402,
 		gen: 8,
