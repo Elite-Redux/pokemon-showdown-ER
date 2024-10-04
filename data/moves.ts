@@ -3189,8 +3189,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	crosschop: {
 		num: 238,
-		accuracy: 40,
-		basePower: 100,
+		accuracy: 100,
+		basePower: 40,
 		category: "Physical",
 		name: "Cross Chop",
 		pp: 15,
