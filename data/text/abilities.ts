@@ -2006,7 +2006,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	steelworker: {
 		name: "Steelworker",
 		shortDesc:
-			"This Pokemon's offensive stat is multiplied by 1.5 while using a Steel-type attack.",
+			"This Pokemon's offensive stat is multiplied by 1.3 while using a Steel-type attack.",
 	},
 	steelyspirit: {
 		name: "Steely Spirit",
@@ -3288,7 +3288,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	dualwield: {
 		name: "Dual Wield",
 		shortDesc:
-			"This Pokemon's pulse moves hit twice. Each hit is at 75% power.",
+			"Mega Launcher and Keen Edge moves hit twice for 75% damage.",
 	},
 	ambush: {
 		name: "Ambush",

@@ -1751,7 +1751,13 @@ export class BattleActions {
 		}
 
 		// random factor - also not a modifier
-		baseDamage = this.battle.randomizer(baseDamage);
+		if(pokemon.hasAbility('Bad Luck')){
+			baseDamage = tr(baseDamage * 0.85);
+		}
+		else{
+			baseDamage = this.battle.randomizer(baseDamage);
+		}
+		
 
 		// STAB
 		if (move.forceSTAB || (type !== '???' &&

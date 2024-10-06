@@ -5168,7 +5168,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyDamage(atk, attacker, defender, move) {
 			if (move.type === "Steel") {
 				this.debug("Steelworker boost");
-				return this.chainModify(1.5);
+				return this.chainModify(1.3);
 			}
 		},
 		name: "Steelworker",
@@ -7420,6 +7420,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (typeof move.accuracy === "number") move.accuracy -= 5;
 			if (move.accuracy === true) move.accuracy = 95;
 		},
+		//Low damage roll implementation is in battle-actions.ts
 		name: "Bad Luck",
 		rating: 2,
 		num: 362,
@@ -9661,7 +9662,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.isMax
 			)
 				return;
-			if (move.flags["pulse"]) {
+			if (move.flags["pulse"] || move.flags['slicing']) {
 				move.multihit = 2;
 				move.multihitType = "dual";
 			}
