@@ -699,8 +699,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	bubblebeam: {
 		name: "Bubble Beam",
-		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "10% chance to lower the target's Speed by 1.",
+		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
 		gen1: {
 			desc: "Has a 33% chance to lower the target's Speed by 1 stage.",
 			shortDesc: "33% chance to lower the target's Speed by 1.",
@@ -714,7 +714,8 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user steals the target's held Berry if it is holding one and eats it immediately, gaining its effects unless the user's item is being ignored. Items lost to this move can be regained with Recycle.",
 		},
 
-		removeItem: "  [SOURCE] stole and ate its target's [ITEM]!",
+		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
+		removeItem: "  [SOURCE] knocked off [POKEMON]'s [ITEM]!"
 	},
 	bugbuzz: {
 		name: "Bug Buzz",
@@ -1153,8 +1154,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	crosschop: {
 		name: "Cross Chop",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. Higher chance for a critical hit..",
+		shortDesc: "Hits 2 times in one turn. High critical hit ratio.",
 	},
 	crosspoison: {
 		name: "Cross Poison",
@@ -3928,8 +3929,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	meteorassault: {
 		name: "Meteor Assault",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		shortDesc: "Cannot be used twice in a row.",
 	},
 	meteorbeam: {
 		name: "Meteor Beam",
@@ -4021,7 +4021,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	mindreader: {
 		name: "Mind Reader",
 		desc: "Until the end of the next turn, the target cannot avoid the user's moves, even if the target is in the middle of a two-turn move. The effect ends if either the user or the target leaves the field. Fails if this effect is active for the user.",
-		shortDesc: "User's next move will not miss the target.",
+		shortDesc: "Dodges all attacks and lowers the SpDef of attackers. May fail if used in succession.",
 		gen4: {
 			desc: "Until the end of the next turn, the target cannot avoid the user's moves, even if the target is in the middle of a two-turn move. When this effect is started against the target, this and Lock-On's effects end for every other Pokemon against that target. If the target leaves the field using Baton Pass, the replacement remains under this effect. If the user leaves the field using Baton Pass, this effect is restarted against the same target for the replacement. The effect ends if either the user or the target leaves the field.",
 		},
@@ -4215,8 +4215,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	mudslap: {
 		name: "Mud-Slap",
-		desc: "Has a 100% chance to lower the target's accuracy by 1 stage.",
-		shortDesc: "100% chance to lower the target's accuracy by 1.",
+		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
 	},
 	mudsport: {
 		name: "Mud Sport",
@@ -4576,7 +4576,7 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user steals the target's held Berry if it is holding one and eats it immediately, gaining its effects unless the user's item is being ignored. Items lost to this move can be regained with Recycle.",
 		},
 
-		removeItem: "#bugbite",
+		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
 	},
 	poisonfang: {
 		name: "Poison Fang",
@@ -4589,8 +4589,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisongas: {
 		name: "Poison Gas",
-		desc: "Poisons the target.",
-		shortDesc: "Poisons the foe(s).",
+		desc: "Super effective vs Flying. Hits both foes. Has a 30% chance to poison.",
+		shortDesc: "Super effective vs Flying. Hits both foes. 30% chance to poison.",
 		gen2: {
 			shortDesc: "Poisons the target.",
 		},
@@ -4612,8 +4612,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisontail: {
 		name: "Poison Tail",
-		desc: "Has a 10% chance to poison the target and a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio. 10% chance to poison.",
+		desc: "If both the user and the target have not fainted, the target is forced to switch out and be replaced with a random unfainted ally. This effect fails if the target used Ingrain previously, has the Suction Cups Ability, or this move hit a substitute. Has a 10% chance to poison.",
+		shortDesc: "Forces the target to switch to a random ally. 10% Poison chance.",
 	},
 	pollenpuff: {
 		name: "Pollen Puff",
@@ -4833,8 +4833,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	punishment: {
 		name: "Punishment",
-		desc: "Power is equal to 60+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power.",
-		shortDesc: "60 power +20 for each of the target's stat boosts.",
+		desc: "Power is equal to 60+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power. Ignores the target's stat stage changes.",
+		shortDesc: "60 power +20 for each of the target's stat boosts. Ignores the target's stat stage changes.",
 	},
 	purify: {
 		name: "Purify",
@@ -4909,8 +4909,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	rage: {
 		name: "Rage",
-		desc: "Once this move is successfully used, the user's Attack is raised by 1 stage every time it is hit by another Pokemon's attack as long as this move is chosen for use.",
-		shortDesc: "Raises the user's Attack by 1 if hit during use.",
+		desc: "The user spends two or three turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect or the second turn of a three-turn effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
 		gen3: {
 			desc: "Once this move is used and unless the target protected itself, the user's Attack is raised by 1 stage every time it is hit by another Pokemon's attack as long as this move is chosen for use.",
 		},
@@ -4989,8 +4989,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	razorwind: {
 		name: "Razor Wind",
-		desc: "Has a higher chance for a critical hit. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, then hits foe(s) turn 2. High crit ratio.",
+		desc: "This move's type effectiveness against Rock is changed to be super effective no matter what this move's type is. If the user's side has Tailwind, this move has its priority increased by 1. Has a higher chance for a critical hit.",
+		shortDesc: "Super effective vs Rock. +1 priority in tailwind. High crit.",
 		gen4: {
 			desc: "Has a higher chance for a critical hit. This attack charges on the first turn and executes on the second.",
 		},
@@ -5763,8 +5763,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	sludge: {
 		name: "Sludge",
-		desc: "Has a 30% chance to poison the target.",
-		shortDesc: "30% chance to poison the target.",
+		desc: "Super-effective on Water. Has a 30% chance to poison the target.",
+		shortDesc: "Super-effective on Water. 30% poison chance.",
 		gen1: {
 			desc: "Has a 40% chance to poison the target.",
 			shortDesc: "40% chance to poison the target.",
@@ -7398,8 +7398,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	scorchedearth: {
 		name: "Scorched Earth",
-		desc: "This move combines Ground in its type effectiveness against the target.",
-		shortDesc: "Combines Ground in its type effectiveness.",
+		desc: "This move combines Ground in its type effectiveness against the target. Has a 10% chance to burn the target.",
+		shortDesc: "Combines Ground in its type effectiveness. 10% chance to burn the target.",
 	},
 	ironfangs: {
 		name: "Iron Fangs",

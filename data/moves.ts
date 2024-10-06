@@ -50,14 +50,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 	acid: {
 		num: 51,
 		accuracy: 100,
-		basePower: 40,
+		basePower: 70,
 		category: "Special",
 		name: "Acid",
 		pp: 30,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		// Note: This does not work
+		ignoreImmunity: {'Steel': true},
+		onEffectiveness(typeMod, target, type, move) {
+			if (move.type !== 'Poison') return;
+			if (!target) return;
+			if (!target.runImmunity('Poison')) {
+				if (target.hasType('Steel')) return 1;
+			}
+		},
 		secondary: {
-			chance: 10,
+			chance: 30,
 			boosts: {
 				spd: -1,
 			},
@@ -1426,8 +1435,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	blastburn: {
 		num: 307,
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 130,
 		category: "Special",
 		name: "Blast Burn",
 		pp: 5,
@@ -1440,7 +1449,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'blastburn') pokemon.addVolatile('blastburn');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
+			if (pokemon.removeVolatile('blastburn')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Blast Burn again in a row.");
 			}
 		},
@@ -1915,18 +1924,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	bubblebeam: {
 		num: 61,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 25,
 		category: "Special",
 		name: "Bubble Beam",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, pulse: 1},
-		secondary: {
-			chance: 10,
-			boosts: {
-				spe: -1,
-			},
-		},
+		secondary: null,
+		multihit: [2,5],
 		target: "normal",
 		type: "Water",
 		contestType: "Beautiful",
@@ -1942,13 +1947,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1, bite: 1},
 		onHit(target, source) {
 			const item = target.getItem();
-			if (source.hp && item.isBerry && target.takeItem(source)) {
-				this.add('-enditem', target, item.name, '[from] stealeat', '[move] Bug Bite', '[of] ' + source);
-				if (this.singleEvent('Eat', item, null, source, null, null)) {
-					this.runEvent('EatItem', source, null, null, item);
-					if (item.id === 'leppaberry') target.staleness = 'external';
+			if (source.hp && target.takeItem(source)) {
+				//If it's a berry, eat it
+				if(item.isBerry) {
+					this.add('-enditem', target, item.name, '[from] stealeat', '[move] Bug Bite', '[of] ' + source);
+					if (this.singleEvent('Eat', item, null, source, null, null)) {
+						this.runEvent('EatItem', source, null, null, item);
+						if (item.id === 'leppaberry') target.staleness = 'external';
+					}
+					if (item.onEat) source.ateBerry = true;	
 				}
-				if (item.onEat) source.ateBerry = true;
+				//Otherwise it should be knocked off anyways by target.takeItem
+				else this.add('-enditem', target, item.name, '[from] move: Bug Bite', '[of] ' + source);
 			}
 		},
 		secondary: null,
@@ -3185,13 +3195,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	crosschop: {
 		num: 238,
-		accuracy: 80,
-		basePower: 100,
+		accuracy: 100,
+		basePower: 40,
 		category: "Physical",
 		name: "Cross Chop",
-		pp: 5,
+		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		multihit: 2,
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
@@ -5422,7 +5433,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			}
 		},
-		onModifyMove(move) {
+		onModifyMove(move, pokemon) {
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Water';
 				move.forceSTAB = true;
@@ -6285,8 +6296,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	frenzyplant: {
 		num: 338,
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 130,
 		category: "Special",
 		name: "Frenzy Plant",
 		pp: 5,
@@ -9195,8 +9206,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	hydrocannon: {
 		num: 308,
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 130,
 		category: "Special",
 		name: "Hydro Cannon",
 		pp: 5,
@@ -9209,7 +9220,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'hydrocannon') pokemon.addVolatile('hydrocannon');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
+			if (pokemon.removeVolatile('hydrocannon')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Hydro Cannon again in a row.");
 			}
 		},
@@ -11902,16 +11913,24 @@ export const Moves: {[moveid: string]: MoveData} = {
 	meteorassault: {
 		num: 794,
 		accuracy: 100,
-		basePower: 150,
+		basePower: 140,
 		category: "Physical",
-		
 		name: "Meteor Assault",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, recharge: 1, mirror: 1, failinstruct: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		flags: {protect: 1, mirror: 1, failinstruct: 1, slicing: 1},
+		onDisableMove(pokemon) {
+			if (pokemon.lastMove?.id === 'meteorassault') pokemon.disableMove('meteorassault');
 		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.lastMove?.id === 'meteorassault') pokemon.addVolatile('meteorassault');
+		},
+		onAfterMove(pokemon) {
+			if (pokemon.removeVolatile('gigatonhammer')) {
+				this.add('-hint', "Some effects can force a Pokemon to use Meteor Assault again in a row.");
+			}
+		},
+
 		secondary: null,
 		target: "normal",
 		type: "Fighting",
@@ -12082,20 +12101,54 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Status",
 		
 		name: "Mind Reader",
-		pp: 5,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onTryHit(target, source) {
-			if (source.volatiles['lockon']) return false;
+		pp: 10,
+		priority: 4,
+		flags: {noassist: 1, failcopycat: 1, failinstruct: 1},
+		stallingMove: true,
+		volatileStatus: 'mindreader',
+		onPrepareHit(pokemon) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
 		},
-		onHit(target, source) {
-			source.addVolatile('lockon', target);
-			this.add('-activate', source, 'move: Mind Reader', '[of] ' + target);
+		onHit(pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		condition: {
+			duration: 1,
+			onStart(target) {
+				this.add('-singleturn', target, 'Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit(target, source, move) {
+				if (!move.flags['protect']) {
+					if (['gmaxoneblow', 'gmaxrapidflow'].includes(move.id)) return;
+					if (move.isZ || move.isMax) target.getMoveHitData(move).zBrokeProtect = true;
+					return;
+				}
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				const lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+					
+				this.boost({spd: -1}, source, target, this.dex.getActiveMove("Mind Reader"));
+				return this.NOT_FAIL;
+			},
+			onHit(target, source, move) {
+				if (move.isZOrMaxPowered && this.checkMoveMakesContact(move, source, target)) {
+					this.boost({spd: -1}, source, target, this.dex.getActiveMove("Mind Reader"));
+				}
+			},
 		},
 		secondary: null,
-		target: "normal",
-		type: "Normal",
-		zMove: {boost: {spa: 1}},
+		target: "self",
+		type: "Psychic",
 		contestType: "Clever",
 	},
 	minimize: {
@@ -12620,18 +12673,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	mudslap: {
 		num: 189,
 		accuracy: 100,
-		basePower: 20,
+		basePower: 25,
 		category: "Special",
 		name: "Mud-Slap",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			boosts: {
-				accuracy: -1,
-			},
-		},
+		secondary: null,
+		multihit: [2,5],
 		target: "normal",
 		type: "Ground",
 		contestType: "Cute",
@@ -13741,14 +13790,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 	poisongas: {
 		num: 139,
 		accuracy: 90,
-		basePower: 0,
-		category: "Status",
+		basePower: 70,
+		category: "Special",
 		name: "Poison Gas",
-		pp: 40,
+		pp: 15,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1},
-		status: 'psn',
-		secondary: null,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if(type == 'Flying') return 1;
+		},
+		secondary: {
+			chance: 30,
+			status: 'psn'
+		},
 		target: "allAdjacentFoes",
 		type: "Poison",
 		zMove: {boost: {def: 1}},
@@ -13810,10 +13864,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 80,
 		category: "Physical",
 		name: "Poison Tail",
-		pp: 25,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		critRatio: 2,
+		pp: 10,
+		priority: -6,
+		flags: {contact: 1, protect: 1, mirror: 1, noassist: 1, failcopycat: 1},
+		forceSwitch: true,
 		secondary: {
 			chance: 10,
 			status: 'psn',
@@ -14611,6 +14665,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
+		ignoreDefensive: true,
 		secondary: null,
 		target: "normal",
 		type: "Dark",
@@ -14833,34 +14888,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 	rage: {
 		num: 99,
 		accuracy: 100,
-		basePower: 20,
+		basePower: 120,
 		category: "Physical",
-		
 		name: "Rage",
-		pp: 20,
+		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
 		self: {
-			volatileStatus: 'rage',
+			volatileStatus: 'lockedmove',
 		},
-		condition: {
-			onStart(pokemon) {
-				this.add('-singlemove', pokemon, 'Rage');
-			},
-			onHit(target, source, move) {
-				if (target !== source && move.category !== 'Status') {
-					this.boost({atk: 1});
-				}
-			},
-			onBeforeMovePriority: 100,
-			onBeforeMove(pokemon) {
-				this.debug('removing Rage before attack');
-				pokemon.removeVolatile('rage');
-			},
+		onAfterMove(pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
 		},
 		secondary: null,
-		target: "normal",
-		type: "Normal",
+		target: "randomNormal",
+		type: "Fighting",
 		contestType: "Tough",
 	},
 	ragefist: {
@@ -15077,28 +15121,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 	razorwind: {
 		num: 13,
 		accuracy: 100,
-		basePower: 90,
+		basePower: 70,
 		category: "Special",
 		isNonstandard: null,
 		name: "Razor Wind",
 		pp: 10,
 		priority: 0,
+		onModifyPriority(priority, source, target, move) {
+			if(source.side.sideConditions['tailwind']) return priority + 1;
+		},
 		flags: {charge: 1, protect: 1, mirror: 1, nosleeptalk: 1, failinstruct: 1, wind: 1},
-		onTryMove(attacker, defender, move) {
-			if (attacker.removeVolatile(move.id)) {
-				return;
-			}
-			this.add('-prepare', attacker, move.name);
-			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
-				return;
-			}
-			attacker.addVolatile('twoturnmove', defender);
-			return null;
+		onEffectiveness(typeMod, target, type, move) {
+			if(type == 'Rock') return 1;
 		},
 		critRatio: 2,
 		secondary: null,
-		target: "allAdjacentFoes",
-		type: "Normal",
+		target: "normal",
+		type: "Flying",
 		contestType: "Cool",
 	},
 	recover: {
@@ -17361,12 +17400,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 	sludge: {
 		num: 124,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 70,
 		category: "Special",
 		name: "Sludge",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if(type == 'Water') return 1;
+		},
 		secondary: {
 			chance: 30,
 			status: 'psn',
@@ -21052,7 +21094,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			}
 		},
-		onModifyMove(move) {
+		onModifyMove(move, pokemon) {
 			if (move.sourceEffect === 'grasspledge') {
 				move.type = 'Grass';
 				move.forceSTAB = true;
@@ -21280,18 +21322,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	whirlwind: {
 		num: 18,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
 		name: "Whirlwind",
-		pp: 20,
+		pp: 10,
 		priority: -6,
-		flags: {reflectable: 1, mirror: 1, bypasssub: 1, allyanim: 1, wind: 1, noassist: 1, failcopycat: 1},
+		flags: {protect: 1, mirror: 1, noassist: 1, failcopycat: 1},
 		forceSwitch: true,
 		secondary: null,
 		target: "normal",
-		type: "Normal",
-		zMove: {boost: {spd: 1}},
+		type: "Flying",
 		contestType: "Clever",
 	},
 	wickedblow: {
@@ -21901,7 +21942,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	scorchedearth: {
 		num: 906,
 		accuracy: 100,
-		basePower: 100,
+		basePower: 70,
 		category: "Special",
 		name: "Scorched Earth",
 		pp: 10,
@@ -21910,7 +21951,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return typeMod + this.dex.getEffectiveness('Ground', type);
 		},
 		priority: 0,
-		secondary: null,
+		secondary: {
+			status: 'brn',
+			chance: 10
+		},
 		target: "any",
 		type: "Fire",
 		zMove: {basePower: 170},
