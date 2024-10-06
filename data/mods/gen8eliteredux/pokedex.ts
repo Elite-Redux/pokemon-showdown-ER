@@ -19982,7 +19982,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		abilities: {
 			"0": "Ill Will",
 			"1": "Shadow Shield",
-			H: "Wandrngsprit",
+			H: "Wandering Spirit",
 			I1: "Vengeance",
 			I2: "Cursed Body",
 			I3: "Haunted Spirit",
@@ -20005,7 +20005,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		num: 867,
 		types: ["Ground", "Ghost"],
 		abilities: {
-			"0": "Wandrngsprit",
+			"0": "Wandering Spirit",
 			"1": "Shadow Shield",
 			H: "Ancient Idol",
 			I1: "Haunted Spirit",
@@ -29125,12 +29125,23 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 230,
 		heightm: 2.4,
 		color: "Black",
-		evoLevel: 60,
-		evos: ["Necrozma Dawn Wings", "Necrozma Dusk Mane"],
+		otherFormes: [
+			"Necrozma-Dusk-Mane",
+			"Necrozma-Dawn-Wings",
+			"Necrozma-Ultra",
+		],
+		formeOrder: [
+			"Necrozma",
+			"Necrozma-Dusk-Mane",
+			"Necrozma-Dawn-Wings",
+			"Necrozma-Ultra",
+		],
 	},
 	necrozmaduskmane: {
 		name: "Necrozma-Dusk Mane",
 		num: 1782,
+		baseSpecies: "Necrozma",
+		forme: "Dusk-Mane",
 		types: ["Psychic", "Steel"],
 		abilities: {
 			"0": "Neuroforce",
@@ -29153,11 +29164,13 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 3.8,
 		color: "Yellow",
 		evos: ["Necrozma Ultra"],
-		prevo: "Necrozma",
+		changesFrom: "Necrozma",
 	},
 	necrozmadawnwings: {
 		name: "Necrozma-Dawn Wings",
 		num: 1783,
+		baseSpecies: "Necrozma",
+		forme: "Dawn-Wings",
 		types: ["Psychic", "Ghost"],
 		abilities: {
 			"0": "Neuroforce",
@@ -29180,7 +29193,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 4.2,
 		color: "Blue",
 		evos: ["Necrozma Ultra"],
-		prevo: "Necrozma",
+		changesFrom: "Necrozma",
 	},
 	necrozmaultra: {
 		name: "Necrozma-Ultra",
@@ -29207,8 +29220,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 7.5,
 		color: "Yellow",
 		evoLevel: 0,
-		evos: [],
-		prevo: "Necrozma Dusk Mane",
+		requiredMove: "Photon Geyser",
+		battleOnly: ["Necrozma-Dawn-Wings", "Necrozma-Dusk-Mane"],
 	},
 	magearna: {
 		name: "Magearna",
