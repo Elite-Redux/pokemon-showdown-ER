@@ -3385,6 +3385,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.typeChangerBoosted === this.effect)
 				return this.chainModify([4915, 4096]);
 		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (move.type === "Normal") return typeMod + 1;
+		},
 		name: "Normalize",
 		rating: 0,
 		num: 96,
@@ -9514,7 +9517,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	coward: {
 		onSwitchInPriority: 4,
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			this.actions.useMove(Dex.moves.get("protect"), pokemon);
 		},
 		name: "Coward",
@@ -12487,18 +12490,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	ironserpent: {
 		name: "Iron Serpent",
 		shortDesc: "Ups “supereffective” by 33%.",
-		onEffectiveness(typeMod, target, type, move) {
-			if (typeMod >= 2) {
-				return typeMod + 0.33;
+		onModifyDamage(damage, source, target, move) {
+			if (this.dex.getEffectiveness(move.type, target) > 0) {
+				return this.chainModify(1.33);
 			}
 		},
 	},
 	wingedking: {
 		name: "Winged King",
 		shortDesc: "Ups “supereffective” by 33%.",
-		onEffectiveness(typeMod, target, type, move) {
-			if (typeMod >= 2) {
-				return typeMod + 0.33;
+		onModifyDamage(damage, source, target, move) {
+			if (this.dex.getEffectiveness(move.type, target) > 0) {
+				return this.chainModify(1.33);
 			}
 		},
 	},
@@ -12617,7 +12620,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Fire Scales",
 		shortDesc:
 			"Halves damage taken by Special moves. Does NOT double Sp.Def.",
-		onModifyDamage(damage, source, target, move) {
+		onSourceModifyDamage(damage, source, target, move) {
 			if (move.category === "Special") {
 				return this.chainModify(0.5);
 			}
