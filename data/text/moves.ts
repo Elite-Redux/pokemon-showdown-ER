@@ -7431,4 +7431,12 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Power doubles if the target is statused. 10% chance to paralyse",
 		shortDesc: "10% chance to paralyse; power doubles if the target is statused.",
 	},
+	glaciercrash: {
+		name: "Glacier Crash",
+		desc: "A large glacier crashes into foes. Hits all others. Mega Launcher boost.",
+	},
+	blackmagic: {
+		name: "Black Magic",
+		desc: "Calls on dark power to attack. 20% chance to inflict bleed.",
+	}
 };

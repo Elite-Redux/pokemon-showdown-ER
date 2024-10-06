@@ -22199,5 +22199,33 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Rock",
 		contestType: "Tough",
 	},
-
+	glaciercrash: {
+		accuracy: 100,
+		basePower: 95,
+		category: "Physical",
+		name: "Glacier Crash",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		secondary: null,
+		target: "allAdjacent",
+		type: "Ice",
+		contestType: "Tough",
+	},
+	blackmagic: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Black Magic",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
+		target: "normal",
+		type: "Dark",
+		contestType: "Clever",
+	}
 };
