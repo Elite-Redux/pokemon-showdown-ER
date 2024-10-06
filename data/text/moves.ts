@@ -145,8 +145,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	aquacutter: {
 		name: "Aqua Cutter",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "The user expels pressurized water. 20% bleed chance. High crit ratio.",
 	},
 	aquajet: {
 		name: "Aqua Jet",
@@ -1141,8 +1140,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	crabhammer: {
 		name: "Crabhammer",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	craftyshield: {
 		name: "Crafty Shield",
@@ -1200,7 +1199,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	cut: {
 		name: "Cut",
-		shortDesc: "This move always results in a critical hit.",
+		shortDesc: "This move always results in a critical hit. 10% Bleed Chance.",
 	},
 	darkestlariat: {
 		name: "Darkest Lariat",
@@ -1501,7 +1500,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	dragonclaw: {
 		name: "Dragon Claw",
-		shortDesc: "No additional effect.",
+		shortDesc: "10% Bleed Chance.",
 	},
 	dragondance: {
 		name: "Dragon Dance",
@@ -1572,12 +1571,12 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	drillpeck: {
 		name: "Drill Peck",
-		shortDesc: "High crit ratio.",
+		shortDesc: "High crit ratio. 10% Bleed Chance.",
 	},
 	drillrun: {
 		name: "Drill Run",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	drumbeating: {
 		name: "Drum Beating",
@@ -1971,6 +1970,14 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Has a 10% chance to burn the target.",
 		shortDesc: "10% chance to burn the target.",
 	},
+	jaggedpunch: {
+		name: "Fire Punch",
+		desc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks.",
+	},
+	diamondblade: {
+		name: "Diamond Blade",
+		desc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks. Keen Edge boost.",
+	}
 	firespin: {
 		name: "Fire Spin",
 		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
@@ -2703,8 +2710,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	guillotine: {
 		name: "Guillotine",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
@@ -3005,12 +3012,12 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	hornattack: {
 		name: "Horn Attack",
-		shortDesc: "No additional effect.",
+		shortDesc: "10% Bleed Chance.",
 	},
 	horndrill: {
 		name: "Horn Drill",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",		
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",		
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
@@ -3428,8 +3435,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	leafblade: {
 		name: "Leaf Blade",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	leafstorm: {
 		name: "Leaf Storm",
@@ -3870,7 +3877,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	megahorn: {
 		name: "Megahorn",
-		shortDesc: "No additional effect.",
+		shortDesc: "20% Bleed Chance.",
 	},
 	megakick: {
 		name: "Mega Kick",
@@ -4320,8 +4327,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	nightslash: {
 		name: "Night Slash",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 	},
 	nobleroar: {
 		name: "Noble Roar",
@@ -4792,8 +4799,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	psychocut: {
 		name: "Psycho Cut",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 	},
 	psychoshift: {
 		name: "Psycho Shift",
@@ -4972,8 +4979,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	razorleaf: {
 		name: "Razor Leaf",
-		desc: "This move always results in a critical hit",
-		shortDesc: "This move always results in a critical hit.",
+		desc: "This move always results in a critical hit. 10% Bleed Chance.",
+		//shortDesc: "This move always results in a critical hit. 10% Bleed Chance.",
 	},
 	razorshell: {
 		name: "Razor Shell",
@@ -5472,8 +5479,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	shadowclaw: {
 		name: "Shadow Claw",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	shadowforce: {
 		name: "Shadow Force",
@@ -5721,8 +5728,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	slash: {
 		name: "Slash",
-		desc: "Will always crit.",
-		shortDesc: "Will always crit.",
+		desc: "Will always crit. 20% Bleed Chance.",
+		shortDesc: "Will always crit. 20% Bleed Chance.",
 	},
 	sleeppowder: {
 		name: "Sleep Powder",
@@ -6216,8 +6223,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	stoneedge: {
 		name: "Stone Edge",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 	},
 	storedpower: {
 		name: "Stored Power",
@@ -7328,8 +7335,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	xscissor: {
 		name: "X-Scissor",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	yawn: {
 		name: "Yawn",
@@ -7376,8 +7383,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	excalibur: {
 		name: "Excalibur",
-		desc: "This move's type effectiveness against Dragon is changed to be super effective no matter what this move's type is.",
-		shortDesc: "Super effective against Dragon types.",
+		desc: "This move's type effectiveness against Dragon is changed to be super effective no matter what this move's type is. 20% Bleed Chance.",
+		shortDesc: "Super effective against Dragon types. 20% Bleed Chance.",
 	},
 	smite: {
 		name: "Smite",

@@ -414,7 +414,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Water",
 		contestType: "Cool",
@@ -2647,8 +2650,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	cometpunch: {
 		num: 4,
-		accuracy: 85,
-		basePower: 25,
+		accuracy: 100,
+		basePower: 15,
 		category: "Physical",
 		
 		name: "Comet Punch",
@@ -3140,7 +3143,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Water",
 		contestType: "Tough",
@@ -3327,7 +3333,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1, field: 1},
 		willCrit: true,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Steel",
 		contestType: "Cool",
@@ -4102,7 +4111,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Dragon",
 		contestType: "Cool",
@@ -4294,7 +4306,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, distance: 1, horn: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "any",
 		type: "Flying",
 		contestType: "Cool",
@@ -4309,7 +4324,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Ground",
 		contestType: "Tough",
@@ -8118,7 +8136,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1,  slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Bug",
 		zMove: {basePower: 180},
@@ -9081,7 +9102,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		critRatio: 2,
 		flags: {contact: 1, protect: 1, mirror: 1, horn: 1},
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Normal",
 		contestType: "Cool",
@@ -9096,7 +9120,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, horn: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Normal",
 		zMove: {basePower: 180},
@@ -10282,7 +10309,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Grass",
 		contestType: "Cool",
@@ -11726,7 +11756,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, horn: 1},
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Bug",
 		contestType: "Cool",
@@ -12924,7 +12957,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Dark",
 		contestType: "Cool",
@@ -14442,7 +14478,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Psychic",
 		contestType: "Cool",
@@ -15008,7 +15047,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, slicing: 1},
 		willCrit: true,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "allAdjacentFoes",
 		type: "Grass",
 		contestType: "Cool",
@@ -16382,7 +16424,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Ghost",
 		contestType: "Cool",
@@ -17252,7 +17297,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
 		willCrit: true,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Normal",
 		contestType: "Cool",
@@ -18578,7 +18626,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Rock",
 		contestType: "Tough",
@@ -21613,7 +21664,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
 		critRatio: 2,
-		secondary: null,
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Bug",
 		contestType: "Cool",
@@ -21758,7 +21812,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onEffectiveness(typeMod, target, type) {
 			if (type === 'Dragon') return 1;
 		},
-		secondary: null,
+		secondary: {
+			chance: 20,
+			status: 'bld',
+		},
 		target: "normal",
 		type: "Steel",
 		contestType: "Tough",
@@ -22071,5 +22128,76 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
-	}
+	},
+	jadggedpunch: {
+		accuracy: 90,
+		basePower: 75,
+		category: "Physical",
+		name: "Jagged Punch",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
+		onAfterHit(target, source, move) {
+			//10% chance
+			if (this.randomChance(1, 10)) {
+				if (!move.hasSheerForce && source.hp) {
+					for (const side of source.side.foeSidesWithConditions()) {
+						side.addSideCondition('stealthrock');
+					}
+				}
+			}
+		},
+		onAfterSubDamage(damage, target, source, move) {
+			if (this.randomChance(1, 10)) {
+				if (!move.hasSheerForce && source.hp) {
+					for (const side of source.side.foeSidesWithConditions()) {
+						side.addSideCondition('stealthrock');
+					}
+				}
+			}
+		},
+		target: "normal",
+		type: "Rock",
+		contestType: "Tough",
+	},
+	diamondblade: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Diamond Blade",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		secondary: {
+			chance: 10,
+			status: 'bld',
+		},
+		onAfterHit(target, source, move) {
+			//10% chance
+			if (this.randomChance(1, 10)) {
+				if (!move.hasSheerForce && source.hp) {
+					for (const side of source.side.foeSidesWithConditions()) {
+						side.addSideCondition('stealthrock');
+					}
+				}
+			}
+		},
+		onAfterSubDamage(damage, target, source, move) {
+			if (this.randomChance(1, 10)) {
+				if (!move.hasSheerForce && source.hp) {
+					for (const side of source.side.foeSidesWithConditions()) {
+						side.addSideCondition('stealthrock');
+					}
+				}
+			}
+		},
+		target: "normal",
+		type: "Rock",
+		contestType: "Tough",
+	},
+
 };
