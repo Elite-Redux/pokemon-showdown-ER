@@ -1904,7 +1904,7 @@ export class BattleActions {
 		this.battle.runEvent('BeforeMega', pokemon);
 		pokemon.formeChange(speciesid, pokemon.getItem(), true);
 		try  {
-			//Despite the any type error, this should be fine
+			//@ts-ignore Despite the any type error, this should be fine
 			pokemon.setAbility(pokemon.species.abilities[ind]);
 		}
 		catch (e) {
