@@ -441,7 +441,8 @@ export class TeamValidator {
 			}
 		}
 		if (set.name){
-			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink','nibba'];
+			//Profanity Filter
+			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink','nibba',"faggot"];
 			//console.log(set.name);
 			for (const i in bannedWords){
 				const word = bannedWords[i];
