@@ -12971,4 +12971,22 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 	},
+	wishmaker: {
+		name: "Wishmaker",
+		shortDesc: "Uses Wish on switch-in, three uses per battle",
+		onSwitchIn(pokemon) {
+			if (this.effectState.wishCount === 0) return;
+			if (!this.effectState.wishCount) {
+				this.effectState.wishCount = 3
+			} else {
+				this.effectState.wishCount--;
+			}
+		},
+		onStart(pokemon) {
+			if (!this.effectState.wishCount) return;
+			const target = pokemon.foes()[0];
+			this.actions.useMove(Dex.moves.get("wish"), pokemon);
+			pokemon.activeMoveActions = 0;
+		}
+	},
 };
