@@ -8796,7 +8796,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	lowblow: {
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("feintattack");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -9748,7 +9748,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	cheaptactics: {
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("scratch");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -9773,8 +9773,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	coward: {
-		onSwitchInPriority: 4,
-		onSwitchIn(pokemon) {
+		// onSwitchInPriority: 4,
+		onStart(pokemon) {
 			this.actions.useMove(Dex.moves.get("protect"), pokemon);
 		},
 		name: "Coward",
@@ -10319,7 +10319,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		rating: 3,
 		num: 460,
 		gen: 8,
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			this.debug("Monkey switches in");
 			let nextMove = Dex.moves.get("tickle");
 			let targetLoc = 4;
@@ -11202,17 +11202,16 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	phantomthief: {
 		name: "Phantom Thief",
 		shortDesc: "Uses 40BP Spectral Thief on switch-in.",
-		onSourceSwitchIn(pokemon) {
-			this.add("-activate", pokemon, "ability: Phantom Thief");
+		onStart(pokemon) {
 			const move: Move = {
 				...Dex.moves.get("spectralthief"),
 				basePower: 40,
 			};
 
 			const target = pokemon.foes()[0];
-
 			this.actions.useMove(move, pokemon, target);
-		},
+			pokemon.activeMoveActions = 0;
+		}
 	},
 	devourer: {
 		name: "Devourer",
@@ -11355,7 +11354,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	webspinner: {
 		name: "Web Spinner",
 		shortDesc: "Uses String Shot on switch-in.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("stringshot");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -11407,7 +11406,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	monstermash: {
 		name: "Monster Mash",
 		shortDesc: "Casts Trick-or-Treat on entry.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("trickortreat");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -11430,7 +11429,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	powderburst: {
 		name: "Powder Burst",
 		shortDesc: "Casts Powder on entry.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("powder");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -11477,7 +11476,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	telekinetic: {
 		name: "Telekinetic",
 		shortDesc: "Casts Telekinesis on entry.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("telekinesis");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -11571,7 +11570,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	changeofheart: {
 		name: "Change of Heart",
 		shortDesc: "Uses Heart Swap on switch-in.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("heartswap");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -11715,7 +11714,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	suppress: {
 		name: "Suppress",
 		shortDesc: "Casts Torment on entry",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("torment");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -11767,7 +11766,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	doombringer: {
 		name: "Doombringer",
 		shortDesc: "Uses Doom Desire on switch-in.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("doomdesire");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -12064,7 +12063,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	trickster: {
 		name: "Trickster",
 		shortDesc: "Uses Disable on switch-in.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("disable");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -12143,7 +12142,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	dustcloud: {
 		name: "Dust Cloud",
 		shortDesc: "Attacks with Sand Attack on switch-in.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("sandattack");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
@@ -12377,7 +12376,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	rejection: {
 		name: "Rejection",
 		shortDesc: "Applies Quash on switch-in.",
-		onSwitchIn(pokemon) {
+		onStart(pokemon) {
 			let nextMove = Dex.moves.get("quash");
 			let targetLoc = 4;
 			let target = pokemon.side.foes().forEach((a) => {
