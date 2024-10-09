@@ -29,18 +29,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	acid: {
 		name: "Acid",
 		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the foe(s) Sp. Def by 1.",
-		gen3: {
-			desc: "Has a 10% chance to lower the target's Defense by 1 stage.",
-			shortDesc: "10% chance to lower the foe(s) Defense by 1.",
-		},
-		gen1: {
-			desc: "Has a 33% chance to lower the target's Defense by 1 stage.",
-			shortDesc: "33% chance to lower the target's Defense by 1.",
-		},
-		gen2: {
-			shortDesc: "10% chance to lower the target's Defense by 1.",
-		},
+		shortDesc: "10% chance to lower the foe(s) Sp. Def by 1. SE on Steel.",
 	},
 	acidarmor: {
 		name: "Acid Armor",
@@ -857,8 +846,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	chillyreception: {
 		name: "Chilly Reception",
-		desc: "For 5 turns, the weather becomes Snow. The user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
-		shortDesc: "Starts Snow. User switches out.",
+		desc: "For 5 turns, the weather becomes Hail. The user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
+		shortDesc: "Starts Hail. User switches out.",
 
 		// TODO needs to be implemented
 		activate: "  [POKEMON] is preparing to tell a chillingly bad joke!",
@@ -3347,8 +3336,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	karatechop: {
 		name: "Karate Chop",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. Keen edge boost.",
+		shortDesc: "High critical hit ratio. Keen edge boost.",
 	},
 	kinesis: {
 		name: "Kinesis",
@@ -7434,9 +7423,26 @@ export const MovesText: {[k: string]: MoveText} = {
 	glaciercrash: {
 		name: "Glacier Crash",
 		desc: "A large glacier crashes into foes. Hits all others. Mega Launcher boost.",
+		shortDesc: "Hits all others. Mega Launcher boost.",
 	},
 	blackmagic: {
 		name: "Black Magic",
 		desc: "Calls on dark power to attack. 20% chance to inflict bleed.",
+		shortDesc: "20% chance to inflict bleed.",
+	},
+	bloodshot: {
+		name: "Blood Shot",
+		desc: "Hurls a sphere of cursed blood magic. Causes the foe to bleed profusely.",
+		shortDesc: "Inflicts bleed on the foe.",
+	},
+	cheapshot: {
+		name: "Cheap Shot",
+		desc: "The user sneaks into shadows, then attacks with hidden projectile. Mega Launcher boost.",
+		shortDesc: "Mega launcher boost.",
+	},
+	ragingsouls: {
+		name: "Raging Souls",
+		desc: "Souls from astral plane strike the foe. This lowers Sp. Atk by 2 stages.",
+		shortDesc: "Lowers user SpA by 2.",
 	}
 };
