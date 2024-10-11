@@ -9078,7 +9078,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	/// Seems correctly implemented per v2.1 elite redux.
 	kingswrath: {
-		onAnyAfterEachBoost(boost, target, source) {
+		onAllyAfterEachBoost(boost, target, source) {
 			let statsLowered = false;
 			let i: BoostID;
 			for (i in boost) {
@@ -9087,7 +9087,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 			}
 			if (statsLowered) {
-				this.boost({ atk: 1, def: 1 }, target, target, null, false, true);
+				if (target.hasAbility('kingswrath')) {
+					this.boost({ atk: 1, def: 1 }, target, target, null, false, true);
+				} else {
+					// Target isn't the ability source so presumably ally must be
+					const ally = target.allies()[0];
+					this.boost({ atk: 1, def: 1 }, ally, ally, null, false, true);
+				}
 			}
 		},
 		name: "King's Wrath",
@@ -9097,7 +9103,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	/// Seems correctly implemented per v2.1 elite redux.
 	queensmourning: {
-		onAnyAfterEachBoost(boost, target, source) {
+		onAllyAfterEachBoost(boost, target, source) {
 			let statsLowered = false;
 			let i: BoostID;
 			for (i in boost) {
@@ -9106,7 +9112,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 			}
 			if (statsLowered) {
-				this.boost({ spa: 1, spd: 1 }, target, target, null, false, true);
+				if (target.hasAbility('queensmourning')) {
+					this.boost({ spa: 1, spd: 1 }, target, target, null, false, true);
+				} else {
+					// Target isn't the ability source so presumably ally must be
+					const ally = target.allies()[0];
+					this.boost({ spa: 1, spd: 1 }, ally, ally, null, false, true);
+				}
 			}
 		},
 		name: "Queens's Mourning",
