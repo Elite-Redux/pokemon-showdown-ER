@@ -489,8 +489,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAnyModifySpD(spd, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (target.hasAbility("Beads of Ruin")) return;
-			if (!move.ruinedSpD?.hasAbility("Beads of Ruin"))
+			if (target.hasAbilityOrInnate("Beads of Ruin")) return;
+			if (!move.ruinedSpD?.hasAbilityOrInnate("Beads of Ruin"))
 				move.ruinedSpD = abilityHolder;
 			if (move.ruinedSpD !== abilityHolder) return;
 			this.debug("Beads of Ruin SpD drop");
@@ -3442,12 +3442,16 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 12,
 	},
 	opportunist: {
-		onModifyMove(move, pokemon, target) {
-			if (move.category === "Status") {
-				return;
-			}
-			if(target && target.hp <= target.maxhp / 2) {
-				move.priority += 1;
+		onFractionalPriority(priority, source, target, move) {
+			if (
+				(move.category === "Status" &&
+					source.hasAbility("myceliummight")) ||
+				!target
+			)
+				return; //Just in case this happens
+			if (target.hp && target.hp <= target.maxhp / 2) {
+				this.add("-activate", source, "ability: Expert Hunter");
+				return 0.1;
 			}
 		},
 		name: "Opportunist",
@@ -5479,8 +5483,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAnyModifyDef(def, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (target.hasAbility("Sword of Ruin")) return;
-			if (!move.ruinedDef?.hasAbility("Sword of Ruin"))
+			if (target.hasAbilityOrInnate("Sword of Ruin")) return;
+			if (!move.ruinedDef?.hasAbilityOrInnate("Sword of Ruin"))
 				move.ruinedDef = abilityHolder;
 			if (move.ruinedDef !== abilityHolder) return;
 			this.debug("Sword of Ruin Def drop");
@@ -5497,7 +5501,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAnyModifyAtk(atk, source, target, move) {
 			const abilityHolder = this.effectState.target;
-			if (source.hasAbility("Tablets of Ruin")) return;
+			if (source.hasAbilityOrInnate("Tablets of Ruin")) return;
 			if (!move.ruinedAtk) move.ruinedAtk = abilityHolder;
 			if (move.ruinedAtk !== abilityHolder) return;
 			this.debug("Tablets of Ruin Atk drop");
@@ -5885,7 +5889,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAnyModifySpA(spa, source, target, move) {
 			if(!move) return;
 			const abilityHolder = this.effectState.target;
-			if (source.hasAbility("Vessel of Ruin")) return;
+			if (source.hasAbilityOrInnate("Vessel of Ruin")) return;
 			if (!move.ruinedSpA) move.ruinedSpA = abilityHolder;
 			if (move.ruinedSpA !== abilityHolder) return;
 			this.debug("Vessel of Ruin SpA drop");
@@ -9690,7 +9694,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	ambush: {
 		onModifyMove(move, attacker, defender) {
-			if (defender && !defender.activeTurns) {
+			if(attacker.activeMoveActions === 0){
 				move.willCrit = true;
 			}
 		},
@@ -11022,7 +11026,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		condition: {
 			duration: 1,
 			onModifyMove(move, attacker, defender) {
-				if (defender && !defender.activeTurns) {
+				if(attacker.activeMoveActions === 0){
 					move.willCrit = true;
 				}
 			},
@@ -11864,8 +11868,17 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	generator: {
 		name: "Generator",
 		shortDesc: "Charges up on entry.",
-		onStart(pokemon) {
-			this.boost({ spa: 1 }, pokemon);
+		onSwitchIn(pokemon) {
+			let nextMove = Dex.moves.get("charge");
+				this.actions.runMove(
+					nextMove,
+					pokemon,
+					0,
+					pokemon.getAbility(),
+					undefined,
+					true
+				);
+			pokemon.activeMoveActions = 0;
 		},
 	},
 	itchydefense: {
@@ -12102,6 +12115,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Triggers Magnitude 4-7 after using a damaging move.",
 		onAfterMove(source, target, move) {
 			if(!move || move.category === "Status") return;
+			if(move.damage === 0) return;
 			this.add("-activate", source, "ability: Aftershock");
 			const aftershock = Dex.moves.get("magnitude");
 			/// Magnitude 4-7 is 0->65.

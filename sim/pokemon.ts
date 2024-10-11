@@ -2287,6 +2287,18 @@ export class Pokemon {
 		}
 		return !this.ignoringAbility();
 	}
+	hasAbilityOrInnate(ability: string | string[]) {
+		if (this.ignoringAbility()) return false;
+		let i1 = this.species.abilities['I1'];
+		let i2 = this.species.abilities['I2'];
+		let i3 = this.species.abilities['I3'];
+		if (Array.isArray(ability)) {
+			if (!ability.map(toID).includes(this.ability) && !ability.map(toID).includes(toID(i1)) &&  !ability.map(toID).includes(toID(i2)) &&  !ability.map(toID).includes(toID(i3))) return false;
+		} else {
+			if (toID(ability) !== this.ability && toID(ability) !== toID(i1) && toID(ability) !== toID(i2) && toID(ability) !== toID(i3)) return false;
+		}
+		return true;
+	}
 
 	clearAbility() {
 		return this.setAbility("");

@@ -12483,7 +12483,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Moongeist Beam",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, pulse: 1},
 		ignoreAbility: true,
 		secondary: null,
 		target: "normal",
@@ -19037,7 +19037,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Sunsteel Strike",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, pulse: 1},
 		ignoreAbility: true,
 		secondary: null,
 		target: "normal",
@@ -19639,7 +19639,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Techno Blast",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, pulse: 1},
 		onModifyType(move, pokemon) {
 			if (pokemon.ignoringItem()) return;
 			move.type = this.runEvent('Drive', pokemon, null, move, 'Normal');

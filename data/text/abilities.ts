@@ -1282,7 +1282,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	opportunist: {
 		name: "Opportunist",
 		shortDesc:
-			"When an opposing Pokemon has a stat stage raised, this Pokemon copies the effect.",
+			"If target has less than 1/2 HP, single-target moves get +1 prio.",
 	},
 	orichalcumpulse: {
 		name: "Orichalcum Pulse",
