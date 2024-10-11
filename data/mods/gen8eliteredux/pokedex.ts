@@ -25689,8 +25689,15 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 305,
 		heightm: 5,
 		color: "Green",
-		evoLevel: 0,
-		evos: [],
+		otherFormes: ["Zygarde-10%", "Zygarde-Complete"],
+		// forme 2 = 10% with Power Constructor ,forme 3 = 50% with Power Construct
+		formeOrder: [
+			"Zygarde",
+			"Zygarde-10%",
+			"Zygarde-10%",
+			"Zygarde",
+			"Zygarde-Complete",
+		],
 	},
 	zygarde50powerconstruct: {
 		name: "Zygarde-50 Power Construct",
@@ -25720,6 +25727,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	zygarde10: {
 		name: "Zygarde-10",
 		num: 1739,
+		baseSpecies: "Zygarde",
+		forme: "10%",
 		types: ["Dragon", "Ground"],
 		abilities: {
 			"0": "Aura Break",
@@ -25741,8 +25750,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 33.5,
 		heightm: 1.2,
 		color: "Black",
-		evoLevel: 0,
-		evos: [],
+		changesFrom: "Zygarde",
 	},
 	zygarde10powerconstruct: {
 		name: "Zygarde-10 Power Construct",
@@ -25772,6 +25780,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	zygardecomplete: {
 		name: "Zygarde-Complete",
 		num: 1742,
+		baseSpecies: "Zygarde",
+		forme: "Complete",
 		types: ["Dragon", "Ground"],
 		abilities: {
 			"0": "Power Construct",
@@ -25793,8 +25803,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 610,
 		heightm: 4.5,
 		color: "Black",
-		evoLevel: 0,
-		evos: [],
+		requiredAbility: "Power Construct",
+		battleOnly: ["Zygarde", "Zygarde-10%"],
 	},
 	diancie: {
 		name: "Diancie",
