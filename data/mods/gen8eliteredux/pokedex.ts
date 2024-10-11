@@ -479,7 +479,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.1,
 		color: "White",
 		evoLevel: 0,
-		requiredItem: "Butterfrenite",
+		requiredItem: "Butterfrite",
 	},
 	weedle: {
 		name: "Weedle",
@@ -4073,7 +4073,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.5,
 		color: "Brown",
 		evoLevel: 0,
-		requiredItem: "Hitmonleenite",
+		requiredItem: "Hitmonleeite",
 	},
 	hitmonchan: {
 		name: "Hitmonchan",
@@ -7097,7 +7097,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.4,
 		color: "Blue",
 		evoLevel: 0,
-		requiredItem: "Quagsirenite",
+		requiredItem: "Quagsite",
 	},
 	espeon: {
 		name: "Espeon",
@@ -7737,7 +7737,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 0.6,
 		color: "Yellow",
 		evoLevel: 0,
-		requiredItem: "Shucklenite",
+		requiredItem: "Shucklite",
 	},
 	heracross: {
 		name: "Heracross",
@@ -8349,7 +8349,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.8,
 		color: "Blue",
 		evoLevel: 0,
-		requiredItem: "Kingdranite",
+		requiredItem: "Kingdrite",
 	},
 	phanpy: {
 		name: "Phanpy",
@@ -10430,7 +10430,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 0.8,
 		color: "Brown",
 		evoLevel: 0,
-		requiredItem: "Shedinjite",
+		requiredItem: "Shedninjite",
 	},
 	whismur: {
 		name: "Whismur",
@@ -12351,7 +12351,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 6.2,
 		color: "Pink",
 		evoLevel: 0,
-		requiredItem: "Miloticite",
+		requiredItem: "Milotite",
 	},
 	castform: {
 		name: "Castform",
@@ -13939,7 +13939,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2.2,
 		color: "Green",
 		evoLevel: 0,
-		requiredItem: "Torterranite",
+		requiredItem: "Torterrnite",
 	},
 	chimchar: {
 		name: "Chimchar",
@@ -14052,7 +14052,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.2,
 		color: "Brown",
 		evoLevel: 0,
-		requiredItem: "Infernapenite",
+		requiredItem: "Infernapeite",
 	},
 	piplup: {
 		name: "Piplup",
@@ -14471,7 +14471,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.4,
 		color: "Blue",
 		evoLevel: 0,
-		requiredItem: "Luxraynite",
+		requiredItem: "Luxrite",
 	},
 	budew: {
 		name: "Budew",
@@ -19593,7 +19593,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.5,
 		color: "Red",
 		evoLevel: 0,
-		requiredItem: "Krookodilenite",
+		requiredItem: "Krookodilite",
 	},
 	darumaka: {
 		name: "Darumaka",

@@ -998,4 +998,12 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	froslassite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	scraftite: {
+		inherit: true,
+		isNonstandard: null,
+	},
 }
