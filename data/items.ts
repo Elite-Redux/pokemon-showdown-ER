@@ -8338,7 +8338,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		gen: 7,
 	},
 	swalotite: {
-		name: "Magnezonite",
+		name: "Swalotite",
 		spritenum: 622,
 		megaStone: "Swalot-Mega",
 		megaEvolves: "Swalot",
