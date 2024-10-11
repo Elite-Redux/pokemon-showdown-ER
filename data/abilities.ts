@@ -2,6 +2,7 @@ import { MoveTarget } from "../sim/dex-moves";
 import { toID } from "../sim/dex-data";
 import { Condition } from "../sim/dex-conditions";
 import { Side } from "../sim/side";
+import { Pokemon } from "../sim/pokemon.js";
 /*
 
 Ratings and how they work:
@@ -9078,7 +9079,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	/// Seems correctly implemented per v2.1 elite redux.
 	kingswrath: {
-		onAllyAfterEachBoost(boost, target, source) {
+		onAllyAfterEachBoost(boost, target, source, abilitySource) {
 			let statsLowered = false;
 			let i: BoostID;
 			for (i in boost) {
@@ -9086,14 +9087,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					statsLowered = true;
 				}
 			}
-			if (statsLowered) {
-				if (target.hasAbility('kingswrath')) {
-					this.boost({ atk: 1, def: 1 }, target, target, null, false, true);
-				} else {
-					// Target isn't the ability source so presumably ally must be
-					const ally = target.allies()[0];
-					this.boost({ atk: 1, def: 1 }, ally, ally, null, false, true);
-				}
+			if (statsLowered && abilitySource instanceof Pokemon) {
+				this.boost({ atk: 1, def: 1 }, abilitySource, abilitySource, null, false, true);
 			}
 		},
 		name: "King's Wrath",
@@ -9103,7 +9098,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	/// Seems correctly implemented per v2.1 elite redux.
 	queensmourning: {
-		onAllyAfterEachBoost(boost, target, source) {
+		onAllyAfterEachBoost(boost, target, source, abilitySource) {
 			let statsLowered = false;
 			let i: BoostID;
 			for (i in boost) {
@@ -9111,14 +9106,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					statsLowered = true;
 				}
 			}
-			if (statsLowered) {
-				if (target.hasAbility('queensmourning')) {
-					this.boost({ spa: 1, spd: 1 }, target, target, null, false, true);
-				} else {
-					// Target isn't the ability source so presumably ally must be
-					const ally = target.allies()[0];
-					this.boost({ spa: 1, spd: 1 }, ally, ally, null, false, true);
-				}
+			if (statsLowered && abilitySource instanceof Pokemon) {
+				this.boost({ spa: 1, spd: 1 }, abilitySource, abilitySource, null, false, true);
 			}
 		},
 		name: "Queens's Mourning",

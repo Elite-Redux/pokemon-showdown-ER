@@ -186,7 +186,8 @@ interface CommonHandlers {
 				this: Battle,
 				source: Pokemon,
 				target: Pokemon,
-				move: ActiveMove
+				move: ActiveMove,
+				effectSource: Battle | Pokemon | Side | Field,
 		  ) => boolean | null | "" | void);
 	ExtResultSourceMove:
 		| boolean
