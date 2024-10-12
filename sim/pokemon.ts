@@ -2470,18 +2470,19 @@ export class Pokemon {
 	 * Sets a type (except on Arceus, who resists type changes)
 	 */
 	setType(newType: string | string[], enforce = false) {
-		if (!enforce) {
-			// First type of Arceus, Silvally cannot be normally changed
-			if (
-				(this.battle.gen >= 5 &&
-					(this.species.num === 493 || this.species.num === 773)) ||
-				(this.battle.gen === 4 && this.hasAbility("multitype"))
-			) {
-				return false;
-			}
-			// Terastallized Pokemon cannot have their base type changed except via forme change
-			if (this.terastallized) return false;
-		}
+		// This logic isn't used in ER
+		// if (!enforce) {
+		// 	// First type of Arceus, Silvally cannot be normally changed
+		// 	if (
+		// 		(this.battle.gen >= 5 &&
+		// 			(this.species.num === 493 || this.species.num === 773)) ||
+		// 		(this.battle.gen === 4 && this.hasAbility("multitype"))
+		// 	) {
+		// 		return false;
+		// 	}
+		// 	// Terastallized Pokemon cannot have their base type changed except via forme change
+		// 	if (this.terastallized) return false;
+		// }
 
 		if (!newType) throw new Error("Must pass type to setType");
 		this.types = typeof newType === "string" ? [newType] : newType;
