@@ -101,6 +101,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	behemothbash: {
+		inherit: true,
+		overrideOffensiveStat: 'def',
+	},
 	belch: {
 		inherit: true,
 		flags: {protect: 1, failmefirst: 1, nosleeptalk: 1, noassist: 1, failcopycat: 1, failinstruct: 1},
@@ -1781,6 +1785,34 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	tailglow: {
 		inherit: true,
 		isNonstandard: null,
+	},
+	tailwind: {
+		inherit: true,
+		condition: {
+			duration: 3,
+			durationCallback(target, source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', '[move] Tailwind');
+					return 5;
+				}
+				return 3;
+			},
+			onSideStart(side, source) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-sidestart', side, 'move: Tailwind', '[persistent]');
+				} else {
+					this.add('-sidestart', side, 'move: Tailwind');
+				}
+			},
+			onModifySpe(spe) {},
+			onModifySpeSecondary(spe) {
+				return spe * 2;
+			},
+			onSideResidualOrder: 5,
+			onSideEnd(side) {
+				this.add('-sideend', side, 'move: Tailwind');
+			},
+		},
 	},
 	tectonicrage: {
 		inherit: true,

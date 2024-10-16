@@ -28,7 +28,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		effectType: "Status",
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === "frostorb") {
-				this.add("-status", target, "brn", "[from] item: Frost Orb");
+				this.add("-status", target, "frz", "[from] item: Frost Orb");
 			}
 			else if (sourceEffect && sourceEffect.effectType == "Ability") {
 				this.add(
@@ -145,23 +145,14 @@ export const Conditions: { [k: string]: ConditionData } = {
 			return this.chainModify(0);
 		},
 		/**
-		 * This is called right before the statused target receives any kind of stat boosts.
-		 * This prevents the statused target from receiving any stat boosts from any source by simply deleting all the boosts.
+		 * This should negate the boosts of this pokemon while bleed is inflicted.
 		 */
-		onTryBoost(boost, target, source, effect) {
-			let i: BoostID;
-
-			for (i in boost) {
-				delete boost[i];
+		onSourceModifyBoost(boosts, pokemon) {
+			for(const b in boosts){
+				if(boosts[b] > 0){
+					boosts[b] = 0;
+				}
 			}
-
-			this.add(
-				"-fail",
-				target,
-				"boost",
-				"[from] status: bleed",
-				"[of] " + target
-			);
 		},
 		/**
 		 * This is (believed) to be used as an order in which status/item/weather residual effects resolve at the end of the battle.

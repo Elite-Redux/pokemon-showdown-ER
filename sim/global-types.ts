@@ -186,7 +186,8 @@ interface CommonHandlers {
 				this: Battle,
 				source: Pokemon,
 				target: Pokemon,
-				move: ActiveMove
+				move: ActiveMove,
+				effectSource: Battle | Pokemon | Side | Field,
 		  ) => boolean | null | "" | void);
 	ExtResultSourceMove:
 		| boolean
@@ -848,6 +849,7 @@ interface MovePlines extends Plines {
 	megaNoItem?: string;
 	prepare?: string;
 	removeItem?: string;
+	removeBerry?: string; //The only reason this exists is because of bug bite text lmao
 	startFromItem?: string;
 	startFromZEffect?: string;
 	switchOut?: string;

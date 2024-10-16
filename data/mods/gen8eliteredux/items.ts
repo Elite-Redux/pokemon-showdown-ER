@@ -1,4 +1,4 @@
-export const Items: {[k: string]: ModdedItemData} = { 
+export const Items: {[k: string]: ModdedItemData} = {
 	abomasite: {
 		inherit: true,
 		isNonstandard: null,
@@ -100,6 +100,32 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	choiceband: {
+		inherit: true,
+		onModifyAtk(spe, pokemon) {},
+		onModifyDamage(spe, pokemon, target, move) {
+			if (pokemon.volatiles["dynamax"]) return;
+			if (move.category !== 'Physical') return;
+			return this.chainModify(1.5);
+		},
+	},
+	choicescarf: {
+		inherit: true,
+		onModifySpe(spe, pokemon) {},
+		onModifySpeFull(spe, pokemon) {
+			if (pokemon.volatiles["dynamax"]) return;
+			return this.chainModify(1.5);
+		},
+	},
+	choicespecs: {
+		inherit: true,
+		onModifySpA(spe, pokemon) {},
+		onModifyDamage(spe, pokemon, target, move) {
+			if (pokemon.volatiles["dynamax"]) return;
+			if (move.category !== 'Special') return;
+			return this.chainModify(1.5);
+		},
+	},
 	clawfossil: {
 		inherit: true,
 		isNonstandard: null,
@@ -123,6 +149,26 @@ export const Items: {[k: string]: ModdedItemData} = {
 	decidiumz: {
 		inherit: true,
 		isNonstandard: "Unobtainable",
+	},
+	deepseascale: {
+		inherit: true,
+		onModifySpD(spd, pokemon) {},
+		onSourceModifyDamage(spd, pokemon, target, move) {
+			if (move.category !== 'Special') return;
+			if (target.baseSpecies.name === "Clamperl") {
+				return this.chainModify(2);
+			}
+		},
+	},
+	deepseatooth: {
+		inherit: true,
+		onModifySpA(spa, pokemon) {},
+		onModifyDamage(spa, pokemon, target, move) {
+			if (move.category !== 'Special') return;
+			if (pokemon.baseSpecies.name === "Clamperl") {
+				return this.chainModify(2);
+			}
+		},
 	},
 	diancite: {
 		inherit: true,
@@ -315,6 +361,13 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
+	ironball: {
+		inherit: true,
+		onModifySpe(spe) {},
+		onModifySpeFull(spe) {
+			return this.chainModify(0.5);
+		},
+	},
 	ironplate: {
 		inherit: true,
 		isNonstandard: null,
@@ -345,7 +398,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 	},
 	laprasite: {
 		inherit: true,
-		isNonstandard: null,	
+		isNonstandard: null,
 	},
 	latiasite: {
 		inherit: true,
@@ -357,17 +410,18 @@ export const Items: {[k: string]: ModdedItemData} = {
 	},
 	leek: {
 		inherit: true,
-		isNonstandard: null
+		isNonstandard: null,
+		onModifyDamage(atk, pokemon, target, move) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Farfetchd') return;
+			if (move.category !== 'Physical') return;
+			return this.chainModify(2);
+		}
 	},
 	lightball: {
 		inherit: true,
-		onModifyAtk(atk, pokemon) {
-			if (pokemon.baseSpecies.baseSpecies === 'Pikachu' || pokemon.baseSpecies.baseSpecies === 'Raichu' || pokemon.baseSpecies.baseSpecies === 'Raichu-Alola') {
-				return this.chainModify(2);
-			}
-		},
-		onModifySpAPriority: 1,
-		onModifySpA(spa, pokemon) {
+		onModifyAtk(atk, pokemon) {},
+		onModifySpA(spa, pokemon) {},
+		onModifyDamage(spa, pokemon) {
 			if (pokemon.baseSpecies.baseSpecies === 'Pikachu' || pokemon.baseSpecies.baseSpecies === 'Raichu' || pokemon.baseSpecies.baseSpecies === 'Raichu-Alola') {
 				return this.chainModify(2);
 			}
@@ -685,6 +739,13 @@ export const Items: {[k: string]: ModdedItemData} = {
 	thickclub: {
 		inherit: true,
 		isNonstandard: null,
+		onModifyAtk() {},
+		onModifyDamage(atk, pokemon, target, move) {
+			if (move.category !== 'Physical') return;
+			if (pokemon.species.name === 'Cubone' || pokemon.species.name === 'Marowak') {
+				return this.chainModify(2);
+			}
+		},
 	},
 	toxicplate: {
 		inherit: true,
@@ -740,7 +801,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 	watermemory: {
 		inherit: true,
 		isNonstandard: null,
-	}, 
+	},
 	electricmemory: {
 		inherit: true,
 		isNonstandard: null,
@@ -934,6 +995,14 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	slowkingite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	froslassite: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	scraftite: {
 		inherit: true,
 		isNonstandard: null,
 	},

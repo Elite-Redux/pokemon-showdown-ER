@@ -371,7 +371,7 @@ export const TypeChart: {[k: string]: TypeData} = {
 	rock: {
 		damageTaken: {
 			/**
-			 * Ghosts are immune to bleed, which equates to a 3.
+			 * Rock is immune to bleed, which equates to a 3.
 			 */
 			bld: 3,
 			sandstorm: 3,

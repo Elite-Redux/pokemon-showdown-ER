@@ -1,33 +1,7 @@
 import { TriumvirateModeTrivia } from "../../../server/chat-plugins/trivia/trivia";
+import { Pokemon } from "../../../sim/pokemon.js";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
-	angerpoint: {
-		inherit: true,
-		onHit(target, source, move) {
-			if (!target.hp) return;
-			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
-				this.boost({atk: 12}, target, target);
-			}
-		},
-		onDamagingHit(damage, target, source, move) {
-			if (damage && move?.effectType === 'Move') {
-				this.boost({atk: 1}, target, target);
-			}
-		},
-		desc: "This Pokemon's Attack is raised by 1 stage when hit. If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
-		shortDesc: "Ups attack on hit. If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
-
-	},
-	battlearmor: {
-		inherit: true,
-		onSourceModifyDamage(damage, source, target, move) {
-			this.debug('Battle Armor weaken')
-			return this.chainModify(0.8)
-		},
-		shortDesc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
-		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
-
-	},
 	battlebond: {
 		inherit: true,
 		onSourceAfterFaint(length, target, source, effect) {
@@ -56,8 +30,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	bigpecks: {
 		inherit: true,
 		onTryBoost(boost, target, source, effect) {},
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags['contact']) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -66,20 +39,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	blaze: {
 		inherit: true,
-		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move && move.type === 'Fire') {
-				if (attacker.hp <= attacker.maxhp / 3) {
-					this.debug('Full Blaze boost');
-					return this.chainModify(1.5);
-				} else {
-					this.debug('Lite Blaze boost');
-					return this.chainModify(1.2);
-				}
-			}
-		},
-		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifyAtk(atk, attacker, defender, move) {},
+		onModifySpA(atk, attacker, defender, move) {},
+		onModifyDamage(damage, attacker, defender, move) {
 			if (move && move.type === 'Fire') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Blaze boost');
@@ -106,23 +68,24 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 
 	colorchange: {
-		onFoePrepareHit(source, target, move) {
+		onSourcePrepareHit(source, target, move) {
+			if (source === target) return;
+
 			let bestType;
 			let bestTypeMod = 0;
-			let typeMod;
 			for (const type of this.dex.types.all()) {
 				if (!this.dex.getImmunity(move.type, type.id)) {
 					//breaks, as immunity is strongest resistance possible
 					bestType = type.name;
 					break;
 				}
-				typeMod = this.dex.getEffectiveness(move.type, type.name);
+				const typeMod = this.dex.getEffectiveness(move.type, type.name);
 				if (typeMod < bestTypeMod) {
 					bestType = type.name;
 					bestTypeMod = typeMod
 				}
 			}
-			if (source !== target && bestType && !target.getTypes().includes(bestType)) {
+			if (bestType && !target.getTypes().includes(bestType)) {
 				if (!target.setType(bestType)) return;
 				this.add('-start', target, 'typechange', bestType, '[from] ability: Color Change');
 			}
@@ -150,7 +113,19 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		shortDesc: "This Pokemon can poison or badly poison a Pokemon regardless of its typing. Poison hits Steel super effectively",
 	},
-
+	defeatist: {
+		inherit: true,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 3) {
+				return this.chainModify(0.5);
+			}
+		},
+		onModifySpA(atk, pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 3) {
+				return this.chainModify(0.5);
+			}
+		},
+	},
 	flamebody: {
 		inherit: true,
 		onModifyMove(move) {
@@ -180,6 +155,38 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "Ups Sp. Atk by 1.5x if burned. Ignites in fog.",
 
 	},
+	flashfire: {
+		inherit: true,
+		condition: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			onStart(target) {
+				this.add("-start", target, "ability: Flash Fire");
+			},
+			onModifyDamage(atk, attacker, defender, move) {
+				if (move.type === "Fire" && attacker.hasAbility("flashfire")) {
+					this.debug("Flash Fire boost");
+					return this.chainModify(1.5);
+				}
+			},
+			onEnd(target) {
+				this.add("-end", target, "ability: Flash Fire", "[silent]");
+			},
+		},
+	},
+	flowergift: {
+		inherit: true,
+		onAllyModifyAtk(atk, pokemon) {},
+		onAllyModifySpAPriority: 3,
+		onAllyModifySpA(spa, pokemon) {
+			if (this.effectState.target.baseSpecies.baseSpecies !== "Cherrim")
+				return;
+			if (
+				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
+			) {
+				return this.chainModify(1.5);
+			}
+		},
+	},
 	friendguard: {
 		inherit: true,
 		onAnyModifyDamage(damage, source, target, move) {
@@ -189,6 +196,34 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		shortDesc: "This Pokemon's allies receive 1/2 damage from other Pokemon's attacks.",
+	},
+	furcoat: {
+		inherit: true,
+		onModifyDef(def) {},
+		onSourceModifyDamage(dmg, source, target, move) {
+			if (move.category !== 'Physical') return;
+			return this.chainModify(.5);
+		}
+	},
+	gorillatactics: {
+		inherit: true,
+		onModifyAtk(atk, pokemon) {},
+		onModifyDamage(atk, pokemon, target, move) {
+			if (pokemon.volatiles["dynamax"]) return;
+
+			this.debug("Gorilla Tactics Atk Boost");
+			if (move.category !== 'Physical') return;
+			return this.chainModify(1.5);
+		},
+	},
+	guts: {
+		inherit: true,
+		onModifyAtk(atk, pokemon) {},
+		onModifyDamage(atk, pokemon, target, move) {
+			if (pokemon.status && move.category === 'Physical') {
+				return this.chainModify(1.5);
+			}
+		},
 	},
 	heatproof: {
 		inherit: true,
@@ -219,7 +254,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	illusion: {
 		inherit: true,
-		onBasePower(power, source) {
+		onModifyDamage(power, source) {
 			if (source.illusion) {
 				this.debug('Illusion - power boost');
 				return this.chainModify([5325, 4096]);
@@ -263,8 +298,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	ironfist: {
 		inherit: true,
-		onBasePowerPriority: 21,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags['punch']) {
 				return this.chainModify([5325, 4096]);
 			}
@@ -276,8 +310,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	hustle: {
 		inherit: true,
 		onModifyAtkPriority: 5,
-		onModifySpA(spa) {
-			return this.modify(spa, 1.4);
+		onModifyAtk() {},
+		onModifySpA() {},
+		onModifyDamage(damage) {
+			return this.modify(damage, 1.4);
 		},
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
@@ -300,13 +336,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	levitate: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move.type === 'Flying') {
-				this.debug('Levitate boost');
-				return this.chainModify(1.25);
-				}
-		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifyAtk(atk, attacker, defender, move) {},
+		onModifySpA(atk, attacker, defender, move) {},
+		onModifyDamage(atk, attacker, defender, move) {
 			if (move.type === 'Flying') {
 				this.debug('Levitate boost');
 				return this.chainModify(1.25);
@@ -364,10 +396,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				delete move.flags['contact'];
 			}
 		},
-		onBasePower(bp, source, target, move) {
+		onModifyDamage(bp, source, target, move) {
 			const unmodifiedMove = this.dex.moves.get(move);
 			//In ER, this boost only applies to Physical moves. Sorry, Vacuum Wave
-			if (!unmodifiedMove.flags['contact'] && unmodifiedMove.category === 'Physical') {
+			if (!unmodifiedMove.flags['contact'] && move.category === 'Physical') {
 				return this.chainModify(1.2);
 			}
 		},
@@ -510,19 +542,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	overgrow: {
 		inherit: true,
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move && move.type === 'Grass') {
-				if (attacker.hp <= attacker.maxhp / 3) {
-					this.debug('Full Overgrow boost');
-					return this.chainModify(1.5);
-				} else {
-					this.debug('Lite Overgrow boost');
-					return this.chainModify(1.2);
-				}
-			}
-		},
+		onModifyAtk(atk, attacker, defender, move) {},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(atk, attacker, defender, move) {},
+		onModifyDamage(atk, attacker, defender, move) {
 			if (move && move.type === 'Grass') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Overgrow boost');
@@ -592,6 +615,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onSwitchIn() {},
 		rating: 4.5,
 	},
+	purifyingsalt: {
+		inherit: true,
+		onSourceModifyAtk(atk, attacker, defender, move) {},
+		onSourceModifySpA(spa, attacker, defender, move) {},
+		onSourceModifyDamage(spa, attacker, defender, move) {
+			if (move.type === "Ghost") {
+				this.debug("Purifying Salt weaken");
+				return this.chainModify(0.5);
+			}
+		},
+	},
 	receiver: {
 		inherit: true,
 		onAllyFaint(ally) {
@@ -618,8 +652,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	rivalry: {
 		inherit: true,
-		onBasePowerPriority: 24,
-		onBasePower(basePower, attacker, defender, move) {
+		onModifyDamage(basePower, attacker, defender, move) {
 			if (attacker.gender && defender.gender) {
 				if (attacker.gender === defender.gender) {
 					this.debug('Rivalry boost');
@@ -716,6 +749,27 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
 
 	},
+	slowstart: {
+		inherit: true,
+		condition: {
+			duration: 5,
+			onResidualOrder: 28,
+			onResidualSubOrder: 2,
+			onStart(target) {
+				this.add("-start", target, "ability: Slow Start");
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, pokemon) {
+				return this.chainModify(0.5);
+			},
+			onModifySpe(spe, pokemon) {
+				return this.chainModify(0.5);
+			},
+			onEnd(target) {
+				this.add("-end", target, "Slow Start");
+			},
+		},
+	},
 	slushrush: {
 		inherit: true,
 		onModifySpe(spe, pokemon) {
@@ -737,6 +791,23 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	solarpower: {
 		inherit: true,
 		onWeather() {},
+		onModifySpA(spa, pokemon) {
+			if (
+				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
+					&& pokemon.getStat("spa", false, true) > pokemon.getStat("atk", false, true)
+			) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifyAtkPriority: 5,
+		onModifyAtk(spa, pokemon) {
+			if (
+				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
+					&& pokemon.getStat("atk", false, true) >= pokemon.getStat("spa", false, true)
+			) {
+				return this.chainModify(1.5);
+			}
+		},
 	},
 	static: {
 		inherit: true,
@@ -770,6 +841,26 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				}
 			}
 	},
+	supremeoverlord: {
+		inherit: true,
+		onModifyDamage() {},
+		onModifyAtk(basePower, attacker, defender, move) {
+			if (this.effectState.fallen) {
+				this.debug(
+					`Supreme Overlord boost: ${1+.1*this.effectState.fallen}/4096`
+				);
+				return this.chainModify(1+.1*this.effectState.fallen);
+			}
+		},
+		onModifySpA(basePower, attacker, defender, move) {
+			if (this.effectState.fallen) {
+				this.debug(
+					`Supreme Overlord boost: ${1+.1*this.effectState.fallen}/4096`
+				);
+				return this.chainModify(1+.1*this.effectState.fallen);
+			}
+		},
+	},
 	surgesurfer: {
 		inherit: true,
 		onModifySpe(spe) {
@@ -783,19 +874,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	swarm: {
 		inherit: true,
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move && move.type === 'Bug') {
-				if (attacker.hp <= attacker.maxhp / 3) {
-					this.debug('Full Swarm boost');
-					return this.chainModify(1.5);
-				} else {
-					this.debug('Lite Swarm boost');
-					return this.chainModify(1.2);
-				}
-			}
-		},
+		onModifyAtk(atk, attacker, defender, move) {},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(atk, attacker, defender, move) {},
+		onModifyDamage(atk, attacker, defender, move) {
 			if (move && move.type === 'Bug') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Swarm boost');
@@ -832,22 +914,24 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokemon gains the Electric Type and its moves and their effects ignore the Abilities of other Pokemon.",
 
 	},
+	thickfat: {
+		inherit: true,
+		onSourceModifyAtk(atk, attacker, defender, move) {},
+		onSourceModifySpA(atk, attacker, defender, move) {},
+		onSourceModifyDamage(atk, attacker, defender, move) {
+			if (move.type === "Ice" || move.type === "Fire") {
+				this.debug("Thick Fat weaken");
+				return this.chainModify(0.5);
+			}
+		},
+	},
 	torrent: {
 		inherit: true,
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move && move.type === 'Water') {
-				if (attacker.hp <= attacker.maxhp / 3) {
-					this.debug('Full Torrent boost');
-					return this.chainModify(1.5);
-				} else {
-					this.debug('Lite Torrent boost');
-					return this.chainModify(1.2);
-				}
-			}
-		},
+		onModifyAtk(atk, attacker, defender, move) {},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(atk, attacker, defender, move) {},
+		onModifyDamage(atk, attacker, defender, move) {
 			if (move && move.type === 'Water') {
 				if (attacker.hp <= attacker.maxhp / 3) {
 					this.debug('Full Torrent boost');
@@ -996,6 +1080,23 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokemon and its allies' moves have their accuracy multiplied by 1.2.",
 
 	},
+	waterbubble: {
+		inherit: true,
+		onSourceModifyAtk(atk, attacker, defender, move) {},
+		onSourceModifySpA(atk, attacker, defender, move) {},
+		onSourceModifyDamage(atk, attacker, defender, move) {
+			if (move.type === "Fire") {
+				return this.chainModify(0.5);
+			}
+		},
+		onModifyAtk(atk, attacker, defender, move) {},
+		onModifySpA(atk, attacker, defender, move) {},
+		onModifyDamage(atk, attacker, defender, move) {
+			if (move.type === "Water") {
+				return this.chainModify(2);
+			}
+		},
+	},
 	waterveil: {
 		inherit: true,
 		onStart(source) {
@@ -1015,6 +1116,28 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onFoeDamagingHit(damage, target, source, move) {
 			if (damage && move.flags['contact'] && !target.types.includes('water')) {
 				if (target.setType('water')) this.add('-ability', source, 'ability: Damp')
+			}
+		},
+	},
+	minus: {
+		inherit: true,
+		onModifySpA(spa, pokemon) {},
+		onModifyDamage(spa, pokemon) {
+			for (const allyActive of pokemon.allies()) {
+				if (allyActive.hasAbility(["minus", "plus"])) {
+					return this.chainModify(2.0);
+				}
+			}
+		},
+	},
+	plus: {
+		inherit: true,
+		onModifySpA(spa, pokemon) {},
+		onModifyDamage(spa, pokemon) {
+			for (const allyActive of pokemon.allies()) {
+				if (allyActive.hasAbility(["minus", "plus"])) {
+					return this.chainModify(2.0);
+				}
 			}
 		},
 	},

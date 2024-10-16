@@ -4699,7 +4699,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		effectType: "ValidatorRule",
 		name: "Little Cup",
 		desc: "Only allows Pok&eacute;mon that can evolve and don't have any prior evolutions",
-		ruleset: ["Max Level = 5"],
+		//ruleset: ["Max Level = 50"],
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species || set.name);
 			if (

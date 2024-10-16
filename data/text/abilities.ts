@@ -632,7 +632,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	furcoat: {
 		name: "Fur Coat",
-		shortDesc: "This Pokemon's Defense is doubled.",
+		shortDesc: "This Pokemon's takes half damage from physical attacks.",
 	},
 	galewings: {
 		name: "Gale Wings",
@@ -1282,7 +1282,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	opportunist: {
 		name: "Opportunist",
 		shortDesc:
-			"When an opposing Pokemon has a stat stage raised, this Pokemon copies the effect.",
+			"If target has less than 1/2 HP, single-target moves get +1 prio.",
 	},
 	orichalcumpulse: {
 		name: "Orichalcum Pulse",
@@ -1650,7 +1650,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	rkssystem: {
 		name: "RKS System",
 		shortDesc:
-			"If this Pokemon is a Silvally, its type changes to match its held Memory.",
+			"If this Pokemon is a Silvally, its type changes to match its held Memory. Protean + Adaptability.",
 	},
 	rockhead: {
 		name: "Rock Head",
@@ -2006,7 +2006,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	steelworker: {
 		name: "Steelworker",
 		shortDesc:
-			"This Pokemon's offensive stat is multiplied by 1.5 while using a Steel-type attack.",
+			"This Pokemon's offensive stat is multiplied by 1.3 while using a Steel-type attack.",
 	},
 	steelyspirit: {
 		name: "Steely Spirit",
@@ -3234,9 +3234,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 			"This Pokemon's status moves cannot miss; Nulls Pokemon's Psychic weaknesses",
 	},
 	equinox: {
-		name: "Gifted Mind",
+		name: "Equinox",
 		shortDesc:
-			"This Pokemon's status moves cannot miss; Nulls Pokemon's Psychic weaknesses",
+			"This pokemon's lower attacking stat is raised to its higher attacking stat.",
 	},
 	absorbant: {
 		name: "Absorbant",
@@ -3288,7 +3288,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	dualwield: {
 		name: "Dual Wield",
 		shortDesc:
-			"This Pokemon's pulse moves hit twice. Each hit is at 75% power.",
+			"Mega Launcher and Keen Edge moves hit twice for 75% damage.",
 	},
 	ambush: {
 		name: "Ambush",

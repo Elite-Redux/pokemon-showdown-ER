@@ -29,18 +29,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	acid: {
 		name: "Acid",
 		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the foe(s) Sp. Def by 1.",
-		gen3: {
-			desc: "Has a 10% chance to lower the target's Defense by 1 stage.",
-			shortDesc: "10% chance to lower the foe(s) Defense by 1.",
-		},
-		gen1: {
-			desc: "Has a 33% chance to lower the target's Defense by 1 stage.",
-			shortDesc: "33% chance to lower the target's Defense by 1.",
-		},
-		gen2: {
-			shortDesc: "10% chance to lower the target's Defense by 1.",
-		},
+		shortDesc: "10% chance to lower the foe(s) Sp. Def by 1. SE on Steel.",
 	},
 	acidarmor: {
 		name: "Acid Armor",
@@ -58,7 +47,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	acrobatics: {
 		name: "Acrobatics",
-		shortDesc: "Power doubles if the user has no held item.",
+		shortDesc: "Power upped 50% if the user has no held item.",
 	},
 	acupressure: {
 		name: "Acupressure",
@@ -145,8 +134,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	aquacutter: {
 		name: "Aqua Cutter",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "The user expels pressurized water. 20% bleed chance. High crit ratio.",
 	},
 	aquajet: {
 		name: "Aqua Jet",
@@ -234,11 +222,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	astonish: {
 		name: "Astonish",
-		desc: "Has a 30% chance to make the target flinch.",
-		shortDesc: "30% chance to make the target flinch.",
-		gen3: {
-			desc: "Has a 30% chance to make the target flinch. Damage doubles if the target has used Minimize while active.",
-		},
+		desc: "Has a 100% chance to make the target flinch. Fails unless it is the user's first turn on the field.",
+		shortDesc: "Hits first. First turn out only. 100% flinch chance.",
 	},
 	astralbarrage: {
 		name: "Astral Barrage",
@@ -507,8 +492,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	blastburn: {
 		name: "Blast Burn",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		desc: "If this move is successful, cannot be used twice in a row.",
+		shortDesc: "Cannot be used twice in a row.",
 	},
 	blazekick: {
 		name: "Blaze Kick",
@@ -688,8 +673,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	brine: {
 		name: "Brine",
-		desc: "Power doubles if the target has less than or equal to half of its maximum HP remaining.",
-		shortDesc: "Power doubles if the target's HP is 50% or less.",
+		desc: "Supereffective against water types.",
+		shortDesc: "Supereffective against water types.",
 	},
 	brutalswing: {
 		name: "Brutal Swing",
@@ -703,8 +688,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	bubblebeam: {
 		name: "Bubble Beam",
-		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "10% chance to lower the target's Speed by 1.",
+		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
 		gen1: {
 			desc: "Has a 33% chance to lower the target's Speed by 1 stage.",
 			shortDesc: "33% chance to lower the target's Speed by 1.",
@@ -718,7 +703,8 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user steals the target's held Berry if it is holding one and eats it immediately, gaining its effects unless the user's item is being ignored. Items lost to this move can be regained with Recycle.",
 		},
 
-		removeItem: "  [SOURCE] stole and ate its target's [ITEM]!",
+		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
+		removeItem: "  [SOURCE] knocked off [POKEMON]'s [ITEM]!"
 	},
 	bugbuzz: {
 		name: "Bug Buzz",
@@ -860,8 +846,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	chillyreception: {
 		name: "Chilly Reception",
-		desc: "For 5 turns, the weather becomes Snow. The user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
-		shortDesc: "Starts Snow. User switches out.",
+		desc: "For 5 turns, the weather becomes Hail. The user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
+		shortDesc: "Starts Hail. User switches out.",
 
 		// TODO needs to be implemented
 		activate: "  [POKEMON] is preparing to tell a chillingly bad joke!",
@@ -1144,8 +1130,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	crabhammer: {
 		name: "Crabhammer",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	craftyshield: {
 		name: "Crafty Shield",
@@ -1157,8 +1143,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	crosschop: {
 		name: "Cross Chop",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. Higher chance for a critical hit..",
+		shortDesc: "Hits 2 times in one turn. High critical hit ratio.",
 	},
 	crosspoison: {
 		name: "Cross Poison",
@@ -1203,7 +1189,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	cut: {
 		name: "Cut",
-		shortDesc: "This move always results in a critical hit.",
+		shortDesc: "This move always results in a critical hit. 10% Bleed Chance.",
 	},
 	darkestlariat: {
 		name: "Darkest Lariat",
@@ -1456,17 +1442,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	doublekick: {
 		name: "Double Kick",
-		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
+		desc: "Hits 2 times in one turn.",
 		shortDesc: "Hits 2 times in one turn.",
-		gen4: {
-			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
-		},
-		gen3: {
-			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
-		},
-		gen1: {
-			desc: "Hits twice. Damage is calculated once for the first hit and used for both hits. If the first hit breaks the target's substitute, the move ends.",
-		},
 	},
 	doubleshock: {
 		name: "Double Shock",
@@ -1513,7 +1490,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	dragonclaw: {
 		name: "Dragon Claw",
-		shortDesc: "No additional effect.",
+		shortDesc: "10% Bleed Chance.",
 	},
 	dragondance: {
 		name: "Dragon Dance",
@@ -1584,12 +1561,12 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	drillpeck: {
 		name: "Drill Peck",
-		shortDesc: "High crit ratio.",
+		shortDesc: "High crit ratio. 10% Bleed Chance.",
 	},
 	drillrun: {
 		name: "Drill Run",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	drumbeating: {
 		name: "Drum Beating",
@@ -1641,8 +1618,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	echoedvoice: {
 		name: "Echoed Voice",
-		desc: "For every consecutive turn that this move is used by at least one Pokemon, this move's power is multiplied by the number of turns to pass, but not more than 5.",
-		shortDesc: "Power increases when used on consecutive turns.",
+		desc: "Hits three times. Power increases to 40 for the second hit and 60 for the third. This move checks accuracy for each hit, and the attack ends if the target avoids a hit. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit three times.",
+		shortDesc: "Hits 3 times. Each hit can miss, but power rises.",
 	},
 	eerieimpulse: {
 		name: "Eerie Impulse",
@@ -1704,8 +1681,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	ember: {
 		name: "Ember",
-		desc: "Has a 10% chance to burn the target.",
-		shortDesc: "10% chance to burn the target.",
+		desc: "Has a 100% chance to burn the target.",
+		shortDesc: "100% chance to burn the target.",
 	},
 	encore: {
 		name: "Encore",
@@ -1970,8 +1947,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	firepledge: {
 		name: "Fire Pledge",
-		desc: "If one of the user's allies chose to use Grass Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Grass Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Fire Gem.",
-		shortDesc: "Use with Grass or Water Pledge for added effect.",
+		desc: "If one of the user's allies chose to use Grass Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Grass Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Fire Gem. Uses highest attack stat.",
+		shortDesc: "Use with Grass or Water Pledge for added effect. Uses highest attack stat.",
 
 		activate: "#waterpledge",
 		start: "  A sea of fire enveloped [TEAM]!",
@@ -1982,6 +1959,14 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Fire Punch",
 		desc: "Has a 10% chance to burn the target.",
 		shortDesc: "10% chance to burn the target.",
+	},
+	jaggedpunch: {
+		name: "Fire Punch",
+		desc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks.",
+	},
+	diamondblade: {
+		name: "Diamond Blade",
+		desc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks. Keen Edge boost.",
 	},
 	firespin: {
 		name: "Fire Spin",
@@ -2035,17 +2020,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	flail: {
 		name: "Flail",
-		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
-		shortDesc: "More power the less HP the user has left.",
-		gen4: {
-			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current HP * 64 / user's maximum HP), rounded down.",
-		},
-		gen3: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
-		},
-		gen2: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down. This move does not apply damage variance and cannot be a critical hit.",
-		},
+		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down. Crit at below 50% HP.",
+		shortDesc: "More power the less HP the user has left. Crit at below 50% HP.",
 	},
 	flameburst: {
 		name: "Flame Burst",
@@ -2270,8 +2246,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	frenzyplant: {
 		name: "Frenzy Plant",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		desc: "If this move is successful, cannot be used twice in a row.",
+		shortDesc: "Cannot be used twice in a row.",
 	},
 	frostbreath: {
 		name: "Frost Breath",
@@ -2298,8 +2274,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	furycutter: {
 		name: "Fury Cutter",
-		desc: "Power doubles with each successful hit, up to a maximum of 160 power. The power is reset if this move misses or another move is used.",
-		shortDesc: "Power doubles with each hit, up to 160.",
+		desc: "Hits three times. Power increases to 40 for the second hit and 60 for the third. This move checks accuracy for each hit, and the attack ends if the target avoids a hit. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit three times.",
+		shortDesc: "Hits 3 times. Each hit can miss, but power rises.",
 	},
 	furyswipes: {
 		name: "Fury Swipes",
@@ -2624,8 +2600,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	grasspledge: {
 		name: "Grass Pledge",
-		desc: "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
-		shortDesc: "Use with Fire or Water Pledge for added effect.",
+		desc: "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem. Uses highest attack stat.",
+		shortDesc: "Use with Fire or Water Pledge for added effect. Uses highest attack stat.",
 
 		activate: "#waterpledge",
 		start: "  A swamp enveloped [TEAM]!",
@@ -2724,8 +2700,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	guillotine: {
 		name: "Guillotine",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
@@ -3026,12 +3002,12 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	hornattack: {
 		name: "Horn Attack",
-		shortDesc: "No additional effect.",
+		shortDesc: "10% Bleed Chance.",
 	},
 	horndrill: {
 		name: "Horn Drill",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",		
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",		
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
@@ -3067,8 +3043,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	hydrocannon: {
 		name: "Hydro Cannon",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		desc: "If this move is successful, cannot be used twice in a row.",
+		shortDesc: "Cannot be used twice in a row.",
 	},
 	hydropump: {
 		name: "Hydro Pump",
@@ -3360,8 +3336,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	karatechop: {
 		name: "Karate Chop",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. Keen edge boost.",
+		shortDesc: "High critical hit ratio. Keen edge boost.",
 	},
 	kinesis: {
 		name: "Kinesis",
@@ -3449,8 +3425,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	leafblade: {
 		name: "Leaf Blade",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	leafstorm: {
 		name: "Leaf Storm",
@@ -3886,18 +3862,12 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	megadrain: {
 		name: "Mega Drain",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
-		shortDesc: "User recovers 50% of the damage dealt.",
-		gen4: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
-		},
-		gen3: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down.",
-		},
+		desc: "A tough attack that drains 75% of the damage it inflicted to restore HP.",
+		shortDesc: "User recovers 75% of the damage dealt.",
 	},
 	megahorn: {
 		name: "Megahorn",
-		shortDesc: "No additional effect.",
+		shortDesc: "20% Bleed Chance.",
 	},
 	megakick: {
 		name: "Mega Kick",
@@ -3948,8 +3918,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	meteorassault: {
 		name: "Meteor Assault",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		shortDesc: "Cannot be used twice in a row.",
 	},
 	meteorbeam: {
 		name: "Meteor Beam",
@@ -4041,7 +4010,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	mindreader: {
 		name: "Mind Reader",
 		desc: "Until the end of the next turn, the target cannot avoid the user's moves, even if the target is in the middle of a two-turn move. The effect ends if either the user or the target leaves the field. Fails if this effect is active for the user.",
-		shortDesc: "User's next move will not miss the target.",
+		shortDesc: "Dodges all attacks and lowers the SpDef of attackers. May fail if used in succession.",
 		gen4: {
 			desc: "Until the end of the next turn, the target cannot avoid the user's moves, even if the target is in the middle of a two-turn move. When this effect is started against the target, this and Lock-On's effects end for every other Pokemon against that target. If the target leaves the field using Baton Pass, the replacement remains under this effect. If the user leaves the field using Baton Pass, this effect is restarted against the same target for the replacement. The effect ends if either the user or the target leaves the field.",
 		},
@@ -4235,8 +4204,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	mudslap: {
 		name: "Mud-Slap",
-		desc: "Has a 100% chance to lower the target's accuracy by 1 stage.",
-		shortDesc: "100% chance to lower the target's accuracy by 1.",
+		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
 	},
 	mudsport: {
 		name: "Mud Sport",
@@ -4347,8 +4316,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	nightslash: {
 		name: "Night Slash",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 	},
 	nobleroar: {
 		name: "Noble Roar",
@@ -4596,7 +4565,7 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user steals the target's held Berry if it is holding one and eats it immediately, gaining its effects unless the user's item is being ignored. Items lost to this move can be regained with Recycle.",
 		},
 
-		removeItem: "#bugbite",
+		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
 	},
 	poisonfang: {
 		name: "Poison Fang",
@@ -4609,8 +4578,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisongas: {
 		name: "Poison Gas",
-		desc: "Poisons the target.",
-		shortDesc: "Poisons the foe(s).",
+		desc: "Super effective vs Flying. Hits both foes. Has a 30% chance to poison.",
+		shortDesc: "Super effective vs Flying. Hits both foes. 30% chance to poison.",
 		gen2: {
 			shortDesc: "Poisons the target.",
 		},
@@ -4632,8 +4601,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	poisontail: {
 		name: "Poison Tail",
-		desc: "Has a 10% chance to poison the target and a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio. 10% chance to poison.",
+		desc: "If both the user and the target have not fainted, the target is forced to switch out and be replaced with a random unfainted ally. This effect fails if the target used Ingrain previously, has the Suction Cups Ability, or this move hit a substitute. Has a 10% chance to poison.",
+		shortDesc: "Forces the target to switch to a random ally. 10% Poison chance.",
 	},
 	pollenpuff: {
 		name: "Pollen Puff",
@@ -4774,8 +4743,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	psybeam: {
 		name: "Psybeam",
-		desc: "Has a 10% chance to confuse the target.",
-		shortDesc: "10% chance to confuse the target.",
+		desc: "Has a 100% chance to lower special attack on the target.",
+		shortDesc: "Has a 100% chance to lower special attack on the target.",
 	},
 	psyblade: {
 		name: "Psyblade",
@@ -4819,8 +4788,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	psychocut: {
 		name: "Psycho Cut",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 	},
 	psychoshift: {
 		name: "Psycho Shift",
@@ -4853,8 +4822,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	punishment: {
 		name: "Punishment",
-		desc: "Power is equal to 60+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power.",
-		shortDesc: "60 power +20 for each of the target's stat boosts.",
+		desc: "Power is equal to 60+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power. Ignores the target's stat stage changes.",
+		shortDesc: "60 power +20 for each of the target's stat boosts. Ignores the target's stat stage changes.",
 	},
 	purify: {
 		name: "Purify",
@@ -4929,8 +4898,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	rage: {
 		name: "Rage",
-		desc: "Once this move is successfully used, the user's Attack is raised by 1 stage every time it is hit by another Pokemon's attack as long as this move is chosen for use.",
-		shortDesc: "Raises the user's Attack by 1 if hit during use.",
+		desc: "The user spends two or three turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect or the second turn of a three-turn effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
 		gen3: {
 			desc: "Once this move is used and unless the target protected itself, the user's Attack is raised by 1 stage every time it is hit by another Pokemon's attack as long as this move is chosen for use.",
 		},
@@ -4999,8 +4968,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	razorleaf: {
 		name: "Razor Leaf",
-		desc: "This move always results in a critical hit",
-		shortDesc: "This move always results in a critical hit.",
+		desc: "This move always results in a critical hit. 10% Bleed Chance.",
+		//shortDesc: "This move always results in a critical hit. 10% Bleed Chance.",
 	},
 	razorshell: {
 		name: "Razor Shell",
@@ -5009,8 +4978,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	razorwind: {
 		name: "Razor Wind",
-		desc: "Has a higher chance for a critical hit. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, then hits foe(s) turn 2. High crit ratio.",
+		desc: "This move's type effectiveness against Rock is changed to be super effective no matter what this move's type is. If the user's side has Tailwind, this move has its priority increased by 1. Has a higher chance for a critical hit.",
+		shortDesc: "Super effective vs Rock. +1 priority in tailwind. High crit.",
 		gen4: {
 			desc: "Has a higher chance for a critical hit. This attack charges on the first turn and executes on the second.",
 		},
@@ -5141,17 +5110,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	reversal: {
 		name: "Reversal",
-		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
-		shortDesc: "More power the less HP the user has left.",
-		gen4: {
-			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current HP * 64 / user's maximum HP), rounded down.",
-		},
-		gen3: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
-		},
-		gen2: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down. This move does not apply damage variance and cannot be a critical hit.",
-		},
+		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down. Crit at below 50% HP.",
+		shortDesc: "More power the less HP the user has left. Crit at below 50% HP.",
 	},
 	revivalblessing: {
 		name: "Revival Blessing",
@@ -5508,8 +5468,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	shadowclaw: {
 		name: "Shadow Claw",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	shadowforce: {
 		name: "Shadow Force",
@@ -5757,8 +5717,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	slash: {
 		name: "Slash",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Will always crit. 20% Bleed Chance.",
+		shortDesc: "Will always crit. 20% Bleed Chance.",
 	},
 	sleeppowder: {
 		name: "Sleep Powder",
@@ -5792,8 +5752,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	sludge: {
 		name: "Sludge",
-		desc: "Has a 30% chance to poison the target.",
-		shortDesc: "30% chance to poison the target.",
+		desc: "Super-effective on Water. Has a 30% chance to poison the target.",
+		shortDesc: "Super-effective on Water. 30% poison chance.",
 		gen1: {
 			desc: "Has a 40% chance to poison the target.",
 			shortDesc: "40% chance to poison the target.",
@@ -6252,8 +6212,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	stoneedge: {
 		name: "Stone Edge",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 	},
 	storedpower: {
 		name: "Stored Power",
@@ -6316,8 +6276,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	strugglebug: {
 		name: "Struggle Bug",
-		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Sp. Atk by 1.",
+		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage. Crit at below 50% HP.",
+		shortDesc: "100% chance to lower the foe(s) Sp. Atk by 1. Crit at below 50% HP.",
 	},
 	stuffcheeks: {
 		name: "Stuff Cheeks",
@@ -6475,15 +6435,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	swift: {
 		name: "Swift",
-		desc: "This move does not check accuracy.",
-		shortDesc: "This move does not check accuracy. Hits foes.",
-		gen1: {
-			desc: "This move does not check accuracy and hits even if the target is using Dig or Fly.",
-			shortDesc: "Never misses, even against Dig and Fly.",
-		},
-		gen2: {
-			shortDesc: "This move does not check accuracy.",
-		},
+		desc: "Special-based extreme speed. Has +2 priority.",
+		shortDesc: "Special-based extreme speed. Has +2 priority.",
 	},
 	switcheroo: {
 		name: "Switcheroo",
@@ -6891,15 +6844,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	triattack: {
 		name: "Tri Attack",
-		desc: "Has a 20% chance to either burn, freeze, or paralyze the target.",
-		shortDesc: "20% chance to paralyze or burn or freeze target.",
-		gen2: {
-			desc: "This move selects burn, freeze, or paralysis at random, and has a 20% chance to inflict the target with that status. If the target is frozen and burn was selected, it thaws out.",
-		},
-		gen1: {
-			desc: "No additional effect.",
-			shortDesc: "No additional effect.",
-		},
+		desc: "Has a 20% chance to either burn, freeze, or paralyze the target. Uses highest attack.",
+		shortDesc: "20% chance to paralyze or burn or freeze target. Uses highest attack.",
 	},
 	trick: {
 		name: "Trick",
@@ -7137,8 +7083,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	waterpledge: {
 		name: "Water Pledge",
-		desc: "If one of the user's allies chose to use Fire Pledge or Grass Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. If combined with Grass Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Water Gem, and cannot be redirected by the Storm Drain Ability.",
-		shortDesc: "Use with Grass or Fire Pledge for added effect.",
+		desc: "If one of the user's allies chose to use Fire Pledge or Grass Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. If combined with Grass Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Water Gem, and cannot be redirected by the Storm Drain Ability. Uses highest attack stat.",
+		shortDesc: "Use with Grass or Fire Pledge for added effect. Uses highest attack stat.",
 
 		activate: "  [POKEMON] is waiting for [TARGET]'s move...",
 		start: "  A rainbow appeared in the sky on [TEAM]'s side!",
@@ -7378,8 +7324,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	xscissor: {
 		name: "X-Scissor",
-		desc: "Has a higher chance for a critical hit.",
-		shortDesc: "High critical hit ratio.",
+		desc: "Has a higher chance for a critical hit. 10% Bleed Chance.",
+		shortDesc: "High critical hit ratio. 10% Bleed Chance.",
 	},
 	yawn: {
 		name: "Yawn",
@@ -7426,8 +7372,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	excalibur: {
 		name: "Excalibur",
-		desc: "This move's type effectiveness against Dragon is changed to be super effective no matter what this move's type is.",
-		shortDesc: "Super effective against Dragon types.",
+		desc: "This move's type effectiveness against Dragon is changed to be super effective no matter what this move's type is. 20% Bleed Chance.",
+		shortDesc: "Super effective against Dragon types. 20% Bleed Chance.",
 	},
 	smite: {
 		name: "Smite",
@@ -7441,8 +7387,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	scorchedearth: {
 		name: "Scorched Earth",
-		desc: "This move combines Ground in its type effectiveness against the target.",
-		shortDesc: "Combines Ground in its type effectiveness.",
+		desc: "This move combines Ground in its type effectiveness against the target. Has a 10% chance to burn the target.",
+		shortDesc: "Combines Ground in its type effectiveness. 10% chance to burn the target.",
 	},
 	ironfangs: {
 		name: "Iron Fangs",
@@ -7474,4 +7420,29 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Power doubles if the target is statused. 10% chance to paralyse",
 		shortDesc: "10% chance to paralyse; power doubles if the target is statused.",
 	},
+	glaciercrash: {
+		name: "Glacier Crash",
+		desc: "A large glacier crashes into foes. Hits all others. Mega Launcher boost.",
+		shortDesc: "Hits all others. Mega Launcher boost.",
+	},
+	blackmagic: {
+		name: "Black Magic",
+		desc: "Calls on dark power to attack. 20% chance to inflict bleed.",
+		shortDesc: "20% chance to inflict bleed.",
+	},
+	bloodshot: {
+		name: "Blood Shot",
+		desc: "Hurls a sphere of cursed blood magic. Causes the foe to bleed profusely.",
+		shortDesc: "Inflicts bleed on the foe.",
+	},
+	cheapshot: {
+		name: "Cheap Shot",
+		desc: "The user sneaks into shadows, then attacks with hidden projectile. Mega Launcher boost.",
+		shortDesc: "Mega launcher boost.",
+	},
+	ragingsouls: {
+		name: "Raging Souls",
+		desc: "Souls from astral plane strike the foe. This lowers Sp. Atk by 2 stages.",
+		shortDesc: "Lowers user SpA by 2.",
+	}
 };

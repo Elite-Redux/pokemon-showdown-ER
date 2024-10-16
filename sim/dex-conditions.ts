@@ -87,6 +87,8 @@ export interface EventMethods {
 	onModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onModifySpD?: CommonHandlers['ModifierMove'];
 	onModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onModifySpeSecondary?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onModifySpeFull?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
 	onModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void;
 	onMoveAborted?: CommonHandlers['VoidMove'];
 	onNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean;
@@ -519,7 +521,7 @@ export interface EventMethods {
 
 export interface PokemonEventMethods extends EventMethods {
 	onAllyDamagingHit?: (this: Battle, damage: number, target: Pokemon, source: Pokemon, move: ActiveMove) => void;
-	onAllyAfterEachBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon) => void;
+	onAllyAfterEachBoost?: (this: Battle, boost: SparseBoostsTable, target: Pokemon, source: Pokemon, effectHolder: Battle | Pokemon | Side | Field) => void;
 	onAllyAfterHit?: MoveEventMethods['onAfterHit'];
 	onAllyAfterSetStatus?: (this: Battle, status: Condition, target: Pokemon, source: Pokemon, effect: Effect) => void;
 	onAllyAfterSubDamage?: MoveEventMethods['onAfterSubDamage'];

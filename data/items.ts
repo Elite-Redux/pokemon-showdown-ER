@@ -8090,6 +8090,30 @@ export const Items: { [itemid: string]: ItemData } = {
 		gen: 7,
 
 	},
+	froslassite: {
+		name: "Froslassite",
+		spritenum: 622,
+		megaStone: "Froslass-Mega",
+		megaEvolves: "Froslass",
+		itemUser: ["Froslass"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		gen: 7,
+	},
+	scraftite: {
+		name: "Scraftite",
+		spritenum: 622,
+		megaStone: "Scrafty-Mega",
+		megaEvolves: "Scrafty",
+		itemUser: ["Scrafty"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		gen: 7,
+	},
 	breloomite: {
 		name: "Breloomite",
 		spritenum: 622,
@@ -8314,7 +8338,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		gen: 7,
 	},
 	swalotite: {
-		name: "Magnezonite",
+		name: "Swalotite",
 		spritenum: 622,
 		megaStone: "Swalot-Mega",
 		megaEvolves: "Swalot",

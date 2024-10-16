@@ -720,6 +720,18 @@ export class Battle {
 		let effectSource = null;
 		if (source instanceof Pokemon) effectSource = source;
 		const handlers = this.findEventHandlers(target, eventid, effectSource);
+		if (eventid === "ModifySpePrimary") {
+			handlers.concat(this.findEventHandlers(target, "ModifySpe", effectSource));
+		}
+		else if (eventid === "ModifySpeSecondary") {
+			handlers.concat(this.findEventHandlers(target, "ModifySpePrimary", effectSource));
+			handlers.concat(this.findEventHandlers(target, "ModifySpe", effectSource));
+		}
+		else if (eventid === "ModifySpe") {
+			handlers.concat(this.findEventHandlers(target, "ModifySpePrimary", effectSource));
+			handlers.concat(this.findEventHandlers(target, "ModifySpeSecondary", effectSource));
+			handlers.concat(this.findEventHandlers(target, "ModifySpeFull", effectSource));
+		}
 		if (onEffect) {
 			if (!sourceEffect) throw new Error("onEffect passed without an effect");
 			// @ts-ignore - dynamic lookup
@@ -843,7 +855,7 @@ export class Battle {
 				this.effectState = handler.state || {};
 				this.effectState.target = effectHolder;
 
-				returnVal = handler.callback.apply(this, args);
+				returnVal = handler.callback.apply(this, [...args, effectHolder]);
 
 				this.effect = parentEffect;
 				this.effectState = parentEffectState;
@@ -904,10 +916,10 @@ export class Battle {
 
 	/**
 	 * NOTE: This is where the actual dynamic dispatch of different 'on*' event handlers are actually collected and then called.
-	 * @param target 
-	 * @param eventName 
-	 * @param source 
-	 * @returns 
+	 * @param target
+	 * @param eventName
+	 * @param source
+	 * @returns
 	 */
 	findEventHandlers(target: Pokemon | Pokemon[] | Side | Battle, eventName: string, source?: Pokemon | null) {
 		let handlers: EventListener[] = [];
@@ -2189,12 +2201,12 @@ export class Battle {
 		let s: StatIDExceptHP;
 		if (nature.plus) {
 			s = nature.plus;
-			const stat = this.ruleTable.has('overflowstatmod') ? Math.min(stats[s], 595) : stats[s];
+			const stat = stats[s];
 			stats[s] = tr(tr(stat * 110, 16) / 100);
 		}
 		if (nature.minus) {
 			s = nature.minus;
-			const stat = this.ruleTable.has('overflowstatmod') ? Math.min(stats[s], 728) : stats[s];
+			const stat = stats[s];
 			stats[s] = tr(tr(stat * 90, 16) / 100);
 		}
 		return stats;
