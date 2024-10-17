@@ -385,7 +385,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return this.chainModify(1.2);
 			}
 		},
-		shortDesc: "This pokemon makes no contact. Contactless moves boosted by 1.2",
+		shortDesc: "This pokemon makes no contact. Physical contactless moves boosted by 1.2",
 	},
 	magmaarmor: {
 		inherit: true,
