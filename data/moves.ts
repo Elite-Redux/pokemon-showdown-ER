@@ -12515,7 +12515,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				break;
 			}
 
-			if ((pokemon.hasAbility('chloroplast') || pokemon.hasAbility('bigleaves') || pokemon.hasAbility('solarflare'))) factor = 0.667;
+			if(pokemon.hasAbility('moonspirit')) factor = 0.75;
+			else if ((pokemon.hasAbility('chloroplast') || pokemon.hasAbility('bigleaves') || pokemon.hasAbility('solarflare'))) factor = 0.667;
+			
 			const success = !!this.heal(this.modify(pokemon.maxhp, factor));
 			if (!success) {
 				this.add('-fail', pokemon, 'heal');
