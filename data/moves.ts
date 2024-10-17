@@ -23427,5 +23427,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Fighting",
 	},
-
+	jaggedhorns: {
+		accuracy: 90,
+		basePower: 80,
+		category: "Physical",
+		name: "Jagged Horns",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, horn: 1},
+		secondaries: [
+			{chance: 10,
+				volatileStatus: 'flinch',
+			},
+			{chance: 10,
+				status: 'bld'
+			}
+		],
+		target: "normal",
+		type: "Rock",
+	},
 };
