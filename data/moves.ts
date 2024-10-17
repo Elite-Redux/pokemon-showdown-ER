@@ -57,8 +57,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 30,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		// Note: This does not work
-		ignoreImmunity: {'Steel': true},
+		ignoreImmunity: {'Poison': true},
 		onEffectiveness(typeMod, target, type, move) {
 			if (move.type !== 'Poison') return;
 			if (!target) return;
@@ -23174,9 +23173,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, arrow: 1},
 		secondary: null,
+		onDamagePriority: -20,
 		onDamage(damage, target, source, effect) {
 			if(target.status === 'par'){
-				damage = damage * 2;
+				return damage * 2;
 			}
 		},
 		target: "normal",
@@ -23292,5 +23292,158 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Fire",
 		contestType: "Tough",
+	},
+	doublelariat: {
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		name: "Double Lariat",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		secondary: {
+			chance: 100,
+			onHit(target) {
+				target.addVolatile('throatchop');
+			},
+		},
+		target: "normal",
+		type: "Fighting",
+	},
+	malignantchain: {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		name: "Malignant Chain",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		target: "normal",
+		secondary: {
+			chance: 50,
+			status: 'tox'
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) {
+				move.category = 'Special';
+			}
+		},
+		type: "Poison",
+		critRatio: 1,
+		contestType: "Cool",
+	},
+	claydart: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Clay Dart",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, arrow: 1},
+		ignoreImmunity: {'Ground': true},
+		onEffectiveness(typeMod, target, type, move) {
+			if(!target) return;
+			if(type == 'Flying') return 1;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+	},
+	upperhand: {
+		num: 389,
+		accuracy: 100,
+		basePower: 65,
+		category: "Physical",
+		name: "Upper Hand",
+		pp: 15,
+		priority: 3,
+		flags: {contact: 1, protect: 1},
+		onTry(source, target) {
+			const action = this.queue.willMove(target);
+			const move = action?.choice === 'move' ? action.move : null;
+			if (!move || (move.priority <= 0) || target.volatiles['mustrecharge']) {
+				return false;
+			}
+		},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'flinch'
+		},
+		target: "normal",
+		type: "Dark",
+		contestType: "Clever",
+	},
+	smashinrealities: {
+		num: 798,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Smashin' Realities",
+		pp: 5,
+		priority: -3,
+		flags: {contact: 1, protect: 1, mirror: 1, hammer: 1},
+		onHit() {
+			this.field.clearTerrain();
+			this.field.clearWeather();
+		},
+		onAfterSubDamage() {
+			this.field.clearTerrain();
+			this.field.clearWeather();
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+	},
+	requiem: {
+		name: 'requiem',
+		accuracy: 100,
+		basePower: 90,
+		pp: 10,
+		category: 'Special',
+		priority: 0,
+		type: "Ghost",
+		target: 'normal',
+		flags: {protect: 1, sound: 1},
+		secondary: {
+			chance: 10,
+			volatileStatus: 'curse'
+		}
+	},
+	auraforce: {
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		name: "Aura Force",
+		pp: 10,
+		priority: 0,
+		critRatio: 2,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		ignoreImmunity: {'Fighting': true},
+		onEffectiveness(typeMod, target, type, move) {
+			if(!target) return;
+			if(type == 'Ghost') return 1;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fighting",
+	},
+	jaggedhorns: {
+		accuracy: 90,
+		basePower: 80,
+		category: "Physical",
+		name: "Jagged Horns",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, horn: 1},
+		secondaries: [
+			{chance: 10,
+				volatileStatus: 'flinch',
+			},
+			{chance: 10,
+				status: 'bld'
+			}
+		],
+		target: "normal",
+		type: "Rock",
 	},
 };
