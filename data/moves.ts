@@ -23246,7 +23246,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 25,
 		category: "Physical",
 
-		name: "Comet Punch",
+		name: "Toxic Needles",
 		pp: 15,
 		priority: 1,
 		flags: {contact: 1, protect: 1, mirror: 1},
