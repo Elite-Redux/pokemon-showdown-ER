@@ -6,7 +6,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 195,
 		category: "Special",
-		
+
 		name: "10,000,000 Volt Thunderbolt",
 		pp: 1,
 		priority: 0,
@@ -98,7 +98,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Acid Downpour",
 		pp: 1,
 		priority: 0,
@@ -200,7 +200,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Aeroblast",
 		pp: 5,
 		priority: 0,
@@ -291,7 +291,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "All-Out Pummeling",
 		pp: 1,
 		priority: 0,
@@ -355,7 +355,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		
+
 		name: "Anchor Shot",
 		pp: 20,
 		priority: 0,
@@ -545,7 +545,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Aromatherapy",
 		pp: 5,
 		priority: 0,
@@ -591,7 +591,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Assist",
 		pp: 20,
 		priority: 0,
@@ -769,7 +769,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 110,
 		category: "Physical",
-		
+
 		name: "Aura Wheel",
 		pp: 10,
 		priority: 0,
@@ -881,7 +881,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Autotomize",
 		pp: 15,
 		priority: 0,
@@ -974,7 +974,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 80,
 		category: "Special",
-		
+
 		name: "Baddy Bad",
 		pp: 15,
 		priority: 0,
@@ -1071,7 +1071,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 25,
 		category: "Physical",
-		
+
 		name: "Barrage",
 		pp: 20,
 		priority: 0,
@@ -1087,7 +1087,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Barrier",
 		pp: 20,
 		priority: 0,
@@ -1134,7 +1134,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Beak Blast",
 		pp: 15,
 		priority: -3,
@@ -1256,7 +1256,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Bestow",
 		pp: 15,
 		priority: 0,
@@ -1284,7 +1284,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Physical",
-		
+
 		name: "Bide",
 		pp: 10,
 		priority: 1,
@@ -1422,7 +1422,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Black Hole Eclipse",
 		pp: 1,
 		priority: 0,
@@ -1481,7 +1481,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		
+
 		name: "Blazing Torque",
 		pp: 10,
 		priority: 0,
@@ -1561,7 +1561,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Bloom Doom",
 		pp: 1,
 		priority: 0,
@@ -1577,7 +1577,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Special",
-		
+
 		name: "Blue Flare",
 		pp: 5,
 		priority: 0,
@@ -1634,7 +1634,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return move.basePower;
 		},
 		category: "Physical",
-		
+
 		name: "Bolt Beak",
 		pp: 10,
 		priority: 0,
@@ -1648,7 +1648,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Physical",
-		
+
 		name: "Bolt Strike",
 		pp: 5,
 		priority: 0,
@@ -1683,7 +1683,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 50,
 		category: "Physical",
-		
+
 		name: "Bonemerang",
 		pp: 10,
 		priority: 0,
@@ -1775,7 +1775,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Bouncy Bubble",
 		pp: 20,
 		priority: 0,
@@ -1837,7 +1837,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Breakneck Blitz",
 		pp: 1,
 		priority: 0,
@@ -1906,7 +1906,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Bubble",
 		pp: 15,
 		priority: 0,
@@ -1955,7 +1955,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 						this.runEvent('EatItem', source, null, null, item);
 						if (item.id === 'leppaberry') target.staleness = 'external';
 					}
-					if (item.onEat) source.ateBerry = true;	
+					if (item.onEat) source.ateBerry = true;
 				}
 				//Otherwise it should be knocked off anyways by target.takeItem
 				else this.add('-enditem', target, item.name, '[from] move: Bug Bite', '[of] ' + source);
@@ -2106,7 +2106,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Buzzy Buzz",
 		pp: 20,
 		priority: 0,
@@ -2143,7 +2143,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Camouflage",
 		pp: 20,
 		priority: 0,
@@ -2174,7 +2174,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Captivate",
 		pp: 20,
 		priority: 0,
@@ -2196,7 +2196,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 210,
 		category: "Physical",
-		
+
 		name: "Catastropika",
 		pp: 1,
 		priority: 0,
@@ -2351,7 +2351,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
-		
+
 		name: "Chatter",
 		pp: 20,
 		priority: 0,
@@ -2409,7 +2409,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 75,
 		category: "Physical",
-		
+
 		name: "Chip Away",
 		pp: 20,
 		priority: 0,
@@ -2454,7 +2454,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 50,
 		category: "Physical",
-		
+
 		name: "Clamp",
 		pp: 10,
 		priority: 0,
@@ -2470,7 +2470,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 110,
 		category: "Special",
-		
+
 		name: "Clanging Scales",
 		pp: 5,
 		priority: 0,
@@ -2490,7 +2490,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Clangorous Soul",
 		pp: 5,
 		priority: 0,
@@ -2521,7 +2521,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 185,
 		category: "Special",
-		
+
 		name: "Clangorous Soulblaze",
 		pp: 1,
 		priority: 0,
@@ -2644,7 +2644,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Combat Torque",
 		pp: 10,
 		priority: 0,
@@ -2663,7 +2663,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 15,
 		category: "Physical",
-		
+
 		name: "Comet Punch",
 		pp: 15,
 		priority: 1,
@@ -2762,7 +2762,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 55,
 		category: "Physical",
-		
+
 		name: "Constrict",
 		pp: 35,
 		priority: 0,
@@ -2782,7 +2782,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Continental Crush",
 		pp: 1,
 		priority: 0,
@@ -2798,7 +2798,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Conversion",
 		pp: 30,
 		priority: 0,
@@ -2819,7 +2819,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Conversion 2",
 		pp: 30,
 		priority: 0,
@@ -2881,7 +2881,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Core Enforcer",
 		pp: 10,
 		priority: 0,
@@ -2907,7 +2907,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Corkscrew Crash",
 		pp: 1,
 		priority: 0,
@@ -3166,7 +3166,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Crafty Shield",
 		pp: 10,
 		priority: 3,
@@ -3277,7 +3277,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return bp;
 		},
 		category: "Physical",
-		
+
 		name: "Crush Grip",
 		pp: 5,
 		priority: 0,
@@ -3390,7 +3390,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 80,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Dark Void",
 		pp: 10,
 		priority: 0,
@@ -3429,7 +3429,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Decorate",
 		pp: 15,
 		priority: 0,
@@ -3596,7 +3596,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Devastating Drake",
 		pp: 1,
 		priority: 0,
@@ -3850,7 +3850,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 70,
 		category: "Physical",
-		
+
 		name: "Dizzy Punch",
 		pp: 10,
 		priority: 0,
@@ -3901,7 +3901,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 140,
 		category: "Special",
-		
+
 		name: "Doom Desire",
 		pp: 5,
 		priority: 0,
@@ -3968,7 +3968,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Double Iron Bash",
 		pp: 5,
 		priority: 0,
@@ -4029,7 +4029,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 25,
 		category: "Physical",
-		
+
 		name: "Double Slap",
 		pp: 10,
 		priority: 0,
@@ -4188,7 +4188,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Dragon Hammer",
 		pp: 15,
 		priority: 0,
@@ -4218,7 +4218,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		damage: 40,
 		category: "Special",
-		
+
 		name: "Dragon Rage",
 		pp: 10,
 		priority: 0,
@@ -4366,7 +4366,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 45,
 		category: "Physical",
-		
+
 		name: "Dual Chop",
 		pp: 15,
 		priority: 0,
@@ -4523,7 +4523,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Egg Bomb",
 		pp: 10,
 		priority: 0,
@@ -4600,7 +4600,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Electrify",
 		pp: 20,
 		priority: 0,
@@ -4696,7 +4696,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Embargo",
 		pp: 15,
 		priority: 0,
@@ -4958,7 +4958,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 160,
 		category: "Special",
-		
+
 		name: "Eternabeam",
 		pp: 5,
 		priority: 0,
@@ -5031,7 +5031,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Extreme Evoboost",
 		pp: 1,
 		priority: 0,
@@ -5232,7 +5232,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Feint Attack",
 		pp: 20,
 		priority: 0,
@@ -5534,7 +5534,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return move.basePower;
 		},
 		category: "Physical",
-		
+
 		name: "Fishious Rend",
 		pp: 10,
 		priority: 0,
@@ -5604,7 +5604,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Special",
-		
+
 		name: "Flame Burst",
 		pp: 15,
 		priority: 1,
@@ -5702,7 +5702,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Flash",
 		pp: 20,
 		priority: 0,
@@ -5846,7 +5846,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 90,
 		category: "Physical",
-		
+
 		name: "Floaty Fall",
 		pp: 15,
 		priority: 0,
@@ -5864,7 +5864,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Floral Healing",
 		pp: 10,
 		priority: 0,
@@ -5896,7 +5896,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Flower Shield",
 		pp: 10,
 		priority: 0,
@@ -6143,7 +6143,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Foresight",
 		pp: 40,
 		priority: 0,
@@ -6177,7 +6177,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Forest's Curse",
 		pp: 20,
 		priority: 0,
@@ -6233,7 +6233,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 140,
 		category: "Physical",
-		
+
 		name: "Freeze Shock",
 		pp: 5,
 		priority: 0,
@@ -6278,7 +6278,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Freezy Frost",
 		pp: 10,
 		priority: 0,
@@ -6339,7 +6339,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 95,
 		category: "Physical",
-		
+
 		name: "Frustration",
 		pp: 20,
 		priority: 0,
@@ -6410,7 +6410,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Fusion Bolt",
 		pp: 5,
 		priority: 0,
@@ -6431,7 +6431,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Fusion Flare",
 		pp: 5,
 		priority: 0,
@@ -6525,7 +6525,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 50,
 		category: "Physical",
-		
+
 		name: "Gear Grind",
 		pp: 15,
 		priority: 0,
@@ -6543,7 +6543,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Gear Up",
 		pp: 20,
 		priority: 0,
@@ -6571,7 +6571,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 185,
 		category: "Special",
-		
+
 		name: "Genesis Supernova",
 		pp: 1,
 		priority: 0,
@@ -6594,7 +6594,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Geomancy",
 		pp: 10,
 		priority: 0,
@@ -6683,7 +6683,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Gigavolt Havoc",
 		pp: 1,
 		priority: 0,
@@ -6712,7 +6712,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Special",
-		
+
 		name: "Glaciate",
 		pp: 10,
 		priority: 0,
@@ -6781,7 +6781,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 80,
 		category: "Special",
-		
+
 		name: "Glitzy Glow",
 		pp: 15,
 		priority: 0,
@@ -6799,7 +6799,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Befuddle",
 		pp: 5,
 		priority: 0,
@@ -6828,7 +6828,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Cannonade",
 		pp: 10,
 		priority: 0,
@@ -6867,7 +6867,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Centiferno",
 		pp: 5,
 		priority: 0,
@@ -6890,7 +6890,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Chi Strike",
 		pp: 5,
 		priority: 0,
@@ -6932,7 +6932,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Cuddle",
 		pp: 5,
 		priority: 0,
@@ -6955,7 +6955,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Depletion",
 		pp: 5,
 		priority: 0,
@@ -6987,7 +6987,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 160,
 		category: "Physical",
-		
+
 		name: "G-Max Drum Solo",
 		pp: 5,
 		priority: 0,
@@ -7004,7 +7004,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Finale",
 		pp: 5,
 		priority: 0,
@@ -7027,7 +7027,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 160,
 		category: "Physical",
-		
+
 		name: "G-Max Fireball",
 		pp: 5,
 		priority: 0,
@@ -7044,7 +7044,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Foam Burst",
 		pp: 5,
 		priority: 0,
@@ -7067,7 +7067,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Gold Rush",
 		pp: 5,
 		priority: 0,
@@ -7090,7 +7090,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Gravitas",
 		pp: 5,
 		priority: 0,
@@ -7108,7 +7108,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 160,
 		category: "Physical",
-		
+
 		name: "G-Max Hydrosnipe",
 		pp: 5,
 		priority: 0,
@@ -7125,7 +7125,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Malodor",
 		pp: 5,
 		priority: 0,
@@ -7147,7 +7147,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Meltdown",
 		pp: 5,
 		priority: 0,
@@ -7170,7 +7170,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max One Blow",
 		pp: 5,
 		priority: 0,
@@ -7186,7 +7186,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Rapid Flow",
 		pp: 5,
 		priority: 0,
@@ -7202,7 +7202,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Replenish",
 		pp: 5,
 		priority: 0,
@@ -7233,7 +7233,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Resonance",
 		pp: 5,
 		priority: 0,
@@ -7252,7 +7252,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Sandblast",
 		pp: 5,
 		priority: 0,
@@ -7275,7 +7275,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Fairy Smite",
 		pp: 5,
 		priority: 0,
@@ -7298,7 +7298,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Snooze",
 		pp: 5,
 		priority: 0,
@@ -7324,7 +7324,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Steelsurge",
 		pp: 5,
 		priority: 0,
@@ -7363,7 +7363,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Stonesurge",
 		pp: 5,
 		priority: 0,
@@ -7386,7 +7386,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Stun Shock",
 		pp: 10,
 		priority: 0,
@@ -7414,7 +7414,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Sweetness",
 		pp: 10,
 		priority: 0,
@@ -7437,7 +7437,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Tartness",
 		pp: 10,
 		priority: 0,
@@ -7460,7 +7460,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Terror",
 		pp: 10,
 		priority: 0,
@@ -7483,7 +7483,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Vine Lash",
 		pp: 10,
 		priority: 0,
@@ -7522,7 +7522,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Volcalith",
 		pp: 10,
 		priority: 0,
@@ -7561,7 +7561,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Volt Crash",
 		pp: 10,
 		priority: 0,
@@ -7584,7 +7584,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Wildfire",
 		pp: 10,
 		priority: 0,
@@ -7623,7 +7623,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "G-Max Wind Rage",
 		pp: 10,
 		priority: 0,
@@ -7770,7 +7770,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 55,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Grass Whistle",
 		pp: 15,
 		priority: 0,
@@ -8020,7 +8020,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Grudge",
 		pp: 5,
 		priority: 0,
@@ -8072,7 +8072,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return this.clampIntRange(hp75, 1);
 		},
 		category: "Special",
-		
+
 		name: "Guardian of Alola",
 		pp: 1,
 		priority: 0,
@@ -8216,7 +8216,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Hail",
 		pp: 10,
 		priority: 0,
@@ -8326,7 +8326,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
-		
+
 		name: "Head Charge",
 		pp: 15,
 		priority: 0,
@@ -8400,7 +8400,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Heal Block",
 		pp: 15,
 		priority: 0,
@@ -8498,7 +8498,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Heal Order",
 		pp: 10,
 		priority: 0,
@@ -8546,7 +8546,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Heart Stamp",
 		pp: 25,
 		priority: 0,
@@ -8750,7 +8750,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Hidden Power",
 		pp: 15,
 		priority: 0,
@@ -8769,7 +8769,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Bug",
 		pp: 15,
 		priority: 0,
@@ -8785,7 +8785,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Dark",
 		pp: 15,
 		priority: 0,
@@ -8801,7 +8801,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Dragon",
 		pp: 15,
 		priority: 0,
@@ -8817,7 +8817,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Electric",
 		pp: 15,
 		priority: 0,
@@ -8833,7 +8833,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Fighting",
 		pp: 15,
 		priority: 0,
@@ -8849,7 +8849,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Fire",
 		pp: 15,
 		priority: 0,
@@ -8865,7 +8865,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Flying",
 		pp: 15,
 		priority: 0,
@@ -8881,7 +8881,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Ghost",
 		pp: 15,
 		priority: 0,
@@ -8897,7 +8897,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Grass",
 		pp: 15,
 		priority: 0,
@@ -8913,7 +8913,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Ground",
 		pp: 15,
 		priority: 0,
@@ -8929,7 +8929,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Ice",
 		pp: 15,
 		priority: 0,
@@ -8945,7 +8945,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Poison",
 		pp: 15,
 		priority: 0,
@@ -8961,7 +8961,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Psychic",
 		pp: 15,
 		priority: 0,
@@ -8977,7 +8977,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Rock",
 		pp: 15,
 		priority: 0,
@@ -8993,7 +8993,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Steel",
 		pp: 15,
 		priority: 0,
@@ -9009,7 +9009,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 60,
 		category: "Special",
 		realMove: "Hidden Power",
-		
+
 		name: "Hidden Power Water",
 		pp: 15,
 		priority: 0,
@@ -9263,7 +9263,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Hydro Vortex",
 		pp: 1,
 		priority: 0,
@@ -9310,7 +9310,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 75,
 		category: "Physical",
-		
+
 		name: "Hyper Fang",
 		pp: 15,
 		priority: 0,
@@ -9426,7 +9426,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return bp;
 		},
 		category: "Physical",
-		
+
 		name: "Ice Ball",
 		pp: 20,
 		priority: 0,
@@ -9495,7 +9495,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 140,
 		category: "Special",
-		
+
 		name: "Ice Burn",
 		pp: 5,
 		priority: 0,
@@ -9761,7 +9761,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Inferno Overdrive",
 		pp: 1,
 		priority: 0,
@@ -9860,7 +9860,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Ion Deluge",
 		pp: 25,
 		priority: 1,
@@ -9998,7 +9998,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Jump Kick",
 		pp: 10,
 		priority: 0,
@@ -10034,7 +10034,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
-		
+
 		name: "Karate Chop",
 		pp: 10,
 		priority: 0,
@@ -10050,7 +10050,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 80,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Kinesis",
 		pp: 15,
 		priority: 0,
@@ -10069,7 +10069,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "King's Shield",
 		pp: 10,
 		priority: 4,
@@ -10170,7 +10170,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
-		
+
 		name: "Land's Wrath",
 		pp: 10,
 		priority: 0,
@@ -10186,7 +10186,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Laser Focus",
 		pp: 30,
 		priority: 0,
@@ -10352,7 +10352,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 50,
 		category: "Special",
-		
+
 		name: "Leaf Tornado",
 		pp: 10,
 		priority: 0,
@@ -10441,7 +10441,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 190,
 		category: "Physical",
-		
+
 		name: "Let's Snuggle Forever",
 		pp: 1,
 		priority: 0,
@@ -10488,7 +10488,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 140,
 		category: "Special",
-		
+
 		name: "Light of Ruin",
 		pp: 5,
 		priority: 0,
@@ -10546,7 +10546,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 200,
 		category: "Special",
-		
+
 		name: "Light That Burns the Sky",
 		pp: 1,
 		priority: 0,
@@ -10618,7 +10618,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Lovely Kiss",
 		pp: 10,
 		priority: 0,
@@ -10695,7 +10695,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Lucky Chant",
 		pp: 30,
 		priority: 0,
@@ -10820,7 +10820,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 95,
 		category: "Special",
-		
+
 		name: "Luster Purge",
 		pp: 5,
 		priority: 0,
@@ -10868,7 +10868,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Magical Torque",
 		pp: 10,
 		priority: 0,
@@ -10887,7 +10887,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Magic Coat",
 		pp: 15,
 		priority: 4,
@@ -11011,7 +11011,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Magnet Bomb",
 		pp: 20,
 		priority: 0,
@@ -11092,13 +11092,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Physical",
-		
+
 		name: "Magnitude",
 		pp: 30,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onModifyMove(move, pokemon) {
-			/// If the move's magnitude was already specified, 
+			/// If the move's magnitude was already specified,
 			/// Don't recalculate.
 			if (move.magnitude != null) return;
 			const i = this.random(100);
@@ -11159,7 +11159,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 180,
 		category: "Physical",
-		
+
 		name: "Malicious Moonsault",
 		pp: 1,
 		priority: 0,
@@ -11175,7 +11175,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Mat Block",
 		pp: 10,
 		priority: 0,
@@ -11224,7 +11224,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Airstream",
 		pp: 10,
 		priority: 0,
@@ -11247,7 +11247,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Darkness",
 		pp: 10,
 		priority: 0,
@@ -11270,7 +11270,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Max Flare",
 		pp: 10,
 		priority: 0,
@@ -11291,7 +11291,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Flutterby",
 		pp: 10,
 		priority: 0,
@@ -11314,7 +11314,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Geyser",
 		pp: 10,
 		priority: 0,
@@ -11335,7 +11335,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Max Guard",
 		pp: 10,
 		priority: 4,
@@ -11385,7 +11385,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Hailstorm",
 		pp: 10,
 		priority: 0,
@@ -11406,7 +11406,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Knuckle",
 		pp: 10,
 		priority: 0,
@@ -11429,7 +11429,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Lightning",
 		pp: 10,
 		priority: 0,
@@ -11450,7 +11450,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Mindstorm",
 		pp: 10,
 		priority: 0,
@@ -11471,7 +11471,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Ooze",
 		pp: 10,
 		priority: 0,
@@ -11494,7 +11494,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Overgrowth",
 		pp: 10,
 		priority: 0,
@@ -11515,7 +11515,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Phantasm",
 		pp: 10,
 		priority: 0,
@@ -11538,7 +11538,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Quake",
 		pp: 10,
 		priority: 0,
@@ -11561,7 +11561,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Rockfall",
 		pp: 10,
 		priority: 0,
@@ -11582,7 +11582,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Starfall",
 		pp: 10,
 		priority: 0,
@@ -11603,7 +11603,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Steelspike",
 		pp: 10,
 		priority: 0,
@@ -11626,7 +11626,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Strike",
 		pp: 10,
 		priority: 0,
@@ -11649,7 +11649,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 10,
 		category: "Physical",
-		
+
 		name: "Max Wyrmwind",
 		pp: 10,
 		priority: 0,
@@ -11690,7 +11690,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Meditate",
 		pp: 40,
 		priority: 0,
@@ -11709,7 +11709,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Me First",
 		pp: 20,
 		priority: 0,
@@ -11828,7 +11828,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 200,
 		category: "Special",
-		
+
 		name: "Menacing Moonraze Maelstrom",
 		pp: 1,
 		priority: 0,
@@ -12074,7 +12074,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 150,
 		category: "Special",
-		
+
 		name: "Mind Blown",
 		pp: 5,
 		priority: 0,
@@ -12099,7 +12099,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Mind Reader",
 		pp: 10,
 		priority: 4,
@@ -12136,7 +12136,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 						delete source.volatiles['lockedmove'];
 					}
 				}
-					
+
 				this.boost({spd: -1}, source, target, this.dex.getActiveMove("Mind Reader"));
 				return this.NOT_FAIL;
 			},
@@ -12196,7 +12196,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Miracle Eye",
 		pp: 40,
 		priority: 0,
@@ -12275,7 +12275,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Mirror Move",
 		pp: 20,
 		priority: 0,
@@ -12299,7 +12299,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 65,
 		category: "Special",
-		
+
 		name: "Mirror Shot",
 		pp: 10,
 		priority: 0,
@@ -12362,7 +12362,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 95,
 		category: "Special",
-		
+
 		name: "Mist Ball",
 		pp: 5,
 		priority: 0,
@@ -12479,7 +12479,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Moongeist Beam",
 		pp: 5,
 		priority: 0,
@@ -12500,7 +12500,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
 		onHit(pokemon) {
-			let factor = 0.5;
+			let factor = 0.75;
 			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
@@ -12636,7 +12636,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 65,
 		category: "Special",
-		
+
 		name: "Mud Bomb",
 		pp: 10,
 		priority: 0,
@@ -12690,7 +12690,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Mud Sport",
 		pp: 15,
 		priority: 0,
@@ -12744,7 +12744,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
-		
+
 		name: "Multi-Attack",
 		pp: 10,
 		priority: 0,
@@ -12822,7 +12822,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Physical",
-		
+
 		name: "Natural Gift",
 		pp: 15,
 		priority: 0,
@@ -12856,7 +12856,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Nature Power",
 		pp: 20,
 		priority: 0,
@@ -12888,7 +12888,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return this.clampIntRange(Math.floor(target.getUndynamaxedHP() / 2), 1);
 		},
 		category: "Special",
-		
+
 		name: "Nature's Madness",
 		pp: 10,
 		priority: 0,
@@ -12903,7 +12903,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 95,
 		category: "Physical",
-		
+
 		name: "Needle Arm",
 		pp: 15,
 		priority: 0,
@@ -12921,7 +12921,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Never-Ending Nightmare",
 		pp: 1,
 		priority: 0,
@@ -12956,7 +12956,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Nightmare",
 		pp: 15,
 		priority: 0,
@@ -13073,7 +13073,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Noxious Torque",
 		pp: 10,
 		priority: 0,
@@ -13109,7 +13109,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Special",
-		
+
 		name: "Oblivion Wing",
 		pp: 10,
 		priority: 0,
@@ -13125,7 +13125,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Obstruct",
 		pp: 10,
 		priority: 4,
@@ -13182,7 +13182,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 195,
 		category: "Special",
-		
+
 		name: "Oceanic Operetta",
 		pp: 1,
 		priority: 0,
@@ -13198,7 +13198,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 50,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Octazooka",
 		pp: 10,
 		priority: 0,
@@ -13218,7 +13218,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Octolock",
 		pp: 15,
 		priority: 0,
@@ -13254,7 +13254,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Odor Sleuth",
 		pp: 40,
 		priority: 0,
@@ -13274,7 +13274,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Ominous Wind",
 		pp: 5,
 		priority: 0,
@@ -13421,7 +13421,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 85,
 		category: "Special",
-		
+
 		name: "Paleo Wave",
 		pp: 15,
 		priority: 0,
@@ -13641,7 +13641,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Photon Geyser",
 		pp: 5,
 		priority: 0,
@@ -13665,7 +13665,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return bp;
 		},
 		category: "Special",
-		
+
 		name: "Pika Papow",
 		pp: 20,
 		priority: 0,
@@ -13697,7 +13697,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Plasma Fists",
 		pp: 15,
 		priority: 0,
@@ -13976,7 +13976,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Powder",
 		pp: 20,
 		priority: 1,
@@ -14039,7 +14039,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Power Shift",
 		pp: 10,
 		priority: 0,
@@ -14195,7 +14195,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Physical",
-		
+
 		name: "Power-Up Punch",
 		pp: 20,
 		priority: 0,
@@ -14271,7 +14271,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 160,
 		category: "Special",
-		
+
 		name: "Prismatic Laser",
 		pp: 10,
 		priority: 0,
@@ -14507,7 +14507,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 140,
 		category: "Special",
-		
+
 		name: "Psycho Boost",
 		pp: 5,
 		priority: 0,
@@ -14545,7 +14545,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Psycho Shift",
 		pp: 10,
 		priority: 0,
@@ -14620,7 +14620,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		category: "Special",
-		
+
 		name: "Psywave",
 		pp: 15,
 		priority: 1,
@@ -14638,7 +14638,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 210,
 		category: "Physical",
-		
+
 		name: "Pulverizing Pancake",
 		pp: 1,
 		priority: 0,
@@ -14660,7 +14660,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return power;
 		},
 		category: "Physical",
-		
+
 		name: "Punishment",
 		pp: 5,
 		priority: 0,
@@ -14678,7 +14678,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Purify",
 		pp: 20,
 		priority: 0,
@@ -14710,7 +14710,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return move.basePower;
 		},
 		category: "Physical",
-		
+
 		name: "Pursuit",
 		pp: 20,
 		priority: 0,
@@ -15258,7 +15258,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Refresh",
 		pp: 20,
 		priority: 0,
@@ -15360,7 +15360,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 95,
 		category: "Physical",
-		
+
 		name: "Return",
 		pp: 20,
 		priority: 0,
@@ -15409,7 +15409,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return move.basePower;
 		},
 		category: "Physical",
-		
+
 		name: "Revenge",
 		pp: 10,
 		priority: -4,
@@ -15560,7 +15560,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 85,
 		category: "Physical",
-		
+
 		name: "Rock Climb",
 		pp: 20,
 		priority: 0,
@@ -15665,7 +15665,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 150,
 		category: "Physical",
-		
+
 		name: "Rock Wrecker",
 		pp: 5,
 		priority: 0,
@@ -15719,7 +15719,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Rolling Kick",
 		pp: 15,
 		priority: 0,
@@ -15841,7 +15841,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Rototiller",
 		pp: 10,
 		priority: 0,
@@ -15923,7 +15923,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Sacred Fire",
 		pp: 5,
 		priority: 0,
@@ -16114,7 +16114,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Sappy Seed",
 		pp: 10,
 		priority: 0,
@@ -16133,7 +16133,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Savage Spin-Out",
 		pp: 1,
 		priority: 0,
@@ -16256,7 +16256,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Searing Shot",
 		pp: 5,
 		priority: 0,
@@ -16274,7 +16274,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 200,
 		category: "Physical",
-		
+
 		name: "Searing Sunraze Smash",
 		pp: 1,
 		priority: 0,
@@ -16291,7 +16291,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 70,
 		category: "Physical",
-		
+
 		name: "Secret Power",
 		pp: 20,
 		priority: 0,
@@ -16338,7 +16338,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 85,
 		category: "Special",
-		
+
 		overrideDefensiveStat: 'def',
 		name: "Secret Sword",
 		pp: 10,
@@ -16368,7 +16368,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 120,
 		category: "Special",
-		
+
 		name: "Seed Flare",
 		pp: 5,
 		priority: 0,
@@ -16438,7 +16438,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 85,
 		category: "Physical",
-		
+
 		name: "Shadow Bone",
 		pp: 10,
 		priority: 0,
@@ -16534,7 +16534,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 95,
 		basePower: 80,
 		category: "Physical",
-		
+
 		name: "Shadow Strike",
 		pp: 10,
 		priority: 0,
@@ -16554,7 +16554,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Sharpen",
 		pp: 30,
 		priority: 0,
@@ -16573,7 +16573,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Shattered Psyche",
 		pp: 1,
 		priority: 0,
@@ -16716,7 +16716,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 150,
 		category: "Special",
-		
+
 		name: "Shell Trap",
 		pp: 5,
 		priority: -3,
@@ -16832,7 +16832,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 75,
 		category: "Special",
-		
+
 		name: "Signal Beam",
 		pp: 15,
 		priority: 0,
@@ -16904,7 +16904,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		
+
 		name: "Silver Wind",
 		pp: 5,
 		priority: 0,
@@ -16974,7 +16974,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 180,
 		category: "Physical",
-		
+
 		name: "Sinister Arrow Raid",
 		pp: 1,
 		priority: 0,
@@ -16990,7 +16990,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Sizzly Slide",
 		pp: 20,
 		priority: 0,
@@ -17008,7 +17008,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Sketch",
 		pp: 1,
 		noPPBoosts: true,
@@ -17116,7 +17116,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Physical",
-		
+
 		name: "Skull Bash",
 		pp: 10,
 		priority: 0,
@@ -17172,7 +17172,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Sky Drop",
 		pp: 10,
 		priority: 0,
@@ -17286,7 +17286,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 95,
 		category: "Physical",
-		
+
 		name: "Sky Uppercut",
 		pp: 15,
 		priority: 0,
@@ -17524,7 +17524,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return move.basePower;
 		},
 		category: "Physical",
-		
+
 		name: "Smelling Salts",
 		pp: 10,
 		priority: 0,
@@ -17577,7 +17577,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 35,
 		category: "Physical",
-		
+
 		name: "Snap Trap",
 		pp: 15,
 		priority: 0,
@@ -17611,7 +17611,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Snatch",
 		pp: 10,
 		priority: 4,
@@ -17811,7 +17811,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		damage: 20,
 		category: "Special",
-		
+
 		name: "Sonic Boom",
 		pp: 20,
 		priority: 0,
@@ -17826,7 +17826,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 195,
 		category: "Physical",
-		
+
 		name: "Soul-Stealing 7-Star Strike",
 		pp: 1,
 		priority: 0,
@@ -17874,7 +17874,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
-		
+
 		name: "Sparkling Aria",
 		pp: 10,
 		priority: 0,
@@ -17900,7 +17900,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 85,
 		basePower: 120,
 		category: "Special",
-		
+
 		name: "Sparkly Swirl",
 		pp: 5,
 		priority: 0,
@@ -17926,7 +17926,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
-		
+
 		name: "Spectral Thief",
 		pp: 10,
 		priority: 0,
@@ -17981,7 +17981,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Spider Web",
 		pp: 10,
 		priority: 0,
@@ -18000,7 +18000,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 25,
 		category: "Physical",
-		
+
 		name: "Spike Cannon",
 		pp: 15,
 		priority: 0,
@@ -18251,7 +18251,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 190,
 		category: "Physical",
-		
+
 		name: "Splintered Stormshards",
 		pp: 1,
 		priority: 0,
@@ -18273,7 +18273,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
-		
+
 		name: "Splishy Splash",
 		pp: 15,
 		priority: 0,
@@ -18307,7 +18307,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Spotlight",
 		pp: 15,
 		priority: 3,
@@ -18403,7 +18403,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 65,
 		category: "Physical",
-		
+
 		name: "Steamroller",
 		pp: 20,
 		priority: 0,
@@ -18579,7 +18579,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 175,
 		category: "Special",
-		
+
 		name: "Stoked Sparksurfer",
 		pp: 1,
 		priority: 0,
@@ -18702,7 +18702,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
-		
+
 		name: "Storm Throw",
 		pp: 10,
 		priority: 0,
@@ -18718,7 +18718,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
-		
+
 		name: "Strange Steam",
 		pp: 10,
 		priority: 0,
@@ -18882,7 +18882,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 80,
 		basePower: 150,
 		category: "Physical",
-		
+
 		name: "Submission",
 		pp: 15,
 		priority: 0,
@@ -18980,7 +18980,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Subzero Slammer",
 		pp: 1,
 		priority: 0,
@@ -19033,7 +19033,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		
+
 		name: "Sunsteel Strike",
 		pp: 5,
 		priority: 0,
@@ -19102,7 +19102,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Supersonic Skystrike",
 		pp: 1,
 		priority: 0,
@@ -19307,7 +19307,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 120,
 		category: "Special",
-		
+
 		name: "Synchronoise",
 		pp: 10,
 		priority: 0,
@@ -19377,7 +19377,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Tail Glow",
 		pp: 20,
 		priority: 0,
@@ -19493,7 +19493,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Take Heart",
 		pp: 15,
 		priority: 0,
@@ -19635,7 +19635,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 120,
 		category: "Special",
-		
+
 		name: "Techno Blast",
 		pp: 5,
 		priority: 0,
@@ -19654,7 +19654,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Tectonic Rage",
 		pp: 1,
 		priority: 0,
@@ -19686,7 +19686,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Telekinesis",
 		pp: 15,
 		priority: 0,
@@ -19850,7 +19850,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
-		
+
 		name: "Thousand Arrows",
 		pp: 10,
 		priority: 0,
@@ -19876,7 +19876,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
-		
+
 		name: "Thousand Waves",
 		pp: 10,
 		priority: 0,
@@ -20167,7 +20167,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Topsy-Turvy",
 		pp: 20,
 		priority: 0,
@@ -20306,7 +20306,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Toxic Thread",
 		pp: 20,
 		priority: 0,
@@ -20446,7 +20446,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Trick-or-Treat",
 		pp: 20,
 		priority: 0,
@@ -20502,7 +20502,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				} else if (effect.effectType == "Ability" && effect.id == "twistdimension") {
 					this.effectState.duration = 3; //Twist Dimension duration change
 					this.add("-fieldstart", 'move: Trick Room', `[of] ${source}`, '[twistdimension]');
-				
+
 				} else {
 					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
 				}
@@ -20589,7 +20589,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return 10 * move.hit;
 		},
 		category: "Physical",
-		
+
 		name: "Triple Kick",
 		pp: 10,
 		priority: 0,
@@ -20656,7 +20656,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return bp;
 		},
 		category: "Special",
-		
+
 		name: "Trump Card",
 		pp: 5,
 		noPPBoosts: true,
@@ -20709,7 +20709,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 1,
 		category: "Physical",
-		
+
 		name: "Twinkle Tackle",
 		pp: 1,
 		priority: 0,
@@ -20857,7 +20857,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return bp;
 		},
 		category: "Physical",
-		
+
 		name: "Veevee Volley",
 		pp: 20,
 		priority: 0,
@@ -20872,7 +20872,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Venom Drench",
 		pp: 20,
 		priority: 0,
@@ -20961,7 +20961,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 70,
 		category: "Physical",
-		
+
 		name: "Vital Throw",
 		pp: 10,
 		priority: -1,
@@ -21016,7 +21016,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return move.basePower;
 		},
 		category: "Physical",
-		
+
 		name: "Wake-Up Slap",
 		pp: 10,
 		priority: 0,
@@ -21179,7 +21179,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Water Sport",
 		pp: 15,
 		priority: 0,
@@ -21354,7 +21354,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		
+
 		name: "Wicked Torque",
 		pp: 10,
 		priority: 0,
@@ -21683,7 +21683,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return bp;
 		},
 		category: "Special",
-		
+
 		name: "Wring Out",
 		pp: 5,
 		priority: 0,
@@ -21802,7 +21802,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		
+
 		name: "Zippy Zap",
 		pp: 10,
 		priority: 2,
@@ -22084,7 +22084,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		
+
 		name: "Angel's Shield",
 		pp: 10,
 		priority: 4,
