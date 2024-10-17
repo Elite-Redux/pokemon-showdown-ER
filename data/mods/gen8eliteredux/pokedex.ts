@@ -12378,8 +12378,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0.8,
 		heightm: 0.3,
 		color: "Gray",
-		evoLevel: 0,
-		evos: [],
+		otherFormes: ["Castform-Sunny", "Castform-Rainy", "Castform-Snowy"],
 	},
 	castformsunny: {
 		name: "Castform-Sunny",
@@ -40556,6 +40555,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	},
 	castformsandy: {
 		name: "Castform-Sandy",
+		baseSpecies: "Castform",
+		forme: "Sandy",
 		num: 1845,
 		types: ["Rock"],
 		abilities: {
@@ -40576,8 +40577,6 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		},
 		eggGroups: ["Fairy", "Amorphous"],
 		weightkg: 0,
-		evoLevel: 0,
-		evos: [],
 	},
 	kingambitredux: {
 		name: "Kingambit-Redux",

@@ -656,6 +656,10 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		tier: "UU",
 		doublesTier: "DOU",
 	},
+	weezinggalar: {
+		tier: "UU",
+		doublesTier: "DOU",
+	},	
 	rhyhorn: {
 		tier: "LC",
 		doublesTier: "LC",
@@ -5691,8 +5695,6 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	castformsandy: {
-		tier: "OU",
-		doublesTier: "DOU",
 	},
 	dudunsparce: {
 		tier: "OU",
