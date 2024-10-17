@@ -12379,9 +12379,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 0.3,
 		color: "Gray",
 		otherFormes: ["Castform-Sunny", "Castform-Rainy", "Castform-Snowy"],
+		formeOrder: ["Castform", "Castform-Sunny", "Castform-Rainy", "Castform-Snowy"],
 	},
 	castformsunny: {
 		name: "Castform-Sunny",
+		baseSpecies: "Castform",
+		forme: "Sunny",
 		num: 1630,
 		types: ["Fire"],
 		abilities: {
@@ -12409,6 +12412,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	},
 	castformrainy: {
 		name: "Castform-Rainy",
+		baseSpecies: "Castform",
+		forme: "Rainy",
 		num: 1631,
 		types: ["Water"],
 		abilities: {
@@ -12436,6 +12441,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	},
 	castformsnowy: {
 		name: "Castform-Snowy",
+		baseSpecies: "Castform",
+		forme: "Snowy",
 		num: 1632,
 		types: ["Ice"],
 		abilities: {
@@ -17390,11 +17397,13 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		otherFormes: ["Arceus-Bug", "Arceus-Dark", "Arceus-Dragon", "Arceus-Electric", "Arceus-Fairy", "Arceus-Fighting", "Arceus-Fire", "Arceus-Flying", "Arceus-Ghost", "Arceus-Grass", "Arceus-Ground", "Arceus-Ice", "Arceus-Poison", "Arceus-Psychic", "Arceus-Rock", "Arceus-Steel", "Arceus-Water"],
+		formeOrder: ["Arceus", "Arceus-Bug", "Arceus-Dark", "Arceus-Dragon", "Arceus-Electric", "Arceus-Fairy", "Arceus-Fighting", "Arceus-Fire", "Arceus-Flying", "Arceus-Ghost", "Arceus-Grass", "Arceus-Ground", "Arceus-Ice", "Arceus-Poison", "Arceus-Psychic", "Arceus-Rock", "Arceus-Steel", "Arceus-Water"],
 	},
 	arceusfighting: {
 		name: "Arceus-Fighting",
+		baseSpecies: "Arceus",
+		forme: "Fighting",
 		num: 1650,
 		types: ["Fighting"],
 		abilities: {
@@ -17417,12 +17426,13 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Fist Plate",
 	},
 	arceusflying: {
 		name: "Arceus-Flying",
 		num: 1651,
+		baseSpecies: "Arceus",
+		forme: "Flying",
 		types: ["Flying"],
 		abilities: {
 			"0": "Multitype",
@@ -17444,11 +17454,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Sky Plate",
 	},
 	arceuspoison: {
 		name: "Arceus-Poison",
+		baseSpecies: "Arceus",
+		forme: "Poison",
 		num: 1652,
 		types: ["Poison"],
 		abilities: {
@@ -17471,11 +17482,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Toxic Plate",
 	},
 	arceusground: {
 		name: "Arceus-Ground",
+		baseSpecies: "Arceus",
+		forme: "Ground",
 		num: 1653,
 		types: ["Ground"],
 		abilities: {
@@ -17498,11 +17510,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Earth Plate",
 	},
 	arceusrock: {
 		name: "Arceus-Rock",
+		baseSpecies: "Arceus",
+		forme: "Rock",
 		num: 1654,
 		types: ["Rock"],
 		abilities: {
@@ -17525,11 +17538,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Stone Plate",
 	},
 	arceusbug: {
 		name: "Arceus-Bug",
+		baseSpecies: "Arceus",
+		forme: "Bug",
 		num: 1655,
 		types: ["Bug"],
 		abilities: {
@@ -17552,11 +17566,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Insect Plate",
 	},
 	arceusghost: {
 		name: "Arceus-Ghost",
+		baseSpecies: "Arceus",
+		forme: "Ghost",
 		num: 1656,
 		types: ["Ghost"],
 		abilities: {
@@ -17579,11 +17594,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Spooky Plate",
 	},
 	arceussteel: {
 		name: "Arceus-Steel",
+		baseSpecies: "Arceus",
+		forme: "Steel",
 		num: 1657,
 		types: ["Steel"],
 		abilities: {
@@ -17606,11 +17622,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Iron Plate",
 	},
 	arceusfire: {
 		name: "Arceus-Fire",
+		baseSpecies: "Arceus",
+		forme: "Fire",
 		num: 1658,
 		types: ["Fire"],
 		abilities: {
@@ -17633,11 +17650,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Flame Plate",
 	},
 	arceuswater: {
 		name: "Arceus-Water",
+		baseSpecies: "Arceus",
+		forme: "Water",
 		num: 1659,
 		types: ["Water"],
 		abilities: {
@@ -17660,11 +17678,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Splash Plate",
 	},
 	arceusgrass: {
 		name: "Arceus-Grass",
+		baseSpecies: "Arceus",
+		forme: "Grass",
 		num: 1660,
 		types: ["Grass"],
 		abilities: {
@@ -17687,11 +17706,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Meadow Plate",
 	},
 	arceuselectric: {
 		name: "Arceus-Electric",
+		baseSpecies: "Arceus",
+		forme: "Electric",
 		num: 1661,
 		types: ["Electric"],
 		abilities: {
@@ -17714,11 +17734,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Zap Plate",
 	},
 	arceuspsychic: {
 		name: "Arceus-Psychic",
+		baseSpecies: "Arceus",
+		forme: "Psychic",
 		num: 1662,
 		types: ["Psychic"],
 		abilities: {
@@ -17741,11 +17762,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Mind Plate",
 	},
 	arceusice: {
 		name: "Arceus-Ice",
+		baseSpecies: "Arceus",
+		forme: "Ice",
 		num: 1663,
 		types: ["Ice"],
 		abilities: {
@@ -17768,11 +17790,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Icicle Plate",
 	},
 	arceusdragon: {
 		name: "Arceus-Dragon",
+		baseSpecies: "Arceus",
+		forme: "Dragon",
 		num: 1664,
 		types: ["Dragon"],
 		abilities: {
@@ -17795,11 +17818,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Draco Plate",
 	},
 	arceusdark: {
 		name: "Arceus-Dark",
+		baseSpecies: "Arceus",
+		forme: "Dark",
 		num: 1665,
 		types: ["Dark"],
 		abilities: {
@@ -17822,11 +17846,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Dread Plate",
 	},
 	arceusfairy: {
 		name: "Arceus-Fairy",
+		baseSpecies: "Arceus",
+		forme: "Fairy",
 		num: 1666,
 		types: ["Fairy"],
 		abilities: {
@@ -17849,8 +17874,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 320,
 		heightm: 3.2,
 		color: "White",
-		evoLevel: 0,
-		evos: [],
+		requiredItem: "Pixie Plate",
 	},
 	victini: {
 		name: "Victini",
