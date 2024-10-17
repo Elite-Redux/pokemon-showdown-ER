@@ -22656,7 +22656,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, pulse: 1, bullet: 1},
 		multihit: [2,5],
-		self: {
+		selfBoost: {
 			boosts: {
 				spd: -1,
 				spe: 1,
