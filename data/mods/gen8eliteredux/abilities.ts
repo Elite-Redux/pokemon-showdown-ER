@@ -307,24 +307,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokemon's punch-based attacks have 1.3x power. Sucker Punch is not boosted.",
 
 	},
-	hustle: {
-		inherit: true,
-		onModifyAtkPriority: 5,
-		onModifyAtk() {},
-		onModifySpA() {},
-		onModifyDamage(damage) {
-			return this.modify(damage, 1.4);
-		},
-		onSourceModifyAccuracyPriority: -1,
-		onSourceModifyAccuracy(accuracy, target, source, move) {
-			if (move.category !== 'Status' && typeof accuracy === 'number') {
-				return this.chainModify([3277, 4096]);
-			}
-		},
-		desc: "This Pokemon's Attack & Special Attack is multiplied by 1.4 and the accuracy of its physical attacks is multiplied by 0.8.",
-		shortDesc: "This Pokemon deals 1.4x more damage but accuracy of its attacks is 0.8x.",
-
-	},
 	keeneye: {
 		inherit: true,
 		onModifyAccuracy(accuracy) {
