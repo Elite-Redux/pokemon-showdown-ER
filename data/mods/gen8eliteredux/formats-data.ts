@@ -5590,8 +5590,6 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	aegislashbladeredux: {
-		tier: "OU",
-		doublesTier: "DOU",
 	},
 	abraredux: {
 		tier: "LC",
