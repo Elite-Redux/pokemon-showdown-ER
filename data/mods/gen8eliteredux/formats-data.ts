@@ -4149,7 +4149,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		tier: "NFE",
 	},
 	grimmsnarl: {
-		tier: "UU",
+		tier: "Uber",
 		doublesTier: "DUber",
 	},
 	grimmsnarlgmax: {

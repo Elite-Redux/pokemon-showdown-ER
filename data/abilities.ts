@@ -4306,7 +4306,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		onFlinch(pokemon) {
-			this.boost({ spe: 1 });	
+			this.boost({ spe: 1 });
 		},
 		name: "Rattled",
 		rating: 1,
@@ -12290,7 +12290,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(source) {
 			this.field.setWeather("sandstorm");
 		},
-		//onModifyMove deals with levitaters, onEffectiveness deals with flying types. 
+		//onModifyMove deals with levitaters, onEffectiveness deals with flying types.
 		//This isn't in-line with things like magnetic rise and gravity yet, so prob should do that later.
 		onModifyMove(move, source, target) {
 			if(!target) return;
@@ -12301,7 +12301,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onEffectiveness(typeMod, target, type, move) {
 			if(!target) return;
 			if (!this.field.isWeather("sandstorm") || move.type !== "Ground") return;
-				
+
 			if (target.hasType("Flying")) return 1;
 		},
 	},
@@ -12602,23 +12602,29 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const sharingiscaring = this.dex.abilities.get("sharingiscaring");
 
 			if (effect.id === sharingiscaring.id) return;
+			//temporary fix to stop crashing
+			try{
+				if (target !== this.effectState.target) {
+					console.debug("boosting", this.effectState.target.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
+					this.boost(boost, this.effectState.target, this.effectState.target, sharingiscaring, false, true);
+				}
 
-			if (target !== this.effectState.target) {
-				console.debug("boosting", this.effectState.target.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
-				this.boost(boost, this.effectState.target, this.effectState.target, sharingiscaring, false, true);
-			}
-
-			for (const pokemon of target.foes()) {
-				if (pokemon !== target && pokemon !== this.effectState.target) {
-					console.debug("boosting", pokemon.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
-					this.boost(boost, pokemon, this.effectState.target, sharingiscaring, false, true);
+				for (const pokemon of target.foes()) {
+					if (pokemon !== target && pokemon !== this.effectState.target) {
+						console.debug("boosting", pokemon.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
+						this.boost(boost, pokemon, this.effectState.target, sharingiscaring, false, true);
+					}
+				}
+				for (const pokemon of target.allies()) {
+					if (pokemon !== target && pokemon !== this.effectState.target) {
+						console.debug("boosting", pokemon.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
+						this.boost(boost, pokemon, this.effectState.target, sharingiscaring, false, true);
+					}
 				}
 			}
-			for (const pokemon of target.allies()) {
-				if (pokemon !== target && pokemon !== this.effectState.target) {
-					console.debug("boosting", pokemon.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
-					this.boost(boost, pokemon, this.effectState.target, sharingiscaring, false, true);
-				}
+			catch(e){
+				console.error(e);
+				this.add("-fail", target, "ability: Sharing is Caring. BUG: Please report this.");
 			}
 		},
 	},

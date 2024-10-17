@@ -6,6 +6,8 @@
 /test/replays/*.html
 /node_modules
 /eslint-cache
+!/config/config.js
+!/config/usergroups.csv
 /server/chat-plugins/private
 /server/chat-plugins/private.js
 /server/chat-plugins/*-private.js
