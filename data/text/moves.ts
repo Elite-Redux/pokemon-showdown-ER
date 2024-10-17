@@ -7705,4 +7705,39 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Spurred by desperation, user attacks. Power doubles if previous move failed.",
 		shortDesc: "Power doubles if previous move failed.",
 	},
+	doublelariat: {
+		name: "Double Lariat",
+		desc: "User hits both foes with whirling arms. Foes cannot use any sound moves after for 2 turns.",
+		shortDesc: "For 2 turns, foe cannot use sound moves.",
+	},
+	malignantchain: {
+		name: "Malignant Chain",
+		desc: "Attacks with a poison imbued chain. 50% bad poison chance. Uses higher offense.",
+		shortDesc: " 50% bad poison chance. Uses higher offense.",
+	},
+	claydart: {
+		name: "Clay Dart",
+		desc: "Super-effective on Flying-types.",
+		shortDesc: "Super-effective on Flying-types."
+	},
+	upperhand: {
+		name: "Upper Hand",
+		desc: "Flinches the target. +3 priority. Fails if the target doesn't use a priority move.",
+		shortDesc: "Flinches the target. +3 priority. Fails if the target doesn't use a priority move."
+	},
+	smashinrealities: {
+		name: "Smashin' Realities",
+		desc: "Removes weather and terrain. -3 priority.",
+		shortDesc: "Removes weather and terrain. -3 priority"
+	},
+	requiem: {
+		name: "Requiem",
+		desc: "Sings a haunting melody. 10% chance to inflict curse.",
+		shortDesc: "10% chance to inflict curse. Sound-based."
+	},
+	auraforce: {
+		name: "Aura Force",
+		desc: "Imbues strikes with aura power. Super-effective on Ghost",
+		shortDesc: "Super-effective on Ghost."
+	}
 };
