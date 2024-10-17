@@ -267,7 +267,7 @@ exports.monitorminpunishments = 3;
 /**
  * Turns off all time-based throttles - rename, challenges, laddering, etc.
  */
-exports.nothrottle = false;
+exports.nothrottle = true;
 
 /**
  * Removes all ip-based alt checking.
