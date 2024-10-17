@@ -76,7 +76,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Aerilate",
 		rating: 4,
@@ -106,7 +106,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Superconductor",
 		rating: 4,
@@ -1703,38 +1703,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	forewarn: {
 		onStart(pokemon) {
-			let warnMoves: (Move | Pokemon)[][] = [];
-			let warnBp = 1;
-			for (const target of pokemon.foes()) {
-				for (const moveSlot of target.moveSlots) {
-					const move = this.dex.moves.get(moveSlot.move);
-					let bp = move.basePower;
-					if (move.ohko) bp = 150;
-					if (
-						move.id === "counter" ||
-						move.id === "metalburst" ||
-						move.id === "mirrorcoat"
-					)
-						bp = 120;
-					if (bp === 1) bp = 80;
-					if (!bp && move.category !== "Status") bp = 80;
-					if (bp > warnBp) {
-						warnMoves = [[move, target]];
-						warnBp = bp;
-					} else if (bp === warnBp) {
-						warnMoves.push([move, target]);
-					}
-				}
-			}
-			if (!warnMoves.length) return;
-			const [warnMoveName, warnTarget] = this.sample(warnMoves);
-			this.add(
-				"-activate",
-				pokemon,
-				"ability: Forewarn",
-				warnMoveName,
-				"[of] " + warnTarget
-			);
+			const move: Move = {
+				...Dex.moves.get("futuresight"),
+				basePower: 50,
+			};
+
+			const target = pokemon.foes()[0];
+			this.actions.useMove(move, pokemon, target);
+			pokemon.activeMoveActions = 0;
 		},
 		name: "Forewarn",
 		rating: 0.5,
@@ -1767,6 +1743,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 						"[of] " + pokemon,
 						"[identify]"
 					);
+
+					let tempEmbargo : Condition|null = Dex.conditions.get('embargo');
+					tempEmbargo.duration = 2;
+					target.addVolatile(tempEmbargo);
 				}
 			}
 		},
@@ -1846,7 +1826,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Galvanize",
 		rating: 4,
@@ -2164,7 +2144,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (move.category === "Physical" && typeof accuracy === "number") {
-				return this.chainModify([3277, 4096]);
+				return this.chainModify(0.9);
 			}
 		},
 		name: "Hustle",
@@ -2637,6 +2617,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyWeight(weighthg) {
 			return this.trunc(weighthg / 2);
 		},
+		onModifySpe(spe, pokemon) {
+			this.chainModify(1.3);
+		},
 		isBreakable: true,
 		name: "Light Metal",
 		rating: 1,
@@ -2763,7 +2746,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	longreach: {
 		onModifyMove(move) {
-			delete move.flags["contact"];
+			if(move.flags["contact"]) delete move.flags["contact"];
+			else if(move.category == 'Physical') this.chainModify(1.2);
 		},
 		name: "Long Reach",
 		rating: 1,
@@ -3384,7 +3368,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		onEffectiveness(typeMod, target, type, move) {
 			if (move.type === "Normal") return typeMod + 1;
@@ -3751,7 +3735,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Pixilate",
 		rating: 4,
@@ -3790,6 +3774,17 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 			}
 		},
+		onModifyMove(move) {
+			if (!move?.flags["contact"] || move.target === "self") return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: "psn",
+				ability: this.dex.abilities.get("poisontouch"),
+			});
+		},
 		name: "Poison Point",
 		rating: 1.5,
 		num: 38,
@@ -3806,6 +3801,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				status: "psn",
 				ability: this.dex.abilities.get("poisontouch"),
 			});
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				if (this.randomChance(3, 10)) {
+					source.trySetStatus("psn", target);
+				}
+			}
 		},
 		name: "Poison Touch",
 		rating: 2,
@@ -3911,10 +3913,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	pressure: {
 		onStart(pokemon) {
 			this.add("-ability", pokemon, "Pressure");
-		},
-		onDeductPP(target, source) {
-			if (target.isAlly(source)) return;
-			return 1;
+			this.add('-clearallboost');
+			for (const pokemon of this.getAllActive()) {
+				pokemon.clearBoosts();
+			}
 		},
 		name: "Pressure",
 		rating: 2.5,
@@ -4303,10 +4305,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.boost({ spe: 1 });
 			}
 		},
-		onAfterBoost(boost, target, source, effect) {
-			if (effect?.name === "Intimidate") {
-				this.boost({ spe: 1 });
-			}
+		onFlinch(pokemon) {
+			this.boost({ spe: 1 });	
 		},
 		name: "Rattled",
 		rating: 1,
@@ -4383,7 +4383,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Refrigerate",
 		rating: 4,
@@ -5188,7 +5188,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAllyModifyDamage(basePower, attacker, defender, move) {
 			if (move.type === "Steel") {
 				this.debug("Steely Spirit boost");
-				return this.chainModify(1.5);
+				return this.chainModify(1.3);
 			}
 		},
 		name: "Steely Spirit",
@@ -5929,6 +5929,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 			return false;
 		},
+		onAfterMove(source, target, move) {
+			if(move.type !== 'Fighting') return;
+			if(source.getStatus())
+			this.add("-activate", source, "ability: Vital Spirit");
+			source.cureStatus()
+		},
 		isBreakable: true,
 		name: "Vital Spirit",
 		rating: 1.5,
@@ -6101,10 +6107,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	wellbakedbody: {
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === "Fire") {
-				if (!this.boost({ def: 2 })) {
-					this.add("-immune", target, "[from] ability: Well-Baked Body");
-				}
-				return null;
+				this.add("-ability", target, "Well-Baked Body");
+				this.boost({ def: 2 })
+				return this.chainModify(0.5);
 			}
 		},
 		isBreakable: true,
@@ -6504,7 +6509,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Immolate",
 		rating: 4,
@@ -6535,7 +6540,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Crystallize",
 		rating: 4,
@@ -6852,7 +6857,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Fighting Spirit",
 		rating: 4,
@@ -6974,7 +6979,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Tectonize",
 		rating: 4,
@@ -7085,7 +7090,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Hydrate",
 		rating: 4,
@@ -7283,7 +7288,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Intoxicate",
 		rating: 4,
@@ -7610,10 +7615,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	psychicmind: {
-		onModifyDamage(atk, attacker, defender, move) {
-			if (move.type === "Psychic") {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === "Psychic" && attacker.hp <= attacker.maxhp / 3) {
 				this.debug("Psychic Mind boost");
-				return this.chainModify(1.25);
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === "Grass" && attacker.hp <= attacker.maxhp / 3) {
+				this.debug("Psychic Mind boost");
+				return this.chainModify(1.5);
 			}
 		},
 		name: "Psychic Mind",
@@ -7974,7 +7987,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyDamage(basePower, attacker, defender, move) {
 			if (move.flags["field"]) {
 				this.debug("Field Explorer boost");
-				return this.chainModify(1.25);
+				return this.chainModify(1.5);
 			}
 		},
 		name: "Field Explorer",
@@ -8045,7 +8058,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.accuracy = true;
 		},
 		onModifyPriority(priority, source, target, move) {
-			if (typeof move.accuracy !== "boolean" && move.accuracy <= 75) {
+			if (typeof move.accuracy !== "boolean" && move.accuracy <= 80) {
 				return priority - 3;
 			}
 		},
@@ -8076,7 +8089,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (
 				target !== source &&
 				move.flags["contact"] &&
-				this.randomChance(3, 10)
+				this.randomChance(5, 10)
 			) {
 				target.addVolatile(
 					"partiallytrapped",
@@ -8191,6 +8204,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	deadeye: {
 		onModifyMove(move) {
 			move.accuracy = true;
+			if(move.flags['arrow']) {
+				if(!move.secondaries) move.secondaries = [];
+				move.secondaries.push({
+					boosts: {def: -1},
+					chance: 100
+				});
+			}
 		},
 		name: "Deadeye",
 		rating: 3.5,
@@ -8299,7 +8319,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Pollinate",
 		rating: 4,
@@ -8334,7 +8354,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Solar Flare",
 		rating: 4,
@@ -8660,7 +8680,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Spectralize",
 		rating: 3,
@@ -8691,7 +8711,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		onModifyMove(move) {
 			if (move.target === "self" || move.category === "Status") return;
@@ -8826,7 +8846,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Mineralize",
 		rating: 4,
@@ -9040,7 +9060,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect)
-				return this.chainModify([4915, 4096]);
+				return this.chainModify(1.1);
 		},
 		name: "Draconize",
 		rating: 4,

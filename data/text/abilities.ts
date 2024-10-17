@@ -11,9 +11,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	aerilate: {
 		name: "Aerilate",
-		desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Flying type and have 1.1x power.",
 		gen6: {
 			desc: "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.3. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 			shortDesc:
@@ -49,9 +49,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	angerpoint: {
 		name: "Anger Point",
-		desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
+		desc: "If this Pokemon, but not its substitute, is struck, its Attack is raised by 1 stage. If hit by a critical hit, its Attack is raised by 12 stages.",
 		shortDesc:
-			"If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
+			"This Pokemon's attack is raised by 1 stage if hit (not its substitute). 12 stages if hit by critical hit.",
 		gen4: {
 			desc: "If this Pokemon, or its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
 			shortDesc:
@@ -168,7 +168,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	battlearmor: {
 		name: "Battle Armor",
-		shortDesc: "This Pokemon cannot be struck by a critical hit.",
+		shortDesc: "This Pokemon takes 20% less damage. This Pokemon cannot be struck by a critical hit.",
 	},
 	battlebond: {
 		name: "Battle Bond",
@@ -353,9 +353,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	damp: {
 		name: "Damp",
-		desc: "While this Pokemon is active, Explosion, Mind Blown, Misty Explosion, Self-Destruct, and the Aftermath Ability are prevented from having an effect.",
+		desc: ".Pokemon who make contact with this Pokemon will have their type changed to Water.",
 		shortDesc:
-			"Prevents Explosion/Mind Blown/Misty Explosion/Self-Destruct/Aftermath while active.",
+			"Pokemon who make contact with this Pokemon will have their type changed to Water.",
 		gen7: {
 			desc: "While this Pokemon is active, Explosion, Mind Blown, Self-Destruct, and the Aftermath Ability are prevented from having an effect.",
 			shortDesc:
@@ -407,9 +407,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	defeatist: {
 		name: "Defeatist",
-		desc: "While this Pokemon has 1/2 or less of its maximum HP, its Attack and Special Attack are halved.",
+		desc: "While this Pokemon has 1/3 or less of its maximum HP, its Attack and Special Attack are halved.",
 		shortDesc:
-			"While this Pokemon has 1/2 or less of its max HP, its Attack and Sp. Atk are halved.",
+			"While this Pokemon has 1/3 or less of its max HP, its Attack and Sp. Atk are halved.",
 	},
 	defiant: {
 		name: "Defiant",
@@ -598,15 +598,12 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	forewarn: {
 		name: "Forewarn",
-		desc: "On switch-in, this Pokemon is alerted to the move with the highest power, at random, known by an opposing Pokemon. This effect considers OHKO moves to have 150 power, Counter, Mirror Coat, and Metal Burst to have 120 power, every other attacking move with an unspecified power to have 80 power, and non-damaging moves to have 1 power.",
+		desc: "On switch-in, this Pokemon uses a 50 base power Future Sight.",
 		shortDesc:
-			"On switch-in, this Pokemon is alerted to the foes' move with the highest power.",
+			"Casts 50BP Future Sight on entry.",
 		gen4: {
 			desc: "On switch-in, this Pokemon is alerted to the move with the highest power, at random, known by an opposing Pokemon. This effect considers OHKO moves to have 150 power, Counter, Mirror Coat, and Metal Burst to have 120 power, and every other attacking move with an unspecified power to have 80 power.",
 		},
-
-		activate: "  [TARGET]'s [MOVE] was revealed!",
-		activateNoTarget: "  [POKEMON]'s Forewarn alerted it to [MOVE]!",
 	},
 	friendguard: {
 		name: "Friend Guard",
@@ -616,7 +613,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	frisk: {
 		name: "Frisk",
 		shortDesc:
-			"On switch-in, this Pokemon identifies the held items of all opposing Pokemon.",
+			"On switch-in, this Pokemon identifies the held items of all opposing Pokemon and disables them for 2 turns.",
 		gen5: {
 			shortDesc:
 				"On switch-in, this Pokemon identifies the held item of a random opposing Pokemon.",
@@ -645,9 +642,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	galvanize: {
 		name: "Galvanize",
-		desc: "This Pokemon's Normal-type moves become Electric-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		desc: "This Pokemon's Normal-type moves become Electric-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Electric type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Electric type and have 1.1x power.",
 	},
 	gluttony: {
 		name: "Gluttony",
@@ -722,9 +719,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	healer: {
 		name: "Healer",
-		desc: "30% chance this Pokemon's ally has its non-volatile status condition cured at the end of each turn.",
+		desc: "30% chance this Pokemon or its ally has its non-volatile status condition cured at the end of each turn.",
 		shortDesc:
-			"30% chance this Pokemon's ally has its status cured at the end of each turn.",
+			"30% chance this Pokemon or its ally has its status cured at the end of each turn.",
 		gen6: {
 			desc: "30% chance each of this Pokemon's adjacent allies has its non-volatile status condition cured at the end of each turn.",
 			shortDesc:
@@ -758,9 +755,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	hustle: {
 		name: "Hustle",
-		desc: "This Pokemon's Attack is multiplied by 1.5 and the accuracy of its physical attacks is multiplied by 0.8.",
+		desc: "This Pokemon's Attack is multiplied by 1.4 and the accuracy of its physical attacks is multiplied by 0.9.",
 		shortDesc:
-			"This Pokemon's Attack is 1.5x and accuracy of its physical attacks is 0.8x.",
+			"This Pokemon's Attack is 1.4x and accuracy of its physical attacks is 0.9x.",
 	},
 	hydration: {
 		name: "Hydration",
@@ -974,8 +971,8 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	lightmetal: {
 		name: "Light Metal",
-		desc: "This Pokemon's weight is halved, rounded down to a tenth of a kilogram. This effect is calculated after the effect of Autotomize, and before the effect of Float Stone. A Pokemon's weight will not drop below 0.1 kg.",
-		shortDesc: "This Pokemon's weight is halved.",
+		desc: "This Pokemon's speed is increased 1.3x. This Pokemon's weight is also halved, rounded down to a tenth of a kilogram. This effect is calculated after the effect of Autotomize, and before the effect of Float Stone. A Pokemon's weight will not drop below 0.1 kg.",
+		shortDesc: "This Pokemon's weight is halved and speed increased 1.3x.",
 	},
 	lightningrod: {
 		name: "Lightning Rod",
@@ -1025,7 +1022,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	longreach: {
 		name: "Long Reach",
-		shortDesc: "This Pokemon's attacks do not make contact with the target.",
+		shortDesc: "Physical non-contact are boosted 1.2x. Contact moves no longer make contact.",
 	},
 	magicbounce: {
 		name: "Magic Bounce",
@@ -1253,9 +1250,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	normalize: {
 		name: "Normalize",
-		desc: "This Pokemon's moves are changed to be Normal type and have their power multiplied by 1.2. This effect comes before other effects that change a move's type.",
+		desc: "This Pokemon's moves are changed to be Normal type and have their power multiplied by 1.1. This effect comes before other effects that change a move's type. This Pokemon's moves also ignore resistances.",
 		shortDesc:
-			"This Pokemon's moves are changed to be Normal type and have 1.2x power.",
+			"This Pokemon's moves are changed to be Normal type and have 1.1x power, ignores resistances.",
 		gen6: {
 			desc: "This Pokemon's moves are changed to be Normal type. This effect comes before other effects that change a move's type.",
 			shortDesc: "This Pokemon's moves are changed to be Normal type.",
@@ -1378,9 +1375,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	pixilate: {
 		name: "Pixilate",
-		desc: "This Pokemon's Normal-type moves become Fairy-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		desc: "This Pokemon's Normal-type moves become Fairy-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Fairy type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Fairy type and have 1.1x power.",
 		gen6: {
 			desc: "This Pokemon's Normal-type moves become Fairy-type moves and have their power multiplied by 1.3. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 			shortDesc:
@@ -1412,7 +1409,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	poisonpoint: {
 		name: "Poison Point",
 		shortDesc:
-			"30% chance a Pokemon making contact with this Pokemon will be poisoned.",
+			"This Pokemon's contact moves have a 30% chance of poisoning. Pokemon making contact with this Pokemon have a 30% chance to be poisoned.",
 		gen4: {
 			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned. This effect does not happen if this Pokemon did not lose HP from the attack.",
 		},
@@ -1424,8 +1421,8 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	poisontouch: {
 		name: "Poison Touch",
-		desc: "This Pokemon's contact moves have a 30% chance of poisoning. This effect comes after a move's inherent secondary effect chance.",
-		shortDesc: "This Pokemon's contact moves have a 30% chance of poisoning.",
+		desc: "This Pokemon's contact moves have a 30% chance of poisoning. This effect comes after a move's inherent secondary effect chance. Pokemon making contact with this Pokemon have a 30% chance to be poisoned.",
+		shortDesc: "This Pokemon's contact moves have a 30% chance of poisoning. Pokemon making contact with this Pokemon have a 30% chance to be poisoned.",
 	},
 	powerconstruct: {
 		name: "Power Construct",
@@ -1468,9 +1465,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	pressure: {
 		name: "Pressure",
-		desc: "If this Pokemon is the target of an opposing Pokemon's move, that move loses one additional PP. Imprison, Snatch, and Tera Blast also lose one additional PP when used by an opposing Pokemon, but Sticky Web does not.",
+		desc: "Once switched in, this Pokemon clears the stat changes of all other pokemon on the field.",
 		shortDesc:
-			"If this Pokemon is the target of a foe's move, that move loses one additional PP.",
+			"Casts Haze on entry.",
 		gen8: {
 			desc: "If this Pokemon is the target of an opposing Pokemon's move, that move loses one additional PP. Imprison and Snatch also lose one additional PP when used by an opposing Pokemon, but Sticky Web does not.",
 		},
@@ -1591,9 +1588,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	rattled: {
 		name: "Rattled",
-		desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or if an opposing Pokemon affected this Pokemon with the Intimidate Ability.",
+		desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or if this Pokemon is flinched.",
 		shortDesc:
-			"Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or Intimidated.",
+			"Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or flinched.",
 		gen7: {
 			desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
 			shortDesc:
@@ -1621,9 +1618,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	refrigerate: {
 		name: "Refrigerate",
-		desc: "This Pokemon's Normal-type moves become Ice-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		desc: "This Pokemon's Normal-type moves become Ice-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Ice type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Ice type and have 1.1x power.",
 		gen6: {
 			desc: "This Pokemon's Normal-type moves become Ice-type moves and have their power multiplied by 1.3. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 			shortDesc:
@@ -2010,9 +2007,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	steelyspirit: {
 		name: "Steely Spirit",
-		desc: "This Pokemon and its allies' Steel-type moves have their power multiplied by 1.5. This affects Doom Desire even if the user is not on the field.",
+		desc: "This Pokemon and its allies' Steel-type moves have their power multiplied by 1.3. This affects Doom Desire even if the user is not on the field.",
 		shortDesc:
-			"This Pokemon and its allies' Steel-type moves have their power multiplied by 1.5.",
+			"This Pokemon and its allies' Steel-type moves have their power multiplied by 1.3x.",
 	},
 	stench: {
 		name: "Stench",
@@ -2037,9 +2034,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	stormdrain: {
 		name: "Storm Drain",
-		desc: "This Pokemon is immune to Water-type moves and raises its Special Attack by 1 stage when hit by a Water-type move. If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Speed, or in the case of a tie to the one that has had this Ability active longer.",
+		desc: "This Pokemon is immune to Water-type moves and raises its highest attacking stat by 1 stage when hit by a Water-type move. If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Speed, or in the case of a tie to the one that has had this Ability active longer.",
 		shortDesc:
-			"This Pokemon draws Water moves to itself to raise Sp. Atk by 1; Water immunity.",
+			"This Pokemon draws Water moves to itself to raise highest attacking stat by 1; Water immunity.",
 		gen4: {
 			desc: "If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself.",
 			shortDesc: "This Pokemon draws single-target Water moves to itself.",
@@ -2051,7 +2048,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		name: "Strong Jaw",
 		desc: "This Pokemon's bite-based attacks have their power multiplied by 1.5.",
 		shortDesc:
-			"This Pokemon's bite-based attacks have 1.5x power. Bug Bite is not boosted.",
+			"This Pokemon's bite-based attacks have 1.5x power.",
 	},
 	sturdy: {
 		name: "Sturdy",
@@ -2358,7 +2355,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	vitalspirit: {
 		name: "Vital Spirit",
 		shortDesc:
-			"This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+			"This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it. This Pokemon's fighting moves cure statuses.",
 	},
 	voltabsorb: {
 		name: "Volt Absorb",
@@ -2540,12 +2537,12 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	immolate: {
 		name: "Immolate",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Fire type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Fire type and have 1.1x power.",
 	},
 	crystallize: {
 		name: "Crystallize",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Rock type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Rock type and have 1.1x power.",
 	},
 	electrocytes: {
 		name: "Electrocytes",
@@ -2615,7 +2612,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	leadcoat: {
 		name: "Lead Coat",
-		shortDesc: "Ups Defense by 30% but lowers speed by 10%",
+		shortDesc: "Ups Defense by 40% but lowers speed by 10%",
 	},
 	coilup: {
 		name: "Coil Up",
@@ -2639,7 +2636,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	fightingspirit: {
 		name: "Fighting Spirit",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Fighting type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Fighting type and have 1.1x power.",
 	},
 	felineprowess: {
 		name: "Feline Prowess",
@@ -2672,7 +2669,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	tectonize: {
 		name: "Tectonize",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Ground type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Ground type and have 1.1x power.",
 	},
 	iceage: {
 		name: "Ice Age",
@@ -2699,7 +2696,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	hydrate: {
 		name: "Hydrate",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Water type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Water type and have 1.1x power.",
 	},
 	metallic: {
 		name: "Metallic",
@@ -2744,7 +2741,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	intoxicate: {
 		name: "Intoxicate",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Poison type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Poison type and have 1.1x power.",
 	},
 	impenetrable: {
 		name: "Impenetrable",
@@ -2788,7 +2785,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	badluck: {
 		name: "Bad Luck",
 		shortDesc:
-			"Foes cannot land critical hits and have all accuracy lowered by 5%",
+			"Foes always deal lowest damage roll, cannot land critical hits, and have all accuracy lowered by 5%",
 	},
 	hauntedspirit: {
 		name: "Haunted Spirit",
@@ -2830,7 +2827,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	psychicmind: {
 		name: "Psychic Mind",
-		shortDesc: "This Pokemon's Psychic type moves are boosted by 25%",
+		desc: "When this Pokemon has 1/3 or less of its maximum HP, rounded down, its offensive stat is multiplied by 1.5 while using a Psychic-type attack.",
+		shortDesc:
+			"At 1/3 or less of its max HP, this Pokemon's offensive stat is 1.5x with Psychic attacks.",
 	},
 	poisonabsorb: {
 		name: "Poison Absorb",
@@ -2912,7 +2911,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	fieldexplorer: {
 		name: "Field Explorer",
-		shortDesc: "This Pokemon's field-based moves are boosted by 25%",
+		shortDesc: "This Pokemon's field-based moves are boosted by 50%",
 	},
 	striker: {
 		name: "Striker",
@@ -2933,12 +2932,12 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	powercore: {
 		name: "Power Core",
-		shortDesc: "This Pokemon uses 25% of its Def/SpD during moves",
+		shortDesc: "This Pokemon uses 20% of its Def/SpD during moves",
 	},
 	sightingsystem: {
 		name: "Sighting System",
 		shortDesc:
-			"This Pokemon's move don't miss. Moves with less than 75% accuracy go last.",
+			"This Pokemon's move don't miss. Moves with less than 80% accuracy go last.",
 	},
 	//badcompany: {
 	//
@@ -2955,7 +2954,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	grippincer: {
 		name: "Grip Pincer",
 		shortDesc:
-			"This Pokemon's contact moves have a 30% chance to trap. Ignores foe's defense if they're trapped.",
+			"This Pokemon's contact moves have a 50% chance to trap. Ignores accuracy checks and foe's defensive stat changes if they're trapped.",
 	},
 	bigleaves: {
 		name: "Big Leaves",
@@ -2992,9 +2991,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	pollinate: {
 		name: "Pollinate",
-		desc: "This Pokemon's Normal-type moves become Bug-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		desc: "This Pokemon's Normal-type moves become Bug-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Bug type and have 1.2x power.",
+			"This Pokemon's Normal-type moves become Bug type and have 1.1x power.",
 	},
 	solarflare: {
 		name: "Solar Flare",
@@ -3012,9 +3011,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	mightyhorn: {
 		name: "Mighty Horn",
-		desc: "This Pokemon's horn-based attacks have their power multiplied by 1.3.",
+		desc: "This Pokemon's horn and drill-based attacks have their power multiplied by 1.3.",
 		shortDesc:
-			"This Pokemon's punch-based attacks have 1.3x power. Sucker Punch is not boosted.",
+			"This Pokemon's horn and drill-based attacks have 1.3x power.",
 	},
 	hardenedsheath: {
 		name: "Hardened Sheath",
@@ -3083,13 +3082,13 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	spectralize: {
 		name: "Spectralize",
-		desc: "This Pokemon's Normal-type moves become Ghost-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		desc: "This Pokemon's Normal-type moves become Ghost-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc:
 			"This Pokemon's Normal-type moves become Ghost type and have 1.1x power.",
 	},
 	spectralshroud: {
 		name: "Spectral Shroud",
-		desc: "This Pokemon's Normal-type moves become Ghost-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. All attacking moves have an increased 30% chance to badly poison",
+		desc: "This Pokemon's Normal-type moves become Ghost-type moves and have their power multiplied by 1.1. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. All attacking moves have an increased 30% chance to badly poison",
 		shortDesc:
 			"This Pokemon's moves have a 30% chance to badly poison; Spectralize.",
 	},
