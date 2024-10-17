@@ -11871,11 +11871,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.forceSTAB = true;
 			}
 		},
-		onTryHeal(damage, target, source, effect) {
-			if (effect.id === "moonlight") {
-				return this.chainModify(0.75);
-			}
-		},
+		//Moonlight effectiveness implemented in moves file
 	},
 	generator: {
 		name: "Generator",
@@ -12275,14 +12271,19 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(source) {
 			this.field.setWeather("sandstorm");
 		},
+		//onModifyMove deals with levitaters, onEffectiveness deals with flying types. 
+		//This isn't in-line with things like magnetic rise and gravity yet, so prob should do that later.
+		onModifyMove(move, source, target) {
+			if(!target) return;
+			if (!this.field.isWeather("sandstorm") || move.type !== "Ground") return;
+
+			if(target.hasAbility('levitate') || target.hasAbility('dragonfly')) move.ignoreAbility = true;
+		},
 		onEffectiveness(typeMod, target, type, move) {
-			if (this.field.isWeather("sandstorm") && type === "Ground") {
-				if (target) {
-					if (target.hasType("Flying")) {
-						return 1;
-					}
-				}
-			}
+			if(!target) return;
+			if (!this.field.isWeather("sandstorm") || move.type !== "Ground") return;
+				
+			if (target.hasType("Flying")) return 1;
 		},
 	},
 	flourish: {
