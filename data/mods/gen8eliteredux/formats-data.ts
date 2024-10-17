@@ -659,7 +659,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	weezinggalar: {
 		tier: "UU",
 		doublesTier: "DOU",
-	},	
+	},
 	rhyhorn: {
 		tier: "LC",
 		doublesTier: "LC",
@@ -4374,12 +4374,12 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	enamorus: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Illegal",
+		doublesTier: "Illegal",
 	},
 	enamorustherian: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Illegal",
+		doublesTier: "Illegal",
 	},
 	sprigatito: {
 		tier: "LC",
@@ -5651,8 +5651,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	terapagos: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Illegal",
+		doublesTier: "Illegal",
 	},
 	terapagosstellar: {
 		tier: "OU",
