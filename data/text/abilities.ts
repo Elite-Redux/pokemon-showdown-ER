@@ -2414,9 +2414,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	wellbakedbody: {
 		name: "Well-Baked Body",
-		desc: "This Pokemon is immune to Fire-type moves and raises its Defense by 2 stages when hit by a Fire-type move.",
+		desc: "This Pokemon takes half damage and raises its Defense by 2 stages when hit by a Fire-type move.",
 		shortDesc:
-			"This Pokemon's Defense is raised 2 stages if hit by a Fire move; Fire immunity.",
+			"This Pokemon's Defense is raised 2 stages if hit by a Fire move; Fire moves deal half.",
 	},
 	whitesmoke: {
 		name: "White Smoke",
@@ -2968,7 +2968,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	deadeye: {
 		name: "Deadeye",
-		shortDesc: "This Pokemon never misses.",
+		shortDesc: "This Pokemon never misses. Arrow moves lower defense",
 	},
 	artillery: {
 		name: "Artillery",

@@ -22656,7 +22656,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, pulse: 1, bullet: 1},
 		multihit: [2,5],
-		self: {
+		selfBoost: {
 			boosts: {
 				spd: -1,
 				spe: 1,
@@ -23246,7 +23246,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 25,
 		category: "Physical",
 
-		name: "Comet Punch",
+		name: "Toxic Needles",
 		pp: 15,
 		priority: 1,
 		flags: {contact: 1, protect: 1, mirror: 1},
