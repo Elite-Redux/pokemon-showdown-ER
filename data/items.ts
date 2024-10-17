@@ -265,7 +265,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		gen: 6,
 
 	},
-	alakazitrer: {
+	alakaziter: {
 		name: "Alakazite-R",
 		spritenum: 579,
 		megaStone: "Alakazam-Mega-Redux",
