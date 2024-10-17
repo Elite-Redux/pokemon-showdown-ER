@@ -7739,5 +7739,10 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Aura Force",
 		desc: "Imbues strikes with aura power. Super-effective on Ghost",
 		shortDesc: "Super-effective on Ghost."
-	}
+	},
+	jaggedhorns: {
+		name: "Jagged Horns",
+		desc: "A rocky jab strikes the foe. 10% flinch chance. 10% bleed chance. Mighty Horn boost.",
+		shortDesc: "10% flinch chance. 10% bleed chance. Mighty Horn boost."
+	},
 };
