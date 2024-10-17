@@ -7510,8 +7510,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	pixiebeam: {
 		name: "Pixie Beam",
-		desc: "A quick moving cloud of pixie dust. Has +1 Priority. Air-based.",
-		shortDesc: "Has +1 Priority. Air-based.",
+		desc: "A powerful magic beam. 20% chance to lower SpAtk. Mega launcher.",
+		shortDesc: "20% chance to lower SpAtk. Mega launcher.",
 	},
 	pixieslash: {
 		name: "Pixie Slash",

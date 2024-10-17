@@ -4766,7 +4766,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	ceruledge: {
-		tier: "OU",
+		tier: "Uber",
 		doublesTier: "DOU",
 	},
 	toedscool: {

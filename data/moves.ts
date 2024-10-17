@@ -22622,13 +22622,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	pixiebeam: {
 		accuracy: 100,
-		basePower: 40,
+		basePower: 110,
 		category: "Special",
 		name: "Pixie Beam",
 		pp: 15,
-		priority: 1,
-		flags: {protect: 1, mirror: 1, wind: 1},
-		secondary: null,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, pulse: 1},
+		secondary: {
+			chance: 20,
+			boosts: {
+				spa: -1,
+			},
+		},
 		target: "normal",
 		type: "Fairy",
 		contestType: "Beautiful",
