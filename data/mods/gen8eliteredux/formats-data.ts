@@ -885,8 +885,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	articuno: {
-		tier: "OU",
-		doublesTier: "DUber",
+		tier: "Uber",
+		doublesTier: "DOU",
 	},
 	zapdos: {
 		tier: "OU",
@@ -2299,8 +2299,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	phione: {
-		tier: "UU",
-		doublesTier: "DOU",
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 	manaphy: {
 		tier: "UU",
@@ -4718,7 +4718,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	ironvaliant: {
-		tier: "OU",
+		tier: "Uber",
 		doublesTier: "DOU",
 	},
 	tinglu: {
