@@ -1961,12 +1961,14 @@ export const MovesText: {[k: string]: MoveText} = {
 		shortDesc: "10% chance to burn the target.",
 	},
 	jaggedpunch: {
-		name: "Fire Punch",
-		desc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks.",
+		name: "Jagged Punch",
+		desc: "The foe is punched by a stony fist. 10% chance to set Stealth Rocks.",
+		shortDesc: "10% chance to set Stealth Rocks.",
 	},
 	diamondblade: {
 		name: "Diamond Blade",
-		desc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks. Keen Edge boost.",
+		desc: "Slashes with an unbreakable blade. 10% chance of Stealth Rocks. Keen Edge boost.",
+		shortDesc: "Has a 10% chance to bleed the target. 10% chance to set stealth rocks. Keen Edge boost.",
 	},
 	firespin: {
 		name: "Fire Spin",
@@ -3007,7 +3009,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	horndrill: {
 		name: "Horn Drill",
 		desc: "Has a higher chance for a critical hit. 20% Bleed Chance.",
-		shortDesc: "High critical hit ratio. 20% Bleed Chance.",		
+		shortDesc: "High critical hit ratio. 20% Bleed Chance.",
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
@@ -4144,23 +4146,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	moonlight: {
 		name: "Moonlight",
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		desc: "The user restores 3/4 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
 		shortDesc: "Heals the user by a weather-dependent amount.",
-		gen8: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
-		},
-		gen7: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
-		},
-		gen5: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
-		},
-		gen4: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
-		},
-		gen2: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, all of its HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Rain Dance or Sandstorm, all rounded down.",
-		},
 	},
 	morningsun: {
 		name: "Morning Sun",
@@ -7444,5 +7431,278 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Raging Souls",
 		desc: "Souls from astral plane strike the foe. This lowers Sp. Atk by 2 stages.",
 		shortDesc: "Lowers user SpA by 2.",
-	}
+	},
+	soildrain: {
+		name: "Soil Drain",
+		desc: "Foe's power is leeched into the ground. Heals 50% of damage done.",
+		shortDesc: "Heals 50% of damage done.",
+	},
+	superhotflame: {
+		name: "Superhot Flame",
+		desc: "Deals damage. Deals increased damage in rain.",
+		shortDesc: "Deals increased damage in rain.",
+	},
+	electroshot: {
+		name: "Electro Shot",
+		desc: "Charging 1st turn: boosts SpAtk. Fires on second turn. In rain: fires immediately.",
+		shortDesc: "Charging 1st turn: boosts SpAtk. Fires on second turn. In rain: fires immediately.",
+		prepare: "[POKEMON] absorbed electricity!",
+	},
+	karma: {
+		name: "Karma",
+		desc: "Purges its impurities. Lowers Speed, raises SpAtk and SpDef.",
+		shortDesc: "Lowers Speed, raises SpAtk and SpDef.",
+	},
+	flutteringleaf: {
+		name: "Fluttering Leaf",
+		desc: "The user moves like a fluttering leaf and strikes. User switches afterwards.",
+		shortDesc: "User switches afterwards.",
+	},
+	archershot: {
+		name: "Archer Shot",
+		desc: "Shoots a dead center arrow at the target. Archer boost.",
+		shortDesc: "Archer boost.",
+	},
+	brambleblast: {
+		name: "Bramble Blast",
+		desc: "Fires thorny brambles. 20% chance to apply Leech Seed. Archer boost.",
+		shortDesc: "20% chance to apply Leech Seed. Archer boost.",
+	},
+	deviousshot: {
+		name: "Devious Shot",
+		desc: "A devious arrow strike. +1 crit chance. 50% bleed chance. Archer boost.",
+		shortDesc: "+1 crit chance. 50% bleed chance. Archer boost.",
+	},
+	homingfletch: {
+		name: "Homing Fletch",
+		desc: "User fires a seeking arrow. Cannot miss. Has +1 crit chance. Archer boost.",
+		shortDesc: "+1 crit chance. Archer boost.",
+	},
+	venombolt: {
+		name: "Venom Bolt",
+		desc: "Shoots a toxic arrow with precision. +1 crit 20% poison chance. Archer boost.",
+		shortDesc: "+1 crit chance. Archer boost. 20% poison chance.",
+	},
+	whirlingstrikes: {
+		name: "Whirling Strikes",
+		desc: "Hits 3 times. Each hit does more damage. Striker.",
+		shortDesc: "Hits 3 times. Each hit does more damage. Striker."
+	},
+	yggdrasilforce: {
+		name: "Yggdrasil Force",
+		desc: "Nature's overcharges the user's strike. Lowers Atk and Def.",
+		shortDesc: "Lowers Atk and Def.",
+	},
+	riderkick: {
+		name: "Rider Kick",
+		desc: "An unerring kick that ignores the foe's ability. Can't miss. Striker boost.",
+		shortDesc: "Ignores the foe's ability. Can't miss. Striker boost.",
+	},
+	mightycleave: {
+		name: "Mighty Cleave",
+		desc: "The user wields light atop its head to cleave the target. Hits through Protect.",
+		shortDesc: "Hits through Protect.",
+	},
+	tachyoncutter: {
+		name: "Tachyon Cutter",
+		desc: "Launches particle blades twice. Never misses. uses higher offense.",
+		shortDesc: "Never misses. Uses higher offense.",
+	},
+	pixiebeam: {
+		name: "Pixie Beam",
+		desc: "A quick moving cloud of pixie dust. Has +1 Priority. Air-based.",
+		shortDesc: "Has +1 Priority. Air-based.",
+	},
+	pixieslash: {
+		name: "Pixie Slash",
+		desc: "The foe is slashed with a whimsical blade. High Crit ratio. Keen Edge boost.",
+		shortDesc: "High Crit ratio. Keen Edge boost.",
+	},
+	wyrmwind: {
+		name: "Wyrm Wind",
+		desc: "Hits 2-5 times. Lowers SpDef. Raises Speed. Mega launcher boost.",
+		shortDesc: "Hits 2-5 times. Lowers SpDef. Raises Speed. Mega launcher boost.",
+	},
+	energywave: {
+		name: "Energy Wave",
+		desc: "The user unleashes a deadly wave of energy to strike the enemy.",
+		shortDesc: "The user unleashes a deadly wave of energy to strike the enemy.",
+	},
+	drakemissle: {
+		name: "Drake Missile",
+		desc: "Hits both foes on the field with draconic force. Archer boost.",
+		shortDesc: "Hits both foes. Archer boost.",
+	},
+	mountainchunk: {
+		name: "Mountain Chunk",
+		desc: "Hurls a chunk of a mountain at the foe. 30% flinch chance. Mega Launcher boost.",
+		shortDesc: "30% flinch chance. Mega Launcher boost.",
+	},
+	shockingjab: {
+		name: "Shocking Jab",
+		desc: "An electric jab strikes the foe. 20% paralysis chance. Mighty Horn boost.",
+		shortDesc: "20% paralysis chance. Mighty Horn boost.",
+	},
+	flametongue: {
+		name: "Flame Tongue",
+		desc: "Slashes foe with a fiery blade. 10% chance to burn. Keen Edge boost",
+		shortDesc: "10% chance to burn. Keen Edge boost.",
+	},
+	scatterblast: {
+		name: "Scatter Blast",
+		desc: "A blast of sand that scatters Stealth Rocks. Mega Launcher boost",
+		shortDesc: "Scatters Stealth Rocks. Mega Launcher boost.",
+	},
+	burningbulwark: {
+		name: "Burning Bulwark",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user become burned. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "Protects from damaging attacks. Contact: burn.",
+	},
+	diamondarrow: {
+		name: "Diamond Arrow",
+		desc: "Cuts through foe's stat changes. Sharp as a diamond. Archer boost.",
+		shortDesc: "Archer boost. Ignores foe's stat changes.",
+	},
+	frostbrand: {
+		name: "Frost Brand",
+		desc: "Slahes with an ice-cold cryo blade. 10% frostbite chance. Keen Edge boost.",
+		shortDesc: "10% frostbite chance. Keen Edge boost.",
+	},
+	seismicblade: {
+		name: "Seismic Blade",
+		desc: "The foe is slashed with a tectonic blade. High Crit ratio. Keen Edge boost.",
+		shortDesc: "High Crit ratio. Keen Edge boost.",
+	},
+	leechblade: {
+		name: "Leech Blade",
+		desc: "The user strikes with a blade that drains life. Heals 50% of damage done. Keen Edge boost.",
+		shortDesc: "Heals 50% of damage done. Keen Edge boost.",
+	},
+	blazingbone: {
+		name: "Blazing Bone",
+		desc: "Strikes with a fiery bone 2-5 times. Has +1 priority. Bone-based.",
+		shortDesc: "Hits 2-5 times. Has +1 priority. Bone-based.",
+	},
+	draconicfangs: {
+		name: "Draconic Fangs",
+		desc: "The user bites with draconic fangs. 30% flinch chance. Strong Jaw boost.",
+		shortDesc: "30% flinch chance. Strong Jaw boost.",
+	},
+	gemmissle: {
+		name: "Gem Missle",
+		desc: "A fast attack that strikes the foe with a sharp gem. +1 priority.",
+		shortDesc: "Has +1 priority.",
+	},
+	psychokineticslam: {
+		name: "Psychokinetic Slam",
+		desc: "User charges, boosted by psychic power. 33% recoil damage.",
+		shortDesc: "33% recoil damage.",
+	},
+	moltenstrike: {
+		name: "Molten Strike",
+		desc: "Lowers the user's speed. Iron fist boost. Hammer-based.",
+		shortDesc: "Lowers user's speed. Iron fist boost. Hammer-based.",
+	},
+	drainbrain: {
+		name: "Drain Brain",
+		desc: "Saps the foe's SpAtk and heals HP by the same amount.",
+		shortDesc: "Saps the foe's SpAtk and heals HP by the same amount.",
+	},
+	shockingedge: {
+		name: "Shocking Edge",
+		desc: "TThe foe is slashed with an electric blade. 10% paralyze chance. Keen Edge boost.",
+		shortDesc: "10% paralyze chance. Keen Edge boost.",
+	},
+	quickstream: {
+		name: "Quick Stream",
+		desc: "The user sends a jet of water to attack the foe. +1 priority.",
+		shortDesc: "Has +1 priority.",
+	},
+	mindbreak: {
+		name: "Mind Break",
+		desc: "Uses psychic power to shatter foes' psyche. 20% chance to confuse.",
+		shortDesc: "20% confusion chance.",
+	},
+	kineticbarrage: {
+		name: "Kinetic Barrage",
+		desc: "Lifts up objects and hurls them at the foe. 30% confusion. Mega Launcher boost.",
+		shortDesc: "30% confusion chance. Mega Launcher boost.",
+	},
+	zephyrrush: {
+		name: "Zephyr Rush",
+		desc: "User fires itself with a gale. Hurts on miss. Mega Launcher boost. Air-based.",
+		shortDesc: "Hurts on miss. Mega Launcher boost. Air-based.",
+	},
+	torrentfist: {
+		name: "Torrent Fist",
+		desc: "The user strikes with a torrent of water. 10% flinch chance. Iron Fist boost.",
+		shortDesc: "10% flinch chance. Iron Fist boost.",
+	},
+	primalbeam: {
+		name: "Primal Beam",
+		desc: "An strange beam that uses the user's Attack, may raise own Atk.",
+		shortDesc: "May raise own Atk.",
+	},
+	supercellslam: {
+		name: "Supercell Slam",
+		desc: "If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage. Hammer-based.",
+		shortDesc: "User is hurt by 50% of its max HP if it misses. Hammer-based",
+
+		damage: "#crash",
+	},
+	supersonicshot: {
+		name: "Supersonic Shot",
+		desc: "Fires a high-speed arrow. Always crits. Archer boost.",
+		shortDesc: "Always crits. Archer boost.",
+	},
+	blazingarrow: {
+		name: "Blazing Arrow",
+		desc: "Fires a blazing arrow. +1 crit chance. 20% burn chance. Archer boost..",
+		shortDesc: "10% burn chance. Archer boost. +1 crit chance.",
+	},
+	frostbolt: {
+		name: "Frost Bolt",
+		desc: "The user shoots a freezing arrow. 20% frostbite chance. Arrow boost.",
+		shortDesc: "20% frostbite chance. Arrow boost.",
+	},
+	voltbolt: {
+		name: "Volt Bolt",
+		desc: "Doubles damage if foe is paralyzed. Arrow move. Archer boost.",
+		shortDesc: "Doubles damage if foe is paralyzed. Archer boost.",
+	},
+	rocketpunch: {
+		name: "Rocket Punch",
+		desc: "Launches a body part like a rocket. Has +1 crit rate. Mega Launcher boost.",
+		shortDesc: "Has +1 crit rate. Mega Launcher boost.",
+	},
+	pebbleshower: {
+		name: "Pebble Shower",
+		desc: "Hurls a shower of pebbles. 20% flinch chance. Hits both foes.",
+		shortDesc: "20% flinch chance. Hits both foes.",
+	},
+	flashfreeze: {
+		name: "Flash Freeze",
+		desc: "Multiple ice cubes are shot at the foe. 100% chance to cause frostbite.",
+		shortDesc: "100% frostbite chance.",
+	},
+	tectonicfangs: {
+		name: "Tectonic Fangs",
+		desc: "The user bites with tectonic fangs. 10% flinch chance. Strong Jaw boost.",
+		shortDesc: "10% flinch chance. Strong Jaw boost.",
+	},
+	toxicneedles: {
+		name: "Toxic Needles",
+		desc: "Toxic pins are shot at the foe and hit 2 - 5 times. 10% poison chance.",
+		shortDesc: "Hits 2-5 times. 10% poison chance.",
+	},
+	rapidriver: {
+		name: "Rapid River",
+		desc: "A powerful surge of water that hits twice. Mega Launcher boost.",
+		shortDesc: "Hits twice. Mega Launcher boost.",
+	},
+	temperflare: {
+		name: "Temper Flare",
+		desc: "Spurred by desperation, user attacks. Power doubles if previous move failed.",
+		shortDesc: "Power doubles if previous move failed.",
+	},
 };
