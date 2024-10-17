@@ -39960,7 +39960,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	calyrexicerider: {
+	calyrexice: {
 		name: "Calyrex-Ice Rider",
 		num: 1807,
 		types: ["Psychic", "Ice"],
@@ -39985,7 +39985,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		evos: [],
 	},
-	calyrexshadowrider: {
+	calyrexshadow: {
 		name: "Calyrex-Shadow Rider",
 		num: 1808,
 		types: ["Psychic", "Ghost"],
