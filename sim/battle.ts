@@ -855,7 +855,7 @@ export class Battle {
 				this.effectState = handler.state || {};
 				this.effectState.target = effectHolder;
 
-				returnVal = handler.callback.apply(this, args);
+				returnVal = handler.callback.apply(this, [...args, effectHolder]);
 
 				this.effect = parentEffect;
 				this.effectState = parentEffectState;

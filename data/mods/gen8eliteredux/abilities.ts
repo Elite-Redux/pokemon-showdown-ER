@@ -1,4 +1,5 @@
 import { TriumvirateModeTrivia } from "../../../server/chat-plugins/trivia/trivia";
+import { Pokemon } from "../../../sim/pokemon.js";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
 	battlebond: {
@@ -67,8 +68,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 
 	colorchange: {
-		onFoePrepareHit(source, target, move) {
-			if (!target.hasAbility("colorchange")) return;
+		onSourcePrepareHit(source, target, move) {
+			if (source === target) return;
 
 			let bestType;
 			let bestTypeMod = 0;
@@ -84,7 +85,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					bestTypeMod = typeMod
 				}
 			}
-			if (source !== target && bestType && !target.getTypes().includes(bestType)) {
+			if (bestType && !target.getTypes().includes(bestType)) {
 				if (!target.setType(bestType)) return;
 				this.add('-start', target, 'typechange', bestType, '[from] ability: Color Change');
 			}
