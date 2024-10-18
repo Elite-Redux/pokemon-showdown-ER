@@ -59,11 +59,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		ignoreImmunity: {'Poison': true},
 		onEffectiveness(typeMod, target, type, move) {
-			if (move.type !== 'Poison') return;
-			if (!target) return;
-			if (!target.runImmunity('Poison')) {
-				if (target.hasType('Steel')) return 1;
-			}
+			if (type === 'Steel') return 1;
 		},
 		secondary: {
 			chance: 30,
@@ -1872,16 +1868,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	brine: {
 		num: 362,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 70,
 		category: "Special",
 		name: "Brine",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, target) {
-			if (target.types.includes('Water')) {
-				return this.chainModify(2);
-			}
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Water') return 1;
 		},
 		secondary: null,
 		target: "normal",
@@ -4219,12 +4213,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 	dragonrage: {
 		num: 82,
 		accuracy: 100,
-		basePower: 0,
-		damage: 40,
+		basePower: 80,
 		category: "Special",
-
+		ignoreImmunity: {'Fairy': true},
 		name: "Dragon Rage",
-		pp: 10,
+		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: null,
@@ -6677,6 +6670,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.removeVolatile('gigatonhammer')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Gigaton Hammer again in a row.");
 			}
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Steel') return 1;
 		},
 		condition: {},
 		secondary: null,
@@ -11017,8 +11013,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 	magnetbomb: {
 		num: 443,
 		accuracy: true,
-		basePower: 60,
+		basePower: 70,
 		category: "Physical",
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Steel') return 1;
+		},
 
 		name: "Magnet Bomb",
 		pp: 20,
@@ -16648,10 +16647,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 				status: 'frz',
 			},
 		],
-		onEffectiveness(typeMod, target, type) {
-			if (this.randomChance(2, 10)) {
-				if (type === 'Water') return 1;
-			}
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Water') return 1;
 		},
 		target: "normal",
 		type: "Ice",
@@ -17295,7 +17292,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	skyuppercut: {
 		num: 327,
 		accuracy: 100,
-		basePower: 95,
+		basePower: 85,
 		category: "Physical",
 
 		name: "Sky Uppercut",
@@ -17306,6 +17303,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Fighting",
 		contestType: "Cool",
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Flying') return 1;
+		},
 	},
 	slackoff: {
 		num: 303,
@@ -17818,19 +17818,22 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	sonicboom: {
 		num: 49,
-		accuracy: 90,
-		basePower: 0,
+		accuracy: 100,
+		basePower: 70,
 		damage: 20,
 		category: "Special",
 
 		name: "Sonic Boom",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, sound: 1},
 		secondary: null,
 		target: "normal",
 		type: "Normal",
 		contestType: "Cool",
+		onEffectiveness(typeMod, target, type, move) {
+			if (type === 'Steel') return 1;
+		},
 	},
 	soulstealing7starstrike: {
 		num: 699,
@@ -23358,7 +23361,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, arrow: 1},
 		ignoreImmunity: {'Ground': true},
 		onEffectiveness(typeMod, target, type, move) {
-			if (!target) return;
 			if (type === 'Flying') return 1;
 		},
 		secondary: null,
@@ -23436,7 +23438,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, pulse: 1},
 		ignoreImmunity: {'Fighting': true},
 		onEffectiveness(typeMod, target, type, move) {
-			if (!target) return;
 			if (type === 'Ghost') return 1;
 		},
 		secondary: null,
