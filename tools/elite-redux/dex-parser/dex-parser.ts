@@ -3,20 +3,12 @@
  * >>> npm run setup-er-tools
  */
 const fetch = require("node-fetch");
-import {
-	CompactGameData,
-	compactMove,
-	CompactSpecie,
-} from "../../../dex_repo/src/compactify";
-import { MoveFlags } from "../../../sim/dex-moves";
-import { SpeciesAbility } from "../../../sim/dex-species";
-import { Ability as DexAbility } from "../../../dex_repo/src/abilities";
-import { MoveData } from "../../../sim/dex-moves";
-import { ModdedLearnsetData } from "../../../sim/dex-species";
-import { SpeciesData } from "../../../sim/dex-species";
-import { MoveTarget } from "../../../sim/dex-moves";
-import { DexTableData, ModdedDex } from "../../../sim/dex";
-import { toID } from "../../../sim/dex-data";
+import {CompactGameData, compactMove, CompactSpecie} from "../../../dex_repo/src/compactify";
+import {MoveFlags, MoveData, MoveTarget} from "../../../sim/dex-moves";
+import {SpeciesAbility, ModdedLearnsetData, SpeciesData} from "../../../sim/dex-species";
+import {Ability as DexAbility} from "../../../dex_repo/src/abilities";
+import {DexTableData, ModdedDex} from "../../../sim/dex";
+import {toID} from "../../../sim/dex-data";
 
 type StatIDExceptHP = "atk" | "def" | "spa" | "spd" | "spe";
 type StatID = "hp" | StatIDExceptHP;
@@ -56,22 +48,22 @@ export type LearnDefinition = { [moveId: string]: string[] };
 
 function getCategoryCode(category: MoveCategory) {
 	switch (category) {
-		case "level-up":
-			return "L";
-		case "tm/hm":
-			return "M";
-		case "tutor":
-			return "T";
-		case "egg":
-			return "E";
-		case "dream-world":
-			return "D";
-		case "event":
-			return "S";
-		case "not-real":
-			return "C";
-		case "virtual-console":
-			return "V";
+	case "level-up":
+		return "L";
+	case "tm/hm":
+		return "M";
+	case "tutor":
+		return "T";
+	case "egg":
+		return "E";
+	case "dream-world":
+		return "D";
+	case "event":
+		return "S";
+	case "not-real":
+		return "C";
+	case "virtual-console":
+		return "V";
 	}
 }
 
@@ -122,9 +114,9 @@ export class DexParser {
 	 * Load all move data from the elite redux json file.
 	 */
 	private parseMoves() {
-		for (const move of this.gameData!.moves) {
+		for (const move of this.gameData.moves) {
 			const id = this.getShowdownMoveId(move);
-			if (id == "??????????") continue;
+			if (id === "??????????") continue;
 			this.moves[id] = {
 				...this.getMoveFlags(move),
 				name: move.name,
@@ -145,40 +137,40 @@ export class DexParser {
 	private parsePokemon() {
 		const originalFormLookup: { [id: string]: CompactSpecie } = {};
 
-		for (const pokemon of this.gameData!.species) {
-			if (pokemon.name == "??????????") continue;
+		for (const pokemon of this.gameData.species) {
+			if (pokemon.name === "??????????") continue;
 			if (pokemon.forms && pokemon.forms.length > 1) {
 				for (const formIndex of pokemon.forms.slice(1)) {
-					const original = this.gameData!.species[pokemon.forms[0]];
+					const original = this.gameData.species[pokemon.forms[0]];
 					if (formIndex < 0) continue;
-					const form = this.gameData!.species[formIndex];
-					if (form.name == "??????????") continue;
+					const form = this.gameData.species[formIndex];
+					if (form.name === "??????????") continue;
 					const id = toID(form.name);
 					originalFormLookup[id] = original;
 				}
 			}
 		}
 
-		for (const pokemon of this.gameData!.species) {
+		for (const pokemon of this.gameData.species) {
 			const learnset = this.generateLearnset(pokemon);
-			if (pokemon.name == "??????????") continue;
+			if (pokemon.name === "??????????") continue;
 
 			const id = toID(pokemon.NAME.replace("SPECIES_", ""))
 				.replace("alolan", "alola")
 				.replace("galarian", "galar")
 				.replace("♀", "f");
-			this.learnsets[id] = { learnset: learnset };
+			this.learnsets[id] = {learnset: learnset};
 
-			let showdownData: SpeciesData | undefined =
+			const showdownData: SpeciesData | undefined =
 				this.showdownData.Pokedex[id];
 			let weightKg = showdownData?.weightkg;
 			let heightM = showdownData?.heightm;
 			let color = showdownData?.color;
 
-			if (showdownData == null) {
+			if (!showdownData) {
 				const original = originalFormLookup[toID(pokemon.name)];
 
-				if (original != null) {
+				if (original) {
 					weightKg = this.showdownData.Pokedex[id]?.weightkg;
 					heightM = this.showdownData.Pokedex[id]?.heightm;
 					color = this.showdownData.Pokedex[id]?.color;
@@ -196,7 +188,7 @@ export class DexParser {
 				name: pokemon.name.replace(" ", "-"),
 				num: pokemon.id,
 				types: pokemon.stats.types.map(
-					(index) => this.gameData!.typeT[index]
+					(index) => this.gameData.typeT[index]
 				),
 				abilities: this.getAbilityData(pokemon),
 				baseStats: this.getBaseStats(pokemon),
@@ -217,11 +209,12 @@ export class DexParser {
 	 * @returns The online dex move definition.
 	 */
 	private findMoveByID(id: number): compactMove {
-		const move = this.gameData!.moves.find((move) => move.id == id);
-		if (move == null)
+		const move = this.gameData.moves.find((move) => move.id === id);
+		if (!move) {
 			throw new Error(
 				`FATAL: Failed to find dex move referenced by id ${id}!`
 			);
+		}
 		return move;
 	}
 
@@ -232,7 +225,7 @@ export class DexParser {
 	 */
 	private generateLearnsetCode(parsedMove: ParsedMove): string {
 		const categoryCode = getCategoryCode(parsedMove.category);
-		const level = parsedMove.level != null ? parsedMove.level : "";
+		const level = parsedMove.level || "";
 		return `${this.config.learnsetGenPrefix}${categoryCode}${level}`;
 	}
 
@@ -244,26 +237,26 @@ export class DexParser {
 	private getMoveCategory(
 		move: compactMove
 	): "Physical" | "Special" | "Status" {
-		const category = this.gameData!.splitT[move.split];
+		const category = this.gameData.splitT[move.split];
 		switch (category) {
-			case "PHYSICAL":
-				return "Physical";
-			case "SPECIAL":
-				return "Special";
-			case "STATUS":
-				return "Status";
-			case "USE_HIGHEST_OFFENSE":
-			case "USE_HIGHEST_DAMAGE":
-				/// Leave them as special. The move flag highestOffense will denote this.
-				return "Special";
-			case "HITS_DEF":
-			case "HITS_SPDEF":
-				/// We will set a move flag for this as well.
-				return "Special";
-			default:
-				throw new Error(
-					`FATAL: Unrecognized move split value ${category} for ${move.name}`
-				);
+		case "PHYSICAL":
+			return "Physical";
+		case "SPECIAL":
+			return "Special";
+		case "STATUS":
+			return "Status";
+		case "USE_HIGHEST_OFFENSE":
+		case "USE_HIGHEST_DAMAGE":
+			/// Leave them as special. The move flag highestOffense will denote this.
+			return "Special";
+		case "HITS_DEF":
+		case "HITS_SPDEF":
+			/// We will set a move flag for this as well.
+			return "Special";
+		default:
+			throw new Error(
+				`FATAL: Unrecognized move split value ${category} for ${move.name}`
+			);
 		}
 	}
 
@@ -275,7 +268,7 @@ export class DexParser {
 	private getMoveType(move: compactMove): string {
 		// TODO: Dex moves can have more than one type?
 		// Showdown doesn't support this.
-		return this.gameData!.typeT[move.types[0]];
+		return this.gameData.typeT[move.types[0]];
 	}
 
 	/**
@@ -284,27 +277,27 @@ export class DexParser {
 	 * @returns The appropriate showdown MoveTarget.
 	 */
 	private getMoveTarget(move: compactMove): MoveTarget {
-		const target = this.gameData!.targetT[move.target];
+		const target = this.gameData.targetT[move.target];
 		switch (target) {
-			case "SELECTED":
-				return "any";
-			case "BOTH":
-				return "allAdjacentFoes";
-			case "USER":
-				return "self";
-			case "RANDOM":
-				return "randomNormal";
-			case "FOES_AND_ALLY":
-				return "allAdjacent";
-			case "DEPENDS":
-				/// TODO: What does DEPENDS mean?
-				return "scripted";
-			case "ALL_BATTLERS":
-				return "all";
-			case "OPPONENTS_FIELD":
-				return "foeSide";
-			case "ALLY":
-				return "adjacentAlly";
+		case "SELECTED":
+			return "any";
+		case "BOTH":
+			return "allAdjacentFoes";
+		case "USER":
+			return "self";
+		case "RANDOM":
+			return "randomNormal";
+		case "FOES_AND_ALLY":
+			return "allAdjacent";
+		case "DEPENDS":
+			/// TODO: What does DEPENDS mean?
+			return "scripted";
+		case "ALL_BATTLERS":
+			return "all";
+		case "OPPONENTS_FIELD":
+			return "foeSide";
+		case "ALLY":
+			return "adjacentAlly";
 		}
 
 		throw new Error(
@@ -315,12 +308,12 @@ export class DexParser {
 	private getDefensiveStatOveride(
 		move: compactMove
 	): StatIDExceptHP | undefined {
-		const category = this.gameData!.splitT[move.split];
+		const category = this.gameData.splitT[move.split];
 		switch (category) {
-			case "HITS_SPDEF":
-				return "spd";
-			case "HITS_DEF":
-				return "def";
+		case "HITS_SPDEF":
+			return "spd";
+		case "HITS_DEF":
+			return "def";
 		}
 
 		return undefined;
@@ -343,9 +336,8 @@ export class DexParser {
 		// TODO: kings rock affected flag
 
 		const flagData = move.flags.map((flag) =>
-			this.gameData!.flagsT[flag].toLowerCase()
-		);
-		const category = this.gameData!.splitT[move.split];
+			this.gameData.flagsT[flag].toLowerCase());
+		const category = this.gameData.splitT[move.split];
 
 		return {
 			overrideDefensiveStat: this.getDefensiveStatOveride(move),
@@ -357,17 +349,17 @@ export class DexParser {
 			multihit: flagData.includes("two strikes") ? 2 : undefined,
 			// TODO: Hardcoded recoil value of 1/3. needs updated.
 			recoil: flagData.includes("reckless boost") ? [1, 3] : undefined,
-			ignoreDefensive: flagData.includes("stat stages ignored")
-				? true
-				: undefined,
-			ignoreAbility: flagData.includes("target ability ignored")
-				? true
-				: undefined,
+			ignoreDefensive: flagData.includes("stat stages ignored") ?
+				true :
+				undefined,
+			ignoreAbility: flagData.includes("target ability ignored") ?
+				true :
+				undefined,
 			/// For protection moves (protect, kingsshield, etc) the id of the move is set as the volatileStatus.
 			/// TODO: Validate all protect moves come across okay.
-			volatileStatus: flagData.includes("protection move")
-				? this.getShowdownMoveId(move)
-				: undefined,
+			volatileStatus: flagData.includes("protection move") ?
+				this.getShowdownMoveId(move) :
+				undefined,
 			flags: {
 				contact: flagData.includes("makes contact") ? 1 : undefined,
 				/// If protect affected, we set it to undefined and check that in the higher level move definition.
@@ -380,9 +372,9 @@ export class DexParser {
 				snatch: flagData.includes("snatch affected") ? 1 : undefined,
 				dance: flagData.includes("dance") ? 1 : undefined,
 				field: flagData.includes("field based") ? 1 : undefined,
-				reflectable: flagData.includes("magic coat affected")
-					? 1
-					: undefined,
+				reflectable: flagData.includes("magic coat affected") ?
+					1 :
+					undefined,
 				kick: flagData.includes("striker boost") ? 1 : undefined,
 				bite: flagData.includes("strong jaw boost") ? 1 : undefined,
 				sound: flagData.includes("sound") ? 1 : undefined,
@@ -393,8 +385,8 @@ export class DexParser {
 				bone: flagData.includes("bone based") ? 1 : undefined,
 				defrost: flagData.includes("thaw user") ? 1 : undefined,
 				bypasssub: flagData.includes("hit in substitute") ? 1 : undefined,
-				highestOffense: category == "USE_HIGHEST_OFFENSE" ? 1 : undefined,
-				highestDamage: category == "USE_HIGHEST_DAMAGE" ? 1 : undefined,
+				highestOffense: category === "USE_HIGHEST_OFFENSE" ? 1 : undefined,
+				highestDamage: category === "USE_HIGHEST_DAMAGE" ? 1 : undefined,
 			},
 		};
 	}
@@ -477,39 +469,39 @@ export class DexParser {
 	 */
 	private getAbilityData(pokemon: CompactSpecie): SpeciesAbility {
 		const dexAbilities = pokemon.stats.abis
-			.map((index) => this.gameData!.abilities[index])
-			.filter((ability) => ability.name != "-------")
+			.map((index) => this.gameData.abilities[index])
+			.filter((ability) => ability.name !== "-------")
 			.map(this.getAbilityId);
 		const dexInnates = pokemon.stats.inns
-			.map((index) => this.gameData!.abilities[index])
-			.filter((ability) => ability.name != "-------")
+			.map((index) => this.gameData.abilities[index])
+			.filter((ability) => ability.name !== "-------")
 			.map(this.getAbilityId);
 		return {
 			0: this.formatAbility(dexAbilities[0]),
 			1:
-				dexAbilities.length >= 2
-					? this.formatAbility(dexAbilities[1])
-					: undefined,
+				dexAbilities.length >= 2 ?
+					this.formatAbility(dexAbilities[1]) :
+					undefined,
 			H:
-				dexAbilities.length >= 3
-					? this.formatAbility(dexAbilities[2])
-					: undefined,
+				dexAbilities.length >= 3 ?
+					this.formatAbility(dexAbilities[2]) :
+					undefined,
 			S:
-				dexAbilities.length >= 4
-					? this.formatAbility(dexAbilities[3])
-					: undefined,
+				dexAbilities.length >= 4 ?
+					this.formatAbility(dexAbilities[3]) :
+					undefined,
 			I1:
-				dexInnates.length >= 1
-					? this.formatAbility(dexInnates[0])
-					: undefined,
+				dexInnates.length >= 1 ?
+					this.formatAbility(dexInnates[0]) :
+					undefined,
 			I2:
-				dexInnates.length >= 2
-					? this.formatAbility(dexInnates[1])
-					: undefined,
+				dexInnates.length >= 2 ?
+					this.formatAbility(dexInnates[1]) :
+					undefined,
 			I3:
-				dexInnates.length >= 3
-					? this.formatAbility(dexInnates[2])
-					: undefined,
+				dexInnates.length >= 3 ?
+					this.formatAbility(dexInnates[2]) :
+					undefined,
 		};
 	}
 
@@ -544,7 +536,7 @@ export class DexParser {
 	 * @returns The showdown egg group.
 	 */
 	private getEggGroupId(dexGroup: string): string {
-		let lower = dexGroup.replace("EGG_GROUP_", "").toLowerCase();
+		const lower = dexGroup.replace("EGG_GROUP_", "").toLowerCase();
 		return `${lower[0].toUpperCase()}${lower.substring(1)}`;
 	}
 
@@ -555,7 +547,7 @@ export class DexParser {
 	 */
 	private getEggGroups(pokemon: CompactSpecie): string[] {
 		return pokemon.stats.eggG
-			.map((index) => this.gameData!.eggT[index])
+			.map((index) => this.gameData.eggT[index])
 			.map(this.getEggGroupId);
 	}
 
@@ -569,22 +561,22 @@ export class DexParser {
 		const evoLevels = pokemon.evolutions
 			.map((evolution) => evolution.rs)
 			.filter((spec) => !spec.startsWith("ITEM_"))
-			.filter((level) => level != null);
-		let data = {
+			.filter((level) => level || level === 0);
+		const data = {
 			evoLevel: evoLevels.length > 0 ? parseInt(evoLevels[0]) : undefined,
 			evoItem: evoItems.length > 0 ? evoItems[0] : undefined,
 
 			evos: pokemon.evolutions
-				.map((evolution) => this.gameData!.species[evolution.in]?.name)
-				.filter((value) => value != null),
+				.map((evolution) => this.gameData.species[evolution.in]?.name)
+				.filter((value) => value),
 		};
 
 		// JSON can't specify undefined and nulls will make typescript complain, so just delete any undefined keys.
-		if (data.evoLevel == null || isNaN(data.evoLevel)) {
+		if (data.evoLevel !== 0 && !data.evoLevel) {
 			delete data.evoLevel;
 		}
 
-		if (data.evoItem == null) {
+		if (!data.evoItem) {
 			delete data.evoItem;
 		}
 
@@ -592,15 +584,11 @@ export class DexParser {
 	}
 
 	private findPrevo(pokemon: CompactSpecie): string | undefined {
-		const index = this.gameData!.species.findIndex(
-			(species) => species.name == pokemon.name
+		const index = this.gameData.species.findIndex(
+			(species) => species.name === pokemon.name
 		);
 
-		return this.gameData!.species.find(
-			(species) =>
-				species.evolutions.find((evolution) => evolution.in == index) !=
-				null
-		)?.name;
+		return this.gameData.species.find((species) => species.evolutions.find((evolution) => evolution.in === index))?.name;
 	}
 }
 

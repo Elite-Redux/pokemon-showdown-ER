@@ -2,7 +2,7 @@ import fs from "fs";
 
 export function writeFileData(filepath: string, data: string[]): Promise<void> {
 	return new Promise<void>((res, rej) => {
-		var file = fs.createWriteStream(filepath);
+		const file = fs.createWriteStream(filepath);
 		file.on("error", (err: string) => {
 			console.debug(err);
 			rej();
@@ -17,12 +17,12 @@ export function writeFileData(filepath: string, data: string[]): Promise<void> {
 
 export class TypescriptFileGenerator {
 	fileData: string[] = [];
-	currentIndentation: number = 0;
+	currentIndentation = 0;
 	filepath: string;
 
 	constructor(filepath: string, fileHeader?: string) {
 		this.filepath = filepath;
-		if (fileHeader != null) this.fileData.push(fileHeader);
+		if (fileHeader) this.fileData.push(fileHeader);
 	}
 
 	indent() {
@@ -44,12 +44,12 @@ export class TypescriptFileGenerator {
 	}
 
 	addStringProperty(property: any, value: string | undefined) {
-		if (value == null) return;
+		if (value !== "" && !value) return;
 		this.addProperty(property, `"${value}"`);
 	}
 
 	addObjectProperty(property: any, value: object | undefined) {
-		if (value == null) return;
+		if (!value) return;
 		this.addProperty(
 			property,
 			JSON.stringify(value, null, 4 + this.currentIndentation)

@@ -1,5 +1,7 @@
 {
   "extends": "./.eslintrc-no-types.json",
+  // TODO fis tools/elite-redux at some point
+  "ignorePatterns": ["dex_repo/*", "tools/elite-redux/*"],
   "overrides": [
     {
       "files": ["./config/*.ts", "./data/**/*.ts", "./lib/*.ts", "./server/**/*.ts", "./server/**/*.tsx", "./sim/**/*.ts", "./tools/set-import/*.ts"],
