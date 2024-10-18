@@ -234,6 +234,24 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		desc: "The power of Fire-type attacks against this Pokemon is halved. This Pokemon takes no burn damage and ignores burn's damage reduction.",
 		shortDesc: "The power of Fire-type attacks against this Pokemon is halved; no burn damage.",
 	},
+	hustle: {
+		inherit: true,
+		onModifyAtkPriority: 5,
+		onModifyAtk() {},
+		onModifySpA() {},
+		onModifyDamage(damage) {
+			return this.modify(damage, 1.4);
+		},
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy, target, source, move) {
+			if (move.category !== 'Status' && typeof accuracy === 'number') {
+				return this.chainModify(.9);
+			}
+		},
+		desc: "This Pokemon's deals 1.4x damage but the accuracy of its physical attacks is multiplied by 0.9.",
+		shortDesc: "This Pokemon deals 1.4x more damage but accuracy of its attacks is 0.9x.",
+
+	},
 	hypercutter: {
 		inherit: true,
 		onModifyCritRatio(critRatio) {

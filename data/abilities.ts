@@ -7548,18 +7548,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	psychicmind: {
-		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (move.type === "Psychic" && attacker.hp <= attacker.maxhp / 3) {
-				this.debug("Psychic Mind boost");
-				return this.chainModify(1.5);
-			}
-		},
-		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
-			if (move.type === "Grass" && attacker.hp <= attacker.maxhp / 3) {
-				this.debug("Psychic Mind boost");
-				return this.chainModify(1.5);
+		onModifyDamage(atk, attacker, defender, move) {
+			if (move && move.type === "Psychic") {
+				if (attacker.hp <= attacker.maxhp / 3) {
+					this.debug("Psychic Mind boost");
+					return this.chainModify(1.5);
+				} else {
+					this.debug("Psychic Mind boost");
+					return this.chainModify(1.2);
+				}
 			}
 		},
 		name: "Psychic Mind",

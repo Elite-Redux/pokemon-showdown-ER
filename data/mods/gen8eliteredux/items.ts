@@ -109,14 +109,14 @@ export const Items: {[k: string]: ModdedItemData} = {
 			return this.chainModify(1.5);
 		},
 	},
-	// choicescarf: {
-	// 	inherit: true,
-	// 	onModifySpe(spe, pokemon) {},
-	// 	onModifySpeFull(spe, pokemon) {
-	// 		if (pokemon.volatiles["dynamax"]) return;
-	// 		return this.chainModify(1.5);
-	// 	},
-	// },
+	choicescarf: {
+		inherit: true,
+		onModifySpe(spe, pokemon) {},
+		onModifySpeFull(spe, pokemon) {
+			if (pokemon.volatiles["dynamax"]) return;
+			return this.chainModify(1.5);
+		},
+	},
 	choicespecs: {
 		inherit: true,
 		onModifySpA(spe, pokemon) {},
