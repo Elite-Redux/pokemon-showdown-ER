@@ -527,6 +527,8 @@ export class ServerStream extends Streams.ObjectReadWriteStream<string> {
 		this.sockets.set(socketid, socket);
 
 		let socketip = socket.remoteAddress;
+		console.debug("onConnection isTrustedProxyIp");
+		console.debug(socket.headers);
 		if (this.isTrustedProxyIp(socketip)) {
 			const ips = (socket.headers["x-forwarded-for"] || "")
 				.split(",")
