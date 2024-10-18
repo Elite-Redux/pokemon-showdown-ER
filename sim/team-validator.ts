@@ -444,8 +444,7 @@ export class TeamValidator {
 			// Profanity Filter
 			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink', 'nibba', "faggot"];
 			// console.log(set.name);
-			for (const i in bannedWords) {
-				const word = bannedWords[i];
+			for (const word of bannedWords) {
 				// console.log(set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a'));
 				if (set.name.toLowerCase().replace('1', 'i').replace('3', 'e').replace('@', 'a').includes(word)) {
 					problems.push(`Nickname "${set.name}" cannot contain the word "${word}"`);

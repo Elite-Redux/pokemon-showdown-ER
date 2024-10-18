@@ -29,7 +29,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === "frostorb") {
 				this.add("-status", target, "frz", "[from] item: Frost Orb");
-			} else if (sourceEffect && sourceEffect.effectType == "Ability") {
+			} else if (sourceEffect && sourceEffect.effectType === "Ability") {
 				this.add(
 					"-status",
 					target,
@@ -88,7 +88,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		 * Source effect will the ability or move that caused the status.
 		 */
 		onStart(target, source, sourceEffect) {
-			if (sourceEffect && sourceEffect.effectType == "Ability") {
+			if (sourceEffect && sourceEffect.effectType === "Ability") {
 				this.add(
 					"-status",
 					target,
@@ -112,7 +112,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		 * NOTE: This should cover non-self healing moves i.e. enemy or partner healing moves used on the bleeding pokemon
 		 */
 		// onBeforeMove(source, target, move) {
-		// 	if (move.flags['heal'] && move.category == "Status") {
+		// 	if (move.flags['heal'] && move.category === "Status") {
 		// 		/// Outright block status healing moves.
 		// 		this.add('cant', target, 'status: bleed', move);
 		// 		target.cureStatus();
@@ -128,16 +128,16 @@ export const Conditions: { [k: string]: ConditionData } = {
 		 * It's possible that some conditional messages may be desired here, but more work is needed to iron out all those details.
 		 */
 		onTryHeal(amount, target, source, effect) {
-			if (effect.effectType == "Condition" && effect.id == "wish") {
+			if (effect.effectType === "Condition" && effect.id === "wish") {
 				this.add("-message", `${target.name}'s wish cured it's bleed!`);
 				target.cureStatus(true);
 			}
 
-			if (effect.effectType == "Move") {
+			if (effect.effectType === "Move") {
 				const move = effect as Move;
 
 				if (move.basePower < 0) target.cureStatus();
-				if (move.category == "Status") target.cureStatus();
+				if (move.category === "Status") target.cureStatus();
 			}
 
 			// / This modifies the heal by a multiple of 0, effectively preventing it.
@@ -1192,17 +1192,17 @@ export const Conditions: { [k: string]: ConditionData } = {
 	 */
 	healingblocked: {
 		onBeforeMove(source: Pokemon, target: Pokemon, effect: ActiveMove) {
-			// if (target == this.effectState.target) return;
+			// if (target === this.effectState.target) return;
 			// if (target.allies().includes(this.effectState.target)) return;
 			if (!effect.flags["heal"]) return;
 			// / Remove heal fraction since soft-boiled doesn't seem to respect the chainModifier.
 			if (effect.heal) effect.heal = undefined;
-			if (target == null) {
+			if (!target) {
 				console.debug("FATAL: can't get target!");
 				target = this.effectState.target;
 			}
 
-			if (effect.category == "Status") {
+			if (effect.category === "Status") {
 				this.add(
 					"cant",
 					target,
@@ -1215,7 +1215,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 			return this.chainModify(0);
 		},
 		onTryHeal(damage, target, source, effect) {
-			if (effect == null) {
+			if (!effect) {
 				/**
 				 * onTryHeal has two different callbacks for diff cases.
 				 * When a berry is healing the pokemon,
@@ -1227,15 +1227,15 @@ export const Conditions: { [k: string]: ConditionData } = {
 			let move = effect;
 
 			// Don't need to do this here because it will only activate on the right pokemon.
-			// if (target && target == this.effectState.target) return;
+			// if (target && target === this.effectState.target) return;
 			// else if (target && target?.allies().includes(this.effectState.target))
 			// 	return;
-			if (target == null) {
+			if (!target) {
 				console.debug("FATAL: can't get target!");
 				target = this.effectState.target;
 			}
 
-			if (effect && effect.id == "drain") {
+			if (effect && effect.id === "drain") {
 				move = Dex.moves.get(target.moveThisTurn as string) as Effect;
 			}
 

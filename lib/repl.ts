@@ -66,7 +66,7 @@ export const Repl = new (class {
 	 */
 	start(filename: string, evalFunction: (input: string) => any) {
 		let config = typeof Config !== "undefined" ? Config : {};
-		if (config.Config != null) config = config.Config; // In certain scenarios (team-validator-async.ts) the config global object gets nested. Handle that here.
+		if (config.Config) config = config.Config; // In certain scenarios (team-validator-async.ts) the config global object gets nested. Handle that here.
 		if (config.repl !== undefined && !config.repl) return;
 
 		// TODO: Windows does support the REPL when using named pipes. For now,

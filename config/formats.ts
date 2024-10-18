@@ -47,7 +47,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -193,7 +193,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -339,7 +339,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -478,7 +478,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -619,7 +619,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -759,7 +759,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -907,7 +907,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -1052,7 +1052,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -1196,7 +1196,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -1340,7 +1340,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
@@ -1487,7 +1487,7 @@ export const Formats: FormatList = [
 				.map((key) => species.abilities[key as "I1" | "I2" | "I3"]);
 			for (const innateName of innateList) {
 				// Checks if set ability is an innate, which is not allowed
-				if (set.ability == innateName) {
+				if (set.ability === innateName) {
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];

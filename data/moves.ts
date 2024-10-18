@@ -1953,12 +1953,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 					this.add('-enditem', target, item.name, '[from] stealeat', '[move] Bug Bite', '[of] ' + source);
 					if (this.singleEvent('Eat', item, null, source, null, null)) {
 						this.runEvent('EatItem', source, null, null, item);
-						if (item.id === 'leppaberry') target.staleness = 'external';
+						if (item.id === 'leppaberry') { target.staleness = 'external'; }
 					}
-					if (item.onEat) source.ateBerry = true;
+					if (item.onEat) {
+						source.ateBerry = true;
+					}
+				} else {
+					// Otherwise it should be knocked off anyways by target.takeItem
+					this.add('-enditem', target, item.name, '[from] move: Bug Bite', '[of] ' + source);
 				}
-				// Otherwise it should be knocked off anyways by target.takeItem
-				else { this.add('-enditem', target, item.name, '[from] move: Bug Bite', '[of] ' + source); }
 			}
 		},
 		secondary: null,
@@ -11100,7 +11103,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onModifyMove(move, pokemon) {
 			// / If the move's magnitude was already specified,
 			// / Don't recalculate.
-			if (move.magnitude != null) return;
+			if (move.magnitude) return;
 			const i = this.random(100);
 			if (i < 5) {
 				move.magnitude = 4;
@@ -13799,7 +13802,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness(typeMod, target, type) {
-			if (type == 'Flying') return 1;
+			if (type === 'Flying') return 1;
 		},
 		secondary: {
 			chance: 30,
@@ -15134,7 +15137,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		flags: {charge: 1, protect: 1, mirror: 1, nosleeptalk: 1, failinstruct: 1, wind: 1},
 		onEffectiveness(typeMod, target, type, move) {
-			if (type == 'Rock') return 1;
+			if (type === 'Rock') return 1;
 		},
 		critRatio: 2,
 		secondary: null,
@@ -17409,7 +17412,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness(typeMod, target, type) {
-			if (type == 'Water') return 1;
+			if (type === 'Water') return 1;
 		},
 		secondary: {
 			chance: 30,
@@ -20489,7 +20492,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					return 7;
 				}
 
-				if (effect?.effectType == "Ability" && effect.id === "twistdimension") {
+				if (effect?.effectType === "Ability" && effect.id === "twistdimension") {
 					// / The twisted dimension ability should only enable trick room for 3 turns, not the usual 5.
 					return 3;
 				}
@@ -20500,7 +20503,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (this.gen <= 5) this.effectState.duration = 0;
 				if (source?.hasAbility('persistent')) {
 					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source, '[persistent]');
-				} else if (effect.effectType == "Ability" && effect.id == "twistdimension") {
+				} else if (effect.effectType === "Ability" && effect.id === "twistdimension") {
 					this.effectState.duration = 3; // Twist Dimension duration change
 					this.add("-fieldstart", 'move: Trick Room', `[of] ${source}`, '[twistdimension]');
 				} else {
@@ -23346,7 +23349,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		ignoreImmunity: {'Ground': true},
 		onEffectiveness(typeMod, target, type, move) {
 			if (!target) return;
-			if (type == 'Flying') return 1;
+			if (type === 'Flying') return 1;
 		},
 		secondary: null,
 		target: "normal",
@@ -23424,7 +23427,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		ignoreImmunity: {'Fighting': true},
 		onEffectiveness(typeMod, target, type, move) {
 			if (!target) return;
-			if (type == 'Ghost') return 1;
+			if (type === 'Ghost') return 1;
 		},
 		secondary: null,
 		target: "normal",

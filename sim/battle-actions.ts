@@ -347,12 +347,12 @@ export class BattleActions {
 		}
 	}
 
-	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: Object,) {
+	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: any) {
 		type MutableMove = {-readonly [K in keyof Move]: Move[K]};
 		const nextMutableMove: MutableMove = move;
 		if (moveMutations) {
 			for (const key of Object.keys(moveMutations)) {
-				(nextMutableMove as any)[key] = (moveMutations as any)[key];
+				(nextMutableMove as any)[key] = moveMutations[key];
 			}
 		}
 		const nextMove: Move = nextMutableMove;
@@ -1735,7 +1735,7 @@ export class BattleActions {
 		} else if (move.multihitType === 'dual') {
 			const bondModifier = 0.75;
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
-		} else if (move.multihitType == "ragingmoth") {
+		} else if (move.multihitType === "ragingmoth") {
 			const bondModifier = 0.75;
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
 		}

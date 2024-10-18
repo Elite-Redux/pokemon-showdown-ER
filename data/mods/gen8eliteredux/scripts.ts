@@ -85,7 +85,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			} else if (move.multihitType === 'dual') {
 				const bondModifier = 0.75;
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
-			} else if (move.multihitType == "ragingmoth") {
+			} else if (move.multihitType === "ragingmoth") {
 				const bondModifier = 0.75;
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
 			}

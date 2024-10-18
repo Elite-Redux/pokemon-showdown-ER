@@ -2714,7 +2714,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	longreach: {
 		onModifyMove(move) {
 			if (move.flags["contact"]) delete move.flags["contact"];
-			else if (move.category == 'Physical') this.chainModify(1.2);
+			else if (move.category === 'Physical') this.chainModify(1.2);
 		},
 		name: "Long Reach",
 		rating: 1,
@@ -3870,8 +3870,16 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			this.add("-ability", pokemon, "Pressure");
 			this.add('-clearallboost');
-			for (const pokemon of this.getAllActive()) {
-				pokemon.clearBoosts();
+
+			for (const active of this.getAllActive()) {
+				for (const boostName in active.boosts) {
+					if (active === pokemon) {
+						active.boosts[boostName as BoostID] = Math.max(0, active.boosts[boostName as BoostID]);
+					} else {
+						active.boosts[boostName as BoostID] = Math.min(0, active.boosts[boostName as BoostID]);
+					}
+				}
+				active.clearBoosts();
 			}
 		},
 		name: "Pressure",
@@ -6843,8 +6851,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	dreamcatcher: {
 		onModifyDamage(bp, source, target, move) {
-			for (const target of source.foes()) {
-				if (target.status === "slp") {
+			for (const foe of source.foes()) {
+				if (foe.status === "slp") {
 					return this.chainModify(2);
 				}
 			}
@@ -6860,7 +6868,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	nocturnal: {
 		onSourceModifyDamage(atk, attacker, defender, move) {
-			if (move.type === "Dark" || "Fairy") {
+			if (move.type === "Dark" || move.type === "Fairy") {
 				return this.chainModify(0.75);
 			}
 		},
@@ -8530,7 +8538,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("feintattack");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -8666,7 +8674,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	fungalinfection: {
 		onAfterMove(source, target, move) {
-			if (target.hp > 0 && target != source && move.category !== "Status") {
+			if (target.hp > 0 && target !== source && move.category !== "Status") {
 				if (!target.volatiles["leechseed"]) {
 					this.add("-activate", source, "ability: Fungal Infection");
 					target.addVolatile("leechseed", this.effectState.target);
@@ -8881,7 +8889,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onFoeAfterBoost(boost, target, source, effect) {
 			let willBurst = false;
 			const pokemon = this.effectState.target;
-			const positiveBoosts: Partial<BoostsTable> = {};
 			let i: BoostID;
 			for (i in boost) {
 				if (boost[i]! > 0) {
@@ -8914,7 +8921,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onFoeAfterBoost(boost, target, source, effect) {
 			let willBlow = false;
 			const pokemon = this.effectState.target;
-			const positiveBoosts: Partial<BoostsTable> = {};
 			let i: BoostID;
 			for (i in boost) {
 				if (boost[i]! > 0) {
@@ -9368,7 +9374,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	absorbant: {
 		onAfterMove(source, target, move) {
-			if (target.hp > 0 && target != source && move.drain) {
+			if (target.hp > 0 && target !== source && move.drain) {
 				if (!target.volatiles["leechseed"]) {
 					this.add("-activate", source, "ability: Absorbant");
 					target.addVolatile("leechseed", this.effectState.target);
@@ -9422,7 +9428,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("scratch");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -9639,14 +9645,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	// Not updated since 1.6 -- looks complete
 	angelswrath: {
 		// oh boy, here we go
-		onModifyMove(move, pokemon, target) {
-			if (!move.secondaries) {
-				move.secondaries = [];
+		onModifyMove(modifyMove, modifyPokemon, modifyTarget) {
+			if (!modifyMove.secondaries) {
+				modifyMove.secondaries = [];
 			}
-			switch (move.name) {
+			switch (modifyMove.name) {
 			case "Tackle":
-				move.basePower = 100;
-				move.secondaries.push({
+				modifyMove.basePower = 100;
+				modifyMove.secondaries.push({
 					chance: 100,
 					volatileStatus: "disable",
 					onHit(target, source, move) {
@@ -9660,9 +9666,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				break;
 
 			case "Electroweb":
-				move.basePower = 155;
-				move.accuracy = true;
-				move.secondaries.push({
+				modifyMove.basePower = 155;
+				modifyMove.accuracy = true;
+				modifyMove.secondaries.push({
 					chance: 100,
 					onHit(target, source, move) {
 						if (source.isActive) {
@@ -9679,9 +9685,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				break;
 
 			case "Bug Bite":
-				move.basePower = 140;
-				move.drain = [1, 1];
-				move.onAfterHit = (target, source) => {
+				modifyMove.basePower = 140;
+				modifyMove.drain = [1, 1];
+				modifyMove.onAfterHit = (target, source) => {
 					if (source.hp) {
 						const item = target.takeItem();
 						if (item) {
@@ -9698,23 +9704,23 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				break;
 
 			case "Poison Sting":
-				move.basePower = 120;
-				move.secondaries.push({
+				modifyMove.basePower = 120;
+				modifyMove.secondaries.push({
 					chance: 100,
 					status: "tox",
 					ability: this.dex.abilities.get("angelswrath"),
 				});
-				move.onEffectiveness = (typeMod, target, type) => {
+				modifyMove.onEffectiveness = (typeMod, target, type) => {
 					if (type === "Steel") return 1;
 				};
-				if (!move.ignoreImmunity) move.ignoreImmunity = {};
-				if (move.ignoreImmunity !== true) {
-					move.ignoreImmunity["Poison"] = true;
+				if (!modifyMove.ignoreImmunity) modifyMove.ignoreImmunity = {};
+				if (modifyMove.ignoreImmunity !== true) {
+					modifyMove.ignoreImmunity["Poison"] = true;
 				}
 				break;
 
 			case "String Shot":
-				move.onAfterMove = (source, target, move) => {
+				modifyMove.onAfterMove = (source, target, move) => {
 					if (move.hit >= 1) {
 						const sideConditions = [
 							"spikes",
@@ -9731,7 +9737,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				};
 				break;
 			case "Harden":
-				move.onAfterMove = (source, target, move) => {
+				modifyMove.onAfterMove = (source, target, move) => {
 					this.add("-activate", source, "ability: Angel's Wrath");
 					this.boost(
 						{
@@ -9748,8 +9754,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				};
 				break;
 			case "Iron Defense":
-				move.priority = 4;
-				move.onAfterMove = (source, target, move) => {
+				modifyMove.priority = 4;
+				modifyMove.onAfterMove = (source, target, move) => {
 					// Executes special Angel's Shield
 					this.add("-activate", target, "ability: Angel's Wrath");
 					this.actions.useMove(Dex.moves.get("angelsshield"), source);
@@ -9951,7 +9957,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.debug("Monkey switches in");
 			const nextMove = Dex.moves.get("tickle");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -10049,10 +10055,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Lumberjack",
 		shortDesc: "1.5x damage to Grass types.",
 		onModifyDamage(atk, attacker, defender, move) {
-			if (
-				defender.types.find((type) =>
-					type.toLowerCase().includes("grass")) == null
-			) { return; }
+			if (!defender.types.find((type) => type.toLowerCase().includes("grass"))) { return; }
 			this.debug("lumberjack boost");
 			return this.chainModify(1.5);
 		},
@@ -10144,12 +10147,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			 * Weirdly, this function call returns true if the type is NOT immune, despite it's name.
 			 */
 			if (!this.dex.getImmunity("bld", source)) return;
-			if (move.category != "Special") return;
+			if (move.category !== "Special") return;
 			/**
 			 * This check prevents additional ability activation messages and failure messages
 			 * from trying to activate bleed on a pokemon who is already bleeding.
 			 */
-			if (source.status == "bld") return;
+			if (source.status === "bld") return;
 			/**
 			 * This ability has a 30% chance to activate, here we short circuit if that random chance fails.
 			 */
@@ -10178,9 +10181,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "30% chance to bleed on contact.",
 		onDamagingHit(damage, target, source, move) {
 			if (!this.dex.getImmunity("bld", source)) return;
-			if (move.flags["contact"] == null) return;
+			if (!move.flags["contact"]) return;
 			if (!this.randomChance(3, 10)) return;
-			if (source.status == "bld") return;
+			if (source.status === "bld") return;
 			this.add("-activate", target, "ability: Spike Armor");
 			source.trySetStatus(
 				"bld",
@@ -10371,7 +10374,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		// / Plasma Lamp boost.
 		onSourceModifyDamage(atk, attacker, defender, move) {
-			if (move.type === "Electric" || move.type == "Fire") {
+			if (move.type === "Electric" || move.type === "Fire") {
 				this.debug("Plasma Lamp boost");
 				return this.chainModify(1.2);
 			}
@@ -10379,7 +10382,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		// / Modified Compound Eyes boost.
 		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (typeof accuracy !== "number") return;
-			if (move.type !== "Fire" && move.type != "Electric") return;
+			if (move.type !== "Fire" && move.type !== "Electric") return;
 			this.debug("plasma lamp - enhancing accuracy");
 			return this.chainModify(1.2);
 		},
@@ -10429,7 +10432,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.chainModify(1.3);
 			}
 
-			if (move.type == "Water" && this.field.weather == "sunnyday") {
+			if (move.type === "Water" && this.field.weather === "sunnyday") {
 				this.debug("water sun boost offset");
 				this.chainModify(1.5);
 			}
@@ -10964,7 +10967,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("stringshot");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11015,7 +11018,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("trickortreat");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11037,7 +11040,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("powder");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11084,7 +11087,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("telekinesis");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11175,7 +11178,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("heartswap");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11315,7 +11318,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("torment");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11366,7 +11369,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("doomdesire");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11661,7 +11664,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("disable");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11738,7 +11741,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("sandattack");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -11840,18 +11843,17 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (
 				move.secondary &&
 				move.secondary.status &&
-				move.secondary.status == "par"
+				move.secondary.status === "par"
 			) {
 				// Replace individual paralyze effect chances with brn.
 				move.secondary.status = "brn";
 			}
 			if (move.secondaries) {
-				for (let i = 0; i < move.secondaries.length; i++) {
-					const secondary = move.secondaries[i];
+				for (const secondary of move.secondaries) {
 					// Ignore any secondaries that aren't paralysis chance.
-					if (!secondary.status || secondary.status != "par") return;
+					if (!secondary.status || secondary.status !== "par") return;
 					// Replace the paralysis with burn.
-					move.secondaries[i].status = "brn";
+					secondary.status = "brn";
 				}
 			}
 		},
@@ -11969,7 +11971,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const nextMove = Dex.moves.get("quash");
 			let targetLoc = 4;
-			const target = pokemon.side.foes().forEach((a) => {
+			pokemon.side.foes().forEach((a) => {
 				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
 			});
 			if (targetLoc < 4 && targetLoc > 0) {
@@ -12590,7 +12592,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onStart(pokemon) {
 			if (!this.effectState.wishCount) return;
-			const target = pokemon.foes()[0];
 			this.actions.useMove(Dex.moves.get("wish"), pokemon);
 			pokemon.activeMoveActions = 0;
 		},
