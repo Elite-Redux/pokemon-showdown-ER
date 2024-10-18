@@ -165,16 +165,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 148,
 	},
 	angerpoint: {
-		onHit(target, source, move) {
-			if (move.category === "Status") return;
-			if (!target.hp) return;
-			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
-				this.boost({atk: 12}, target, target);
-			}
-		},
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === "Status") return;
-			if (damage && move?.effectType === 'Move') {
+			if (!target.hp) return;
+			if (target === source) return;
+			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
+				this.boost({atk: 12}, target, target);
+			} else if (move?.effectType === "Move") {
 				this.boost({atk: 1}, target, target);
 			}
 		},
@@ -5053,9 +5049,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 242,
 	},
 	stamina: {
-		onHit(target, source, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (!target.hp) return;
-			if (move.category === "Status") return;
+			if (target === source) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({def: 12}, target, target);
 			} else if (move?.effectType === "Move") {
@@ -10583,10 +10579,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.effectState.swordBoost = true;
 			this.boost({atk: 1}, pokemon);
 		},
-		onHit(target, source, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (!target.hp) return;
+			if (target === source) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({atk: 12}, target, target);
+			} else if (move?.effectType === "Move") {
+				this.boost({atk: 1}, target, target);
 			}
 		},
 	},
@@ -10598,8 +10597,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.effectState.shieldBoost = true;
 			this.boost({def: 1}, pokemon);
 		},
-		onDamagingHit(damage, target, source, effect) {
-			this.boost({def: 1});
+		onDamagingHit(damage, target, source, move) {
+			if (!target.hp) return;
+			if (target === source) return;
+			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
+				this.boost({def: 12}, target, target);
+			} else if (move?.effectType === "Move") {
+				this.boost({def: 1}, target, target);
+			}
 		},
 	},
 	crownedking: {
@@ -11467,8 +11472,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	tippingpoint: {
 		name: "Tipping Point",
 		shortDesc: "Getting hit raises Sp. Atk. Critical hits maximize Sp. Atk.",
-		onHit(target, source, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (!target.hp) return;
+			if (target === source) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({spa: 12}, target, target);
 			} else if (move?.effectType === "Move") {
