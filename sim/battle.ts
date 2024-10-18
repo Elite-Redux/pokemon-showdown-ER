@@ -2205,12 +2205,12 @@ export class Battle {
 		if (nature.plus) {
 			s = nature.plus;
 			const stat = stats[s];
-			stats[s] = tr(tr(stat * 110, 16) / 100);
+			stats[s] = tr(tr(stat * 110) / 100);
 		}
 		if (nature.minus) {
 			s = nature.minus;
 			const stat = stats[s];
-			stats[s] = tr(tr(stat * 90, 16) / 100);
+			stats[s] = tr(tr(stat * 90) / 100);
 		}
 		return stats;
 	}
