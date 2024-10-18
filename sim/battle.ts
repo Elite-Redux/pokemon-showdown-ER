@@ -469,12 +469,7 @@ export class Battle {
 		}
 	}
 
-	/**
-	 * Runs an event with no source on each effect on the field, in Speed order.
-	 *
-	 * Unlike `eachEvent`, this contains a lot of other handling and is intended only for the residual step.
-	 */
-	residualEvent(eventid: string, relayVar?: any) {
+	getAllHandlers(eventid: string): EventListener[] {
 		const callbackName = `on${eventid}`;
 		let handlers = this.findBattleEventHandlers(callbackName, 'duration');
 		handlers = handlers.concat(this.findFieldEventHandlers(this.field, `onField${eventid}`, 'duration'));
@@ -489,13 +484,23 @@ export class Battle {
 				handlers = handlers.concat(this.findFieldEventHandlers(this.field, callbackName, undefined, active));
 			}
 		}
+		return handlers;
+	}
+
+	/**
+	 * Runs an event with no source on each effect on the field, in Speed order.
+	 *
+	 * Unlike `eachEvent`, this contains a lot of other handling and is intended only for the residual step.
+	 */
+	residualEvent(eventid: string, relayVar?: any) {
+		const handlers = this.getAllHandlers(eventid);
 		this.speedSort(handlers);
 		while (handlers.length) {
 			const handler = handlers[0];
 			handlers.shift();
 			const effect = handler.effect;
 			if ((handler.effectHolder as Pokemon).fainted) continue;
-			if (handler.end && handler.state && handler.state.duration) {
+			if (handler.end && handler.state && handler.state.duration && !handler.state.startedThisTurn) {
 				handler.state.duration--;
 				if (!handler.state.duration) {
 					const endCallArgs = handler.endCallArgs || [handler.effectHolder, effect.id];
@@ -2666,6 +2671,9 @@ export class Battle {
 
 		case 'beforeTurn':
 			this.eachEvent('BeforeTurn');
+			for (const handler of this.getAllHandlers('Residual')) {
+				if (handler.state) handler.state.startedThisTurn = false;
+			}
 			break;
 		case 'residual':
 			this.add('');

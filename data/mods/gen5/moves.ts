@@ -484,6 +484,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (source?.hasItem('lightclay')) {
 					return 8;
@@ -685,6 +686,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (source?.hasItem('lightclay')) {
 					return 8;

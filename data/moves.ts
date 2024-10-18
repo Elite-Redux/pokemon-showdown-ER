@@ -835,6 +835,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (effect?.effectType === 'Ability') {
 					if (source?.hasItem('lightclay')) {
@@ -5453,6 +5454,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		condition: {
 			duration: 4,
+			countFullRounds: true,
 			onSideStart(targetSide) {
 				this.add('-sidestart', targetSide, 'Fire Pledge');
 			},
@@ -7751,6 +7753,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		condition: {
 			duration: 4,
+			countFullRounds: true,
 			onSideStart(targetSide) {
 				this.add('-sidestart', targetSide, 'Grass Pledge');
 			},
@@ -10706,6 +10709,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		sideCondition: 'luckychant',
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Lucky Chant'); // "The Lucky Chant shielded [side.name]'s team from critical hits!"
 			},
@@ -10961,6 +10965,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pseudoWeather: 'magicroom',
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Magic Room');
@@ -12703,6 +12708,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pseudoWeather: 'mudsport',
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			onFieldStart(field, source) {
 				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
 			},
@@ -18499,6 +18505,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		sideCondition: 'stickyweb',
 		condition: {
 			duration: 0, //
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (effect?.effectType === 'Ability') {
 					return 5;
@@ -21114,6 +21121,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		condition: {
 			duration: 4,
+			countFullRounds: true,
 			onSideStart(targetSide) {
 				this.add('-sidestart', targetSide, 'Water Pledge');
 			},
@@ -21190,6 +21198,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pseudoWeather: 'watersport',
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			onFieldStart(field, source) {
 				this.add('-fieldstart', 'move: Water Sport', '[of] ' + source);
 			},
@@ -21549,6 +21558,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pseudoWeather: 'wonderroom',
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Wonder Room');

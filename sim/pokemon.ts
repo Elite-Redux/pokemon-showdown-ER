@@ -33,6 +33,7 @@ interface Attacker {
 export interface EffectState {
 	// TODO: set this to be an actual number after converting data/ to .ts
 	duration?: number | any;
+	startedThisTurn: boolean | undefined;
 	effectSource?: "Move" | "Ability" | "Condition" | null;
 	[k: string]: any;
 }
@@ -2343,6 +2344,7 @@ export class Pokemon {
 		}
 		if (sourceEffect) this.volatiles[status.id].sourceEffect = sourceEffect;
 		if (status.duration) this.volatiles[status.id].duration = status.duration;
+		this.volatiles[status.id].startedThisTurn = status.countFullRounds;
 		if (status.durationCallback) {
 			this.volatiles[status.id].duration = status.durationCallback.call(
 				this.battle,

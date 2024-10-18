@@ -290,6 +290,7 @@ export class Side {
 			source,
 			sourceSlot: source.getSlot(),
 			duration: status.duration,
+			startedThisTurn: status.countFullRounds,
 		};
 		if (status.durationCallback) {
 			this.sideConditions[status.id].duration =

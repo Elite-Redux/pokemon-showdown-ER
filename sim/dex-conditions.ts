@@ -653,6 +653,7 @@ export class Condition extends BasicEffect implements
 	Readonly<BasicEffect & SideConditionData & FieldConditionData & PokemonConditionData> {
 	declare readonly effectType: 'Condition' | 'Weather' | 'Status' | 'Terastal';
 	declare readonly counterMax?: number;
+	declare readonly countFullRounds?: boolean;
 
 	/**
 	 * This is called to override the default duration of a given condition depending on activation criteria.

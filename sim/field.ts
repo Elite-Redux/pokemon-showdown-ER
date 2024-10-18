@@ -84,6 +84,7 @@ export class Field {
 			this.weatherState = prevWeatherState;
 			return false;
 		}
+		this.weatherState.startedThisTurn = status.countFullRounds;
 		this.battle.eachEvent('WeatherChange', sourceEffect);
 		return true;
 	}
@@ -163,6 +164,7 @@ export class Field {
 			source,
 			sourceSlot: source.getSlot(),
 			duration: status.duration,
+			startedThisTurn: status.countFullRounds,
 		};
 		if (status.durationCallback) {
 			this.terrainState.duration = status.durationCallback.call(this.battle, source, source, sourceEffect);

@@ -30,6 +30,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		name: 'RainDance',
 		effectType: 'Weather',
 		duration: 8,
+		countFullRounds: true,
 		durationCallback(source, pokemon, effect) {
 			if (source.hasItem('damprock')) return 12;
 			return 8;
@@ -66,6 +67,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		name: 'SunnyDay',
 		effectType: 'Weather',
 		duration: 8,
+		countFullRounds: true,
 		durationCallback(source, pokemon, effect) {
 			if (source.hasItem('damprock')) return 12;
 			return 8;
@@ -110,6 +112,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		name: 'Sandstorm',
 		effectType: 'Weather',
 		duration: 8,
+		countFullRounds: true,
 		durationCallback(source, pokemon, effect) {
 			if (source.hasItem('damprock')) return 12;
 			return 8;
@@ -146,6 +149,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		name: 'Hail',
 		effectType: 'Weather',
 		duration: 8,
+		countFullRounds: true,
 		durationCallback(source, pokemon, effect) {
 			if (source.hasItem('icyrock')) return 12;
 			return 8;

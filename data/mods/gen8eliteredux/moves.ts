@@ -634,6 +634,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1037,6 +1038,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1137,6 +1139,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1446,6 +1449,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1766,6 +1770,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 3,
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Tailwind');
