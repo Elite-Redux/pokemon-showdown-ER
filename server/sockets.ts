@@ -541,6 +541,8 @@ export class ServerStream extends Streams.ObjectReadWriteStream<string> {
 			}
 		}
 
+		console.debug("settled on socketip of ", socketip);
+
 		this.push(`*${socketid}\n${socketip}\n${socket.protocol}`);
 
 		socket.on("data", (message) => {
