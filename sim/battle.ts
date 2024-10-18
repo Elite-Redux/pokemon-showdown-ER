@@ -721,14 +721,14 @@ export class Battle {
 		if (source instanceof Pokemon) effectSource = source;
 		const handlers = this.findEventHandlers(target, eventid, effectSource);
 		if (eventid === "ModifySpePrimary") {
-			handlers.concat(this.findEventHandlers(target, "ModifySpe", effectSource));
+			handlers.push(...this.findEventHandlers(target, "ModifySpe", effectSource));
 		} else if (eventid === "ModifySpeSecondary") {
-			handlers.concat(this.findEventHandlers(target, "ModifySpePrimary", effectSource));
-			handlers.concat(this.findEventHandlers(target, "ModifySpe", effectSource));
+			handlers.push(...this.findEventHandlers(target, "ModifySpePrimary", effectSource));
+			handlers.push(...this.findEventHandlers(target, "ModifySpe", effectSource));
 		} else if (eventid === "ModifySpe") {
-			handlers.concat(this.findEventHandlers(target, "ModifySpePrimary", effectSource));
-			handlers.concat(this.findEventHandlers(target, "ModifySpeSecondary", effectSource));
-			handlers.concat(this.findEventHandlers(target, "ModifySpeFull", effectSource));
+			handlers.push(...this.findEventHandlers(target, "ModifySpePrimary", effectSource));
+			handlers.push(...this.findEventHandlers(target, "ModifySpeSecondary", effectSource));
+			handlers.push(...this.findEventHandlers(target, "ModifySpeFull", effectSource));
 		}
 		if (onEffect) {
 			if (!sourceEffect) throw new Error("onEffect passed without an effect");
