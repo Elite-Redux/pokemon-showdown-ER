@@ -284,15 +284,15 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			let bonusStat = 0;
-			for (const [secondaryStat, secondaryBoost] of move.secondaryOffensiveStats || [])
+			for (const [secondaryStat, secondaryMultiplier] of move.secondaryOffensiveStats || [])
 			{
-				if (secondaryStat && secondaryBoost > 0 && this.dex.getActiveMove(move.baseMove || "")?.overrideOffensiveStat !== "def")
+				if (secondaryStat && secondaryMultiplier > 0 && this.dex.getActiveMove(move.baseMove || "")?.overrideOffensiveStat !== "def")
 				{
 					let secondaryBoost = attacker.boosts[secondaryStat]
 					if (ignoreNegativeOffensive && secondaryBoost < 0) secondaryBoost = 0;
 					else if (move.ignoreOffensive) secondaryBoost = 0;
 					else if (secondaryStat === attackStat) secondaryBoost = 0;
-					bonusStat += attacker.calculateStat(secondaryStat, secondaryBoost, secondaryBoost, source, target, move, 0);
+					bonusStat += attacker.calculateStat(secondaryStat, secondaryBoost, secondaryMultiplier, source, target, move, 0);
 				}
 			}
 
