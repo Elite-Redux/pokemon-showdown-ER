@@ -26,7 +26,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"HP Percentage Mod",
 			"Cancel Mod",
 		],
-		banlist: ["Speed Force", "Terminal Velocity", "Momentum", "Impulse", "Shucklite"],
 	},
 	standardnext: {
 		effectType: "ValidatorRule",
@@ -113,7 +112,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"HP Percentage Mod",
 			"Cancel Mod",
 		],
-		banlist: ["Speed Force", "Terminal Velocity", "Momentum", "Impulse", "Shucklite"],
 	},
 	standardoms: {
 		effectType: "ValidatorRule",
