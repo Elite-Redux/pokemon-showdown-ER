@@ -225,6 +225,7 @@ export class Field {
 			source,
 			sourceSlot: source?.getSlot(),
 			duration: status.duration,
+			startedThisTurn: status.countFullRounds,
 		};
 		if (status.durationCallback) {
 			if (!source) throw new Error(`setting fieldcond without a source`);
