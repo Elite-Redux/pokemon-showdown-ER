@@ -1,4 +1,4 @@
-import { Dex, toID } from "../../../sim/dex";
+import {Dex, toID} from "../../../sim/dex";
 
 export const Scripts: ModdedBattleScriptsData = {
 	gen: 8,
@@ -11,7 +11,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				species.otherFormes && this.dex.species.get(species.otherFormes[0]);
 			const item = pokemon.getItem();
 
-			//Necrozma Check
+			// Necrozma Check
 			if (
 				["Necrozma-Dusk-Mane", "Necrozma-Dawn-Wings"].some(
 					(a) => a === species.name
@@ -64,14 +64,12 @@ export const Scripts: ModdedBattleScriptsData = {
 				const bondModifier = this.battle.gen > 6 ? 0.25 : 0.5;
 				this.battle.debug(`Parental Bond modifier: ${bondModifier}`);
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
-			}
-			else if ((move.multihitType === 'boxer' || move.multihitType === 'maw') && move.hit > 1) {
+			} else if ((move.multihitType === 'boxer' || move.multihitType === 'maw') && move.hit > 1) {
 				// Boxer & Primal Maw modifier
-				const bondModifier = 0.5
+				const bondModifier = 0.5;
 				this.battle.debug(`Raging Boxer / Primal Maw modifier: ${bondModifier}`);
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
-			}
-			else if(move.multihitType === "minion" && move.hit > 1) {
+			} else if (move.multihitType === "minion" && move.hit > 1) {
 				// Minion modifier
 				const minionModifier = 0.1;
 				this.battle.debug(`Minion modifier: ${minionModifier}`);
@@ -85,9 +83,9 @@ export const Scripts: ModdedBattleScriptsData = {
 					baseDamage = this.battle.modify(baseDamage, bondModifier);
 				}
 			} else if (move.multihitType === 'dual') {
-				const bondModifier = 0.75
+				const bondModifier = 0.75;
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
-			} else if (move.multihitType == "ragingmoth") {
+			} else if (move.multihitType === "ragingmoth") {
 				const bondModifier = 0.75;
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
 			}
@@ -258,7 +256,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
 			const isPhysical = move.category === 'Physical';
-			let attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
+			const attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
 			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
 
 			let atkBoosts = attacker.boosts[attackStat];
@@ -284,19 +282,17 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			let bonusStat = 0;
-			for (const [secondaryStat, secondaryBoost] of move.secondaryOffensiveStats || [])
-			{
-				if (secondaryStat && secondaryBoost > 0 && this.dex.getActiveMove(move.baseMove || "")?.overrideOffensiveStat !== "def")
-				{
-					let secondaryBoost = attacker.boosts[secondaryStat]
+			for (const [secondaryStat, secondaryMultiplier] of move.secondaryOffensiveStats || []) {
+				if (secondaryStat && secondaryMultiplier > 0 && this.dex.getActiveMove(move.baseMove || "")?.overrideOffensiveStat !== "def") {
+					let secondaryBoost = attacker.boosts[secondaryStat];
 					if (ignoreNegativeOffensive && secondaryBoost < 0) secondaryBoost = 0;
 					else if (move.ignoreOffensive) secondaryBoost = 0;
 					else if (secondaryStat === attackStat) secondaryBoost = 0;
-					bonusStat += attacker.calculateStat(secondaryStat, secondaryBoost, secondaryBoost, source, target, move, 0);
+					bonusStat += attacker.calculateStat(secondaryStat, secondaryBoost, secondaryMultiplier, source, target, move, 0);
 				}
 			}
 
-			let attack = attacker.calculateStat(attackStat, atkBoosts, 1, source, target, move, bonusStat);
+			const attack = attacker.calculateStat(attackStat, atkBoosts, 1, source, target, move, bonusStat);
 			let defense = defender.calculateStat(defenseStat, defBoosts, 1, target, source, move, 0);
 
 			if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'def') {
@@ -306,7 +302,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			const tr = this.battle.trunc;
 
 			// int(int(int(2 * L / 5 + 2) * A * P / D) / 50);
-			const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50);
+			const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50) + 2;
 
 			// Calculate damage modifiers separately (order differs between generations)
 			return this.modifyDamage(baseDamage, source, target, move, suppressMessages);
@@ -331,7 +327,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			return false;
 		},
 		suppressingTerrain() {
-			for (const pokemon of this!.battle!.getAllActive()) {
+			for (const pokemon of this.battle.getAllActive()) {
 				if (
 					pokemon &&
 					!pokemon.fainted &&
@@ -356,7 +352,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			statUser?: Pokemon,
 			statTarget?: Pokemon,
 			move?: ActiveMove,
-			bonusStat: number = 0,
+			bonusStat = 0,
 		) {
 			statName = toID(statName) as StatIDExceptHP;
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
@@ -438,8 +434,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		},
 		hasAbility(ability) {
 			if (this.ignoringAbility()) return false;
-			if (Array.isArray(ability))
-				return ability.some((abil) => this.hasAbility(abil));
+			if (Array.isArray(ability)) { return ability.some((abil) => this.hasAbility(abil)); }
 			ability = this.battle.toID(ability);
 			return (
 				this.ability === ability || !!this.volatiles["ability:" + ability]
@@ -466,9 +461,9 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			const types = pokemon.getTypes(true, true);
 			this.setType(
-				pokemon.volatiles["roost"]
-					? pokemon.volatiles["roost"].typeWas
-					: types,
+				pokemon.volatiles["roost"] ?
+					pokemon.volatiles["roost"].typeWas :
+					types,
 				true
 			);
 			this.addedType = pokemon.addedType;
@@ -478,8 +473,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			let statName: StatIDExceptHP;
 			for (statName in this.storedStats) {
 				this.storedStats[statName] = pokemon.storedStats[statName];
-				if (this.modifiedStats)
-					this.modifiedStats[statName] = pokemon.modifiedStats![statName]; // Gen 1: Copy modified stats.
+				if (this.modifiedStats) { this.modifiedStats[statName] = pokemon.modifiedStats![statName]; } // Gen 1: Copy modified stats.
 			}
 			this.moveSlots = [];
 			this.set.ivs = this.battle.gen >= 5 ? this.set.ivs : pokemon.set.ivs;
@@ -496,11 +490,11 @@ export const Scripts: ModdedBattleScriptsData = {
 					id: moveSlot.id,
 					pp: moveSlot.maxpp === 1 ? 1 : 5,
 					maxpp:
-						this.battle.gen >= 5
-							? moveSlot.maxpp === 1
-								? 1
-								: 5
-							: moveSlot.maxpp,
+						this.battle.gen >= 5 ?
+							moveSlot.maxpp === 1 ?
+								1 :
+								5 :
+							moveSlot.maxpp,
 					target: moveSlot.target,
 					disabled: false,
 					used: false,
@@ -520,9 +514,10 @@ export const Scripts: ModdedBattleScriptsData = {
 				for (const volatile of volatilesToCopy) {
 					if (pokemon.volatiles[volatile]) {
 						this.addVolatile(volatile);
-						if (volatile === "gmaxchistrike")
+						if (volatile === "gmaxchistrike") {
 							this.volatiles[volatile].layers =
 								pokemon.volatiles[volatile].layers;
+						}
 					} else {
 						this.removeVolatile(volatile);
 					}
@@ -582,9 +577,9 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (this.species.num === 493) {
 					// Arceus formes
 					const item = this.getItem();
-					const targetForme = item?.onPlate
-						? "Arceus-" + item.onPlate
-						: "Arceus";
+					const targetForme = item?.onPlate ?
+						"Arceus-" + item.onPlate :
+						"Arceus";
 					if (this.species.name !== targetForme) {
 						this.formeChange(targetForme);
 					}
@@ -610,9 +605,9 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (this.battle.gen <= 2) return true;
 
 			// The species the opponent sees
-			const apparentSpecies = this.illusion
-				? this.illusion.species.name
-				: species.baseSpecies;
+			const apparentSpecies = this.illusion ?
+				this.illusion.species.name :
+				species.baseSpecies;
 			if (isPermanent) {
 				this.baseSpecies = rawSpecies;
 				this.details =
@@ -704,12 +699,10 @@ export const Scripts: ModdedBattleScriptsData = {
 								baseSpecies.abilities[abilityKey]
 							).name
 						) {
-							if (!(abilityKey as string).includes("I"))
-								abilitySlot = abilityKey;
+							if (!(abilityKey as string).includes("I")) { abilitySlot = abilityKey; }
 						}
 					}
-					if (species.abilities[abilitySlot as string] === undefined)
-						abilitySlot = "0";
+					if (species.abilities[abilitySlot as string] === undefined) { abilitySlot = "0"; }
 					this.setAbility(
 						species.abilities[abilitySlot as string],
 						null,

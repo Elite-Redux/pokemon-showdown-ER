@@ -1,5 +1,5 @@
-import { TriumvirateModeTrivia } from "../../../server/chat-plugins/trivia/trivia";
-import { Pokemon } from "../../../sim/pokemon.js";
+import {TriumvirateModeTrivia} from "../../../server/chat-plugins/trivia/trivia";
+import {Pokemon} from "../../../sim/pokemon.js";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
 	battlebond: {
@@ -75,14 +75,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			let bestTypeMod = 0;
 			for (const type of this.dex.types.all()) {
 				if (!this.dex.getImmunity(move.type, type.id)) {
-					//breaks, as immunity is strongest resistance possible
+					// breaks, as immunity is strongest resistance possible
 					bestType = type.name;
 					break;
 				}
 				const typeMod = this.dex.getEffectiveness(move.type, type.name);
 				if (typeMod < bestTypeMod) {
 					bestType = type.name;
-					bestTypeMod = typeMod
+					bestTypeMod = typeMod;
 				}
 			}
 			if (bestType && !target.getTypes().includes(bestType)) {
@@ -100,15 +100,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onModifyMove(move, source, target) {
 			move.onEffectiveness = () => {
-					if (move.type !== 'Poison') return;
-					if (!target) return; // avoid crashing when called from a chat plugin
-					// Super Effective if immune to poison and is Steel-type
-					if (!target.runImmunity('Poison')) {
-						if (target.hasType('Steel')) return 1;
-					}
-			}
+				if (move.type !== 'Poison') return;
+				if (!target) return; // avoid crashing when called from a chat plugin
+				// Super Effective if immune to poison and is Steel-type
+				if (!target.runImmunity('Poison')) {
+					if (target.hasType('Steel')) return 1;
+				}
+			};
 			if (!move.ignoreImmunity) {
-				move.ignoreImmunity = {'Poison': true}
+				move.ignoreImmunity = {'Poison': true};
 			}
 		},
 		shortDesc: "This Pokemon can poison or badly poison a Pokemon regardless of its typing. Poison hits Steel super effectively",
@@ -178,8 +178,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onAllyModifyAtk(atk, pokemon) {},
 		onAllyModifySpAPriority: 3,
 		onAllyModifySpA(spa, pokemon) {
-			if (this.effectState.target.baseSpecies.baseSpecies !== "Cherrim")
-				return;
+			if (this.effectState.target.baseSpecies.baseSpecies !== "Cherrim") { return; }
 			if (
 				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
 			) {
@@ -202,8 +201,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onModifyDef(def) {},
 		onSourceModifyDamage(dmg, source, target, move) {
 			if (move.category !== 'Physical') return;
-			return this.chainModify(.5);
-		}
+			return this.chainModify(0.5);
+		},
 	},
 	gorillatactics: {
 		inherit: true,
@@ -234,6 +233,24 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		desc: "The power of Fire-type attacks against this Pokemon is halved. This Pokemon takes no burn damage and ignores burn's damage reduction.",
 		shortDesc: "The power of Fire-type attacks against this Pokemon is halved; no burn damage.",
+	},
+	hustle: {
+		inherit: true,
+		onModifyAtkPriority: 5,
+		onModifyAtk() {},
+		onModifySpA() {},
+		onModifyDamage(damage) {
+			return this.modify(damage, 1.4);
+		},
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy, target, source, move) {
+			if (move.category !== 'Status' && typeof accuracy === 'number') {
+				return this.chainModify(.9);
+			}
+		},
+		desc: "This Pokemon's deals 1.4x damage but the accuracy of its physical attacks is multiplied by 0.9.",
+		shortDesc: "This Pokemon deals 1.4x more damage but accuracy of its attacks is 0.9x.",
+
 	},
 	hypercutter: {
 		inherit: true,
@@ -282,7 +299,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onModifyMove(move, pokemon, target) {
 			if (move.id === 'focusblast') {
-				move.accuracy = 90
+				move.accuracy = 90;
 			}
 		},
 		desc: "This Pokemon cannot be made to flinch. This Pokemon is immune to the effect of the Intimidate and Scare Abilities. The Accuracy of this Pokemon's Focus Blast becomes 90%.",
@@ -356,10 +373,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					}
 				}
 				return null;
-				}
-			},
-			desc: "This Pokemon is immune to Electric-type moves and raises its Highest attack by 1 stage when hit by a Grass-type move.",
-			shortDesc: "This Pokemon's Highest attack is raised 1 stage if hit by an Electic move; Electric immunity.",
+			}
+		},
+		desc: "This Pokemon is immune to Electric-type moves and raises its Highest attack by 1 stage when hit by a Grass-type move.",
+		shortDesc: "This Pokemon's Highest attack is raised 1 stage if hit by an Electic move; Electric immunity.",
 	},
 	limber: {
 		inherit: true,
@@ -380,7 +397,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		onModifyDamage(bp, source, target, move) {
 			const unmodifiedMove = this.dex.moves.get(move);
-			//In ER, this boost only applies to Physical moves. Sorry, Vacuum Wave
+			// In ER, this boost only applies to Physical moves. Sorry, Vacuum Wave
 			if (!unmodifiedMove.flags['contact'] && move.category === 'Physical') {
 				return this.chainModify(1.2);
 			}
@@ -453,7 +470,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	// 	},
 	// },
 	neutralizinggas: {
-		//TODO: Remove diabling of setter's innates
+		// TODO: Remove diabling of setter's innates
 		inherit: true,
 		// Ability suppression implemented in sim/pokemon.ts:Pokemon#ignoringAbility
 		onPreStart(pokemon) {
@@ -514,8 +531,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.category === 'Special') {
-				this.debug('Overcoat weaken')
-				return this.chainModify(0.8)
+				this.debug('Overcoat weaken');
+				return this.chainModify(0.8);
 			}
 		},
 		desc: "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability. This Pokemon takes 20% less damage from Special attacks",
@@ -573,7 +590,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			];
 			possibleAbilities = possibleAbilities
 				.filter(val => !this.dex.abilities.get(val).isPermanent && !additionalBannedAbilities.includes(val));
-				if (!possibleAbilities.length) return;
+			if (!possibleAbilities.length) return;
 			const ability = this.dex.abilities.get(possibleAbilities[this.random(possibleAbilities.length)]);
 			this.add('-ability', pokemon, ability, '[from] ability: Power of Alchemy', '[of] ' + ally);
 			if (isAbility) {
@@ -620,7 +637,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				'noability', 'flowergift', 'forecast', 'hungerswitch', 'illusion', 'imposter', 'neutralizinggas', 'powerofalchemy', 'receiver', 'trace', 'wonderguard', pokemon.ability, ...(pokemon.m.innates || []),
 			];
 			possibleAbilities = possibleAbilities
-			.filter(val => !this.dex.abilities.get(val).isPermanent && !additionalBannedAbilities.includes(val));
+				.filter(val => !this.dex.abilities.get(val).isPermanent && !additionalBannedAbilities.includes(val));
 			if (!possibleAbilities.length) return;
 			const ability = this.dex.abilities.get(possibleAbilities[this.random(possibleAbilities.length)]);
 			this.add('-ability', pokemon, ability, '[from] ability: Receiver', '[of] ' + ally);
@@ -693,14 +710,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					}
 				}
 				return null;
-				}
-			},
+			}
+		},
 		onAllyTryHitSide(target, source, move) {
 			if (source === this.effectState.target || !target.isAlly(source)) return;
 			if (move.type === 'Grass') {
 				if (target.getStat('atk') > target.getStat('spa')) this.boost({atk: 1}, this.effectState.target);
 				else this.boost({spa: 1}, this.effectState.target);
-
 			}
 		},
 		desc: "This Pokemon is immune to Grass-type moves and raises its Highest attack by 1 stage when hit by a Grass-type move.",
@@ -724,8 +740,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	shellarmor: {
 		inherit: true,
 		onSourceModifyDamage(damage, source, target, move) {
-			this.debug('Shell Armor weaken')
-			return this.chainModify(0.8)
+			this.debug('Shell Armor weaken');
+			return this.chainModify(0.8);
 		},
 		shortDesc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
 		desc: "This Pokemon takes 20% less damage. Cannot be struck by a critical hit.",
@@ -775,8 +791,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onWeather() {},
 		onModifySpA(spa, pokemon) {
 			if (
-				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
-					&& pokemon.getStat("spa", false, true) > pokemon.getStat("atk", false, true)
+				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather()) &&
+					pokemon.getStat("spa", false, true) > pokemon.getStat("atk", false, true)
 			) {
 				return this.chainModify(1.5);
 			}
@@ -784,8 +800,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onModifyAtkPriority: 5,
 		onModifyAtk(spa, pokemon) {
 			if (
-				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
-					&& pokemon.getStat("atk", false, true) >= pokemon.getStat("spa", false, true)
+				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather()) &&
+					pokemon.getStat("atk", false, true) >= pokemon.getStat("spa", false, true)
 			) {
 				return this.chainModify(1.5);
 			}
@@ -820,8 +836,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					}
 				}
 				return null;
-				}
 			}
+		},
 	},
 	supremeoverlord: {
 		inherit: true,
@@ -829,17 +845,17 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onModifyAtk(basePower, attacker, defender, move) {
 			if (this.effectState.fallen) {
 				this.debug(
-					`Supreme Overlord boost: ${1+.1*this.effectState.fallen}/4096`
+					`Supreme Overlord boost: ${1 + 0.1 * this.effectState.fallen}/4096`
 				);
-				return this.chainModify(1+.1*this.effectState.fallen);
+				return this.chainModify(1 + 0.1 * this.effectState.fallen);
 			}
 		},
 		onModifySpA(basePower, attacker, defender, move) {
 			if (this.effectState.fallen) {
 				this.debug(
-					`Supreme Overlord boost: ${1+.1*this.effectState.fallen}/4096`
+					`Supreme Overlord boost: ${1 + 0.1 * this.effectState.fallen}/4096`
 				);
-				return this.chainModify(1+.1*this.effectState.fallen);
+				return this.chainModify(1 + 0.1 * this.effectState.fallen);
 			}
 		},
 	},
@@ -942,14 +958,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	toxicdebris: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
-	//*** Pokebilities Trace - Commented just in case */
+	//* ** Pokebilities Trace - Commented just in case */
 	// trace: {
-		// 	inherit: true,
-		// 	onUpdate(pokemon) {
-			// 		if (!pokemon.isStarted) return;
-			// 		const isAbility = pokemon.ability === 'trace';
+	// 	inherit: true,
+	// 	onUpdate(pokemon) {
+	// 		if (!pokemon.isStarted) return;
+	// 		const isAbility = pokemon.ability === 'trace';
 	// 		const possibleTargets: Pokemon[] = [];
 	// 		for (const target of pokemon.side.foe.active) {
 	// 			if (target && !target.fainted) {
@@ -1092,12 +1108,12 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if (damage && move.flags['contact'] && !source.types.includes('water')) {
-				if (source.setType('water')) this.add('-ability', target, 'ability: Damp')
+				if (source.setType('water')) this.add('-ability', target, 'ability: Damp');
 			}
 		},
 		onFoeDamagingHit(damage, target, source, move) {
 			if (damage && move.flags['contact'] && !target.types.includes('water')) {
-				if (target.setType('water')) this.add('-ability', source, 'ability: Damp')
+				if (target.setType('water')) this.add('-ability', source, 'ability: Damp');
 			}
 		},
 	},

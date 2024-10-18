@@ -139,20 +139,20 @@ interface CommonHandlers {
 		move: ActiveMove
 	) => number | void;
 	ResultMove:
-		| boolean
-		| ((
-				this: Battle,
-				target: Pokemon,
-				source: Pokemon,
-				move: ActiveMove
+	| boolean
+	| ((
+		this: Battle,
+		target: Pokemon,
+		source: Pokemon,
+		move: ActiveMove
 		  ) => boolean | null | "" | void);
 	ExtResultMove:
-		| boolean
-		| ((
-				this: Battle,
-				target: Pokemon,
-				source: Pokemon,
-				move: ActiveMove
+	| boolean
+	| ((
+		this: Battle,
+		target: Pokemon,
+		source: Pokemon,
+		move: ActiveMove
 		  ) => boolean | null | number | "" | void);
 	VoidEffect: (
 		this: Battle,
@@ -181,21 +181,21 @@ interface CommonHandlers {
 		move: ActiveMove
 	) => number | void;
 	ResultSourceMove:
-		| boolean
-		| ((
-				this: Battle,
-				source: Pokemon,
-				target: Pokemon,
-				move: ActiveMove,
-				effectSource: Battle | Pokemon | Side | Field,
+	| boolean
+	| ((
+		this: Battle,
+		source: Pokemon,
+		target: Pokemon,
+		move: ActiveMove,
+		effectSource: Battle | Pokemon | Side | Field,
 		  ) => boolean | null | "" | void);
 	ExtResultSourceMove:
-		| boolean
-		| ((
-				this: Battle,
-				source: Pokemon,
-				target: Pokemon,
-				move: ActiveMove
+	| boolean
+	| ((
+		this: Battle,
+		source: Pokemon,
+		target: Pokemon,
+		move: ActiveMove
 		  ) => boolean | null | number | "" | void);
 	VoidSourceEffect: (
 		this: Battle,
@@ -321,9 +321,9 @@ interface GameTimerSettings {
 
 type SpreadMoveTargets = (Pokemon | false | null)[];
 type SpreadMoveDamage = (number | boolean | undefined)[];
-type ZMoveOptions = ({ move: string; target: MoveTarget } | null)[];
+type ZMoveOptions = ({ move: string, target: MoveTarget } | null)[];
 interface DynamaxOptions {
-	maxMoves: { move: string; target: MoveTarget; disabled?: boolean }[];
+	maxMoves: { move: string, target: MoveTarget, disabled?: boolean }[];
 	gigantamax?: string;
 }
 
@@ -589,7 +589,7 @@ interface ModdedBattleSide {
 	getRequestData?: (
 		this: Side,
 		forAlly?: boolean
-	) => { name: string; id: ID; pokemon: AnyObject[] };
+	) => { name: string, id: ID, pokemon: AnyObject[] };
 }
 
 interface ModdedBattlePokemon {
@@ -628,26 +628,26 @@ interface ModdedBattlePokemon {
 	getActionSpeed?: (this: Pokemon) => number;
 	getItem?: (this: Pokemon) => Item;
 	getMoveRequestData?: (this: Pokemon) => {
-		moves: { move: string; id: ID; target?: string; disabled?: boolean }[];
-		maybeDisabled?: boolean;
-		trapped?: boolean;
-		maybeTrapped?: boolean;
-		canMegaEvo?: boolean;
-		canUltraBurst?: boolean;
-		canZMove?: ZMoveOptions;
+		moves: { move: string, id: ID, target?: string, disabled?: boolean }[],
+		maybeDisabled?: boolean,
+		trapped?: boolean,
+		maybeTrapped?: boolean,
+		canMegaEvo?: boolean,
+		canUltraBurst?: boolean,
+		canZMove?: ZMoveOptions,
 	};
 	getMoves?: (
 		this: Pokemon,
 		lockedMove?: string | null,
 		restrictData?: boolean
 	) => {
-		move: string;
-		id: string;
-		disabled?: string | boolean;
-		disabledSource?: string;
-		target?: string;
-		pp?: number;
-		maxpp?: number;
+		move: string,
+		id: string,
+		disabled?: string | boolean,
+		disabledSource?: string,
+		target?: string,
+		pp?: number,
+		maxpp?: number,
 	}[];
 	getStat?: (
 		this: Pokemon,
@@ -849,7 +849,7 @@ interface MovePlines extends Plines {
 	megaNoItem?: string;
 	prepare?: string;
 	removeItem?: string;
-	removeBerry?: string; //The only reason this exists is because of bug bite text lmao
+	removeBerry?: string; // The only reason this exists is because of bug bite text lmao
 	startFromItem?: string;
 	startFromZEffect?: string;
 	switchOut?: string;

@@ -224,7 +224,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		onDamagingHit(damage, target, source, move) {
 			this.add("-enditem", target, "Air Balloon");
 			target.item = "";
-			target.itemState = { id: "", target };
+			target.itemState = {id: "", target};
 			this.runEvent(
 				"AfterUseItem",
 				target,
@@ -238,7 +238,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			if (effect.effectType === "Move") {
 				this.add("-enditem", target, "Air Balloon");
 				target.item = "";
-				target.itemState = { id: "", target };
+				target.itemState = {id: "", target};
 				this.runEvent(
 					"AfterUseItem",
 					target,
@@ -337,7 +337,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spd: 1 });
+			this.boost({spd: 1});
 		},
 		num: 205,
 		gen: 3,
@@ -395,7 +395,7 @@ export const Items: { [itemid: string]: ItemData } = {
 	},
 	tacticalvest: {
 		name: "Tactical Vest",
-		//spritenum: 581,
+		// spritenum: 581,
 		fling: {
 			basePower: 80,
 		},
@@ -661,7 +661,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		spritenum: 41,
 		onSwitchIn(pokemon) {
 			if (pokemon.isActive && pokemon.baseSpecies.name === "Kyogre") {
-				this.queue.insertChoice({ choice: "runPrimal", pokemon: pokemon });
+				this.queue.insertChoice({choice: "runPrimal", pokemon: pokemon});
 			}
 		},
 		onPrimal(pokemon) {
@@ -1432,8 +1432,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		onAttract(target, source) {
 			this.debug("attract intercepted: " + target + " from " + source);
 			if (!source || source === target) return;
-			if (!source.volatiles["attract"])
-				source.addVolatile("attract", target);
+			if (!source.volatiles["attract"]) { source.addVolatile("attract", target); }
 		},
 		num: 280,
 		gen: 4,
@@ -1705,10 +1704,8 @@ export const Items: { [itemid: string]: ItemData } = {
 					target.forceSwitchFlag ||
 					target.beingCalledBack ||
 					target.isSkyDropped()
-				)
-					return;
-				if (target.volatiles["commanding"] || target.volatiles["commanded"])
-					return;
+				) { return; }
+				if (target.volatiles["commanding"] || target.volatiles["commanded"]) { return; }
 				for (const pokemon of this.getAllActive()) {
 					if (pokemon.switchFlag === true) return;
 				}
@@ -1744,8 +1741,7 @@ export const Items: { [itemid: string]: ItemData } = {
 					if (
 						target.volatiles["commanding"] ||
 						target.volatiles["commanded"]
-					)
-						return;
+					) { return; }
 					for (const pokemon of this.getAllActive()) {
 						if (pokemon.switchFlag === true) return;
 					}
@@ -1775,8 +1771,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				target === source ||
 				move.category === "Status" ||
 				move.flags["pledgecombo"]
-			)
-				return;
+			) { return; }
 			if (move.type === "Electric" && source.useItem()) {
 				source.addVolatile("gem");
 			}
@@ -2035,8 +2030,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				target === source ||
 				move.category === "Status" ||
 				move.flags["pledgecombo"]
-			)
-				return;
+			) { return; }
 			if (move.type === "Fire" && source.useItem()) {
 				source.addVolatile("gem");
 			}
@@ -2125,7 +2119,7 @@ export const Items: { [itemid: string]: ItemData } = {
 	},
 	frostorb: {
 		name: "Frost Orb",
-		//spritenum: 145,
+		// spritenum: 145,
 		fling: {
 			basePower: 30,
 			status: "frz",
@@ -2381,7 +2375,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ def: 1 });
+			this.boost({def: 1});
 		},
 		num: 202,
 		gen: 3,
@@ -2519,8 +2513,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				target === source ||
 				move.category === "Status" ||
 				move.flags["pledgecombo"]
-			)
-				return;
+			) { return; }
 			if (move.type === "Grass" && source.useItem()) {
 				source.addVolatile("gem");
 			}
@@ -3019,8 +3012,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				target.volatiles["ingrain"] ||
 				target.volatiles["smackdown"] ||
 				this.field.getPseudoWeather("gravity")
-			)
-				return;
+			) { return; }
 			if (move.type === "Ground" && target.hasType("Flying")) return 0;
 		},
 		// airborneness negation implemented in sim/pokemon.js:Pokemon#isGrounded
@@ -3164,7 +3156,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ def: 1 });
+			this.boost({def: 1});
 		},
 		num: 687,
 		gen: 6,
@@ -3409,7 +3401,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ atk: 1 });
+			this.boost({atk: 1});
 		},
 		num: 201,
 		gen: 3,
@@ -3780,8 +3772,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				this.activeMove.id !== "knockoff" &&
 				this.activeMove.id !== "thief" &&
 				this.activeMove.id !== "covet"
-			)
-				return false;
+			) { return false; }
 		},
 		num: 137,
 		gen: 2,
@@ -3821,7 +3812,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spd: 1 });
+			this.boost({spd: 1});
 		},
 		num: 688,
 		gen: 6,
@@ -4063,9 +4054,9 @@ export const Items: { [itemid: string]: ItemData } = {
 			onModifyDamage(damage, source, target, move) {
 				const dmgMod = [4096, 4915, 5734, 6553, 7372, 8192];
 				const numConsecutive =
-					this.effectState.numConsecutive > 5
-						? 5
-						: this.effectState.numConsecutive;
+					this.effectState.numConsecutive > 5 ?
+						5 :
+						this.effectState.numConsecutive;
 				this.debug(
 					`Current Metronome boost: ${dmgMod[numConsecutive]}/4096`
 				);
@@ -4212,8 +4203,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		},
 		spritenum: 748,
 		onFoeAfterBoost(boost, target, source, effect) {
-			if (effect?.name === "Opportunist" || effect?.name === "Mirror Herb")
-				return;
+			if (effect?.name === "Opportunist" || effect?.name === "Mirror Herb") { return; }
 			const boostPlus: SparseBoostsTable = {};
 			let statsRaised = false;
 			let i: BoostID;
@@ -4363,8 +4353,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				target === source ||
 				move.category === "Status" ||
 				move.flags["pledgecombo"]
-			)
-				return;
+			) { return; }
 			if (move.type === "Normal" && source.useItem()) {
 				source.addVolatile("gem");
 			}
@@ -4603,7 +4592,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spa: 1 });
+			this.boost({spa: 1});
 		},
 		num: 204,
 		gen: 3,
@@ -5044,8 +5033,7 @@ export const Items: { [itemid: string]: ItemData } = {
 	quickclaw: {
 		onFractionalPriorityPriority: -2,
 		onFractionalPriority(priority, pokemon, target, move) {
-			if (move.category === "Status" && pokemon.hasAbility("myceliummight"))
-				return;
+			if (move.category === "Status" && pokemon.hasAbility("myceliummight")) { return; }
 			if (priority <= 0 && this.randomChance(1, 5)) {
 				this.add("-activate", pokemon, "item: Quick Claw");
 				return 0.1;
@@ -5216,7 +5204,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		spritenum: 390,
 		onSwitchIn(pokemon) {
 			if (pokemon.isActive && pokemon.baseSpecies.name === "Groudon") {
-				this.queue.insertChoice({ choice: "runPrimal", pokemon: pokemon });
+				this.queue.insertChoice({choice: "runPrimal", pokemon: pokemon});
 			}
 		},
 		onPrimal(pokemon) {
@@ -5569,8 +5557,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			basePower: 80,
 		},
 		onImmunity(type, pokemon) {
-			if (type === "sandstorm" || type === "hail" || type === "powder")
-				return false;
+			if (type === "sandstorm" || type === "hail" || type === "powder") { return false; }
 		},
 		onTryHit(pokemon, source, move) {
 			if (
@@ -5614,7 +5601,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spe: 1 });
+			this.boost({spe: 1});
 		},
 		num: 203,
 		gen: 3,
@@ -7618,8 +7605,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				target === source ||
 				move.category === "Status" ||
 				move.flags["pledgecombo"]
-			)
-				return;
+			) { return; }
 			if (move.type === "Water" && source.useItem()) {
 				source.addVolatile("gem");
 			}

@@ -2685,7 +2685,7 @@ export const commands: Chat.ChatCommands = {
 					game.revealRole(user, player, `${cmd === 'revealas' ? revealAs : player.getRole()}`);
 					game.logAction(user, `revealed ${player.name}`);
 					if (cmd === 'revealas') {
-						game.secretLogAction(user, `fakerevealed ${player.name} as ${revealedRole!.role.name}`);
+						game.secretLogAction(user, `fakerevealed ${player.name} as ${revealedRole.role.name}`);
 					}
 				} else {
 					this.errorReply(`${targetUsername} is not a player.`);

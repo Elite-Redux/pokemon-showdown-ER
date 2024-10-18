@@ -440,14 +440,13 @@ export class TeamValidator {
 				problems.push(`Nickname "${set.name}" too long (should be 50 characters or fewer)`);
 			}
 		}
-		if (set.name){
-			//Profanity Filter
-			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink','nibba',"faggot"];
-			//console.log(set.name);
-			for (const i in bannedWords){
-				const word = bannedWords[i];
-				//console.log(set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a'));
-				if (set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a').includes(word)){
+		if (set.name) {
+			// Profanity Filter
+			const bannedWords = ['nigga', 'nigger', 'whore', 'slut', 'chink', 'nibba', "faggot"];
+			// console.log(set.name);
+			for (const word of bannedWords) {
+				// console.log(set.name.toLowerCase().replace('1','i').replace('3','e').replace('@','a'));
+				if (set.name.toLowerCase().replace('1', 'i').replace('3', 'e').replace('@', 'a').includes(word)) {
 					problems.push(`Nickname "${set.name}" cannot contain the word "${word}"`);
 					break;
 				}
@@ -1929,7 +1928,7 @@ export class TeamValidator {
 				break;
 			}
 		}
-		if (this.format.mod !== 'gen8eliteredux') { //a non-issue in ER
+		if (this.format.mod !== 'gen8eliteredux') { // a non-issue in ER
 			if (setSources.size() && setSources.moveEvoCarryCount > 3) {
 				if (setSources.sourcesBefore < 6) setSources.sourcesBefore = 0;
 				setSources.sources = setSources.sources.filter(

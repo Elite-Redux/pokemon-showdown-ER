@@ -802,7 +802,7 @@ export const commands: Chat.ChatCommands = {
 			if (room.settings.isPrivate) {
 				return this.errorReply(`This command is only available in public rooms`);
 			}
-			const count = [...otds.values()].filter(otd => otd.room.roomid === room!.roomid).length;
+			const count = [...otds.values()].filter(otd => otd.room.roomid === room.roomid).length;
 			if (count > 3) {
 				return this.errorReply(`This room already has 3+ -otd's.`);
 			}

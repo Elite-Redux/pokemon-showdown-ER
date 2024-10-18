@@ -583,6 +583,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Gravity');
@@ -1039,6 +1040,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			onTryBoost(boost, target, source, effect) {
 				if (effect.effectType === 'Move' && effect.infiltrates && !target.isAlly(source)) return;
 				if (source && target !== source) {
@@ -1331,6 +1333,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Safeguard');
@@ -1680,6 +1683,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 5,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Trick Room');

@@ -64,7 +64,7 @@ const RecoveryMove = [
 ];
 // Moves that drop stats:
 const ContraryMoves = [
-	'closecombat', 'leafstorm', 'overheat', 'superpower', 'vcreate', 'strength'
+	'closecombat', 'leafstorm', 'overheat', 'superpower', 'vcreate', 'strength',
 ];
 // Moves that boost Attack:
 const PhysicalSetup = [
@@ -418,7 +418,7 @@ export class RandomGen8ERTeams {
 
 
 			const abilities = Object.values(species.abilities).filter(a => this.dex.abilities.get(a).gen <= this.gen);
-			//Ensure that innates are not picked as ability
+			// Ensure that innates are not picked as ability
 			const ability: string = this.gen <= 2 ? 'No Ability' : this.sample(abilities.filter(key => !key.includes('I')));
 			// Four random unique moves from the movepool
 			let pool = ['struggle'];
@@ -925,7 +925,7 @@ export class RandomGen8ERTeams {
 				counter.add('technician');
 			}
 
-			//Moves that have an extremly low base power (including rapid spin):
+			// Moves that have an extremly low base power (including rapid spin):
 			if (move.basePower && move.basePower <= 25) {
 				counter.add('perfectionist');
 			}
@@ -935,7 +935,7 @@ export class RandomGen8ERTeams {
 			if (move.recoil || move.hasCrashDamage) counter.add('recoil');
 			if (move.drain) counter.add('drain');
 			// Moves which have a base power, but aren't super-weak like Rapid Spin:
-			//TODO: Take type-changing and stab-giving abilities into account
+			// TODO: Take type-changing and stab-giving abilities into account
 			if (move.basePower > 30 || move.multihit || move.basePowerCallback || moveid === 'infestation') {
 				counter.add(moveType);
 				if (types.includes(moveType)) {
@@ -950,7 +950,7 @@ export class RandomGen8ERTeams {
 					// Less obvious forms of STAB
 					(moveType === 'Normal' && (['Aerilate', 'Galvanize', 'Pixilate', 'Refrigerate', 'Immolate', 'Crystallize', 'Fighting Spirit', 'Tectonize', 'Hydrate', 'Intoxicate', 'Pollinate', 'Solar Flare'].some(abil => abilities.has(abil)))) ||
 					(move.priority === 0 && (abilities.has('Libero') || abilities.has('Protean')) && !this.noStab.includes(moveid)) ||
-					(moveType === 'Steel' && abilities.has('Steelworker')) || 
+					(moveType === 'Steel' && abilities.has('Steelworker')) ||
 					(abilities.has('Mystic Power'))
 				) {
 					counter.add('stab');
@@ -962,7 +962,7 @@ export class RandomGen8ERTeams {
 				if (move.flags['slicing']) counter.add('slicing');
 				if (move.flags['kick']) counter.add('kick');
 				if (move.flags['bone']) counter.add('bone');
-				if (move.flags['wind']) counter.add ('wind');
+				if (move.flags['wind']) counter.add('wind');
 				if (move.priority !== 0 || (moveid === 'grassyglide' && abilities.has('Grassy Surge'))) {
 					counter.add('priority');
 				}
@@ -1705,7 +1705,7 @@ export class RandomGen8ERTeams {
 
 		// Lopunny, and other Facade users, don't want Limber, even if other abilities are poorly rated,
 		// since paralysis would arguably be good for them.
-		//TODO: Update hardcoded abilities for some ER Pokemon
+		// TODO: Update hardcoded abilities for some ER Pokemon
 
 
 		// if (species.id === 'lopunny' && moves.has('facade')) return 'Cute Charm';
@@ -1782,7 +1782,7 @@ export class RandomGen8ERTeams {
 		return abilityAllowed[0].name;
 	}
 
-	//TODO: Fix Double Item gen
+	// TODO: Fix Double Item gen
 	getDoublesItem(
 		ability: string,
 		types: Set<string>,
@@ -1837,7 +1837,7 @@ export class RandomGen8ERTeams {
 		) return (ability === 'Defeatist' || defensiveStatTotal >= 275) ? 'Sitrus Berry' : 'Life Orb';
 	}
 
-	//TODO: This function needs a rewrite to account for innates
+	// TODO: This function needs a rewrite to account for innates
 	getHighPriorityItem(
 		ability: string,
 		types: Set<string>,
@@ -1849,8 +1849,8 @@ export class RandomGen8ERTeams {
 		isDoubles: boolean
 	) {
 		const innateList = Object.keys(species.abilities)
-		.filter(key => key.includes('I'))
-		.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+			.filter(key => key.includes('I'))
+			.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 		const activeAbilities = [ability, ...innateList];
 
 
@@ -1948,11 +1948,11 @@ export class RandomGen8ERTeams {
 		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
 
 		const innateList = Object.keys(species.abilities)
-		.filter(key => key.includes('I'))
-		.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+			.filter(key => key.includes('I'))
+			.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 		const activeAbilities = [ability, ...innateList];
 
-		
+
 		// Choice items
 		if (
 			!isDoubles && counter.get('Physical') >= 4 && !activeAbilities.includes('Serene Grace') &&
@@ -2031,10 +2031,10 @@ export class RandomGen8ERTeams {
 		isNoDynamax: boolean
 	): string | undefined {
 		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
-		
+
 		const innateList = Object.keys(species.abilities)
-		.filter(key => key.includes('I'))
-		.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+			.filter(key => key.includes('I'))
+			.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 		const activeAbilities = [ability, ...innateList];
 
 
@@ -2171,7 +2171,6 @@ export class RandomGen8ERTeams {
 		let forme = species.name;
 		let gmax = false;
 
-		
 
 		if (typeof species.battleOnly === 'string') {
 			// Only change the forme. The species has custom moves, and may have different typing and requirements.
@@ -2207,7 +2206,7 @@ export class RandomGen8ERTeams {
 		}
 		const rejectedPool = [];
 		let ability = '';
-		
+
 		let item = undefined;
 
 		const evs = {hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85};
@@ -2239,7 +2238,7 @@ export class RandomGen8ERTeams {
 			const runEnforcementChecker = (checkerName: string) => {
 				if (!this.moveEnforcementCheckers[checkerName]) return false;
 				return this.moveEnforcementCheckers[checkerName](
-					movePool, moves, abilities, types, counter, species as Species, teamDetails
+					movePool, moves, abilities, types, counter, species, teamDetails
 				);
 			};
 
@@ -2271,8 +2270,8 @@ export class RandomGen8ERTeams {
 						move.category === 'Status' ||
 						(!types.has(move.type) && move.id !== 'judgment') ||
 						(isLowBP && !move.multihit && (!abilities.has('Technician') || abilities.has('Perfectionist'))
-					)
-				))
+						)
+					));
 				// Setup-supported moves should only be rejected under specific circumstances
 				const notImportantSetup = (
 					!counter.setupType ||

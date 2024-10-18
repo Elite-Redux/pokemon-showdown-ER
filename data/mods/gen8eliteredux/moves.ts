@@ -1,5 +1,5 @@
 // TODO: Make Gastro Acid only disable ability, not innates
-//TODO: Implement Shield Dust entry hazard immunity
+// TODO: Implement Shield Dust entry hazard immunity
 export const Moves: {[k: string]: ModdedMoveData} = {
 	aeroblast: {
 		inherit: true,
@@ -359,104 +359,104 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		isNonstandard: null,
 	},
 	hiddenpower: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerbug: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerdark: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerdragon: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerelectric: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerfighting: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerfire: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerflying: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerghost: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowergrass: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerground: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerice: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerpoison: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerpsychic: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerrock: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowersteel: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
 	hiddenpowerwater: {
-      inherit: true,
-      basePower: 70,
+		inherit: true,
+		basePower: 70,
 		isNonstandard: null,
 		gen: 8,
 	},
@@ -634,6 +634,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1037,6 +1038,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1137,6 +1139,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1262,12 +1265,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	ironfangs: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	jaggedfangs: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	jumpkick: {
 		inherit: true,
@@ -1296,7 +1299,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	lovelybite: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	lowkick: {
 		inherit: true,
@@ -1415,12 +1418,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	outburst: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	plasmapulse: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	pollenpuff: {
 		inherit: true,
@@ -1446,6 +1449,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 8,
+			countFullRounds: true,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
 					return 12;
@@ -1567,7 +1571,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	scorchedearth: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	searingsunrazesmash: {
 		inherit: true,
@@ -1584,12 +1588,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	seismicfist: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	shadowfangs: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	sharpen: {
 		inherit: true,
@@ -1635,7 +1639,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	smite: {
 		inherit: true,
 		isNonstandard: null,
-		gen: 8
+		gen: 8,
 	},
 	snatch: {
 		inherit: true,
@@ -1766,6 +1770,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		condition: {
 			duration: 3,
+			countFullRounds: true,
 			durationCallback(target, source, effect) {
 				if (source?.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', '[move] Tailwind');

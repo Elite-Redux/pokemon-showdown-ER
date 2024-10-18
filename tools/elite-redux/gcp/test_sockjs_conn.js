@@ -1,3 +1,5 @@
+"use strict";
+
 const sockjs = require("sockjs-client");
 
 const sock = sockjs("http://stately-planet-436000-q5.web.app:8080/showdown");

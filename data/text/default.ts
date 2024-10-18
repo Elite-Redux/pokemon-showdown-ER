@@ -185,7 +185,7 @@ export const DefaultText: {[k: string]: DefaultText} = {
 	},
 	/**
 	 * These are the battle text messages that describe the bleeding status conditions effects/events.
-	 */ 
+	 */
 	bld: {
 		start: "  [POKEMON] started bleeding!",
 		alreadyStarted: "  [POKEMON] is already bleeding!",

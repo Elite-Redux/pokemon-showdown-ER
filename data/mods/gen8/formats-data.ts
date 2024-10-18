@@ -433,7 +433,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	slowkinggalar: {
 		tier: 'UU',
-		doublesTier: 'DOU'
+		doublesTier: 'DOU',
 	},
 	magnemite: {
 		tier: "LC",
@@ -3636,7 +3636,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	thwackey: {
-		tier: "NFE"
+		tier: "NFE",
 	},
 	rillaboom: {
 		tier: "UU",
@@ -3650,7 +3650,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	raboot: {
-		tier: "NFE"
+		tier: "NFE",
 	},
 	cinderace: {
 		tier: "UU",
@@ -3664,7 +3664,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	drizzile: {
-		tier: "NFE"
+		tier: "NFE",
 	},
 	inteleon: {
 		tier: "UU",
@@ -3686,7 +3686,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
 	},
 	corvisquire: {
-		tier: "NFE"
+		tier: "NFE",
 	},
 	corviknight: {
 		tier: "UU",
@@ -4532,7 +4532,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "OU",
 	},
 
-	//ER Megas
+	// ER Megas
 
 	miloticmega: {
 		tier: "UU",
@@ -4564,7 +4564,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 
 
-	//Unused ...for now
+	// Unused ...for now
 	missingno: {
 		isNonstandard: "Custom",
 		tier: "OU",
@@ -4931,7 +4931,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	basculinwhitestriped: {
 		isNonstandard: 'Future',
-		tier: 'Illegal'
+		tier: 'Illegal',
 	},
 	zapdosgalar: {
 		tier: "UU",
@@ -4957,212 +4957,212 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		doublesTier: "DOU",
 	},
 	"dewgongmega": {
-                tier: "Uber",
+		tier: "Uber",
 		doublesTier: "DUber",
 
 
 	},
 	"hitmonchanmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"hitmonleemega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"hitmontopmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"crobatmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"skarmorymega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 
 	"torterramega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"infernapemega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"empoleonmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"shucklemega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"relicanthmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"quagsiremega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 
 	"toucannonmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"dragonitemega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"breloommega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"slakingmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"feraligatrmegax": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"feraligatrmegay": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"granbullmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"gyaradosmegay": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"haxorusmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"meganiummega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"luxraymega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"nidokingmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"nidoqueenmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"sandslashmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"typhlosionmega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"krookodilemega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"magnezonemega": {
-                tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"shedinjamega": {
-        tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"swalotmega": {
-        tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 	},
 	"lanturnmega": {
-        tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 	},
 
 
 	"laprasmegax": {
-        tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 
 
 	},
 	"slowkingmega": {
-         tier: "OU",
+		tier: "OU",
 		doublesTier: "DOU",
 	},
 	"dewleon": {
 		tier: "AG",
 	   doublesTier: "DUber",
-   }
+	},
 
 
 };

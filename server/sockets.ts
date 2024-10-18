@@ -15,9 +15,9 @@ import * as fs from "fs";
 import * as http from "http";
 import * as https from "https";
 import * as path from "path";
-import { crashlogger, ProcessManager, Streams, Repl } from "../lib";
-import { IPTools } from "./ip-tools";
-import { ChannelID, extractChannelMessages } from "../sim/battle";
+import {crashlogger, ProcessManager, Streams, Repl} from "../lib";
+import {IPTools} from "./ip-tools";
+import {ChannelID, extractChannelMessages} from "../sim/battle";
 
 type StreamWorker = ProcessManager.StreamWorker;
 
@@ -26,35 +26,35 @@ export const Sockets = new (class {
 		const id = worker.workerid;
 		for await (const data of worker.stream) {
 			switch (data.charAt(0)) {
-				case "*": {
-					// *socketid, ip, protocol
-					// connect
-					worker.load++;
-					const [socketid, ip, protocol] = data.substr(1).split("\n");
-					Users.socketConnect(worker, id, socketid, ip, protocol);
-					break;
-				}
+			case "*": {
+				// *socketid, ip, protocol
+				// connect
+				worker.load++;
+				const [socketid, ip, protocol] = data.substr(1).split("\n");
+				Users.socketConnect(worker, id, socketid, ip, protocol);
+				break;
+			}
 
-				case "!": {
-					// !socketid
-					// disconnect
-					worker.load--;
-					const socketid = data.substr(1);
-					Users.socketDisconnect(worker, id, socketid);
-					break;
-				}
+			case "!": {
+				// !socketid
+				// disconnect
+				worker.load--;
+				const socketid = data.substr(1);
+				Users.socketDisconnect(worker, id, socketid);
+				break;
+			}
 
-				case "<": {
-					// <socketid, message
-					// message
-					const idx = data.indexOf("\n");
-					const socketid = data.substr(1, idx - 1);
-					const message = data.substr(idx + 1);
-					Users.socketReceive(worker, id, socketid, message);
-					break;
-				}
+			case "<": {
+				// <socketid, message
+				// message
+				const idx = data.indexOf("\n");
+				const socketid = data.substr(1, idx - 1);
+				const message = data.substr(idx + 1);
+				Users.socketReceive(worker, id, socketid, message);
+				break;
+			}
 
-				default:
+			default:
 				// unhandled
 			}
 		}
@@ -274,28 +274,27 @@ export class ServerStream extends Streams.ObjectReadWriteStream<string> {
 			const roomChannel = this.roomChannels.get(roomid);
 			for (const [curSocketid, curSocket] of room) {
 				const channelid = roomChannel?.get(curSocketid) || 0;
-				if (!messages[channelid])
-					messages[channelid] = channelMessages[channelid].join("\n");
+				if (!messages[channelid]) { messages[channelid] = channelMessages[channelid].join("\n"); }
 				curSocket.write(messages[channelid]!);
 			}
 		},
 	};
 
 	constructor(config: {
-		port: number;
-		bindaddress?: string;
-		ssl?: typeof Config.ssl;
-		wsdeflate?: typeof Config.wsdeflate;
-		proxyip?: typeof Config.proxyip;
-		customhttpresponse?: typeof Config.customhttpresponse;
-		disablenodestatic?: boolean;
+		port: number,
+		bindaddress?: string,
+		ssl?: typeof Config.ssl,
+		wsdeflate?: typeof Config.wsdeflate,
+		proxyip?: typeof Config.proxyip,
+		customhttpresponse?: typeof Config.customhttpresponse,
+		disablenodestatic?: boolean,
 	}) {
 		super();
 		if (!config.bindaddress) config.bindaddress = "0.0.0.0";
 
-		this.isTrustedProxyIp = config.proxyip
-			? IPTools.checker(config.proxyip)
-			: () => false;
+		this.isTrustedProxyIp = config.proxyip ?
+			IPTools.checker(config.proxyip) :
+			() => false;
 
 		// Static HTTP server
 
@@ -428,7 +427,7 @@ export class ServerStream extends Streams.ObjectReadWriteStream<string> {
 
 		const sockjs: typeof import("sockjs") = (require as any)("sockjs");
 		const options: import("sockjs").ServerOptions & {
-			faye_server_options?: { [key: string]: any };
+			faye_server_options?: { [key: string]: any },
 		} = {
 			sockjs_url: `//play.pokemonshowdown.com/js/lib/sockjs-1.4.0-nwjsfix.min.js`,
 			prefix: "/showdown",
@@ -442,7 +441,7 @@ export class ServerStream extends Streams.ObjectReadWriteStream<string> {
 				const deflate = (require as any)("permessage-deflate").configure(
 					config.wsdeflate
 				);
-				options.faye_server_options = { extensions: [deflate] };
+				options.faye_server_options = {extensions: [deflate]};
 			} catch {
 				crashlogger(
 					new Error(

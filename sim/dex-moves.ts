@@ -1,5 +1,5 @@
-import { Utils } from "../lib";
-import { BasicEffect, toID } from "./dex-data";
+import {Utils} from "../lib";
+import {BasicEffect, toID} from "./dex-data";
 
 /**
  * Describes the acceptable target(s) of a move.
@@ -72,23 +72,23 @@ export interface MoveFlags {
 	snatch?: 1; // Can be stolen from the original user and instead used by another Pokemon using Snatch.
 	sound?: 1; // Has no effect on Pokemon with the Ability Soundproof.
 	wind?: 1; // Activates the Wind Power and Wind Rider Abilities.
-	//**ELITE REDUX FLAGS: */
-	field?: 1; //Boosted by Field Explorer
-	kick?: 1; //Boosted by Striker
-	weather?: 1; //Negated by Weather Control
-	bone?: 1; //Affected by Bone Based
-	horn?: 1; //Affected by Mighty Horn and Hardened Sheath
-	counter?: 1; //Indicates move is result of an ability.
-	hammer?: 1; //Hammer based move
-	slam?: 1; //Slam based move
-	arrow?: 1; //Arrow based move
-	highestOffense?: 1; //Move uses highest offensive stat for damage calc (ex tri attack)
-	highestDamage?: 1; //Move uses special or physical damage, whichever is more effective (ex shell side arm)
+	//* *ELITE REDUX FLAGS: */
+	field?: 1; // Boosted by Field Explorer
+	kick?: 1; // Boosted by Striker
+	weather?: 1; // Negated by Weather Control
+	bone?: 1; // Affected by Bone Based
+	horn?: 1; // Affected by Mighty Horn and Hardened Sheath
+	counter?: 1; // Indicates move is result of an ability.
+	hammer?: 1; // Hammer based move
+	slam?: 1; // Slam based move
+	arrow?: 1; // Arrow based move
+	highestOffense?: 1; // Move uses highest offensive stat for damage calc (ex tri attack)
+	highestDamage?: 1; // Move uses special or physical damage, whichever is more effective (ex shell side arm)
 }
 
 export interface HitEffect {
 	onHit?: MoveEventMethods["onHit"];
-	onEffectiveness?: MoveEventMethods["onEffectiveness"]; //Exclusively for Sheer Cold
+	onEffectiveness?: MoveEventMethods["onEffectiveness"]; // Exclusively for Sheer Cold
 
 	// set pokemon conditions
 	boosts?: SparseBoostsTable | null;
@@ -252,9 +252,9 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	 */
 	isZ?: boolean | string;
 	zMove?: {
-		basePower?: number;
-		effect?: string;
-		boost?: SparseBoostsTable;
+		basePower?: number,
+		effect?: string,
+		boost?: SparseBoostsTable,
 	};
 
 	// Max move data
@@ -265,7 +265,7 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	 */
 	isMax?: boolean | string;
 	maxMove?: {
-		basePower: number;
+		basePower: number,
 	};
 
 	// Hit effects
@@ -360,12 +360,12 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 export type ModdedMoveData =
 	| MoveData
 	| (Partial<Omit<MoveData, "name">> & {
-			inherit: true;
-			igniteBoosted?: boolean;
-			settleBoosted?: boolean;
-			bodyofwaterBoosted?: boolean;
-			longWhipBoost?: boolean;
-			gen?: number;
+		inherit: true,
+		igniteBoosted?: boolean,
+		settleBoosted?: boolean,
+		bodyofwaterBoosted?: boolean,
+		longWhipBoost?: boolean,
+		gen?: number,
 	  });
 
 export interface Move extends Readonly<BasicEffect & MoveData> {
@@ -375,14 +375,14 @@ export interface Move extends Readonly<BasicEffect & MoveData> {
 interface MoveHitData {
 	[targetSlotid: string]: {
 		/** Did this move crit against the target? */
-		crit: boolean;
+		crit: boolean,
 		/** The type effectiveness of this move against the target */
-		typeMod: number;
+		typeMod: number,
 		/**
 		 * Is this move a Z-Move that broke the target's protection?
 		 * (does 0.25x regular damage)
 		 */
-		zBrokeProtect: boolean;
+		zBrokeProtect: boolean,
 	};
 }
 
@@ -434,8 +434,7 @@ type MoveCategory = "Physical" | "Special" | "Status";
 
 export class DataMove
 	extends BasicEffect
-	implements Readonly<BasicEffect & MoveData>
-{
+	implements Readonly<BasicEffect & MoveData> {
 	declare readonly effectType: "Move";
 	/** Move type. */
 	readonly type: string;
@@ -518,15 +517,15 @@ export class DataMove
 	readonly isZ: boolean | string;
 	/* Z-Move fields */
 	declare readonly zMove?: {
-		basePower?: number;
-		effect?: string;
-		boost?: SparseBoostsTable;
+		basePower?: number,
+		effect?: string,
+		boost?: SparseBoostsTable,
 	};
 	/** Is this move a Max move? */
 	readonly isMax: boolean | string;
 	/** Max/G-Max move fields */
 	declare readonly maxMove?: {
-		basePower: number;
+		basePower: number,
 	};
 	readonly flags: MoveFlags;
 	/** Whether or not the user must switch after using this move. */
@@ -589,18 +588,18 @@ export class DataMove
 		this.ignoreOffensive = !!data.ignoreOffensive;
 		this.ignoreDefensive = !!data.ignoreDefensive;
 		this.ignoreImmunity =
-			data.ignoreImmunity !== undefined
-				? data.ignoreImmunity
-				: this.category === "Status";
+			data.ignoreImmunity !== undefined ?
+				data.ignoreImmunity :
+				this.category === "Status";
 		this.pp = Number(data.pp);
 		this.noPPBoosts = !!data.noPPBoosts;
 		this.isZ = data.isZ || false;
 		this.isMax = data.isMax || false;
 		this.flags = data.flags || {};
 		this.selfSwitch =
-			(typeof data.selfSwitch === "string"
-				? (data.selfSwitch as ID)
-				: data.selfSwitch) || undefined;
+			(typeof data.selfSwitch === "string" ?
+				(data.selfSwitch as ID) :
+				data.selfSwitch) || undefined;
 		this.pressureTarget = data.pressureTarget || "";
 		this.nonGhostTarget = data.nonGhostTarget || "";
 		this.ignoreAbility = data.ignoreAbility || false;
@@ -610,16 +609,16 @@ export class DataMove
 		this.noSketch = !!data.noSketch;
 		this.stab = data.stab || undefined;
 		this.volatileStatus =
-			typeof data.volatileStatus === "string"
-				? (data.volatileStatus as ID)
-				: undefined;
+			typeof data.volatileStatus === "string" ?
+				(data.volatileStatus as ID) :
+				undefined;
 
 		if (
 			this.category !== "Status" &&
 			!this.maxMove &&
 			this.id !== "struggle"
 		) {
-			this.maxMove = { basePower: 1 };
+			this.maxMove = {basePower: 1};
 			if (this.isMax || this.isZ) {
 				// already initialized to 1
 			} else if (!this.basePower) {

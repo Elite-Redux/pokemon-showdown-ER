@@ -30,13 +30,13 @@ import * as fs from "fs";
 import * as path from "path";
 
 import * as Data from "./dex-data";
-import { Condition, DexConditions } from "./dex-conditions";
-import { DataMove, DexMoves } from "./dex-moves";
-import { Item, DexItems } from "./dex-items";
-import { Ability, DexAbilities } from "./dex-abilities";
-import { Species, DexSpecies } from "./dex-species";
-import { Format, DexFormats } from "./dex-formats";
-import { Utils } from "../lib";
+import {Condition, DexConditions} from "./dex-conditions";
+import {DataMove, DexMoves} from "./dex-moves";
+import {Item, DexItems} from "./dex-items";
+import {Ability, DexAbilities} from "./dex-abilities";
+import {Species, DexSpecies} from "./dex-species";
+import {Format, DexFormats} from "./dex-formats";
+import {Utils} from "../lib";
 
 const BASE_MOD = "gen9" as ID;
 const DATA_DIR = path.resolve(__dirname, "../data");
@@ -195,8 +195,7 @@ export class ModdedDex {
 
 	modData(dataType: DataType, id: string) {
 		if (this.isBase) return this.data[dataType][id];
-		if (this.data[dataType][id] !== dexes[this.parentMod].data[dataType][id])
-			return this.data[dataType][id];
+		if (this.data[dataType][id] !== dexes[this.parentMod].data[dataType][id]) { return this.data[dataType][id]; }
 		return (this.data[dataType][id] = Utils.deepClone(
 			this.data[dataType][id]
 		));
@@ -249,10 +248,10 @@ export class ModdedDex {
 	getImmunity(
 		source: { type: string } | string,
 		target:
-			| { getTypes: () => string[] }
-			| { types: string[] }
-			| string[]
-			| string
+		| { getTypes: () => string[] }
+		| { types: string[] }
+		| string[]
+		| string
 	): boolean {
 		const sourceType: string =
 			typeof source !== "string" ? source.type : source;
@@ -273,10 +272,10 @@ export class ModdedDex {
 	getEffectiveness(
 		source: { type: string } | string,
 		target:
-			| { getTypes: () => string[] }
-			| { types: string[] }
-			| string[]
-			| string
+		| { getTypes: () => string[] }
+		| { types: string[] }
+		| string[]
+		| string
 	): number {
 		const sourceType: string =
 			typeof source !== "string" ? source.type : source;
@@ -293,13 +292,13 @@ export class ModdedDex {
 		const typeData = this.types.get(targetTyping);
 		if (!typeData) return 0;
 		switch (typeData.damageTaken[sourceType]) {
-			case 1:
-				return 1; // super-effective
-			case 2:
-				return -1; // resist
+		case 1:
+			return 1; // super-effective
+		case 2:
+			return -1; // resist
 			// in case of weird situations like Gravity, immunity is handled elsewhere
-			default:
-				return 0;
+		default:
+			return 0;
 		}
 	}
 
@@ -342,8 +341,7 @@ export class ModdedDex {
 	 *     moveCopyCopy = Dex.getActiveMove(moveCopy.id)
 	 */
 	getActiveMove(move: Move | string): ActiveMove {
-		if (move && typeof (move as ActiveMove).hit === "number")
-			return move as ActiveMove;
+		if (move && typeof (move as ActiveMove).hit === "number") { return move as ActiveMove; }
 		move = this.moves.get(move);
 		const moveCopy: ActiveMove = this.deepClone(move);
 		moveCopy.hit = 0;
@@ -370,7 +368,7 @@ export class ModdedDex {
 			"Dark",
 		];
 		const tr = this.trunc;
-		const stats = { hp: 31, atk: 31, def: 31, spe: 31, spa: 31, spd: 31 };
+		const stats = {hp: 31, atk: 31, def: 31, spe: 31, spa: 31, spd: 31};
 		if (this.gen <= 2) {
 			// Gen 2 specific Hidden Power check. IVs are still treated 0-31 so we get them 0-15
 			const atkDV = tr(ivs.atk / 2);
@@ -421,8 +419,8 @@ export class ModdedDex {
 	dataSearch(
 		target: string,
 		searchIn?:
-			| ("Pokedex" | "Moves" | "Abilities" | "Items" | "Natures")[]
-			| null,
+		| ("Pokedex" | "Moves" | "Abilities" | "Items" | "Natures")[]
+		| null,
 		isInexact?: boolean
 	): AnyObject[] | null {
 		if (!target) return null;
@@ -597,14 +595,15 @@ export class ModdedDex {
 		}
 		for (const dataType of DATA_TYPES.concat("Aliases")) {
 			const BattleData = this.loadDataFile(basePath, dataType);
-			if (BattleData !== dataCache[dataType])
+			if (BattleData !== dataCache[dataType]) {
 				dataCache[dataType] = Object.assign(
 					BattleData,
 					dataCache[dataType]
 				);
+			}
 			if (dataType === "Rulesets" && !parentDex) {
 				for (const format of this.formats.all()) {
-					BattleData[format.id] = { ...format, ruleTable: null };
+					BattleData[format.id] = {...format, ruleTable: null};
 				}
 			}
 		}
@@ -650,10 +649,11 @@ export class ModdedDex {
 
 		// Flag the generation. Required for team validator.
 		this.gen = dataCache.Scripts.gen;
-		if (!this.gen)
+		if (!this.gen) {
 			throw new Error(
 				`Mod ${this.currentMod} needs a generation number in scripts.js`
 			);
+		}
 		this.dataCache = dataCache as DexTableData;
 
 		// Execute initialization script.

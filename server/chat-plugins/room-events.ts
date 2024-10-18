@@ -65,7 +65,7 @@ function getAliases(room: Room, eventID?: ID) {
 	for (const aliasID in room.settings.events) {
 		if (
 			'eventID' in room.settings.events[aliasID] &&
-			(!eventID || (room.settings.events[aliasID] as RoomEventAlias).eventID === eventID)
+			(!eventID || (room.settings.events[aliasID]).eventID === eventID)
 		) aliases.push(aliasID);
 	}
 	return aliases;
@@ -254,7 +254,7 @@ export const commands: Chat.ChatCommands = {
 			for (const alias of getAliases(room, eventID)) {
 				delete room.settings.events[alias];
 			}
-			for (const category of getAllCategories(room).map(cat => room!.settings.events?.[cat] as RoomEventCategory)) {
+			for (const category of getAllCategories(room).map(cat => room.settings.events?.[cat] as RoomEventCategory)) {
 				category.events = category.events.filter(event => event !== eventID);
 			}
 
@@ -280,7 +280,7 @@ export const commands: Chat.ChatCommands = {
 					const category = room.settings.events[categoryID];
 					if ('events' in category && categoryID === target) {
 						events = category.events
-							.map(e => room!.settings.events?.[e] as RoomEvent)
+							.map(e => room.settings.events?.[e] as RoomEvent)
 							.filter(e => e);
 						break;
 					}
@@ -301,7 +301,7 @@ export const commands: Chat.ChatCommands = {
 			for (const potentialCategory of getAllCategories(room)) {
 				if (
 					events.map(event => toID(event.eventName))
-						.filter(id => (room!.settings.events?.[potentialCategory] as RoomEventCategory).events.includes(id)).length
+						.filter(id => (room.settings.events?.[potentialCategory] as RoomEventCategory).events.includes(id)).length
 				) hasCategories = true; break;
 			}
 
@@ -505,7 +505,7 @@ export const commands: Chat.ChatCommands = {
 			const delimited = target.split(target.includes('|') ? '|' : ',');
 			const sortable = Object.values(room.settings.events)
 				.filter(event => 'eventName' in event)
-				.map(event => event as RoomEvent);
+				.map(event => event);
 
 			// id tokens
 			if (delimited.length === 1) {

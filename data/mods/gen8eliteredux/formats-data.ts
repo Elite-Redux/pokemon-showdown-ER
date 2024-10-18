@@ -4766,7 +4766,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	ceruledge: {
-		tier: "OU",
+		tier: "Uber",
 		doublesTier: "DOU",
 	},
 	toedscool: {
@@ -4802,7 +4802,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DUber",
 	},
 
-	//ER Megas
+	// ER Megas
 
 	miloticmega: {
 		tier: "UU",
@@ -4833,7 +4833,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 
-	//Unused ...for now
+	// Unused ...for now
 	missingno: {
 		isNonstandard: "Custom",
 		tier: "Illegal",
@@ -5264,8 +5264,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	shucklemega: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Illegal",
+		doublesTier: "Illegal",
 	},
 	relicanthmega: {
 		tier: "OU",

@@ -84,6 +84,7 @@ export class Field {
 			this.weatherState = prevWeatherState;
 			return false;
 		}
+		this.weatherState.startedThisTurn = status.countFullRounds;
 		this.battle.eachEvent('WeatherChange', sourceEffect);
 		return true;
 	}
@@ -163,6 +164,7 @@ export class Field {
 			source,
 			sourceSlot: source.getSlot(),
 			duration: status.duration,
+			startedThisTurn: status.countFullRounds,
 		};
 		if (status.durationCallback) {
 			this.terrainState.duration = status.durationCallback.call(this.battle, source, source, sourceEffect);
@@ -187,7 +189,7 @@ export class Field {
 	}
 
 	effectiveTerrain(target?: Pokemon | Side | Battle) {
-		if (this.suppressingTerrain()) return ''
+		if (this.suppressingTerrain()) return '';
 		if (this.battle.event && !target) target = this.battle.event.target;
 		return this.battle.runEvent('TryTerrain', target) ? this.terrain : '';
 	}
@@ -223,6 +225,7 @@ export class Field {
 			source,
 			sourceSlot: source?.getSlot(),
 			duration: status.duration,
+			startedThisTurn: status.countFullRounds,
 		};
 		if (status.durationCallback) {
 			if (!source) throw new Error(`setting fieldcond without a source`);

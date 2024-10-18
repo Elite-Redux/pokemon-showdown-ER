@@ -109,14 +109,14 @@ export const Items: {[k: string]: ModdedItemData} = {
 			return this.chainModify(1.5);
 		},
 	},
-	// choicescarf: {
-	// 	inherit: true,
-	// 	onModifySpe(spe, pokemon) {},
-	// 	onModifySpeFull(spe, pokemon) {
-	// 		if (pokemon.volatiles["dynamax"]) return;
-	// 		return this.chainModify(1.5);
-	// 	},
-	// },
+	choicescarf: {
+		inherit: true,
+		onModifySpe(spe, pokemon) {},
+		onModifySpeFull(spe, pokemon) {
+			if (pokemon.volatiles["dynamax"]) return;
+			return this.chainModify(1.5);
+		},
+	},
 	choicespecs: {
 		inherit: true,
 		onModifySpA(spe, pokemon) {},
@@ -415,7 +415,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 			if (pokemon.baseSpecies.baseSpecies !== 'Farfetchd') return;
 			if (move.category !== 'Physical') return;
 			return this.chainModify(2);
-		}
+		},
 	},
 	lightball: {
 		inherit: true,
@@ -793,7 +793,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	//Sivally Memories
+	// Sivally Memories
 	firememory: {
 		inherit: true,
 		isNonstandard: null,
@@ -1006,4 +1006,4 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-}
+};

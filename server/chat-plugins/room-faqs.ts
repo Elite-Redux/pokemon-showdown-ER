@@ -111,15 +111,15 @@ export const commands: Chat.ChatCommands = {
 		if (!(roomFaqs[room.roomid] && roomFaqs[room.roomid][topic])) return this.errorReply("Invalid topic.");
 		if (
 			room.settings.repeats?.length &&
-			room.settings.repeats.filter(x => x.faq && x.id === (getAlias(room!.roomid, topic) || topic)).length
+			room.settings.repeats.filter(x => x.faq && x.id === (getAlias(room.roomid, topic) || topic)).length
 		) {
 			this.parse(`/msgroom ${room.roomid},/removerepeat ${getAlias(room.roomid, topic) || topic}`);
 		}
 		delete roomFaqs[room.roomid][topic];
 		Object.keys(roomFaqs[room.roomid]).filter(
-			val => getAlias(room!.roomid, val) === topic
+			val => getAlias(room.roomid, val) === topic
 		).map(
-			val => delete roomFaqs[room!.roomid][val]
+			val => delete roomFaqs[room.roomid][val]
 		);
 		if (!Object.keys(roomFaqs[room.roomid]).length) delete roomFaqs[room.roomid];
 		saveRoomFaqs();

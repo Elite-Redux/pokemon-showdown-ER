@@ -377,7 +377,7 @@ export class ReadStream {
 	async pipeTo(outStream: WriteStream, options: {noEnd?: boolean} = {}) {
 		let value, done;
 		while (({value, done} = await this.next(), !done)) {
-			await outStream.write(value!);
+			await outStream.write(value);
 		}
 		if (!options.noEnd) return outStream.writeEnd();
 	}
@@ -733,7 +733,7 @@ export class ObjectReadStream<T> {
 	async pipeTo(outStream: ObjectWriteStream<T>, options: {noEnd?: boolean} = {}) {
 		let value, done;
 		while (({value, done} = await this.next(), !done)) {
-			await outStream.write(value!);
+			await outStream.write(value);
 		}
 		if (!options.noEnd) return outStream.writeEnd();
 	}
