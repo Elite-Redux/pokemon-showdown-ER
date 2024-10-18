@@ -319,7 +319,7 @@ export const commands: Chat.ChatCommands = {
 				const groupInfo = Users.Auth.getGroup(group);
 				return (
 					groupInfo.symbol !== Users.Auth.defaultSymbol() &&
-					room!.auth.atLeast(user, group) &&
+					room.auth.atLeast(user, group) &&
 					Users.Auth.isValidSymbol(groupInfo.symbol)
 				);
 			})[0];
@@ -1262,7 +1262,7 @@ export const commands: Chat.ChatCommands = {
 		const settingsList = Rooms.global.settingsList;
 
 		const parentIndex = settingsList.findIndex(r => r.title === parent.title);
-		const index = settingsList.findIndex(r => r.title === room!.title);
+		const index = settingsList.findIndex(r => r.title === room.title);
 
 		// Ensure that the parent room gets loaded before the subroom.
 		if (parentIndex > index) {

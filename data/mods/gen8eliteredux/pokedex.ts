@@ -196,8 +196,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 1.7,
 		color: "Red",
 		evoLevel: 0,
-		otherFormes: ["Charizard-Mega-X","Charizard-Mega-Y"],
-		formeOrder: ["Charizard", "Charizard-Mega-X","Charizard-Mega-Y",],
+		otherFormes: ["Charizard-Mega-X", "Charizard-Mega-Y"],
+		formeOrder: ["Charizard", "Charizard-Mega-X", "Charizard-Mega-Y"],
 		prevo: "Charmeleon",
 	},
 	charizardmegax: {
@@ -3768,7 +3768,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Red",
 		evoLevel: 0,
 		otherFormes: ["Kingler-Mega"],
-    formeOrder: ["Kingler", "Kingler-Mega"],
+		formeOrder: ["Kingler", "Kingler-Mega"],
 
 		prevo: "Krabby",
 	},
@@ -4910,8 +4910,8 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2.5,
 		color: "Blue",
 		evoLevel: 0,
-		otherFormes: ["Lapras-Mega-X","Lapras-Mega"],
-    formeOrder: ["Lapras","Lapras-Mega-X","Lapras-Mega"],
+		otherFormes: ["Lapras-Mega-X", "Lapras-Mega"],
+		formeOrder: ["Lapras", "Lapras-Mega-X", "Lapras-Mega"],
 
 	},
 	laprasmegax: {
@@ -5730,7 +5730,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Green",
 		evoLevel: 0,
 		otherFormes: ["Meganium-Mega"],
-    formeOrder: ["Meganium", "Meganium-Mega"],
+		formeOrder: ["Meganium", "Meganium-Mega"],
 		prevo: "Bayleef",
 	},
 	meganiummega: {
@@ -26682,7 +26682,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Yellow",
 		evoLevel: 0,
 		otherFormes: ["Ribombee-Mega"],
-		formeOrder: ["Ribombee","Ribombee-Mega",],
+		formeOrder: ["Ribombee", "Ribombee-Mega"],
 		prevo: "Cutiefly",
 	},
 	rockruff: {
@@ -27711,7 +27711,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2.3,
 		color: "Gray",
 		requiredItem: "Flying Memory",
-		changesFrom: "Silvally"
+		changesFrom: "Silvally",
 	},
 	silvallypoison: {
 		name: "Silvally-Poison",
@@ -32171,7 +32171,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Houndoom-Mega-Redux"],
-		formeOrder: ["Houndoom-Redux","Houndoom-Mega-Redux",],
+		formeOrder: ["Houndoom-Redux", "Houndoom-Mega-Redux"],
 		prevo: "Houndour Redux",
 	},
 	houndoommegaredux: {
@@ -32226,7 +32226,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		evoLevel: 0,
 		requiredItem: "Sablenite-R",
 		otherFormes: ["Sableye-Mega-Redux"],
-		formeOrder: ["Sableye-Redux","Sableye-Mega-Redux",],
+		formeOrder: ["Sableye-Redux", "Sableye-Mega-Redux"],
 	},
 	sableyemegaredux: {
 		name: "Sableye-Mega-Redux",
@@ -32279,7 +32279,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Mawile-Mega-Redux"],
-		formeOrder: ["Mawile-Redux","Mawile-Mega-Redux",],
+		formeOrder: ["Mawile-Redux", "Mawile-Mega-Redux"],
 	},
 	mawilemegaredux: {
 		name: "Mawile-Mega-Redux",
@@ -32511,7 +32511,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Garchomp-Mega-Redux"],
-		formeOrder: ["Garchomp-Redux","Garchomp-Mega-Redux",],
+		formeOrder: ["Garchomp-Redux", "Garchomp-Mega-Redux"],
 		prevo: "Gabite Redux",
 	},
 	garchompmegaredux: {
@@ -32667,7 +32667,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Arcanine-Mega-Redux"],
-		formeOrder: ["Arcanine-Redux","Arcanine-Mega-Redux",],
+		formeOrder: ["Arcanine-Redux", "Arcanine-Mega-Redux"],
 		prevo: "Growlithe Redux",
 	},
 	arcaninemegaredux: {
@@ -32721,7 +32721,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Skarmory-Mega-Redux"],
-		formeOrder: ["Skarmory-Redux","Skarmory-Mega-Redux",],
+		formeOrder: ["Skarmory-Redux", "Skarmory-Mega-Redux"],
 	},
 	skarmorymegaredux: {
 		name: "Skarmory-Mega-Redux",
@@ -32902,7 +32902,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Machamp-Mega-Redux"],
-		formeOrder: ["Machamp-Redux","Machamp-Mega-Redux",],
+		formeOrder: ["Machamp-Redux", "Machamp-Mega-Redux"],
 		prevo: "Machoke Redux",
 	},
 	machampmegaredux: {
@@ -33388,7 +33388,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Beedrill-Mega-Redux"],
-		formeOrder: ["Beedrill-Redux","Beedrill-Mega-Redux",],
+		formeOrder: ["Beedrill-Redux", "Beedrill-Mega-Redux"],
 		prevo: "Kakuna Redux",
 	},
 	beedrillmegaredux: {
@@ -33595,7 +33595,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Alakazam-Mega-Redux"],
-		formeOrder: ["Alakazam-Redux","Alakazam-Mega-Redux",],
+		formeOrder: ["Alakazam-Redux", "Alakazam-Mega-Redux"],
 		prevo: "Kadabra Redux",
 	},
 	alakazammegaredux: {
@@ -33732,7 +33732,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Brown",
 		evoLevel: 0,
 		otherFormes: ["Ursaluna-Mega"],
-		formeOrder: ["Ursaluna","Ursaluna-Mega",],
+		formeOrder: ["Ursaluna", "Ursaluna-Mega"],
 		prevo: "Ursaring",
 	},
 	basculegion: {
@@ -40471,7 +40471,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		weightkg: 0,
 		evoLevel: 0,
 		otherFormes: ["Tyranitar-Mega-Redux"],
-		formeOrder: ["Tyranitar-Redux","Tyranitar-Mega-Redux",],
+		formeOrder: ["Tyranitar-Redux", "Tyranitar-Mega-Redux"],
 		prevo: "Pupitar Redux",
 	},
 	pupitarredux: {

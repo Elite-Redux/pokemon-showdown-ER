@@ -1,5 +1,5 @@
-import { toID, BasicEffect } from "./dex-data";
-import { getAbilities } from "../dex_repo/src/abilities";
+import {toID, BasicEffect} from "./dex-data";
+import {getAbilities} from "../dex_repo/src/abilities";
 
 export interface SpeciesAbility {
 	0: string;
@@ -55,8 +55,7 @@ export type ModdedLearnsetData = LearnsetData & { inherit?: true };
 
 export class Species
 	extends BasicEffect
-	implements Readonly<BasicEffect & SpeciesFormatsData>
-{
+	implements Readonly<BasicEffect & SpeciesFormatsData> {
 	declare readonly effectType: "Pokemon";
 	/**
 	 * Species ID. Identical to ID. Note that this is the full ID, e.g.
@@ -135,13 +134,13 @@ export class Species
 	/** Evolutions. Array because many Pokemon have multiple evolutions. */
 	readonly evos: string[];
 	readonly evoType?:
-		| "trade"
-		| "useItem"
-		| "levelMove"
-		| "levelExtra"
-		| "levelFriendship"
-		| "levelHold"
-		| "other";
+	| "trade"
+	| "useItem"
+	| "levelMove"
+	| "levelExtra"
+	| "levelFriendship"
+	| "levelHold"
+	| "other";
 	/** Evolution condition. falsy if doesn't evolve. */
 	declare readonly evoCondition?: string;
 	/** Evolution item. falsy if doesn't evolve. */
@@ -164,7 +163,7 @@ export class Species
 	 */
 	readonly gender: GenderName;
 	/** Gender ratio. Should add up to 1 unless genderless. */
-	readonly genderRatio: { M: number; F: number };
+	readonly genderRatio: { M: number, F: number };
 	/** Base stats. */
 	readonly baseStats: StatsTable;
 	/** Max HP. Overrides usual HP calculations (for Shedinja). */
@@ -256,7 +255,7 @@ export class Species
 			data.spriteid ||
 			toID(this.baseSpecies) +
 				(this.baseSpecies !== this.name ? `-${toID(this.forme)}` : "");
-		this.abilities = data.abilities || { 0: "" };
+		this.abilities = data.abilities || {0: ""};
 		this.types = data.types || ["???"];
 		this.addedType = data.addedType || undefined;
 		this.prevo = data.prevo || "";
@@ -273,13 +272,13 @@ export class Species
 		this.gender = data.gender || "";
 		this.genderRatio =
 			data.genderRatio ||
-			(this.gender === "M"
-				? { M: 1, F: 0 }
-				: this.gender === "F"
-				? { M: 0, F: 1 }
-				: this.gender === "N"
-				? { M: 0, F: 0 }
-				: { M: 0.5, F: 0.5 });
+			(this.gender === "M" ?
+				{M: 1, F: 0} :
+				this.gender === "F" ?
+					{M: 0, F: 1} :
+					this.gender === "N" ?
+						{M: 0, F: 0} :
+						{M: 0.5, F: 0.5});
 		this.requiredItem = data.requiredItem || undefined;
 		this.requiredItems =
 			this.requiredItems ||
@@ -317,11 +316,10 @@ export class Species
 			data.battleOnly || (this.isMega ? this.baseSpecies : undefined);
 		this.changesFrom =
 			data.changesFrom ||
-			(this.battleOnly !== this.baseSpecies
-				? this.battleOnly
-				: this.baseSpecies);
-		if (Array.isArray(data.changesFrom))
-			this.changesFrom = data.changesFrom[0];
+			(this.battleOnly !== this.baseSpecies ?
+				this.battleOnly :
+				this.baseSpecies);
+		if (Array.isArray(data.changesFrom)) { this.changesFrom = data.changesFrom[0]; }
 
 		if (!this.gen && this.num >= 1) {
 			if (this.num >= 906 || this.forme.includes("Paldea")) {
@@ -357,13 +355,13 @@ export class Species
 		}
 	}
 	getAbilities(this: Species): string[] {
-		let abilities: string[] = [];
-		if (this.abilities![0]) abilities.push(this.abilities![0]);
-		if (this.abilities![1]) abilities.push(this.abilities![1]);
-		if (this.abilities!["H"]) abilities.push(this.abilities!["H"]);
-		if (this.abilities!["I1"]) abilities.push(this.abilities!["I1"]);
-		if (this.abilities!["I2"]) abilities.push(this.abilities!["I2"]);
-		if (this.abilities!["I3"]) abilities.push(this.abilities!["I3"]);
+		const abilities: string[] = [];
+		if (this.abilities[0]) abilities.push(this.abilities[0]);
+		if (this.abilities[1]) abilities.push(this.abilities[1]);
+		if (this.abilities["H"]) abilities.push(this.abilities["H"]);
+		if (this.abilities["I1"]) abilities.push(this.abilities["I1"]);
+		if (this.abilities["I2"]) abilities.push(this.abilities["I2"]);
+		if (this.abilities["I3"]) abilities.push(this.abilities["I3"]);
 		return abilities;
 	}
 }
@@ -428,7 +426,7 @@ export class DexSpecies {
 					...this.dex.data.FormatsData[id],
 					name: id,
 				});
-				species.abilities = { 0: species.abilities["S"]! };
+				species.abilities = {0: species.abilities["S"]!};
 			} else {
 				species = this.get(this.dex.data.Aliases[id]);
 				if (species.cosmeticFormes) {
@@ -471,8 +469,7 @@ export class DexSpecies {
 						pokeName = id.slice(0, -i.length);
 					}
 				}
-				if (this.dex.data.Aliases.hasOwnProperty(pokeName))
-					pokeName = toID(this.dex.data.Aliases[pokeName]);
+				if (this.dex.data.Aliases.hasOwnProperty(pokeName)) { pokeName = toID(this.dex.data.Aliases[pokeName]); }
 				if (this.dex.data.Pokedex[pokeName + forme]) {
 					aliasTo = pokeName + forme;
 					break;
@@ -502,8 +499,7 @@ export class DexSpecies {
 			if (baseSpeciesStatuses !== undefined) {
 				let key: keyof EffectData;
 				for (key in baseSpeciesStatuses) {
-					if (!(key in species))
-						(species as any)[key] = baseSpeciesStatuses[key];
+					if (!(key in species)) { (species as any)[key] = baseSpeciesStatuses[key]; }
 				}
 			}
 			if (
@@ -611,8 +607,7 @@ export class DexSpecies {
 			if (
 				this.dex.gen === 3 &&
 				this.dex.abilities.get(species.abilities["1"]).gen === 4
-			)
-				delete species.abilities["1"];
+			) { delete species.abilities["1"]; }
 		} else {
 			species = new Species({
 				id,
@@ -636,7 +631,7 @@ export class DexSpecies {
 		let learnsetData = this.learnsetCache.get(id);
 		if (learnsetData) return learnsetData;
 		if (!this.dex.data.Learnsets.hasOwnProperty(id)) {
-			return new Learnset({ exists: false });
+			return new Learnset({exists: false});
 		}
 		learnsetData = new Learnset(this.dex.data.Learnsets[id]);
 		this.learnsetCache.set(id, learnsetData);

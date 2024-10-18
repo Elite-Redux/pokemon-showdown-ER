@@ -1,5 +1,5 @@
-import { PokemonEventMethods } from "./dex-conditions";
-import { BasicEffect, toID } from "./dex-data";
+import {PokemonEventMethods} from "./dex-conditions";
+import {BasicEffect, toID} from "./dex-data";
 
 interface AbilityEventMethods {
 	onCheckShow?: (this: Battle, pokemon: Pokemon) => void;
@@ -17,8 +17,8 @@ interface AbilityEventMethods {
 
 export interface AbilityData
 	extends Partial<Ability>,
-		AbilityEventMethods,
-		PokemonEventMethods {
+	AbilityEventMethods,
+	PokemonEventMethods {
 	name: string;
 }
 

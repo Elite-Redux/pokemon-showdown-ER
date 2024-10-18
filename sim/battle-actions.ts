@@ -347,16 +347,16 @@ export class BattleActions {
 		}
 	}
 
-	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: Object, ) {
-		type MutableMove = {-readonly [K in keyof Move]: Move[K]}
-		const nextMutableMove: MutableMove = move
+	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: Object,) {
+		type MutableMove = {-readonly [K in keyof Move]: Move[K]};
+		const nextMutableMove: MutableMove = move;
 		if (moveMutations) {
 			for (const key of Object.keys(moveMutations)) {
 				(nextMutableMove as any)[key] = (moveMutations as any)[key];
 			}
 		}
-		const nextMove: Move = nextMutableMove
-		const targetLoc = pokemon.getLocOf(target)
+		const nextMove: Move = nextMutableMove;
+		const targetLoc = pokemon.getLocOf(target);
 		this.runMove(nextMove, pokemon, targetLoc, null, undefined, true);
 	}
 	/**
@@ -934,7 +934,7 @@ export class BattleActions {
 				// purposes of Counter, Metal Burst, and Mirror Coat.
 				damage[i] = md === true || !md ? 0 : md;
 				// Total damage dealt is accumulated for the purposes of recoil (Parental Bond).
-				move.totalDamage += damage[i] as number;
+				move.totalDamage += damage[i];
 			}
 			if (move.mindBlownRecoil) {
 				const hpBeforeRecoil = pokemon.hp;
@@ -1004,7 +1004,7 @@ export class BattleActions {
 
 		this.battle.eachEvent('Update');
 
-		this.afterMoveSecondaryEvent(targetsCopy.filter(val => !!val) as Pokemon[], pokemon, move);
+		this.afterMoveSecondaryEvent(targetsCopy.filter(val => !!val), pokemon, move);
 
 		if (!move.negateSecondary && !(move.hasSheerForce && pokemon.hasAbility('sheerforce'))) {
 			for (const [i, d] of damage.entries()) {
@@ -1708,7 +1708,7 @@ export class BattleActions {
 		const type = move.type;
 
 		baseDamage += 2;
-		//TODO: Test Parental Bond Rework
+		// TODO: Test Parental Bond Rework
 		if (move.spreadHit) {
 			// multi-target modifier (doubles only)
 			const spreadModifier = move.spreadModifier || (this.battle.gameType === 'freeforall' ? 0.5 : 0.75);
@@ -1721,7 +1721,7 @@ export class BattleActions {
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
 		} else if ((move.multihitType === 'boxer' || move.multihitType === 'maw') && move.hit > 1) {
 			// Boxer & Primal Maw modifier
-			const bondModifier = 0.5
+			const bondModifier = 0.5;
 			this.battle.debug(`Raging Boxer / Primal Maw modifier: ${bondModifier}`);
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
 		} else if (move.multihitType === 'headed') {
@@ -1733,7 +1733,7 @@ export class BattleActions {
 				baseDamage = this.battle.modify(baseDamage, bondModifier);
 			}
 		} else if (move.multihitType === 'dual') {
-			const bondModifier = 0.75
+			const bondModifier = 0.75;
 			baseDamage = this.battle.modify(baseDamage, bondModifier);
 		} else if (move.multihitType == "ragingmoth") {
 			const bondModifier = 0.75;
@@ -1751,13 +1751,12 @@ export class BattleActions {
 		}
 
 		// random factor - also not a modifier
-		if(pokemon.hasAbility('Bad Luck')){
+		if (pokemon.hasAbility('Bad Luck')) {
 			baseDamage = tr(baseDamage * 0.85);
-		}
-		else{
+		} else {
 			baseDamage = this.battle.randomizer(baseDamage);
 		}
-		
+
 
 		// STAB
 		if (move.forceSTAB || (type !== '???' &&

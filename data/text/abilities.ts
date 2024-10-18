@@ -2485,7 +2485,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		activate: "  [POKEMON] underwent a heroic transformation!",
 	},
 
-	//IE
+	// IE
 	chloroplast: {
 		name: "Chloroplast",
 		shortDesc: "This Pokemon uses moves as if under Sunny Day",
@@ -2529,7 +2529,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 			"If this Pokemon is at full HP, this Pokemon's punching moves gain +1 priority",
 	},
 
-	//Elite Redux
+	// Elite Redux
 	antarcticbird: {
 		name: "Antarctic Bird",
 		shortDesc: "This Pokemon's Ice and Flying type moves are boosted by 30%",
@@ -2939,9 +2939,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		shortDesc:
 			"This Pokemon's move don't miss. Moves with less than 80% accuracy go last.",
 	},
-	//badcompany: {
+	// badcompany: {
 	//
-	//},
+	// },
 	giantwings: {
 		name: "Giant Wings",
 		shortDesc: "This Pokemon's wind moves are boosted by 25%.",
@@ -3004,7 +3004,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		shortDesc:
 			"Fairy and Dark type moves gain STAB; Hypnosis accuracy + 50%.",
 	},
-	//Elite Redux's Opportunist renamed to 'Expert Hunter' to avoid name confict with gen 9's Opportunist
+	// Elite Redux's Opportunist renamed to 'Expert Hunter' to avoid name confict with gen 9's Opportunist
 	experthunter: {
 		name: "Expert Hunter",
 		shortDesc: "This Pokemon goes first against foes below 50% HP.",

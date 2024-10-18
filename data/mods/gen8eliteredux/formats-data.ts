@@ -4802,7 +4802,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DUber",
 	},
 
-	//ER Megas
+	// ER Megas
 
 	miloticmega: {
 		tier: "UU",
@@ -4833,7 +4833,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 
-	//Unused ...for now
+	// Unused ...for now
 	missingno: {
 		isNonstandard: "Custom",
 		tier: "Illegal",

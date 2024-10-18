@@ -29,8 +29,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === "frostorb") {
 				this.add("-status", target, "frz", "[from] item: Frost Orb");
-			}
-			else if (sourceEffect && sourceEffect.effectType == "Ability") {
+			} else if (sourceEffect && sourceEffect.effectType == "Ability") {
 				this.add(
 					"-status",
 					target,
@@ -141,15 +140,15 @@ export const Conditions: { [k: string]: ConditionData } = {
 				if (move.category == "Status") target.cureStatus();
 			}
 
-			/// This modifies the heal by a multiple of 0, effectively preventing it.
+			// / This modifies the heal by a multiple of 0, effectively preventing it.
 			return this.chainModify(0);
 		},
 		/**
 		 * This should negate the boosts of this pokemon while bleed is inflicted.
 		 */
 		onSourceModifyBoost(boosts, pokemon) {
-			for(const b in boosts){
-				if(boosts[b] > 0){
+			for (const b in boosts) {
+				if (boosts[b] > 0) {
 					boosts[b] = 0;
 				}
 			}
@@ -328,8 +327,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 			}
 			this.activeTarget = pokemon;
 			const damage = this.actions.getConfusionDamage(pokemon, 40);
-			if (typeof damage !== "number")
-				throw new Error("Confusion damage not dealt");
+			if (typeof damage !== "number") { throw new Error("Confusion damage not dealt"); }
 			const activeMove = {
 				id: this.toID("confused"),
 				effectType: "Move",
@@ -379,9 +377,9 @@ export const Conditions: { [k: string]: ConditionData } = {
 				"[of] " + source
 			);
 			this.effectState.boundDivisor =
-				source.hasItem("bindingband") || source.hasAbility("grappler")
-					? 6
-					: 8;
+				source.hasItem("bindingband") || source.hasAbility("grappler") ?
+					6 :
+					8;
 		},
 		onResidualOrder: 13,
 		onResidual(pokemon) {
@@ -500,8 +498,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 				!this.activeMove.id ||
 				this.activeMove.hasBounced ||
 				this.activeMove.sourceEffect === "snatch"
-			)
-				return false;
+			) { return false; }
 			this.effectState.move = this.activeMove.id;
 		},
 		onBeforeMove(pokemon, target, move) {
@@ -692,8 +689,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 				if (
 					this.effectState.effectSource &&
 					this.effectState.effectSource === "Ability"
-				)
-					return this.chainModify(1.2);
+				) { return this.chainModify(1.2); }
 				this.debug("rain water boost");
 				return this.chainModify(1.5);
 			}
@@ -783,8 +779,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 				if (
 					this.effectState.effectSource &&
 					this.effectState.effectSource === "Ability"
-				)
-					return this.chainModify(1.2);
+				) { return this.chainModify(1.2); }
 				this.debug("Sunny Day fire boost");
 				return this.chainModify(1.5);
 			}
@@ -880,8 +875,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 				if (
 					this.effectState.effectSource &&
 					this.effectState.effectSource === "Ability"
-				)
-					return this.modify(spd, 1.2);
+				) { return this.modify(spd, 1.2); }
 				return this.modify(spd, 1.5);
 			}
 		},
@@ -1099,7 +1093,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		name: "Commanded",
 		noCopy: true,
 		onStart(pokemon) {
-			this.boost({ atk: 2, spa: 2, spe: 2, def: 2, spd: 2 }, pokemon);
+			this.boost({atk: 2, spa: 2, spe: 2, def: 2, spd: 2}, pokemon);
 		},
 		onDragOutPriority: 2,
 		onDragOut() {
@@ -1147,8 +1141,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 			if (
 				pokemon.transformed ||
 				(pokemon.ability !== "multitype" && this.gen >= 8)
-			)
-				return types;
+			) { return types; }
 			let type: string | undefined = "Normal";
 			if (pokemon.ability === "multitype") {
 				type = pokemon.getItem().onPlate;
@@ -1166,8 +1159,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 			if (
 				pokemon.transformed ||
 				(pokemon.ability !== "rkssystem" && this.gen >= 8)
-			)
-				return types;
+			) { return types; }
 			let type: string | undefined = "Normal";
 			if (pokemon.ability === "rkssystem") {
 				type = pokemon.getItem().onMemory;
@@ -1203,7 +1195,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 			// if (target == this.effectState.target) return;
 			// if (target.allies().includes(this.effectState.target)) return;
 			if (!effect.flags["heal"]) return;
-			/// Remove heal fraction since soft-boiled doesn't seem to respect the chainModifier.
+			// / Remove heal fraction since soft-boiled doesn't seem to respect the chainModifier.
 			if (effect.heal) effect.heal = undefined;
 			if (target == null) {
 				console.debug("FATAL: can't get target!");
@@ -1247,8 +1239,8 @@ export const Conditions: { [k: string]: ConditionData } = {
 				move = Dex.moves.get(target.moveThisTurn as string) as Effect;
 			}
 
-			/// Refer to frontend/src/battle-text-parser.ts to understand how the client will format this message.
-			/// As well as what arguments you can pass to it.
+			// / Refer to frontend/src/battle-text-parser.ts to understand how the client will format this message.
+			// / As well as what arguments you can pass to it.
 			this.add(
 				"cant",
 				target,

@@ -12,8 +12,8 @@ import * as fs from "fs";
 import * as net from "net";
 import * as path from "path";
 import * as repl from "repl";
-import { crashlogger } from "./crashlogger";
-import { FS } from "./fs";
+import {crashlogger} from "./crashlogger";
+import {FS} from "./fs";
 declare const Config: any;
 
 export const Repl = new (class {
@@ -45,8 +45,7 @@ export const Repl = new (class {
 			process.once("SIGINT", () => process.exit(128 + 2));
 		}
 		(global as any).heapdump = (targetPath?: string) => {
-			if (!targetPath)
-				targetPath = `${filename}-${new Date().toISOString()}`;
+			if (!targetPath) { targetPath = `${filename}-${new Date().toISOString()}`; }
 			let handler;
 			try {
 				handler = require("node-oom-heapdump")();

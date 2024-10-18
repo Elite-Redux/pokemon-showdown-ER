@@ -261,7 +261,7 @@ class Giveaway extends Rooms.SimpleRoomGame {
 		const shiny = set.shiny ? '-shiny' : '';
 
 		const validFemale = [
-			'pyroar'
+			'pyroar',
 		];
 		if (set.gender === 'F' && validFemale.includes(species.id)) spriteid += '-f';
 		return [

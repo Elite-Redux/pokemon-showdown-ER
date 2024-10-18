@@ -722,12 +722,10 @@ export class Battle {
 		const handlers = this.findEventHandlers(target, eventid, effectSource);
 		if (eventid === "ModifySpePrimary") {
 			handlers.concat(this.findEventHandlers(target, "ModifySpe", effectSource));
-		}
-		else if (eventid === "ModifySpeSecondary") {
+		} else if (eventid === "ModifySpeSecondary") {
 			handlers.concat(this.findEventHandlers(target, "ModifySpePrimary", effectSource));
 			handlers.concat(this.findEventHandlers(target, "ModifySpe", effectSource));
-		}
-		else if (eventid === "ModifySpe") {
+		} else if (eventid === "ModifySpe") {
 			handlers.concat(this.findEventHandlers(target, "ModifySpePrimary", effectSource));
 			handlers.concat(this.findEventHandlers(target, "ModifySpeSecondary", effectSource));
 			handlers.concat(this.findEventHandlers(target, "ModifySpeFull", effectSource));

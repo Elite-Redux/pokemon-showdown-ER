@@ -352,7 +352,7 @@ export const commands: Chat.ChatCommands = {
 				Utils.sortBy(names).map(userid => {
 					const isOnline = Users.get(userid)?.statusType === 'online';
 					// targetRoom guaranteed to exist above
-					return userid in targetRoom!.users && isOnline ? `**${userid}**` : userid;
+					return userid in targetRoom.users && isOnline ? `**${userid}**` : userid;
 				}).join(', ');
 		});
 
@@ -2357,7 +2357,7 @@ export const commands: Chat.ChatCommands = {
 
 		const duplicates = targets.filter(userid => (
 			// can be asserted, room should always exist
-			Punishments.roomUserids.nestedGetByType(room!.roomid, userid, 'BLACKLIST')
+			Punishments.roomUserids.nestedGetByType(room.roomid, userid, 'BLACKLIST')
 		));
 		if (duplicates.length) {
 			return this.errorReply(`[${duplicates.join(', ')}] ${Chat.plural(duplicates, "are", "is")} already blacklisted.`);

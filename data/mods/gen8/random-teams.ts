@@ -2214,7 +2214,7 @@ export class RandomGen8Teams {
 			const runEnforcementChecker = (checkerName: string) => {
 				if (!this.moveEnforcementCheckers[checkerName]) return false;
 				return this.moveEnforcementCheckers[checkerName](
-					movePool, moves, abilities, types, counter, species as Species, teamDetails
+					movePool, moves, abilities, types, counter, species, teamDetails
 				);
 			};
 

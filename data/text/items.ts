@@ -2336,7 +2336,7 @@ export const ItemsText: { [k: string]: ItemText } = {
 		desc: "The accuracy of attacks by the holder is 1.2x if it moves after its target.",
 	},
 
-	//ER Items
+	// ER Items
 	milotite: {
 		name: "Milotite",
 		desc: "If held by a Milotic, this item allows it to Mega Evolve in battle.",

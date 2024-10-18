@@ -704,7 +704,7 @@ export const MovesText: {[k: string]: MoveText} = {
 		},
 
 		removeBerry: "  [SOURCE] stole and ate its target's [ITEM]!",
-		removeItem: "  [SOURCE] knocked off [POKEMON]'s [ITEM]!"
+		removeItem: "  [SOURCE] knocked off [POKEMON]'s [ITEM]!",
 	},
 	bugbuzz: {
 		name: "Bug Buzz",
@@ -4584,7 +4584,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	poisonsting: {
 		name: "Poison Sting",
 		desc: "Usually Goes First. 30% chance to poison.",
-		shortDesc: "Usually Goes First. 30% chance to poison."
+		shortDesc: "Usually Goes First. 30% chance to poison.",
 	},
 	poisontail: {
 		name: "Poison Tail",
@@ -4801,7 +4801,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	psywave: {
 		name: "Psywave",
 		desc: "Usually Goes First. 30% chance to confuse.",
-		shortDesc: "Usually Goes First. 30% chance to confuse."
+		shortDesc: "Usually Goes First. 30% chance to confuse.",
 	},
 	pulverizingpancake: {
 		name: "Pulverizing Pancake",
@@ -4956,7 +4956,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	razorleaf: {
 		name: "Razor Leaf",
 		desc: "This move always results in a critical hit. 10% Bleed Chance.",
-		//shortDesc: "This move always results in a critical hit. 10% Bleed Chance.",
+		// shortDesc: "This move always results in a critical hit. 10% Bleed Chance.",
 	},
 	razorshell: {
 		name: "Razor Shell",
@@ -7346,7 +7346,7 @@ export const MovesText: {[k: string]: MoveText} = {
 		},
 	},
 
-	//ER Moves
+	// ER Moves
 	aquafang: {
 		name: "Aqua Fang",
 		desc: "Has a 10% chance to make the target flinch.",
@@ -7486,7 +7486,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	whirlingstrikes: {
 		name: "Whirling Strikes",
 		desc: "Hits 3 times. Each hit does more damage. Striker.",
-		shortDesc: "Hits 3 times. Each hit does more damage. Striker."
+		shortDesc: "Hits 3 times. Each hit does more damage. Striker.",
 	},
 	yggdrasilforce: {
 		name: "Yggdrasil Force",
@@ -7718,31 +7718,31 @@ export const MovesText: {[k: string]: MoveText} = {
 	claydart: {
 		name: "Clay Dart",
 		desc: "Super-effective on Flying-types.",
-		shortDesc: "Super-effective on Flying-types."
+		shortDesc: "Super-effective on Flying-types.",
 	},
 	upperhand: {
 		name: "Upper Hand",
 		desc: "Flinches the target. +3 priority. Fails if the target doesn't use a priority move.",
-		shortDesc: "Flinches the target. +3 priority. Fails if the target doesn't use a priority move."
+		shortDesc: "Flinches the target. +3 priority. Fails if the target doesn't use a priority move.",
 	},
 	smashinrealities: {
 		name: "Smashin' Realities",
 		desc: "Removes weather and terrain. -3 priority.",
-		shortDesc: "Removes weather and terrain. -3 priority"
+		shortDesc: "Removes weather and terrain. -3 priority",
 	},
 	requiem: {
 		name: "Requiem",
 		desc: "Sings a haunting melody. 10% chance to inflict curse.",
-		shortDesc: "10% chance to inflict curse. Sound-based."
+		shortDesc: "10% chance to inflict curse. Sound-based.",
 	},
 	auraforce: {
 		name: "Aura Force",
 		desc: "Imbues strikes with aura power. Super-effective on Ghost",
-		shortDesc: "Super-effective on Ghost."
+		shortDesc: "Super-effective on Ghost.",
 	},
 	jaggedhorns: {
 		name: "Jagged Horns",
 		desc: "A rocky jab strikes the foe. 10% flinch chance. 10% bleed chance. Mighty Horn boost.",
-		shortDesc: "10% flinch chance. 10% bleed chance. Mighty Horn boost."
+		shortDesc: "10% flinch chance. 10% bleed chance. Mighty Horn boost.",
 	},
 };

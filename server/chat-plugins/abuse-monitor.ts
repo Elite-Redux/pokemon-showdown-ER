@@ -763,7 +763,7 @@ export const commands: Chat.ChatCommands = {
 					}
 					const secondaries = Object.entries(p.secondaryTypes || {});
 					if (secondaries.length) {
-						if (!secondaries.every(([sK, sV]) => response![sK] >= sV)) continue;
+						if (!secondaries.every(([sK, sV]) => response[sK] >= sV)) continue;
 						descriptors.push('secondary');
 					}
 					if (descriptors.length) { // ignore modlog / flag -only based actions
