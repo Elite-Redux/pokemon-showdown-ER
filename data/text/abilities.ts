@@ -2413,7 +2413,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 		},
 	},
 	wellbakedbody: {
-		name: "Well-Baked Body",
+		name: "Well Baked Body",
 		desc: "This Pokemon takes half damage and raises its Defense by 2 stages when hit by a Fire-type move.",
 		shortDesc:
 			"This Pokemon's Defense is raised 2 stages if hit by a Fire move; Fire moves deal half.",
@@ -2987,7 +2987,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	sunworship: {
 		name: "Sun Worship",
-		shortDesc: "This Pokemon raises highest stat if switched in during rain.",
+		shortDesc: "This Pokemon raises highest stat if switched in during sun.",
 	},
 	pollinate: {
 		name: "Pollinate",
