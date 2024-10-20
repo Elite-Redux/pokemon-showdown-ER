@@ -2968,7 +2968,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	deadeye: {
 		name: "Deadeye",
-		shortDesc: "This Pokemon never misses. Arrow moves lower defense",
+		shortDesc: "This Pokemon never misses. Arrow moves target lower defense",
 	},
 	artillery: {
 		name: "Artillery",

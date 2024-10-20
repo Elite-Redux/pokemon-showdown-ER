@@ -8107,10 +8107,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	deadeye: {
-		onModifyMove(move) {
-			move.accuracy = true;
-			if (move.flags['arrow']) {
+		onModifyMove(move, pokemon, target) {
+			if(!target) return;
+			if(pokemon == target) return;
 
+			move.accuracy = true;
+			if (move.flags['arrow'] && move.category !== 'Status') {
+				if(target.getStat('def') > target.getStat('spd')) move.category = 'Special';
+				else move.category = 'Physical';
 			}
 		},
 		name: "Deadeye",
