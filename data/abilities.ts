@@ -6525,7 +6525,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		onEffectiveness(typeMod, target, type, move) {
-			if (type == 'Ground') {
+			if (move.type == 'Electric' && type == 'Ground') {
 				return 0.5;
 			}
 		},
