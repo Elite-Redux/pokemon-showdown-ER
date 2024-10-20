@@ -3737,7 +3737,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.secondaries.push({
 				chance: 30,
 				status: "psn",
-				ability: this.dex.abilities.get("poisontouch"),
+				ability: this.dex.abilities.get("poisonpoint"),
 			});
 		},
 		name: "Poison Point",
@@ -11403,6 +11403,17 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					source.trySetStatus("frz", target);
 				}
 			}
+		},
+		onModifyMove(move) {
+			if (!move?.flags["contact"] || move.target === "self") return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: "frz",
+				ability: this.dex.abilities.get("freezinpoint"),
+			});
 		},
 	},
 	peacefulslumber: {
