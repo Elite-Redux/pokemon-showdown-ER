@@ -9430,6 +9430,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	coward: {
 		onStart(pokemon) {
+			if (this.effectState.wasCoward) return;
+			this.effectState.wasCoward = true;
 			this.actions.useMove(Dex.moves.get("protect"), pokemon);
 		},
 		name: "Coward",

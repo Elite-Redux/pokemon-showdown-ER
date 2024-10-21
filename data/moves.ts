@@ -9754,7 +9754,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Inferno",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, pulse: 1},
 		secondary: {
 			chance: 100,
 			status: 'brn',
@@ -15732,18 +15732,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	rollingkick: {
 		num: 27,
-		accuracy: 85,
-		basePower: 60,
+		accuracy: 100,
+		basePower: 40,
 		category: "Physical",
-
 		name: "Rolling Kick",
-		pp: 15,
-		priority: 0,
+		pp: 20,
+		priority: 1,
 		flags: {contact: 1, protect: 1, mirror: 1, kick: 1},
-		secondary: {
-			chance: 30,
-			volatileStatus: 'flinch',
-		},
 		target: "normal",
 		type: "Fighting",
 		contestType: "Cool",
