@@ -6560,9 +6560,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	perfectionist: {
 		onModifyMovePriority: -5,
 		onModifyCritRatio(critRatio, source, target, move) {
+			if(move.category == "Status") return;
 			if (move.basePower <= 50) return critRatio + 1;
 		},
 		onModifyPriority(priority, pokemon, target, move) {
+			if(move.category == "Status") return;
 			if (move.basePower <= 25) return priority + 1;
 		},
 		name: "Perfectionist",
