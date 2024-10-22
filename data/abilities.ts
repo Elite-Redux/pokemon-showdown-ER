@@ -7655,7 +7655,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			];
 			if (twoHeaded.includes(source.species.id)) {
 				move.multihit = 2;
-				move.multihitType = "headed";
+				move.multihitType = "parentalbond";
 			}
 			if (threeHeaded.includes(source.species.id)) {
 				move.multihit = 3;
