@@ -483,7 +483,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAnyModifySpD(spd, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (target.hasAbilityOrInnate("Beads of Ruin")) return;
+			if(!abilityHolder) return;
+			if (target.hasAbilityOrInnate("beadsofruin")) return;
 			if (!move.ruinedSpD?.hasAbilityOrInnate("Beads of Ruin")) { move.ruinedSpD = abilityHolder; }
 			if (move.ruinedSpD !== abilityHolder) return;
 			this.debug("Beads of Ruin SpD drop");
@@ -5434,7 +5435,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAnyModifyDef(def, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (target.hasAbilityOrInnate("Sword of Ruin")) return;
+			if (target.hasAbilityOrInnate("swordofruin")) return;
 			if (!move.ruinedDef?.hasAbilityOrInnate("Sword of Ruin")) { move.ruinedDef = abilityHolder; }
 			if (move.ruinedDef !== abilityHolder) return;
 			this.debug("Sword of Ruin Def drop");
@@ -5450,8 +5451,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-ability", pokemon, "Tablets of Ruin");
 		},
 		onAnyModifyAtk(atk, source, target, move) {
+			if(!move) return;
+
 			const abilityHolder = this.effectState.target;
-			if (source.hasAbilityOrInnate("Tablets of Ruin")) return;
+			console.log(abilityHolder);
+
+			if (source.hasAbility("tabletsofruin")) return;
 			if (!move.ruinedAtk) move.ruinedAtk = abilityHolder;
 			if (move.ruinedAtk !== abilityHolder) return;
 			this.debug("Tablets of Ruin Atk drop");
@@ -5839,7 +5844,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAnyModifySpA(spa, source, target, move) {
 			if (!move) return;
 			const abilityHolder = this.effectState.target;
-			if (source.hasAbilityOrInnate("Vessel of Ruin")) return;
+			if(!abilityHolder) return;
+			if (source.hasAbilityOrInnate("vesselofruin")) return;
 			if (!move.ruinedSpA) move.ruinedSpA = abilityHolder;
 			if (move.ruinedSpA !== abilityHolder) return;
 			this.debug("Vessel of Ruin SpA drop");
@@ -9355,6 +9361,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	absorbant: {
 		onAfterMove(source, target, move) {
+
 			if (target.hp > 0 && target !== source && move.drain) {
 				if(target.hasType('Grass')) return;
 				if (!target.volatiles["leechseed"]) {
@@ -12181,6 +12188,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move, source, target) {
 			if (!target) return;
 			if (!this.field.isWeather("sandstorm") || move.type !== "Ground") return;
+
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity["Ground"] = true;
+			}
 
 			if (target.hasAbility('levitate') || target.hasAbility('dragonfly')) move.ignoreAbility = true;
 		},
