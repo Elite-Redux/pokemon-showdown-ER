@@ -9444,6 +9444,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	coward: {
 		onStart(pokemon) {
+			if (pokemon.permanentAbilityState['coward']) return;
+			pokemon.permanentAbilityState['coward'] = true;
+
 			this.actions.useMove(Dex.moves.get("protect"), pokemon);
 		},
 		name: "Coward",
@@ -10475,6 +10478,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Tactical Retreat",
 		shortDesc: "Flees when stats are lowered.",
 		onAfterEachBoost(boost, target, source, effect) {
+			if (target.permanentAbilityState['tacticalretreat']) return;
 			let statsLowered = false;
 			let i: BoostID;
 			for (i in boost) {
@@ -10493,6 +10497,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 						active.switchFlag = false;
 					}
 				}
+				target.permanentAbilityState['tacticalretreat'] = true;
 				target.switchFlag = true;
 				this.add("-activate", target, "ability: Tactical Retreat");
 			}
@@ -12577,16 +12582,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	wishmaker: {
 		name: "Wishmaker",
 		shortDesc: "Uses Wish on switch-in, three uses per battle",
-		onSwitchIn(pokemon) {
-			if (this.effectState.wishCount === 0) return;
-			if (!this.effectState.wishCount) {
-				this.effectState.wishCount = 3;
-			} else {
-				this.effectState.wishCount--;
-			}
-		},
 		onStart(pokemon) {
-			if (!this.effectState.wishCount) return;
+			const counter = (pokemon.permanentAbilityState['wishmaker'] as number || 0) + 1;
+			if (counter >= 3) return;
+			pokemon.permanentAbilityState['wishmaker'] = counter;
+
 			this.actions.useMove(Dex.moves.get("wish"), pokemon);
 			pokemon.activeMoveActions = 0;
 		},
