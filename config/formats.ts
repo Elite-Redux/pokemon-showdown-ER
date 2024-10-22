@@ -608,7 +608,6 @@ export const Formats: FormatList = [
 			}
 		},
 	},
-
 	{
 		name: "Elite Redux Ubers",
 		desc: `Testing for ER Innates`,
