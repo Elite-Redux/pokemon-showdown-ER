@@ -10534,9 +10534,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			duration: 1,
 			countFullRounds: true,
 			onModifyAtk(atk, source, target, move) {
-				if (source.activeMoveActions === 0) {
-					return this.chainModify(2.0);
-				}
+				return this.chainModify(2.0);
 			},
 		},
 	},
@@ -10950,19 +10948,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			duration: 1,
 			countFullRounds: true,
 			onModifyMove(move, attacker, defender) {
-				if (attacker.activeMoveActions === 0) {
-					move.willCrit = true;
-				}
+				move.willCrit = true;
 			},
 			onModifyAtk(atk, source, target, move) {
-				if (source.activeMoveActions === 0) {
-					return this.chainModify(1.2);
-				}
+				return this.chainModify(1.2);
 			},
 			onModifySpe(spe, source) {
-				if (source.activeMoveActions === 0) {
-					return this.chainModify(1.5);
-				}
+				return this.chainModify(1.5);
 			},
 		},
 	},
@@ -12522,14 +12514,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			duration: 1,
 			countFullRounds: true,
 			onModifySpA(atk, source, target, move) {
-				if (source.activeMoveActions === 0) {
-					return this.chainModify(1.2);
-				}
+				return this.chainModify(1.2);
 			},
 			onModifySpe(spe, source) {
-				if (source.activeMoveActions === 0) {
-					return this.chainModify(1.5);
-				}
+				return this.chainModify(1.5);
 			},
 		},
 	},
