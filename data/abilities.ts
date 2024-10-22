@@ -2504,6 +2504,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyMove(move) {
 			move.ignoreEvasion = true;
+			move.accuracy = typeof move.accuracy == 'number' ? move.accuracy * 1.2 : move.accuracy;
 		},
 		isBreakable: true,
 		name: "Keen Eye",
@@ -8757,7 +8758,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const spikes = side.sideConditions["spikes"];
-			if (move.category !== "Status" && (!spikes || spikes.layers < 3)) {
+			if (move.category !== "Status" &&
+				this.checkMoveMakesContact(move, source, target) && 
+				(!spikes || spikes.layers < 3)) {
 				this.add("-activate", target, "ability: Scrapyard");
 				side.addSideCondition("spikes", target);
 			}
