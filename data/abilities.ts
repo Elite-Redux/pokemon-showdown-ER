@@ -8353,6 +8353,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-activate", target, "Cold Rebound");
 			this.effectState.counter = true;
 			this.actions.runAdditionalMove(counterMove, source, target);
+			this.effectState.additionalAttack = false;
 		},
 		onModifyMove(move) {
 			if (this.effectState.counter) {
@@ -8400,17 +8401,19 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	pyroshells: {
 		onAfterMove(source, target, move) {
-			if (!move.flags["pulse"]) return;
+			if (this.effectState.additionalAttack || !move.flags["pulse"]) return;
 			const moveMutations = {
 				basePower: 50,
 				selfdestruct: undefined,
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("outburst"),
 				source,
 				target,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 
 		name: "Pyro Shells",
@@ -8420,16 +8423,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	volcanorage: {
 		onAfterMove(source, target, move) {
-			if (!(move.type === "Fire")) { return; }
+			if (this.effectState.additionalAttack || !(move.type === "Fire")) { return; }
 			const moveMutations = {
 				basePower: 50,
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("eruption"),
 				source,
 				target,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 		name: "Volcano Rage",
 		rating: 3,
@@ -8438,17 +8443,19 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	thundercall: {
 		onAfterMove(source, target, move) {
-			if (!(move.type === "Electric")) { return; }
+			if (this.effectState.additionalAttack || !(move.type === "Electric")) { return; }
 
 			const moveMutations = {
 				basePower: 120 * 0.2,
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("smite"),
 				source,
 				target,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 		name: "Thunder Call",
 		rating: 3,
@@ -8670,16 +8677,22 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	parry: {
 		onDamagingHit(damage, defender, attacker, move) {
-			if (!(attacker.hp > 0) || !(move.flags["contact"] || move.flags["counter"])) { return; }
+			if (
+				!(attacker.hp > 0) ||
+				this.effectState.additionalAttack ||
+				!(move.flags["contact"] || move.flags["counter"])
+			) { return; }
 			const moveMutations = {
 				flags: {...Dex.moves.get("machpunch").flags, counter: 1},
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("machpunch"),
 				defender,
 				attacker,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			return this.chainModify(0.8);
@@ -8874,19 +8887,21 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 			}
 
-			if (!willBurst) return;
+			if (!willBurst || this.effectState.additionalAttack) return;
 
 			const moveMutations = {
 				basePower: 150 / 3,
 				self: {},
 			};
 
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("hyperbeam"),
 				pokemon,
 				source,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 		name: "Atomic Burst",
 		rating: 3.5,
@@ -8903,18 +8918,20 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					willBlow = true;
 				}
 			}
-			if (!willBlow) return;
+			if (!willBlow || this.effectState.additionalAttack) return;
 
 			const moveMutations = {
 				self: {},
 			};
 
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("hyperbeam"),
 				pokemon,
 				source,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 		name: "Retribution Blow",
 		rating: 3.5,
@@ -10633,12 +10650,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					self: {},
 				};
 
+				this.effectState.additionalAttack = true;
 				this.actions.runAdditionalMove(
 					Dex.moves.get("snaptrap"),
 					target,
 					source,
 					moveMutations
 				);
+				this.effectState.additionalAttack = false;
 			}
 		},
 	},
@@ -10867,16 +10886,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Two Step",
 		shortDesc: "Triggers 50BP Revelation Dance after using a Dance move.",
 		onAfterMove(source, target, move) {
-			if (!move.flags["dance"]) return;
+			if (this.effectState.additionalAttack || !move.flags["dance"]) return;
 			const moveMutations = {
 				basePower: 50,
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("revelationdance"),
 				source,
 				target,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 	},
 	impulse: {
@@ -11183,16 +11204,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "High Tide",
 		shortDesc: "Triggers 50 BP Surf after using a Water-type move.",
 		onAfterMove(source, target, move) {
-			if (!(move.type === "Water")) { return; }
+			if (this.effectState.additionalAttack || !(move.type === "Water")) { return; }
 			const moveMutations = {
 				basePower: 50,
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("surf"),
 				source,
 				target,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 	},
 	seaborne: {
@@ -11791,16 +11814,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Frost Burn",
 		shortDesc: "Triggers 40BP Ice Beam after using a Fire-type move.",
 		onAfterMove(source, target, move) {
-			if (!(move.type === "Fire")) { return; }
+			if (this.effectState.additionalAttack || !(move.type === "Fire")) { return; }
 			const moveMutations = {
 				basePower: 40,
 			};
+			this.effectState.additionalAttack = true;
 			this.actions.runAdditionalMove(
 				Dex.moves.get("icebeam"),
 				source,
 				target,
 				moveMutations
 			);
+			this.effectState.additionalAttack = false;
 		},
 	},
 	accelerate: {
@@ -12030,6 +12055,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 
 			this.actions.runAdditionalMove(aftershock, source, target);
+			this.effectState.additionalAttack = false;
 		},
 	},
 	retriever: {

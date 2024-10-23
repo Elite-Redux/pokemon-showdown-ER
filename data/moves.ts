@@ -17581,7 +17581,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			duration: 5,
 			//Couldn't figure out how to increase own evasion so here's what we're doing instead
 			//This is technically wrong because it still applies to ignoreEvasion moves like sacred sword
-			//What we could also do is have an onStart +1 evasion boost and an onSideEnd -1 boost
+			//What we could also do is have an onStart +1 evasion boost and an onSideEnd -1 boost 
 			//but that's finnicky for its own reasons so here we are
 			onModifyAccuracyPriority: -1,
 			onModifyAccuracy(accuracy, target) {
