@@ -62,7 +62,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Endless Battle Clause",
 			"HP Percentage Mod",
 			"Cancel Mod",
-			"Seismic Toss Clause",
 			"Suicune Complex",
 			"Twisted Dimensions Clause",
 			"Sleep Clause Mod",
