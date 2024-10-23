@@ -74,7 +74,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 	cheapambushclause: {
 		effectType: "ValidatorRule",
 		name: "Cheap Ambush Clause",
-		desc: "Prevents a team from having more than 1 mon with Cheap Tactics or Ambush.",
+		desc: "Prevents a team from having more than 1 mon with Cheap Tactics, Ambush, or Low Blow.",
 		onValidateTeam(team) {
 			let count = 0;
 			for(const set of team) {
@@ -83,12 +83,12 @@ export const Rulesets: { [k: string]: FormatData } = {
 				.filter(key => key.includes('I'))
 				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 				const activeAbilities = [set.ability, ...innateList];
-				if (activeAbilities.includes('Ambush') || activeAbilities.includes('Cheap Tactics')) {
+				if (activeAbilities.includes('Ambush') || activeAbilities.includes('Cheap Tactics') || activeAbilities.includes('Low Blow')) {
 					count++;
 				}
 			}
 			if (count > 1) {
-				return [`You may only have up to 1 Pokemon with Cheap Tactics or Ambush. Your team currently has ${count}.`];
+				return [`You may only have up to 1 Pokemon with Cheap Tactics, Ambush, or Low Blow. Your team currently has ${count}.`];
 			}
 		},
 	},
