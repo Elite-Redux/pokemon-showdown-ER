@@ -8353,6 +8353,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-activate", target, "Cold Rebound");
 			this.effectState.counter = true;
 			this.actions.runAdditionalMove(counterMove, source, target);
+			this.effectState.additionalAttack = false;
 		},
 		onModifyMove(move) {
 			if (this.effectState.counter) {
@@ -12054,6 +12055,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 
 			this.actions.runAdditionalMove(aftershock, source, target);
+			this.effectState.additionalAttack = false;
 		},
 	},
 	retriever: {
