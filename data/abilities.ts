@@ -8409,7 +8409,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			let counterMove = Dex.moves.get("icywind");
 			this.add("-activate", target, "Cold Rebound");
 			this.effectState.counter = true;
-			this.actions.useMove(counterMove, target, source);
+			this.actions.runMove(counterMove, target, target.getLocOf(source));
 		},
 		onModifyMove(move) {
 			if (this.effectState.counter) {
