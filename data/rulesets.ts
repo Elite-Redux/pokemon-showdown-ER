@@ -67,6 +67,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Twisted Dimensions Clause",
 			"Sleep Clause Mod",
 			"Cheap Ambush Clause",
+			"Dynamax Clause",
 		],
 		banlist: ["Light Clay","Seaborne","Baton Pass", "Revival Blessing"],
 	},
