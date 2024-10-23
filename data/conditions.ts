@@ -162,7 +162,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		 * Bleed simply causes 1/16 base hp chip damage every turn.
 		 */
 		onResidual(pokemon) {
-			this.damage(pokemon.baseMaxhp * .06);
+			this.damage(pokemon.baseMaxhp / 16);
 		},
 	},
 	par: {
