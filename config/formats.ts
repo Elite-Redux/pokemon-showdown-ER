@@ -462,20 +462,9 @@ export const Formats: FormatList = [
 		name: "Elite Redux LC",
 		desc: `LC for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Little Cup"],
-		banlist: [
-			"Uber",
-			"AG",
-			"OU",
-			"UU",
-			"Fearmonger",
-			"Watch Your Step",
-			"Shadow Tag",
-			"Arena Trap"
-		],
-		debug: true,
-
-		// ER Scripts
+		ruleset: ["Elite Redux OU"],
+		banlist: ["OU", "UUBL",],
+		//ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
 			const innateList = Object.keys(species.abilities)
