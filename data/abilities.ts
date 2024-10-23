@@ -12030,7 +12030,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	aftershock: {
 		name: "Aftershock",
 		shortDesc: "Triggers Magnitude 4-7 after using a damaging move.",
-		onAfterMove(source, target, move) {
+		/*onAfterMove(source, target, move) {
 			if (!move || move.category === "Status") return;
 			if (move.damage === 0) return;
 			this.add("-activate", source, "ability: Aftershock");
@@ -12055,6 +12055,42 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 
 			this.actions.runAdditionalMove(aftershock, source, target);
+			this.effectState.additionalAttack = false;
+		},*/
+		onAfterMove(source, target, move) {
+			if (this.effectState.additionalAttack) return;
+			if (!move || move.category === "Status") return;
+			if (move.damage === 0) return;
+
+			this.add("-activate", source, "ability: Aftershock");
+			const i = this.random(65);
+
+			let aftershock = {
+				basePower: 10,
+				magnitude: 4
+			};
+
+			if (i < 5) {
+				aftershock.magnitude = 4;
+				aftershock.basePower = 10;
+			} else if (i < 15) {
+				aftershock.magnitude = 5;
+				aftershock.basePower = 30;
+			} else if (i < 35) {
+				aftershock.magnitude = 6;
+				aftershock.basePower = 50;
+			} else if (i < 65) {
+				aftershock.magnitude = 7;
+				aftershock.basePower = 70;
+			}
+
+			this.effectState.additionalAttack = true;
+			this.actions.runAdditionalMove(
+				Dex.moves.get("magnitude"),
+				source,
+				target,
+				aftershock
+			);
 			this.effectState.additionalAttack = false;
 		},
 	},
