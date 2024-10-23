@@ -6571,7 +6571,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.basePower <= 50) return critRatio + 1;
 		},
 		onModifyPriority(priority, pokemon, target, move) {
-			if(move.category == "Status") return;
+			if(move.category === "Status") return;
 			if (move.basePower <= 25) return priority + 1;
 		},
 		name: "Perfectionist",
@@ -6665,18 +6665,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move, attacker, defender) {
 			if (move.category !== "Status" && move.flags["sound"]) {
 				if (!move.secondaries) move.secondaries = [];
-				for (const secondary of move.secondaries) {
-					if (
-						secondary.volatileStatus === "confusion" &&
-						secondary.chance
-					) {
-						secondary.chance += 50;
-						return;
-					}
-				}
 				move.secondaries.push({
 					chance: 50,
 					volatileStatus: "confusion",
+					ability: this.dex.abilities.get("loudbang"),
 				});
 			}
 		},
@@ -7427,16 +7419,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move, attacker, defender) {
 			if (move.category !== "Status" && move.flags["bite"]) {
 				if (!move.secondaries) move.secondaries = [];
-				for (const secondary of move.secondaries) {
-					if ((secondary.status === "psn" || "tox") && secondary.chance) {
-						// Affects Poison Fang chance (i think????)
-						secondary.chance += 50;
-						return;
-					}
-				}
 				move.secondaries.push({
-					chance: 20,
-					status: "psn",
+					chance: 50,
+					status: "tox",
+					ability: this.dex.abilities.get("solenoglyphs"),
 				});
 			}
 		},
@@ -12024,6 +12010,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.secondaries.push({
 				chance: 30,
 				status: "tox",
+				ability: this.dex.abilities.get("toxicchain"),
 			});
 		},
 	},
@@ -12386,6 +12373,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.secondaries.push({
 					chance: 20,
 					status: "brn",
+					ability: this.dex.abilities.get("moltenblades"),
 				});
 			}
 		},
