@@ -1206,7 +1206,8 @@ export class BattleActions {
 						didAnything = this.combineResults(didAnything, null);
 						continue;
 					}
-					const amount = target.baseMaxhp * moveData.heal[0] / moveData.heal[1];
+					let amount = target.baseMaxhp * moveData.heal[0] / moveData.heal[1];
+					amount = this.battle.runEvent('TryHeal', target, source, move, amount);
 					const d = target.heal((this.battle.gen < 5 ? Math.floor : Math.round)(amount));
 					if (!d && d !== 0) {
 						this.battle.add('-fail', source);
