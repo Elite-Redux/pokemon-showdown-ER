@@ -27,6 +27,119 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Cancel Mod",
 		],
 	},
+	standarddoubles: {
+		effectType: "ValidatorRule",
+		name: "Standard Doubles",
+		desc: "The standard ruleset for all official Smogon doubles tiers",
+		ruleset: [
+			"Obtainable",
+			"Team Preview",
+			"Species Clause",
+			"Nickname Clause",
+			"OHKO Clause",
+			"Evasion Moves Clause",
+			"Gravity Sleep Clause",
+			"Endless Battle Clause",
+			"HP Percentage Mod",
+			"Cancel Mod",
+		],
+	},
+	standardeliteredux: {
+		effectType: "ValidatorRule",
+		name: "Standard Elite Redux",
+		desc: "The standard ruleset for Elite Redux",
+		/*adding this since so far singles and doubles have shared the same
+		ruleset so consolidating them makes more sense until they diverge
+		enough to justify seperating them enough */
+		ruleset: [
+			"Obtainable",
+			"Team Preview",
+			"Species Clause",
+			"Nickname Clause",
+			"OHKO Clause",
+			"Evasion Moves Clause",
+			"Gravity Sleep Clause",
+			"Endless Battle Clause",
+			"HP Percentage Mod",
+			"Cancel Mod",
+			"Seismic Toss Clause",
+			"Suicune Complex",
+			"Twisted Dimensions Clause",
+			"Sleep Clause Mod",
+			"Cheap Ambush Clause",
+		],
+		banlist: ["Light Clay","Seaborne","Baton Pass", "Revival Blessing"],
+	},
+	cheapambushclause: {
+		effectType: "ValidatorRule",
+		name: "Cheap Ambush Clause",
+		desc: "Prevents a team from having more than 1 mon with Cheap Tactics or Ambush.",
+		onValidateTeam(team) {
+			let count = 0;
+			for(const set of team) {
+				const species = this.dex.species.get(set.species);
+				const innateList = Object.keys(species.abilities)
+				.filter(key => key.includes('I'))
+				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+				const activeAbilities = [set.ability, ...innateList];
+				if (activeAbilities.includes('Ambush') || activeAbilities.includes('Cheap Tactics')) {
+					count++;
+				}
+			}
+			if (count > 1) {
+				return [`You may only have up to 1 Pokemon with Cheap Tactics or Ambush. Your team currently has ${count}.`];
+			}
+		},
+	},
+	twisteddimensionsclause: {
+		effectType: "ValidatorRule",
+		name: "Twisted Dimensions Clause",
+		desc: "Prevents a team from having more than 2 mons with twisted dimensions.",
+		onValidateTeam(team) {
+			let count = 0;
+			for(const set of team) {
+				const species = this.dex.species.get(set.species);
+				const innateList = Object.keys(species.abilities)
+				.filter(key => key.includes('I'))
+				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+				const activeAbilities = [set.ability, ...innateList];
+				if (activeAbilities.includes('Twist. Dimension')) {
+					count++;
+				}
+			}
+			if (count > 2) {
+				return [`You may only have up to 2 Pokemon with Twisted Dimensions. Your team currently has ${count}.`];
+			}
+		},
+	},
+	suicunecomplex: {
+		effectType: "ValidatorRule",
+		name: "Suicune Complex",
+		desc: "Suicune can't have North Wind",
+		onValidateSet(set) {
+			if (set.species === 'Suicune' && set.ability === 'North Wind') {
+				return [`${set.name} cannot have North Wind.`];
+			}
+		},
+	},
+	seismictossclause: {
+		effectType: "ValidatorRule",
+		name: "Seismic Toss Clause",
+		desc: `Prevents a Pokemon from having Seismic Toss or Night Shade and a multi-hitting ability.`,
+		onValidateSet(set) {
+			const multihitAbilities = ['Multi Headed', 'Hyper Aggressive', 'Parental Bond', 'Minion Control'];
+			const species = this.dex.species.get(set.species);
+			const innateList = Object.keys(species.abilities)
+				.filter(key => key.includes('I'))
+				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+			const activeAbilities = [set.ability, ...innateList];
+			for (const abilityName of activeAbilities) {
+				if (abilityName && multihitAbilities.includes(abilityName) && set.moves.some(a => a === 'Seismic Toss' || a === 'Night Shade')) {
+					return [`${set.name} cannot have both Seismic Toss / Night Shade and ${abilityName}.`];
+				}
+			}
+		},
+	},
 	standardnext: {
 		effectType: "ValidatorRule",
 		name: "Standard NEXT",
@@ -95,23 +208,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 				];
 			}
 		},
-	},
-	standarddoubles: {
-		effectType: "ValidatorRule",
-		name: "Standard Doubles",
-		desc: "The standard ruleset for all official Smogon doubles tiers",
-		ruleset: [
-			"Obtainable",
-			"Team Preview",
-			"Species Clause",
-			"Nickname Clause",
-			"OHKO Clause",
-			"Evasion Moves Clause",
-			"Gravity Sleep Clause",
-			"Endless Battle Clause",
-			"HP Percentage Mod",
-			"Cancel Mod",
-		],
 	},
 	standardoms: {
 		effectType: "ValidatorRule",
@@ -7326,13 +7422,23 @@ export const Rulesets: { [k: string]: FormatData } = {
 		effectType: "ValidatorRule",
 		name: "Regenerator Clause",
 		desc: `Prevents teams from having more than two Pok&eacute;mon with Regenerator.`,
-		// modified in gen8eliteredux/ruleset.ts
-	},
+		onValidateTeam(team) {
+			let regenCount = 0;
+			for (const set of team) {
+				const species = this.dex.species.get(set.species);
+				const ability = set.ability;
+				const innateList = Object.keys(species.abilities)
+					.filter(key => key.includes('I'))
+					.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+				const activeAbilities = [ability, ...innateList];
 
-	seismictossclause: {
-		effectType: "ValidatorRule",
-		name: "Seismic Toss Clause",
-		desc: `Prevents a Pokemon from having Seismic Toss and a multi-hitting ability.`,
-		// modified in gen8eliteredux/ruleset.ts
+				if (['Regenerator'].some(a => activeAbilities.includes(a))) {
+					regenCount++;
+				}
+			}
+			if (regenCount > 2) {
+				return [`You may only have up to 2 Pokemon with Regenerator. Your team currently has ${regenCount}`];
+			}
+		},
 	},
 };

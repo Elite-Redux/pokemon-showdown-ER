@@ -8759,7 +8759,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const spikes = side.sideConditions["spikes"];
 			if (move.category !== "Status" &&
-				this.checkMoveMakesContact(move, source, target) && 
+				this.checkMoveMakesContact(move, source, target) &&
 				(!spikes || spikes.layers < 3)) {
 				this.add("-activate", target, "ability: Scrapyard");
 				side.addSideCondition("spikes", target);
@@ -9442,8 +9442,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	coward: {
 		onStart(pokemon) {
-			if (pokemon.permanentAbilityState['coward']) return;
-			pokemon.permanentAbilityState['coward'] = true;
+			if (pokemon.coward) return;
+			pokemon.coward = true;
 			this.actions.useMove(Dex.moves.get("protect"), pokemon);
 		},
 		name: "Coward",

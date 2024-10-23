@@ -10388,6 +10388,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 			I2: "Levitate",
 			I3: "Cursed Body",
 		},
+		maxHP: 1,
 		baseStats: {
 			hp: 1,
 			atk: 90,

@@ -91,7 +91,7 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 	seismictossclause: {
 		inherit: true,
 		onValidateSet(set) {
-			const multihitAbilities = ['Multi Headed', 'Hyper Aggressive', 'Parental Bond'];
+			const multihitAbilities = ['Multi Headed', 'Hyper Aggressive', 'Parental Bond', 'Minion Control'];
 			const species = this.dex.species.get(set.species);
 			const innateList = Object.keys(species.abilities)
 				.filter(key => key.includes('I'))
@@ -103,6 +103,5 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 				}
 			}
 		},
-
 	},
 };

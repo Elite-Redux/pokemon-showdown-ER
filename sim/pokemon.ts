@@ -132,7 +132,7 @@ export class Pokemon {
 
 	illusion: Pokemon | null;
 	transformed: boolean;
-
+	coward: boolean = false; //adding this because permanentAbilityState isnt working for some reason
 	permanentAbilityState: {[ability: string]: any} = {};
 
 	maxhp: number;

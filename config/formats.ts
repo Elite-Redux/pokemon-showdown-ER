@@ -29,7 +29,7 @@ export const Formats: FormatList = [
 		name: "Elite Redux OU",
 		desc: `OU for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard"],
+		ruleset: ["Standard Elite Redux"],
 		banlist: [
 			"Uber",
 			"AG",
@@ -177,7 +177,7 @@ export const Formats: FormatList = [
 		name: "Elite Redux Monotype OU",
 		desc: `OU Monotype for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard", "Force Monotype (ER)"],
+		ruleset: ["Standard Elite Redux", "Force Monotype (ER)"],
 		banlist: [
 			"Uber",
 			"AG",
@@ -612,8 +612,8 @@ export const Formats: FormatList = [
 		name: "Elite Redux Ubers",
 		desc: `Testing for ER Innates`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard"],
-		banlist: ["AG", "King's Rock", "Baton Pass"],
+		ruleset: ["Standard Elite Redux"],
+		banlist: ["AG", "King's Rock"],
 
 		// ER Scripts
 		onValidateSet(set) {
@@ -752,8 +752,8 @@ export const Formats: FormatList = [
 		name: "Elite Redux AG",
 		desc: `Testing for ER Innates`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard"],
-		banlist: ["King's Rock", "Baton Pass"],
+		ruleset: ["Standard Elite Redux"],
+		banlist: ["King's Rock"],
 
 		// ER Scripts
 		onValidateSet(set) {
@@ -897,7 +897,7 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles", "Sleep Clause Mod"],
+		ruleset: ["Standard Elite Redux"],
 		banlist: ["DUber", "DOU", "DUU", "Air Blower",
 			"Twist. Dimension",
 			"Fearmonger",
@@ -1041,7 +1041,7 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles", "Sleep Clause Mod"],
+		ruleset: ["Standard Elite Redux"],
 		banlist: ["DUber", "Air Blower",
 			"Twist. Dimension",
 			"Fearmonger",
@@ -1186,7 +1186,7 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles", "Force Monotype (ER)", "Sleep Clause Mod"],
+		ruleset: ["Standard Elite Redux", "Force Monotype (ER)"],
 		banlist: ["DUber", "Air Blower",
 			"Twist. Dimension",
 			"Fearmonger",
@@ -1334,7 +1334,7 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Doubles", "!Gravity Sleep Clause"],
+		ruleset: ["Standard Elite Redux", "!Gravity Sleep Clause"],
 
 		// ER Scripts
 		onValidateSet(set) {
