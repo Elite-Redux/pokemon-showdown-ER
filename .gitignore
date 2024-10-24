@@ -8,6 +8,9 @@
 /eslint-cache
 !/config/config.js
 !/config/usergroups.csv
+!/config/userdata/
+/config/userdata/*
+!/config/userdata/README.md
 /server/chat-plugins/private
 /server/chat-plugins/private.js
 /server/chat-plugins/*-private.js

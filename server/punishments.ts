@@ -14,11 +14,11 @@
 import {FS, Utils} from '../lib';
 import type {AddressRange} from './ip-tools';
 
-const PUNISHMENT_FILE = 'config/punishments.tsv';
-const ROOM_PUNISHMENT_FILE = 'config/room-punishments.tsv';
-const SHAREDIPS_FILE = 'config/sharedips.tsv';
-const SHAREDIPS_BLACKLIST_FILE = 'config/sharedips-blacklist.tsv';
-const WHITELISTED_NAMES_FILE = 'config/name-whitelist.tsv';
+const PUNISHMENT_FILE = 'config/userdata/punishments.tsv';
+const ROOM_PUNISHMENT_FILE = 'config/userdata/room-punishments.tsv';
+const SHAREDIPS_FILE = 'config/userdata/sharedips.tsv';
+const SHAREDIPS_BLACKLIST_FILE = 'config/userdata/sharedips-blacklist.tsv';
+const WHITELISTED_NAMES_FILE = 'config/userdata/name-whitelist.tsv';
 
 const RANGELOCK_DURATION = 60 * 60 * 1000; // 1 hour
 const LOCK_DURATION = 48 * 60 * 60 * 1000; // 48 hours
