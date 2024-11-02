@@ -23,7 +23,7 @@ Note: Commands that ask for a team want the team in [packed team format](./sim/T
 
 - Starts a PS server on the specified port
   (Defaults to the port setting in config/config.js)
-  (The port setting in config/config.js defaults to 4000)
+  (The port setting in config/config.js defaults to 8000)
 
   Using Pokémon Showdown as a server is documented at:
   [server/README.md](./server/README.md)

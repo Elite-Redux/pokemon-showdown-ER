@@ -1,6 +1,6 @@
 FROM cgr.dev/chainguard/node:latest-dev AS builder
 
-ENV PORT=4000
+ENV PORT=8000
 
 WORKDIR /er-showdown/
 
