@@ -67,13 +67,13 @@ These configurations should also handle hot reloading when code changes, though 
 Outside of VSCode, you will need to handle starting and stopping the server/client yourself.
 This is still not too difficult, and can be easily automated with a script or different IDE configurations.
 
-For the backend, run `npm run start`. This will start the backend webserver that listens on `localhost:8000`.
+For the backend, run `npm run start`. This will start the backend webserver that listens on `localhost:4000`.
 For the frontend, run `npm run serve`. This will start the frontend webserver that listens on `http://localhost:8080`.
 
-Now that both web servers are running, open your browser to `http://localhost:8080/testclient.html?~~localhost:8000`.
+Now that both web servers are running, open your browser to `http://localhost:8080/testclient.html?~~localhost:4000`.
 This will load pokemon showdown and configure it to connect to your local backend server instance.
 If you would like to have it preload a username for you so you don't have to choose one everytime, you can add a query parameter to your url.
-For instance: `http://localhost:8080/testclient.html?~~localhost:8000&username=player11112222`.
+For instance: `http://localhost:8080/testclient.html?~~localhost:4000&username=player11112222`.
 
 
 

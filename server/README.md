@@ -3,7 +3,7 @@ Pokémon Showdown Server
 
 This repository contains the files needed to set up your own Pokémon Showdown server. Note that to set up a server, you'll also need a server computer.
 
-You can use your own computer as a server, but for other people to connect to your computer, you'll need to expose a port (default is 8000 but you can choose a different one) to connect to, which sometimes requires [port forwarding][5]. Note that some internet providers don't let you host a server at all, in which case you'll have to rent a VPS to use as a server.
+You can use your own computer as a server, but for other people to connect to your computer, you'll need to expose a port (default is 4000 but you can choose a different one) to connect to, which sometimes requires [port forwarding][5]. Note that some internet providers don't let you host a server at all, in which case you'll have to rent a VPS to use as a server.
 
 
 Installing
@@ -48,13 +48,13 @@ Now, to start Pokémon Showdown, run the command:
 
 You can also specify a port:
 
-    node pokemon-showdown 8000
+    node pokemon-showdown 4000
 
-Visit your server at `http://SERVER:8000`
+Visit your server at `http://SERVER:4000`
 
-Replace `SERVER` with your server domain or IP. Replace `8000` with your port if it's not `8000` (the default port).
+Replace `SERVER` with your server domain or IP. Replace `4000` with your port if it's not `4000` (the default port).
 
-Yes, you can test even if you are behind a NAT without port forwarding: `http://localhost:8000` will connect to your local machine. Some browser setups might prevent this sort of connection, however (NoScript, for instance). If you can't get connecting locally to work in Firefox, try Chrome.
+Yes, you can test even if you are behind a NAT without port forwarding: `http://localhost:4000` will connect to your local machine. Some browser setups might prevent this sort of connection, however (NoScript, for instance). If you can't get connecting locally to work in Firefox, try Chrome.
 
 You will be redirected to `http://SERVER.psim.us`. The reason your server is visited through `psim.us` is to make it more difficult for servers to see a user's password in any form, by handling logins globally. You can embed this in an `iframe` in your website if the URL is a big deal with you.
 
