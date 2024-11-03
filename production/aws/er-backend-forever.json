@@ -1,6 +1,6 @@
 {
 	"uid": "er-backend",
-	"append": false,
+	"append": true,
 	"watch": false,
 	"script": "pokemon-showdown",
 	"sourceDir": "/home/bitnami/pokemon-showdown-ER/",

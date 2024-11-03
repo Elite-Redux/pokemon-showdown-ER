@@ -1,6 +1,6 @@
 {
 	"uid": "er-frontend",
-	"append": false,
+	"append": true,
 	"watch": false,
 	"script": "start_prod.js",
 	"sourceDir": "/home/bitnami/pokemon-showdown-client-ER/",
