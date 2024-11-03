@@ -1,0 +1,11 @@
+{
+	"uid": "er-backend",
+	"append": false,
+	"watch": false,
+	"script": "pokemon-showdown prod 4000",
+	"sourceDir": "/home/bitnami/pokemon-showdown-ER/",
+	"workingDir": "/home/bitnami/pokemon-showdown-ER/",
+	"logFile": "/home/bitnami/logs/er-backend/forever.log",
+	"outFile": "/home/bitnami/logs/er-backend/out.log",
+	"errFile": "/home/bitnami/logs/er-backend/error.log"
+}
