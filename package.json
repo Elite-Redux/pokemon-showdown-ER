@@ -30,7 +30,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "nodemon ./pokemon-showdown start",
+    "start": "nodemon --exitcrash ./pokemon-showdown start",
     "forever": "forever start -c \"npm run start\" pokemon-showdown 4000",
     "build": "node build",
     "tsc": "tsc",
