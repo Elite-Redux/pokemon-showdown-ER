@@ -274,7 +274,7 @@ exports.nothrottle = true;
 /**
  * Removes all ip-based alt checking.
  */
-exports.noipchecks = false;
+exports.noipchecks = true;
 
 /**
  * controls the behavior of the /battlesearch command
@@ -363,7 +363,7 @@ exports.forceregisterelo = false;
  *   etc. If you do not trust Pokemon Showdown with admin access, you should
  *   disable this feature.
  */
-exports.backdoor = true;
+exports.backdoor = false;
 
 /**
  * List of IPs and user IDs with dev console (>> and >>>) access.
