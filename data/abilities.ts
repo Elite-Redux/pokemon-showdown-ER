@@ -12229,12 +12229,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const foes = pokemon.side.foes();
 			// grab the highest attack and defense stat
 			for (const foe of foes) {
-				if (foe.getStat("atk") > foe.getStat("spa")) {
+				if (foe.getStat("atk", false, true) > foe.getStat("spa", false, true)) {
 					this.boost({atk: -1}, foe, pokemon);
 				} else {
 					this.boost({spa: -1}, foe, pokemon);
 				}
-				if (foe.getStat("def") > foe.getStat("spd")) {
+				if (foe.getStat("def", false, true) > foe.getStat("spd", false, true)) {
 					this.boost({def: -1}, foe, pokemon);
 				} else {
 					this.boost({spd: -1}, foe, pokemon);
