@@ -13,18 +13,25 @@ describe("Sharing is Caring", function () {
 	const er = common.mod("gen8eliteredux");
 
 	it(`opposing fearmonger should lower their stats as well, and not break the battle sim`, function () {
+		const team1 = [
+			{
+				species: "Gholdengo",
+				ability: "sharingiscaring",
+				moves: ["sleeptalk"],
+				evs: {spe: 1},
+			},
+			{
+				species: "Mew",
+				ability: "magicguard",
+				moves: ["sleeptalk"],
+				evs: {spe: 1},
+			},
+		];
+
+		assert.legalTeam(team1, "elitereduxdoublesou@@@!teampreview");
+
 		battle = er.createBattle({formatid: "elitereduxdoublesou@@@!teampreview", gameType: "doubles"}, [
-			[
-				{
-					species: "Gholdengo",
-					ability: "sharingiscaring",
-					moves: ["sleeptalk"],
-				},
-				{
-					species: "Mew",
-					moves: ["sleeptalk"],
-				},
-			],
+			team1,
 			[
 				{
 					species: "Roaring Moon",

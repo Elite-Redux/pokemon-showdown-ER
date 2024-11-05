@@ -63,6 +63,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"HP Percentage Mod",
 			"Cancel Mod",
 			"Suicune Complex",
+			"Sketch Post-Gen 7 Moves",
 			"Twisted Dimensions Clause",
 			"northwindlightclay",
 			"Sleep Clause Mod",
