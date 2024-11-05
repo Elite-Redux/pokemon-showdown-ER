@@ -2905,8 +2905,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	hiddenpower: {
 		name: "Hidden Power",
-		desc: "This move's type depends on the user's individual values (IVs), and can be any type but Fairy and Normal.",
-		shortDesc: "Varies in type based on the user's IVs.",
+		desc: "This move can be any type.",
+		shortDesc: "This move can be any type.",
 		gen5: {
 			desc: "This move's type and power depend on the user's individual values (IVs). Power varies between 30 and 70, and type can be any but Normal.",
 			shortDesc: "Varies in power and type based on the user's IVs.",
@@ -5388,8 +5388,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	secretpower: {
 		name: "Secret Power",
-		desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, causes sleep during Grassy Terrain and lowers Speed by 1 stage during Psychic Terrain.",
-		shortDesc: "Effect varies with terrain. (30% paralysis chance)",
+		desc: "This move can be any type.",
+		shortDesc: "This move can be any type.",
 		gen6: {
 			desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, and causes sleep during Grassy Terrain.",
 		},

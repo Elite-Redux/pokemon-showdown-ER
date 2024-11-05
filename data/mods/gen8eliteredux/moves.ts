@@ -1579,7 +1579,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	secretpower: {
 		inherit: true,
+		accuracy: 100,
+		basePower: 70,
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		onModifyType(move, pokemon) {
+			move.type = pokemon.hpType || 'Dark';
+		},
+		onModifyMove() {},
 		isNonstandard: null,
+		secondary: null,
 	},
 	seedflare: {
 		inherit: true,
