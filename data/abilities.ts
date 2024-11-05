@@ -9359,24 +9359,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.effectState.hitsLeft = 2;
 			}
 		},
-		onTryHit(target, source, move) {
-			if (
-				target === source ||
-				move.category === "Status" ||
-				move.type === "???" ||
-				move.id === "struggle"
-			) { return; }
-			if (move.id === "skydrop" && !source.volatiles["skydrop"]) return;
-			this.debug("Cheating Death immunity: " + move.id);
-			if (this.effectState.hitsLeft > 0) {
-				if (move.smartTarget) {
-					move.smartTarget = false;
-				} else {
-					this.add("-immune", target, "[from] ability: Cheating Death");
-				}
-				this.effectState.hitsLeft--;
-				return null;
-			}
+		onAnyDamage(damage, mon, source, effect) {
+			if (mon === source) return;
+			if (damage <= 0) return;
+			if (effect.effectType !== "Move") return;
+			mon.permanentAbilityState["cheatingdeath"] = mon.permanentAbilityState["cheatingdeath"] || 0;
+			if (mon.permanentAbilityState["cheatingdeath"] >= 2) return;
+			mon.permanentAbilityState["cheatingdeath"]++;
+			this.add("-activate", mon, "ability: Cheating Death");
+			return 0;
 		},
 		name: "Cheating Death",
 		rating: 3,
@@ -12400,13 +12391,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	gallantry: {
 		name: "Gallantry",
 		shortDesc: "Gets no damage for first hit",
-		onDamage(damage, target, source, effect) {
-			if (effect.effectType === "Move") {
-				if (!target.gallantyActivated) {
-					target.gallantyActivated = true;
-					return 0;
-				}
-			}
+		onDamage(damage, mon, source, effect) {
+			if (mon === source) return;
+			if (damage <= 0) return;
+			if (effect.effectType !== "Move") return;
+			mon.permanentAbilityState["gallantry"] = mon.permanentAbilityState["gallantry"] || 0;
+			if (mon.permanentAbilityState["gallantry"] >= 1) return;
+			mon.permanentAbilityState["gallantry"]++;
+			this.add("-activate", mon, "ability: Gallantry");
+			return 0;
 		},
 	},
 	thickskin: {

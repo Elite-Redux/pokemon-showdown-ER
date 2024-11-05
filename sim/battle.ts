@@ -2191,7 +2191,11 @@ export class Battle {
 		}
 		if ('hp' in baseStats) {
 			const stat = baseStats['hp'];
-			modStats['hp'] = tr(tr(2 * stat + set.ivs['hp'] + tr(set.evs['hp'] / 4) + 100) * set.level / 100 + 10);
+			if (stat === 1) {
+				modStats['hp'] = 1;
+			} else {
+				modStats['hp'] = tr(tr(2 * stat + set.ivs['hp'] + tr(set.evs['hp'] / 4) + 100) * set.level / 100 + 10);
+			}
 		}
 		return this.natureModify(modStats as StatsTable, set);
 	}
