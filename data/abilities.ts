@@ -11945,8 +11945,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	toxicchain: {
 		name: "Toxic Chain",
 		shortDesc: "Moves have a 30% chance to badly poison the foe.",
-		onModifyMove(move) {
-			if(move.target ===  'self') return;
+		onModifyMove(move, mon, target) {
+			if(mon === target) return;
 			if (!move.secondaries) {
 				move.secondaries = [];
 			}
