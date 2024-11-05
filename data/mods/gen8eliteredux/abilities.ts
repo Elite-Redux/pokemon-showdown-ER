@@ -1002,7 +1002,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	triage: {
 		inherit: true,
 		onModifyPriority(priority, pokemon, target, move) {
-			if (move?.flags['heal']) return priority + 1;
+			if (move?.flags['heal']) return priority + 3;
 		},
 	},
 	turboblaze: {
