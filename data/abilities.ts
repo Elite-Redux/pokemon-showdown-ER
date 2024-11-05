@@ -497,8 +497,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAnyModifySpD(spd, target, source, move) {
 			const abilityHolder = this.effectState.target;
 			if(!abilityHolder) return;
-			if (target.hasAbilityOrInnate("beadsofruin")) return;
-			if (!move.ruinedSpD?.hasAbilityOrInnate("Beads of Ruin")) { move.ruinedSpD = abilityHolder; }
+			if (target.hasAbility("beadsofruin")) return;
+			if (!move.ruinedSpD?.hasAbility("beadsofruin")) { move.ruinedSpD = abilityHolder; }
 			if (move.ruinedSpD !== abilityHolder) return;
 			this.debug("Beads of Ruin SpD drop");
 			return this.chainModify(0.75);
@@ -5450,8 +5450,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAnyModifyDef(def, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (target.hasAbilityOrInnate("swordofruin")) return;
-			if (!move.ruinedDef?.hasAbilityOrInnate("Sword of Ruin")) { move.ruinedDef = abilityHolder; }
+			if (target.hasAbility("swordofruin")) return;
+			if (!move.ruinedDef?.hasAbility("swordofruin")) { move.ruinedDef = abilityHolder; }
 			if (move.ruinedDef !== abilityHolder) return;
 			this.debug("Sword of Ruin Def drop");
 			return this.chainModify(0.75);
@@ -5472,7 +5472,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			console.log(abilityHolder);
 
 			if (source.hasAbility("tabletsofruin")) return;
-			if (!move.ruinedAtk) move.ruinedAtk = abilityHolder;
+			if (!move.ruinedAtk?.hasAbility("tabletsofruin")) { move.ruinedAtk = abilityHolder; }
 			if (move.ruinedAtk !== abilityHolder) return;
 			this.debug("Tablets of Ruin Atk drop");
 			return this.chainModify(0.75);
@@ -5857,8 +5857,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!move) return;
 			const abilityHolder = this.effectState.target;
 			if(!abilityHolder) return;
-			if (source.hasAbilityOrInnate("vesselofruin")) return;
-			if (!move.ruinedSpA) move.ruinedSpA = abilityHolder;
+			if (source.hasAbility("vesselofruin")) return;
+			if (!move.ruinedSpA?.hasAbility("vesselofruin")) { move.ruinedSpA = abilityHolder; }
 			if (move.ruinedSpA !== abilityHolder) return;
 			this.debug("Vessel of Ruin SpA drop");
 			return this.chainModify(0.75);
