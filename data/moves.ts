@@ -12093,7 +12093,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		mindBlownRecoil: true,
 		onAfterMove(pokemon, target, move) {
-			if(pokemon.hasAbility(['steelbarrel', 'rockhead'])) return;
+			if(pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) return;
 			if (move.mindBlownRecoil && !move.multihit) {
 				const hpBeforeRecoil = pokemon.hp;
 				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get('Mind Blown'), true);
@@ -18461,7 +18461,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, pulse: 1, bullet: 1},
 		mindBlownRecoil: true,
 		onAfterMove(pokemon, target, move) {
-			if(pokemon.hasAbility(['steelbarrel', 'rockhead'])) return;
+			if(pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) return;
 			if (move.mindBlownRecoil && !move.multihit) {
 				const hpBeforeRecoil = pokemon.hp;
 				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get('Steel Beam'), true);

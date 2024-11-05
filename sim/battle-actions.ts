@@ -939,7 +939,7 @@ export class BattleActions {
 				// Total damage dealt is accumulated for the purposes of recoil (Parental Bond).
 				move.totalDamage += damage[i];
 			}
-			if (move.mindBlownRecoil) {
+			if (move.mindBlownRecoil && !pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) {
 				const hpBeforeRecoil = pokemon.hp;
 				this.battle.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get(move.id), true);
 				move.mindBlownRecoil = false;
