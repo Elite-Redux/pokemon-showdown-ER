@@ -6448,8 +6448,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	synchronoise: {
 		name: "Synchronoise",
-		desc: "The target is immune if it does not share a type with the user.",
-		shortDesc: "Hits adjacent Pokemon sharing the user's type.",
+		desc: "This move's type depends on the user's secondary type. If the user's secondary type is typeless, this move's type is the user's primary type if it has one, otherwise the added type from Forest's Curse or Trick-or-Treat. This move is typeless if the user's type is typeless alone.",
+		shortDesc: "Type varies based on the user's secondary type.",
 	},
 	synthesis: {
 		name: "Synthesis",

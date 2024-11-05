@@ -1747,6 +1747,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	synchronoise: {
 		inherit: true,
 		isNonstandard: null,
+		basePower: 95,
+		flags: {protect: 1, mirror: 1, sound: 1},
+		onTryImmunity(target, source) {},
+		onModifyType(move, pokemon) {
+			let types = pokemon.getTypes(true).map(it => it === "Bird" ? "???" : it);
+			if (types[types.length - 1] === "???") types = pokemon.getTypes().map(it => it === "Bird" ? "???" : it);
+			console.log(types[types.length - 1])
+			return types[types.length - 1];
+		},
 	},
 	synthesis: {
 		inherit: true,
