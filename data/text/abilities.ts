@@ -2247,7 +2247,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	toxicdebris: {
 		name: "Toxic Debris",
 		shortDesc:
-			"If this Pokemon is hit by a physical attack, Toxic Spikes are set on the opposing side.",
+			"If this Pokemon is hit by a contact attack, Toxic Spikes are set on the opposing side.",
 	},
 	trace: {
 		name: "Trace",
@@ -3122,17 +3122,17 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	scrapyard: {
 		name: "Scrapyard",
 		shortDesc:
-			"If this Pokemon is hit by a physical attack, Spikes are set on the opposing side.",
+			"If this Pokemon is hit by a contact attack, Spikes are set on the opposing side.",
 	},
 	loosequills: {
 		name: "Loose Quills",
 		shortDesc:
-			"If this Pokemon is hit by a physical attack, Spikes are set on the opposing side.",
+			"If this Pokemon is hit by a contact attack, Spikes are set on the opposing side.",
 	},
 	looserocks: {
 		name: "Loose Rocks",
 		shortDesc:
-			"If this Pokemon is hit by a physical attack, Stealth Rock is set on the opposing side.",
+			"If this Pokemon is hit by a contact attack, Stealth Rock is set on the opposing side.",
 	},
 	spinningtop: {
 		name: "Spinning Top",
