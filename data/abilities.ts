@@ -11100,6 +11100,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move) {
 			if (move.flags["slicing"]) {
 				move.overrideDefensiveStat = "spd";
+				move.overrideOffensiveStat = "spa";
 			}
 		},
 		onModifyDamage(basePower, attacker, defender, move) {
