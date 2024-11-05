@@ -348,6 +348,8 @@ export class BattleActions {
 	}
 
 	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: any) {
+		if (pokemon.usedExtraMove) return;
+		pokemon.usedExtraMove = true;
 		type MutableMove = {-readonly [K in keyof Move]: Move[K]};
 		const nextMutableMove: MutableMove = move;
 		if (moveMutations) {
@@ -358,6 +360,7 @@ export class BattleActions {
 		const nextMove: Move = nextMutableMove;
 		const targetLoc = pokemon.getLocOf(target);
 		this.runMove(nextMove, pokemon, targetLoc, null, undefined, true);
+		pokemon.usedExtraMove = false;
 	}
 	/**
 	 * useMove is the "inside" move caller. It handles effects of the

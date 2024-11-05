@@ -148,6 +148,7 @@ export class Pokemon {
 	knownType: boolean;
 	/** Keeps track of what type the client sees for this Pokemon. */
 	apparentType: string;
+	usedExtraMove: boolean = false;
 
 	/**
 	 * If the switch is called by an effect with a special switch
@@ -2301,6 +2302,7 @@ export class Pokemon {
 	): boolean | any {
 		let result;
 		status = this.battle.dex.conditions.get(status);
+		if (status.name === 'mustrecharge' && source?.usedExtraMove) return false;
 		if (!this.hp && !status.affectsFainted) return false;
 		if (linkedStatus && source && !source.hp) return false;
 		if (this.battle.event) {

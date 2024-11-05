@@ -189,7 +189,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				move.ignoreImmunity = (move.category === 'Status');
 			}
 
-			if (move.selfdestruct === 'always') {
+			if (move.selfdestruct === 'always' && !pokemon.usedExtraMove) {
 				this.battle.faint(pokemon, pokemon, move);
 			}
 
