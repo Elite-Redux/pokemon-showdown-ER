@@ -64,11 +64,12 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Cancel Mod",
 			"Suicune Complex",
 			"Twisted Dimensions Clause",
+			"northwindlightclay",
 			"Sleep Clause Mod",
 			"Cheap Ambush Clause",
 			"Dynamax Clause",
 		],
-		banlist: ["Light Clay","Seaborne","Baton Pass", "Revival Blessing"],
+		banlist: ["Seaborne", "Baton Pass", "Revival Blessing"],
 	},
 	cheapambushclause: {
 		effectType: "ValidatorRule",
@@ -121,6 +122,12 @@ export const Rulesets: { [k: string]: FormatData } = {
 				return [`${set.name} cannot have North Wind.`];
 			}
 		},
+	},
+	northwindlightclay: {
+		effectType: "ValidatorRule",
+		name: "North Wind Light Clay Clause",
+		desc: "Mons can't have North Wind and Light Clay",
+		banlist: ['North Wind + Light Clay'],
 	},
 	seismictossclause: {
 		effectType: "ValidatorRule",
