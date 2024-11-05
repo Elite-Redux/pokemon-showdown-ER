@@ -705,7 +705,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		heightm: 2.2,
 		color: "Brown",
 		evoLevel: 0,
-		requiredItem: "Pigeotite",
+		requiredItem: "Pidgeotite",
 	},
 	rattata: {
 		name: "Rattata",
