@@ -542,6 +542,7 @@ export class BattleActions {
 			}
 		}
 
+		move.succeeded = true;
 		return true;
 	}
 	/** NOTE: includes single-target moves */

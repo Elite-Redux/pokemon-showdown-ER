@@ -422,6 +422,7 @@ export interface ActiveMove extends MutableMove, RuinableMove {
 	typeChangerBoosted?: Effect;
 	willChangeForme?: boolean;
 	infiltrates?: boolean;
+	succeeded?: boolean;
 
 	/**
 	 * Has this move been boosted by a Z-crystal or used by a Dynamax Pokemon? Usually the same as

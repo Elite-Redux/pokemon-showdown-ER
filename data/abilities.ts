@@ -8389,6 +8389,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	pyroshells: {
 		onAfterMove(source, target, move) {
 			if (!move.flags["pulse"]) return;
+			if (!move.succeeded) return;
 			const moveMutations = {
 				basePower: 50,
 				selfdestruct: undefined,
@@ -8409,6 +8410,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	volcanorage: {
 		onAfterMove(source, target, move) {
 			if (!(move.type === "Fire")) { return; }
+			if (!move.succeeded) return;
 			const moveMutations = {
 				basePower: 50,
 			};
@@ -8427,6 +8429,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	thundercall: {
 		onAfterMove(source, target, move) {
 			if (move.type !== "Electric") { return; }
+			if (!move.succeeded) return;
 
 			const moveMutations = {
 				basePower: 120 * 0.2,
@@ -10592,7 +10595,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Clap Trap",
 		shortDesc: "Counters contact with 50BP Snap Trap.",
 		onDamagingHit(damage, target, source, move) {
-			if (this.checkMoveMakesContact(move, source, target)) {
+			if (!this.checkMoveMakesContact(move, source, target)) {
 				const moveMutations = {
 					basePower: 100 / 2,
 					self: {},
@@ -10828,6 +10831,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Triggers 50BP Revelation Dance after using a Dance move.",
 		onAfterMove(source, target, move) {
 			if (!move.flags["dance"]) return;
+			if (!move.succeeded) return;
 			const moveMutations = {
 				basePower: 50,
 			};
@@ -11137,6 +11141,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Triggers 50 BP Surf after using a Water-type move.",
 		onAfterMove(source, target, move) {
 			if (move.type !== "Water") { return; }
+			if (!move.succeeded) return;
 			const moveMutations = {
 				basePower: 50,
 			};
@@ -11745,6 +11750,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Triggers 40BP Ice Beam after using a Fire-type move.",
 		onAfterMove(source, target, move) {
 			if (move.type !== "Fire") { return; }
+			if (!move.succeeded) return;
 			const moveMutations = {
 				basePower: 40,
 			};
@@ -11970,6 +11976,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAfterMove(source, target, move) {
 			if (!move || move.category === "Status") return;
 			if (move.damage === 0) return;
+			if (!move.succeeded) return;
 			this.add("-activate", source, "ability: Aftershock");
 			let aftershock = Dex.moves.get("magnitude") as ActiveMove;
 
