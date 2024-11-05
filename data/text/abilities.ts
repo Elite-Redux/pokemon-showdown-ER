@@ -2496,7 +2496,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	pyromancy: {
 		name: "Pyromancy",
-		shortDesc: "This Pokemon's Fire-type moves have a 5x chance to brun",
+		shortDesc: "This Pokemon's moves have a 5x chance to burn",
 	},
 	keenedge: {
 		name: "Keen Edge",
@@ -3321,7 +3321,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	cryomancy: {
 		name: "Cryomancy",
-		shortDesc: "Ice moves inflict frostbite 5x more often.",
+		shortDesc: "This Pokemon's moves have a 5x chance to frostbite",
 	},
 	phantompain: {
 		name: "Phantom Pain",

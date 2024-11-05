@@ -6310,7 +6310,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.secondaries) {
 				this.debug("quintupling burn chance");
 				for (const secondary of move.secondaries) {
-					if (secondary.status?.includes("brn") && secondary.chance) { secondary.chance *= 5; }
+					if (secondary.status?.includes("brn") && secondary.chance && !secondary.ability) { secondary.chance *= 5; }
 				}
 			}
 		},
@@ -9840,7 +9840,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move) {
 			if (!move.secondaries) return;
 			for (const secondary of move.secondaries) {
-				if (secondary.status?.includes("frz") && secondary.chance) { secondary.chance *= 5; }
+				if (secondary.status?.includes("frz") && secondary.chance && !secondary.ability) { secondary.chance *= 5; }
 			}
 		},
 	},
