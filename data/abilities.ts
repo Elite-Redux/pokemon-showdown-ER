@@ -37,6 +37,19 @@ Ratings and how they work:
 
 */
 
+function doesMoveCharge(pokemon: Pokemon, move: ActiveMove) {
+	if (!move.flags["charge"]) return false;
+	if (pokemon.hasAbility("accelerate")) return false;
+	if (move.name === "solarbeam" || move.name === "solarblade") {
+		return ["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
+			|| pokemon.hasAbility("solarflare")
+			|| pokemon.hasAbility("chloroplast")
+			|| pokemon.hasAbility("bigleaves");
+	}
+	if (move.name === "electroshot") return ['raindance', 'primordialsea'].includes(pokemon.effectiveWeather());
+	return true;
+}
+
 export const Abilities: { [abilityid: string]: AbilityData } = {
 	noability: {
 		isNonstandard: "Past",
@@ -3508,7 +3521,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -7062,7 +7075,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -7584,7 +7597,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -7837,7 +7850,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -9221,7 +9234,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -9550,7 +9563,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -10035,7 +10048,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -10796,7 +10809,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
@@ -12321,7 +12334,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.category === "Status" ||
 				move.multihit ||
 				move.flags["noparentalbond"] ||
-				move.flags["charge"] ||
+				doesMoveCharge(source, move) ||
 				move.flags["futuremove"] ||
 				move.spreadHit ||
 				move.isZ ||
