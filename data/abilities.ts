@@ -11941,6 +11941,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	poisonpuppeteer: {
 		name: "Poison Puppeteer",
 		shortDesc: "Poison also inflicts confusion.",
+		onSourceAfterSetStatus(status, target, source, effect) {
+			if (target === source) return;
+			if (status.id === "psn" || status.id === "tox") {
+				target.addVolatile("confusion");
+			}
+		}
 	},
 	toxicchain: {
 		name: "Toxic Chain",
