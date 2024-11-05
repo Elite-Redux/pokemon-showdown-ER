@@ -3205,6 +3205,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				move.secondaries.push({
 					chance: 10,
 					volatileStatus: "flinch",
+					kingsrock: true,
 				});
 			}
 		},
@@ -5135,6 +5136,7 @@ export const Items: { [itemid: string]: ItemData } = {
 				move.secondaries.push({
 					chance: 10,
 					volatileStatus: "flinch",
+					kingsrock: true,
 				});
 			}
 		},

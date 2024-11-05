@@ -171,6 +171,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 				move.secondaries.push({
 					chance: 10,
 					volatileStatus: 'flinch',
+					kingsrock: true,
 				});
 			}
 		},
@@ -321,6 +322,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 				move.secondaries.push({
 					chance: 10,
 					volatileStatus: 'flinch',
+					kingsrock: true,
 				});
 			}
 		},

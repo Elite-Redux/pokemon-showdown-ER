@@ -3530,18 +3530,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.multihit = 2;
 			move.multihitType = "parentalbond";
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "parentalbond" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "parentalbond") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 		name: "Parental Bond",
 		rating: 4.5,
@@ -5171,6 +5166,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.secondaries.push({
 					chance: 10,
 					volatileStatus: "flinch",
+					ability: this.dex.abilities.get("stench"),
 				});
 			}
 		},
@@ -7086,18 +7082,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.multihitType = "boxer";
 			}
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "boxer" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "boxer") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 		name: "Raging Boxer",
 		rating: 4.5,
@@ -7650,18 +7641,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.multihitType = "headed";
 			}
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "headed" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "headed" && move.multihitType !== "parentalbond") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 		name: "Multi Headed",
 		rating: 4.5,
@@ -7859,18 +7845,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.multihit = 2;
 			move.multihitType = "parentalbond";
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "parentalbond" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "parentalbond") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 		name: "Hyper Aggressive",
 		rating: 4.5,
@@ -9245,18 +9226,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.multihitType = "maw";
 			}
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "maw" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "maw") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 		name: "Primal Maw",
 		rating: 3,
@@ -9574,18 +9550,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.multihitType = "dual";
 			}
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "dual" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "dual") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 		name: "Dual Wield",
 		rating: 3,
@@ -9655,6 +9626,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 							this.boost({spe: -12}, target);
 						}
 					},
+					ability: this.dex.abilities.get("angelswrath"),
 				});
 				break;
 
@@ -10057,18 +10029,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.multihit = 2;
 			move.multihitType = "ragingmoth";
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "dual" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "ragingmoth") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 	},
 	adrenalinerush: {
@@ -10820,18 +10787,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.multihitType = "maw";
 			}
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "maw" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "maw") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.volatileStatus !== "flinch" || effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 	},
 	fortitude: {
@@ -12297,6 +12259,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.secondaries.push({
 				chance: 20,
 				volatileStatus: "flinch",
+				ability: this.dex.abilities.get("hauntingfrenzy"),
 			});
 		},
 		onSourceAfterFaint(length, target, source, effect) {
@@ -12352,18 +12315,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.multihit = allyCount;
 			move.multihitType = "minion";
 		},
-		// Damage modifier implemented in BattleActions#modifyDamage()
 		onSourceModifySecondaries(secondaries, target, source, move) {
-			if (
-				move.multihitType === "minion" &&
-				move.id === "secretpower" &&
-				move.hit < 2
-			) {
-				// hack to prevent accidentally suppressing King's Rock/Razor Fang
-				return secondaries.filter(
-					(effect) => effect.volatileStatus === "flinch"
-				);
-			}
+			console.log(move.hit, move.secondaries)
+			if (move.multihitType !== "minion") return;
+			if (!secondaries) return;
+			if (move.hit <= 1) return;
+			secondaries = secondaries.filter((effect) => effect.ability || effect.kingsrock);
+			return secondaries;
 		},
 	},
 	celestialblessing: {
