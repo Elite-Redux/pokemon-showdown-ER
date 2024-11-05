@@ -152,7 +152,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (source.status === 'brn') return this.modify(spa, 1.5);
 		},
 		desc: "While this Pokemon is burned, its Special Attack is multiplied by 1.5x. Immune to negative effects of burn.",
-		shortDesc: "Ups Sp. Atk by 1.5x if burned. Ignites in fog.",
+		shortDesc: "Ups Sp. Atk by 1.5x if burned.",
 
 	},
 	flashfire: {
