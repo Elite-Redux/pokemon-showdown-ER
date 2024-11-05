@@ -22039,7 +22039,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Shadow Fangs",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, bite: 1},
+		flags: {protect: 1, mirror: 1, bite: 1, contact: 1},
 		secondary: {
 			chance: 10,
 			volatileStatus: 'curse',
