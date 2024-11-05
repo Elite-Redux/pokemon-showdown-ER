@@ -9606,7 +9606,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Ice Spinner",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, field: 1},
 		onHit() {
 			this.field.clearTerrain();
 		},
@@ -18477,15 +18477,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 	steelroller: {
 		num: 798,
 		accuracy: 100,
-		basePower: 130,
+		basePower: 80,
 		category: "Physical",
 		name: "Steel Roller",
-		pp: 5,
+		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onTry() {
-			return !this.field.isTerrain('');
-		},
+		flags: {contact: 1, protect: 1, mirror: 1, field: 1},
 		onHit() {
 			this.field.clearTerrain();
 		},
