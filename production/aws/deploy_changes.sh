@@ -1,11 +1,14 @@
 #!/bin/bash
-cd /home/bitnami/pokemon-showdown-client-ER/
-git pull
+forever stopall
 
 cd /home/bitnami/pokemon-showdown-ER/
 git pull
+npm run build
+
+cd /home/bitnami/pokemon-showdown-client-ER/
+git pull
+npm run build
 
 cd /home/bitnami/pokemon-showdown-ER/production/aws/
 
-forever restart er-backend
-forever restart er-frontend
+bash configure_forever.sh
