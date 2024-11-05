@@ -11570,6 +11570,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc:
 			"Blocks priority and reduces special damage taken by 1/2 in sand.",
 		onFoeTryMove(target, source, move) {
+			if (!this.field.isWeather("sandstorm")) return;
 			const targetAllExceptions = [
 				"perishsong",
 				"flowershield",
@@ -11585,8 +11586,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const dazzlingHolder = this.effectState.target;
 			if (
 				(source.isAlly(dazzlingHolder) || move.target === "all") &&
-				move.priority > 0.1 &&
-				this.field.isWeather("sandstorm")
+				move.priority > 0.1
 			) {
 				this.attrLastMove("[still]");
 				this.add(
@@ -11599,7 +11599,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return false;
 			}
 		},
-		onModifyDamage(damage, source, target, move) {
+		onSourceModifyDamage(damage, source, target, move) {
 			if (this.field.isWeather("sandstorm") && move.category === "Special") {
 				return this.chainModify(0.5);
 			}
@@ -11899,8 +11899,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	appleenlightenment: {
 		name: "Apple Enlightenment",
 		shortDesc: "Fur coat + Magic Guard.",
-		onSourceModifyDamage(def) {
-			return this.chainModify(0.5);
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === "Physical") {
+				return this.chainModify(0.5);
+			}
 		},
 		onDamage(damage, target, source, effect) {
 			if (effect.effectType !== "Move") {
