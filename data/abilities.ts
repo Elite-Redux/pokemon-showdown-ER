@@ -2718,6 +2718,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.type = "Water";
 			}
 		},
+		onModifyDamage(basePower, attacker, defender, move) {
+			if (move.flags["sound"]) {
+				return this.chainModify(1.2);
+			}
+		},
 		name: "Liquid Voice",
 		rating: 1.5,
 		num: 204,
@@ -6356,9 +6361,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	sandsong: {
 		onModifyTypePriority: -2,
 		onModifyType(move, pokemon) {
-			if (move.flags["sound"] && !pokemon.volatiles["dynamax"]) {
+			if (move.flags["sound"] && move.type === "Normal" && !pokemon.volatiles["dynamax"]) {
 				// hardcode
 				move.type = "Ground";
+				move.typeChangerBoosted = this.effect;
+			}
+		},
+		onModifyDamage(basePower, attacker, defender, move) {
+			if (move.flags["sound"] && move.typeChangerBoosted) {
+				return this.chainModify(1.2);
 			}
 		},
 		name: "Sand Song",
@@ -10915,31 +10926,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	banshee: {
 		name: "Banshee",
-		shortDesc:
-			"Normal-type moves become Ghost- type moves and get a 1.2x boost.",
-		onModifyTypePriority: -1,
+		shortDesc: "Normal-type sound moves become Ghost- type moves and get a 1.2x boost.",
 		onModifyType(move, pokemon) {
-			const noModifyType = [
-				"judgment",
-				"multiattack",
-				"naturalgift",
-				"revelationdance",
-				"technoblast",
-				"terrainpulse",
-				"weatherball",
-			];
-			if (
-				move.type === "Normal" &&
-				!noModifyType.includes(move.id) &&
-				!(move.isZ && move.category !== "Status") &&
-				!(move.name === "Tera Blast" && pokemon.terastallized)
-			) {
+			if (move.flags["sound"] && move.type === "Normal" && !pokemon.volatiles["dynamax"]) {
+				// hardcode
 				move.type = "Ghost";
 				move.typeChangerBoosted = this.effect;
 			}
 		},
-		onModifyDamage(basePower, pokemon, target, move) {
-			if (move.typeChangerBoosted === this.effect) { return this.chainModify(1.2); }
+		onModifyDamage(basePower, attacker, defender, move) {
+			if (move.flags["sound"] && move.typeChangerBoosted) {
+				return this.chainModify(1.2);
+			}
 		},
 	},
 	chromecoat: {
