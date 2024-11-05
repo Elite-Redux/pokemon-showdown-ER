@@ -5635,13 +5635,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const toxicSpikes = side.sideConditions["toxicspikes"];
-			if (
-				move.category === "Physical" &&
-				(!toxicSpikes || toxicSpikes.layers < 2)
-			) {
-				this.add("-activate", target, "ability: Toxic Debris");
-				side.addSideCondition("toxicspikes", target);
-			}
+			if (!move.flags["contact"]) return;
+			if (toxicSpikes && toxicSpikes.layers >= 2) return;
+			this.add("-activate", target, "ability: Toxic Debris");
+			side.addSideCondition("toxicspikes", target);
 		},
 		name: "Toxic Debris",
 		rating: 3.5,
@@ -8734,12 +8731,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const spikes = side.sideConditions["spikes"];
-			if (move.category !== "Status" &&
-				this.checkMoveMakesContact(move, source, target) &&
-				(!spikes || spikes.layers < 3)) {
-				this.add("-activate", target, "ability: Scrapyard");
-				side.addSideCondition("spikes", target);
-			}
+			if (!move.flags["contact"]) return;
+			if (spikes && spikes.layers >= 3) return;
+			this.add("-activate", target, "ability: Scrapyard");
+			side.addSideCondition("spikes", target);
 		},
 		name: "Scrapyard",
 		rating: 3.5,
@@ -8750,10 +8745,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const spikes = side.sideConditions["spikes"];
-			if (move.category !== "Status" && (!spikes || spikes.layers < 3)) {
-				this.add("-activate", target, "ability: Loose Quills");
-				side.addSideCondition("spikes", target);
-			}
+			if (!move.flags["contact"]) return;
+			if (spikes && spikes.layers >= 3) return;
+			this.add("-activate", target, "ability: Loose Quills");
+			side.addSideCondition("spikes", target);
 		},
 		name: "Loose Quills",
 		rating: 3.5,
@@ -8763,11 +8758,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	looserocks: {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
+			if (!move.flags["contact"]) return;
 			const stealthrock = side.sideConditions["stealthrock"];
-			if (move.category !== "Status" && !stealthrock) {
-				this.add("-activate", target, "ability: Loose Rocks");
-				side.addSideCondition("stealthrock", target);
-			}
+			if (stealthrock) return;
+			this.add("-activate", target, "ability: Loose Rocks");
+			side.addSideCondition("stealthrock", target);
 		},
 		name: "Loose Rocks",
 		rating: 3.5,
