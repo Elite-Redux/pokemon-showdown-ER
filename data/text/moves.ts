@@ -6130,8 +6130,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	steelroller: {
 		name: "Steel Roller",
-		desc: "Fails if there is no terrain active. Ends the effects of Electric Terrain, Grassy Terrain, Misty Terrain, and Psychic Terrain.",
-		shortDesc: "Fails if there is no terrain active. Ends the terrain.",
+		desc: "Ends the effects of Electric Terrain, Grassy Terrain, Misty Terrain, and Psychic Terrain.",
+		shortDesc: "Ends the terrain.",
 	},
 	steelwing: {
 		name: "Steel Wing",
