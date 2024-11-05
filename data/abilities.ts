@@ -10810,7 +10810,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	fortitude: {
 		name: "Fortitude",
 		shortDesc: "Boosts SpDef +1 when hit. Maxes SpDef on crit.",
-		onHit(target, source, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (!target.hp) return;
 			if (move?.effectType === "Move" && target.getMoveHitData(move).crit) {
 				this.boost({spd: 12}, target, target);
@@ -10822,11 +10822,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	spiteful: {
 		name: "Spiteful",
 		shortDesc: "Reduces attacker's PP on contact.",
-		onHit(target, source, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (move.flags["contact"]) {
 				if (source.lastMove) {
 					if (source.lastMove.pp > 0) {
-						source.lastMove.pp--;
+						source.lastMove.pp = Math.max(source.lastMove.pp - 5, 0);
 					}
 				}
 			}
