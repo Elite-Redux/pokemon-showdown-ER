@@ -10831,6 +10831,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const moveMutations = {
 				basePower: 50,
 			};
+			if (target === source) {
+				let foe = source.side.randomFoe();
+				if (!foe) return;
+				target = foe;
+			}
 			this.actions.runAdditionalMove(
 				Dex.moves.get("revelationdance"),
 				source,
