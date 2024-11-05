@@ -608,7 +608,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	milkdrink: {
 		inherit: true,
-		pp: 10,
+		pp: 5,
 	},
 	mindblown: {
 		inherit: true,
@@ -732,7 +732,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	recover: {
 		inherit: true,
-		pp: 10,
+		pp: 5,
 	},
 	relicsong: {
 		inherit: true,
@@ -756,7 +756,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	roost: {
 		inherit: true,
-		pp: 10,
+		pp: 5,
 	},
 	sacredfire: {
 		inherit: true,
@@ -780,7 +780,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	shoreup: {
 		inherit: true,
-		pp: 10,
+		pp: 5,
 	},
 	simplebeam: {
 		inherit: true,
@@ -792,7 +792,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	slackoff: {
 		inherit: true,
-		pp: 10,
+		pp: 5,
 	},
 	sleeptalk: {
 		inherit: true,
@@ -804,7 +804,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	softboiled: {
 		inherit: true,
-		pp: 10,
+		pp: 5,
 	},
 	sparklingaria: {
 		inherit: true,
