@@ -5197,6 +5197,12 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Gravity ++ Lovely Kiss",
 			"Gravity ++ Sing",
 			"Gravity ++ Sleep Powder",
+			"Gravity Well ++ Dark Void",
+			"Gravity Well ++ Grass Whistle",
+			"Gravity Well ++ Hypnosis",
+			"Gravity Well ++ Lovely Kiss",
+			"Gravity Well ++ Sing",
+			"Gravity Well ++ Sleep Powder",
 		],
 		onValidateTeam(team) {
 			let hasOrbeetle = false;
