@@ -18682,12 +18682,12 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		num: 523,
 		types: ["Electric"],
 		abilities: {
-			"0": "Reckless",
-			"1": "Speed Force",
+			"0": "Adrenaline Rush",
+			"1": "Impulse",
 			H: "Momentum",
-			I1: "Illuminate",
-			I2: "Motor Drive",
-			I3: "Sap Sipper",
+			I1: "Reckless",
+			I2: "Speed Force",
+			I3: "Motor Drive",
 		},
 		baseStats: {
 			hp: 85,
