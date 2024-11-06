@@ -8647,6 +8647,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	fungalinfection: {
 		onAfterMove(source, target, move) {
+			if (target.hasType('Grass')) return;
 			if (target.hp > 0 && target !== source && move.category !== "Status") {
 				if (!target.volatiles["leechseed"]) {
 					this.add("-activate", source, "ability: Fungal Infection");
