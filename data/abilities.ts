@@ -9362,7 +9362,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.effectState.hitsLeft = 2;
 			}
 		},
-		onAnyDamage(damage, mon, source, effect) {
+		onDamage(damage, mon, source, effect) {
 			if (mon === source) return;
 			if (damage <= 0) return;
 			if (effect.effectType !== "Move") return;
