@@ -919,7 +919,6 @@ export const Aliases: {[alias: string]: string} = {
 	light: "Light That Burns the Sky",
 	lsf: "Let's Snuggle Forever",
 	ltbts: "Light That Burns the Sky",
-	maliciousmoonsault: "Malicious Moonsault",
 	menacing: "Menacing Moonraze Maelstrom",
 	mmm: "Menacing Moonraze Maelstrom",
 	moonsault: "Malicious Moonsault",
