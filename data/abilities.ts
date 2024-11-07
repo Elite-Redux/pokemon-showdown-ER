@@ -3830,34 +3830,24 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 211,
 	},
 	powerofalchemy: {
-		onAllyFaint(target) {
-			if (!this.effectState.target.hp) return;
-			const ability = target.getAbility();
-			const additionalBannedAbilities = [
-				"noability",
-				"flowergift",
-				"forecast",
-				"hungerswitch",
-				"illusion",
-				"imposter",
-				"neutralizinggas",
-				"powerofalchemy",
-				"receiver",
-				"trace",
-				"wonderguard",
-			];
-			if (
-				target.getAbility().isPermanent ||
-				additionalBannedAbilities.includes(target.ability)
-			) { return; }
-			if (this.effectState.target.setAbility(ability)) {
+		onStart(pokemon) {
+			for (const foe of pokemon.foes()) {
+				if (foe.item === 'bignugget' || !foe.item) continue;
+				const taken = foe.takeItem(pokemon);
+				if (!taken) continue;
+				if (taken.id === 'blacksludge') {
+					foe.setItem('bignugget');
+				} else {
+					foe.setItem('blacksludge')
+				}
 				this.add(
-					"-ability",
-					this.effectState.target,
-					ability,
-					"[from] ability: Power of Alchemy",
-					"[of] " + target
+					"-item",
+					foe,
+					foe.getItem(),
+					"[from] ability: Power of Alchemy"
 				);
+				return;
+
 			}
 		},
 		name: "Power of Alchemy",

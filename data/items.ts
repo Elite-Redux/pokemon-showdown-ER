@@ -18,7 +18,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		},
 		// Mold Breaker protection implemented in Battle.suppressingAbility() within sim/battle.ts
 		num: 1881,
-		 gen: 8,
+		gen: 8,
 	},
 	abomasite: {
 		name: "Abomasite",
@@ -2999,6 +2999,14 @@ export const Items: { [itemid: string]: ItemData } = {
 		forcedForme: "Arceus-Bug",
 		num: 308,
 		gen: 4,
+	},
+	bignugget: {
+		name: "Big Nugget",
+		spritenum: 224,
+		num: 501,
+		fling: {
+			basePower: 130,
+		},
 	},
 	ironball: {
 		name: "Iron Ball",
