@@ -107,8 +107,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					if (target.hasType('Steel')) return 1;
 				}
 			};
-			if (!move.ignoreImmunity) {
-				move.ignoreImmunity = {'Poison': true};
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity["Poison"] = true;
 			}
 		},
 		shortDesc: "This Pokemon can poison or badly poison a Pokemon regardless of its typing. Poison hits Steel super effectively",

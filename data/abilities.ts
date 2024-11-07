@@ -3350,7 +3350,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.typeChangerBoosted === this.effect) { return this.chainModify(1.1); }
 		},
 		onEffectiveness(typeMod, target, type, move) {
-			if (move.type === "Normal") return typeMod + 1;
+			if (move.type === "Normal") return Math.min(typeMod, 0);
 		},
 		name: "Normalize",
 		rating: 0,
@@ -6551,8 +6551,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		onEffectiveness(typeMod, target, type, move) {
-			if (move.type == 'Electric' && type == 'Ground') {
-				return 0.5;
+			if (move.type === 'Electric' && type === 'Ground') {
+				return -1;
 			}
 		},
 		name: "Ground Shock",
@@ -7470,7 +7470,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (target) {
 				const moveType =
 					move.id === "hiddenpower" ? source.hpType : move.type;
-				if (this.dex.getEffectiveness(moveType, target) > 0) {
+				if (target.runEffectiveness(move) > 0) {
 					this.debug("Fatal Precision accuracy boost");
 					move.accuracy = true;
 				}
@@ -7478,7 +7478,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyDamage(damage, source, target, move) {
 			const moveType = move.id === "hiddenpower" ? source.hpType : move.type;
-			if (this.dex.getEffectiveness(moveType, target) > 0) {
+			if (target.runEffectiveness(move) > 0) {
 				this.debug("Fatal Precision damage boost");
 				return this.chainModify(1.2);
 			}
@@ -11335,10 +11335,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move) {
 			move.forceSTAB = true;
 		},
-		onEffectiveness(typeMod, target, type, move) {
-			if (typeMod > 2) {
-				return typeMod + 0.1;
-			}
+		onModifyDamage(damage, source, target, move) {
+			if (target.runEffectiveness(move) > 0) this.chainModify(1.1);
 		},
 	},
 	freezingpoint: {
@@ -12054,7 +12052,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onEffectiveness(typeMod, target, type, move) {
 			if (target) {
 				if (target.hp >= target.maxhp) {
-					if (typeMod > 0) return 0.5;
+					if (typeMod >= 0) return -1;
 				}
 			}
 		},
@@ -12147,7 +12145,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!target) return;
 			if (!this.field.isWeather("sandstorm") || move.type !== "Ground") return;
 
-			if (target.hasType("Flying")) return 1;
+			if (target.hasType("Flying")) return 0;
 		},
 	},
 	flourish: {
@@ -12383,7 +12381,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Iron Serpent",
 		shortDesc: "Ups “supereffective” by 33%.",
 		onModifyDamage(damage, source, target, move) {
-			if (this.dex.getEffectiveness(move.type, target) > 0) {
+			if (target.runEffectiveness(move) > 0) {
 				return this.chainModify(1.33);
 			}
 		},
@@ -12392,7 +12390,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Winged King",
 		shortDesc: "Ups “supereffective” by 33%.",
 		onModifyDamage(damage, source, target, move) {
-			if (this.dex.getEffectiveness(move.type, target) > 0) {
+			if (target.runEffectiveness(move) > 0) {
 				return this.chainModify(1.33);
 			}
 		},
@@ -12432,7 +12430,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Thick Skin",
 		shortDesc: "Takes 25% less damage from Super-effective moves.",
 		onSourceModifyDamage(damage, source, target, move) {
-			if (this.dex.getEffectiveness(move.type, target) > 1) {
+			if (target.runEffectiveness(move) > 0) {
 				return this.chainModify(0.75);
 			}
 		},
