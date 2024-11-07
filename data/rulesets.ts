@@ -7446,7 +7446,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 					.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 				const activeAbilities = [ability, ...innateList];
 
-				if (['Regenerator'].some(a => activeAbilities.includes(a))) {
+				if (['Regenerator', 'Natural Recovery'].some(a => activeAbilities.includes(a))) {
 					regenCount++;
 				}
 			}
