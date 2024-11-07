@@ -1690,13 +1690,13 @@ export class Battle {
 			return true;
 		}
 		if (
-			(this.turn >= 500 && this.turn % 100 === 0) || // every 100 turns past turn 500,
-			(this.turn >= 900 && this.turn % 10 === 0) || // every 10 turns past turn 900,
-			this.turn >= 990 // every turn past turn 990
+			(this.turn >= 300 && this.turn % 50 === 0) || // every 100 turns past turn 500,
+			(this.turn >= 400 && this.turn % 10 === 0) || // every 10 turns past turn 900,
+			this.turn >= 490 // every turn past turn 990
 		) {
-			const turnsLeft = 1000 - this.turn;
+			const turnsLeft = 500 - this.turn;
 			const turnsLeftText = (turnsLeft === 1 ? `1 turn` : `${turnsLeft} turns`);
-			this.add('bigerror', `You will auto-tie if the battle doesn't end in ${turnsLeftText} (on turn 1000).`);
+			this.add('bigerror', `You will auto-tie if the battle doesn't end in ${turnsLeftText} (on turn 500).`);
 		}
 
 		if (!this.ruleTable.has('endlessbattleclause')) return;
