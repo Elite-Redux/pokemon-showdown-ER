@@ -1142,6 +1142,7 @@ export class Pokemon {
 					"Disable",
 					"Taunt",
 					"Assault Vest",
+					"Tactical Vest",
 					"Belch",
 					"Stuff Cheeks",
 				];
