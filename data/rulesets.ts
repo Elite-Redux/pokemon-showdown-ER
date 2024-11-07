@@ -70,7 +70,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Cheap Ambush Clause",
 			"Dynamax Clause",
 		],
-		banlist: ["Seaborne", "Baton Pass", "Revival Blessing"],
+		banlist: ["Seaborne", "Baton Pass", "Revival Blessing", "Power Construct"],
 	},
 	cheapambushclause: {
 		effectType: "ValidatorRule",
