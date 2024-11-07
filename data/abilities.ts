@@ -263,6 +263,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 			}
 		},
+		onAccuracyPriority: -100,
+		onAccuracy(accuracy, target, source, move) {
+			if (accuracy === true) return;
+			if (source.permanentAbilityState["anticipation"]) return;
+			if (target.runEffectiveness(move) > 0) {
+				move.accuracy = 0;
+				source.permanentAbilityState["anticipation"] = true;
+			}
+		},
 		name: "Anticipation",
 		rating: 0.5,
 		num: 107,

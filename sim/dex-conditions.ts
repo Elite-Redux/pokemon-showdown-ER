@@ -30,7 +30,7 @@ export interface EventMethods {
 	onAfterMoveSelf?: CommonHandlers['VoidSourceMove'];
 	onAttract?: (this: Battle, target: Pokemon, source: Pokemon) => void;
 	onAccuracy?: (
-		this: Battle, accuracy: number, target: Pokemon, source: Pokemon, move: ActiveMove
+		this: Battle, accuracy: number | true, target: Pokemon, source: Pokemon, move: ActiveMove
 	) => number | boolean | null | void;
 	onBasePower?: CommonHandlers['ModifierSourceMove'];
 	onBeforeFaint?: (this: Battle, pokemon: Pokemon, effect: Effect) => void;

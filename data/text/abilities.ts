@@ -68,9 +68,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	anticipation: {
 		name: "Anticipation",
-		desc: "On switch-in, this Pokemon is alerted if any opposing Pokemon has an attack that is super effective against this Pokemon, or an OHKO move. This effect considers any move that deals direct damage as an attacking move of its respective type, Hidden Power counts as its determined type, and Judgment, Multi-Attack, Natural Gift, Revelation Dance, Techno Blast, and Weather Ball are considered Normal-type moves.",
+		desc: "Dodges the first super-effective attack that doesn't always hit. On switch-in, this Pokemon is alerted if any opposing Pokemon has an attack that is super effective against this Pokemon, or an OHKO move. This effect considers any move that deals direct damage as an attacking move of its respective type, Hidden Power counts as its determined type, and Judgment, Multi-Attack, Natural Gift, Revelation Dance, Techno Blast, and Weather Ball are considered Normal-type moves.",
 		shortDesc:
-			"On switch-in, this Pokemon shudders if any foe has a supereffective or OHKO move.",
+			"Dodges the first super-effective attack that doesn't always hit. On switch-in, this Pokemon shudders if any foe has a supereffective or OHKO move.",
 		gen6: {
 			desc: "On switch-in, this Pokemon is alerted if any opposing Pokemon has an attack that is super effective against this Pokemon, or an OHKO move. This effect considers any move that deals direct damage as an attacking move of its respective type, Hidden Power counts as its determined type, and Judgment, Natural Gift, Techno Blast, and Weather Ball are considered Normal-type moves.",
 		},
