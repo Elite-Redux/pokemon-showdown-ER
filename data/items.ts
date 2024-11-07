@@ -379,9 +379,10 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 80,
 		},
-		onModifySpDPriority: 1,
-		onModifySpD(spd) {
-			return this.chainModify(1.5);
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Special') {
+				return this.chainModify(1/1.5);
+			}
 		},
 		onDisableMove(pokemon) {
 			for (const moveSlot of pokemon.moveSlots) {
@@ -399,9 +400,10 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 80,
 		},
-		onModifyDefPriority: 1,
-		onModifyDef(def) {
-			return this.chainModify(1.5);
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Physical') {
+				return this.chainModify(1/1.5);
+			}
 		},
 		onDisableMove(pokemon) {
 			for (const moveSlot of pokemon.moveSlots) {
@@ -1394,10 +1396,9 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 30,
 		},
-		onModifySpDPriority: 2,
-		onModifySpD(spd, pokemon) {
-			if (pokemon.baseSpecies.name === "Clamperl") {
-				return this.chainModify(2);
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Special') {
+				return this.chainModify(.5);
 			}
 		},
 		itemUser: ["Clamperl"],
@@ -1865,17 +1866,8 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 40,
 		},
-		onModifyDefPriority: 2,
-		onModifyDef(def, pokemon) {
-			if (pokemon.baseSpecies.nfe) {
-				return this.chainModify(1.5);
-			}
-		},
-		onModifySpDPriority: 2,
-		onModifySpD(spd, pokemon) {
-			if (pokemon.baseSpecies.nfe) {
-				return this.chainModify(1.5);
-			}
+		onSourceModifyDamage(damage, source, target, move) {
+			this.chainModify(1/1.5);
 		},
 		num: 538,
 		gen: 5,
@@ -4013,10 +4005,9 @@ export const Items: { [itemid: string]: ItemData } = {
 			basePower: 10,
 		},
 		spritenum: 287,
-		onModifyDefPriority: 2,
-		onModifyDef(def, pokemon) {
-			if (pokemon.species.name === "Ditto" && !pokemon.transformed) {
-				return this.chainModify(2);
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.category === 'Physical') {
+				return this.chainModify(.5);
 			}
 		},
 		itemUser: ["Ditto"],
