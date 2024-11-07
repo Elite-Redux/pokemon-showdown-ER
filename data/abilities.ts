@@ -4362,6 +4362,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	regenerator: {
 		onSwitchOut(pokemon) {
+			if (pokemon.status === "bld") return;
+			if (pokemon.foes().some(it => it.hasAbility("permanence"))) return;
 			pokemon.heal(pokemon.baseMaxhp / 3);
 		},
 		name: "Regenerator",
@@ -11550,7 +11552,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		onSwitchOut(pokemon) {
-			pokemon.heal(pokemon.baseMaxhp / 3);
+			if (!pokemon.foes().some(it => it.hasAbility("permanence"))) {
+				pokemon.heal(pokemon.baseMaxhp / 3);
+			}
 			if (!pokemon.status) return;
 
 			// if pokemon.showCure is undefined, it was skipped because its ability
