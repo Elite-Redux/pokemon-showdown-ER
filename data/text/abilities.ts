@@ -2421,7 +2421,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	whitesmoke: {
 		name: "White Smoke",
 		shortDesc:
-			"Prevents other Pokemon from lowering this Pokemon's stat stages.",
+			"Sets Smokescreen on entry for 5 turns, giving moves a 20% chance to miss.",
 	},
 	wimpout: {
 		name: "Wimp Out",
