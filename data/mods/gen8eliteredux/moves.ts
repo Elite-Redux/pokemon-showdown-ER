@@ -2,6 +2,7 @@
 // TODO: Implement Shield Dust entry hazard immunity
 export const Moves: {[k: string]: ModdedMoveData} = {
 	aeroblast: {
+		accuracy: 100,
 		inherit: true,
 		isNonstandard: null,
 	},

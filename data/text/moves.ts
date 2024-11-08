@@ -63,8 +63,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	aeroblast: {
 		name: "Aeroblast",
-		desc: "This move always crits. Wind-based.",
-		shortDesc: "This move always crits.",
+		desc: "Increased crit rate. Wind-based.",
+		shortDesc: "Increased crit rate.",
 	},
 	afteryou: {
 		name: "After You",
