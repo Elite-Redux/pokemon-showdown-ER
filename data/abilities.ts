@@ -3358,8 +3358,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyDamage(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect) { return this.chainModify(1.1); }
 		},
-		onEffectiveness(typeMod, target, type, move) {
-			if (move.type === "Normal") return Math.min(typeMod, 0);
+		onModifyMove(move) {
+			move.onEffectiveness = (effectiveness) => {
+				if (effectiveness < 0) effectiveness = 0;
+			};
 		},
 		name: "Normalize",
 		rating: 0,
@@ -6547,11 +6549,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.ignoreImmunity !== true) {
 				move.ignoreImmunity["Electric"] = true;
 			}
-		},
-		onEffectiveness(typeMod, target, type, move) {
-			if (move.type === 'Electric' && type === 'Ground') {
-				return -1;
-			}
+			move.onEffectiveness = (effectiveness, target, type) => {
+				if (move.type === 'Electric' && type === 'Ground') return -1;
+			};
 		},
 		name: "Ground Shock",
 		rating: 3,
@@ -12126,7 +12126,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(source) {
 			this.field.setWeather("sandstorm");
 		},
-		// onModifyMove deals with levitaters, onEffectiveness deals with flying types.
 		// This isn't in-line with things like magnetic rise and gravity yet, so prob should do that later.
 		onModifyMove(move, source, target) {
 			if (!target) return;
@@ -12138,12 +12137,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 
 			if (target.hasAbility('levitate') || target.hasAbility('dragonfly')) move.ignoreAbility = true;
-		},
-		onEffectiveness(typeMod, target, type, move) {
-			if (!target) return;
-			if (!this.field.isWeather("sandstorm") || move.type !== "Ground") return;
-
-			if (target.hasType("Flying")) return 0;
 		},
 	},
 	flourish: {
