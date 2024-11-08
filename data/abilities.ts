@@ -6085,10 +6085,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 273,
 	},
 	whitesmoke: {
-		onStart(target) {
-			if(!target.side.sideConditions['smokescreen']) {
-				target.side.addSideCondition('smokescreen');
-				this.add("-activate", target, "ability: White Smoke");
+		onStart(source) {
+			if(!source.side.sideConditions['smokescreen']) {
+				this.add("-activate", source, "ability: White Smoke");
+				source.side.addSideCondition(
+					"smokescreen",
+					source,
+					this.dex.abilities.get("whitesmoke")
+				);
 			}
 		},
 		isBreakable: true,
@@ -7674,7 +7678,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				source.side.addSideCondition(
 					"auroraveil",
 					source,
-					source.getAbility()
+					this.dex.abilities.get("northwind")
 				);
 			}
 		},
@@ -7783,6 +7787,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.flags["bone"]) {
 				move.ignoreImmunity = true;
 			}
+			move.onEffectiveness()
 		},
 		onModifyDamage(damage, source, target, move) {
 			if (move.flags["bone"] && target.getMoveHitData(move).typeMod < 0) {

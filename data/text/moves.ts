@@ -5786,8 +5786,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	smokescreen: {
 		name: "Smokescreen",
-		desc: "Lowers the target's accuracy by 1 stage.",
-		shortDesc: "Lowers the target's accuracy by 1.",
+		desc: "Reduces the party's chance of being hit by 25% for 5 turns. If the user holds Light Clay the duration is increased to 8 turns.",
+		shortDesc: "Lowers chance to be hit by 25% for 5 turns.",
 	},
 	snaptrap: {
 		name: "Snap Trap",

@@ -17579,6 +17579,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 		sideCondition: "smokescreen",
 		condition: {
 			duration: 5,
+			countFullRounds: true,
+			durationCallback(target, source, effect) {
+				if (effect?.effectType === 'Ability') {
+					if (source?.hasItem('lightclay')) {
+						return 5;
+					} else {
+						return 3;
+					}
+				}
+				if (source?.hasItem('lightclay')) {
+					return 8;
+				}
+				return 5;
+			},
 			//Couldn't figure out how to increase own evasion so here's what we're doing instead
 			//This is technically wrong because it still applies to ignoreEvasion moves like sacred sword
 			//What we could also do is have an onStart +1 evasion boost and an onSideEnd -1 boost
@@ -17586,7 +17600,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onModifyAccuracyPriority: -1,
 			onModifyAccuracy(accuracy, target) {
 				if(typeof accuracy !== "number") return;
-				return accuracy * .66;
+				return accuracy * .75;
 			},
 			onSideStart(side) {
 				this.add('-sidestart', side, 'Smokescreen');

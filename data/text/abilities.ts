@@ -2421,7 +2421,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	whitesmoke: {
 		name: "White Smoke",
 		shortDesc:
-			"Sets Smokescreen on entry for 5 turns, giving moves a 20% chance to miss.",
+			"Sets Smokescreen on entry for 3 turns or 5 turns with Light Clay, giving moves a 25% chance to miss.",
 	},
 	wimpout: {
 		name: "Wimp Out",
