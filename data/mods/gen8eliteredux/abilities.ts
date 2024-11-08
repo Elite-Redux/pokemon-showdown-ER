@@ -578,30 +578,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		// an arbitary decision, but is modelled on Stench, which is reflective of on-cart behaviour.
 		onModifyMovePriority: -1,
 	},
-	powerofalchemy: {
-		inherit: true,
-		onAllyFaint(ally) {
-			const pokemon = this.effectState.target;
-			if (!pokemon.hp) return;
-			const isAbility = pokemon.ability === 'powerofalchemy';
-			let possibleAbilities = [ally.ability];
-			if (ally.m.innates) possibleAbilities.push(...ally.m.innates);
-			const additionalBannedAbilities = [
-				'noability', 'flowergift', 'forecast', 'hungerswitch', 'illusion', 'imposter', 'neutralizinggas', 'powerofalchemy', 'receiver', 'trace', 'wonderguard', pokemon.ability, ...(pokemon.m.innates || []),
-			];
-			possibleAbilities = possibleAbilities
-				.filter(val => !this.dex.abilities.get(val).isPermanent && !additionalBannedAbilities.includes(val));
-			if (!possibleAbilities.length) return;
-			const ability = this.dex.abilities.get(possibleAbilities[this.random(possibleAbilities.length)]);
-			this.add('-ability', pokemon, ability, '[from] ability: Power of Alchemy', '[of] ' + ally);
-			if (isAbility) {
-				pokemon.setAbility(ability);
-			} else {
-				pokemon.removeVolatile("ability:powerofalchemy");
-				pokemon.addVolatile("ability:" + ability, pokemon);
-			}
-		},
-	},
 	protean: {
 		inherit: true,
 		onPrepareHit(source, target, move) {
