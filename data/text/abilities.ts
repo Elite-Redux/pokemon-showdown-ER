@@ -1743,7 +1743,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	screencleaner: {
 		name: "Screen Cleaner",
 		shortDesc:
-			"On switch-in, the effects of Aurora Veil, Light Screen, and Reflect end for both sides.",
+			"On switch-in, the effects of Aurora Veil, Light Screen, Reflect, and Smokescreen end for both sides.",
 	},
 	seedsower: {
 		name: "Seed Sower",

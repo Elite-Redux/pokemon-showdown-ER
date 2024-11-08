@@ -4672,7 +4672,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	screencleaner: {
 		onStart(pokemon) {
 			let activated = false;
-			for (const sideCondition of ["reflect", "lightscreen", "auroraveil"]) {
+			for (const sideCondition of ["reflect", "lightscreen", "auroraveil", "smokescreen"]) {
 				for (const side of [
 					pokemon.side,
 					...pokemon.side.foeSidesWithConditions(),
