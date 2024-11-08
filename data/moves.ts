@@ -12471,14 +12471,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	moonblast: {
 		num: 585,
 		accuracy: 100,
-		basePower: 95,
+		basePower: 90,
 		category: "Special",
 		name: "Moonblast",
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 30,
+			chance: 20,
 			boosts: {
 				spa: -1,
 			},
