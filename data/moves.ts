@@ -18707,7 +18707,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	stoneedge: {
 		num: 444,
-		accuracy: 85,
+		accuracy: 90,
 		basePower: 100,
 		category: "Physical",
 		name: "Stone Edge",
