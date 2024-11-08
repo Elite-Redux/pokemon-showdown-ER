@@ -989,7 +989,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
 			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb',
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'smokescreen',
 			];
 			const removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
 			for (const targetCondition of removeTarget) {
