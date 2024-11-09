@@ -5649,7 +5649,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	toxicdebris: {
 		onDamagingHit(damage, target, source, move) {
-			const side = source.isAlly(target) ? source.side.foe : source.side;
+			const side = target.side.foe;
 			const toxicSpikes = side.sideConditions["toxicspikes"];
 			if (!move.flags["contact"]) return;
 			if (toxicSpikes && toxicSpikes.layers >= 2) return;
@@ -8743,7 +8743,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	scrapyard: {
 		onDamagingHit(damage, target, source, move) {
-			const side = source.isAlly(target) ? source.side.foe : source.side;
+			const side = target.side.foe;
 			const spikes = side.sideConditions["spikes"];
 			if (!move.flags["contact"]) return;
 			if (spikes && spikes.layers >= 3) return;
@@ -8757,7 +8757,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	loosequills: {
 		onDamagingHit(damage, target, source, move) {
-			const side = source.isAlly(target) ? source.side.foe : source.side;
+			const side = target.side.foe;
 			const spikes = side.sideConditions["spikes"];
 			if (!move.flags["contact"]) return;
 			if (spikes && spikes.layers >= 3) return;
@@ -8771,7 +8771,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	looserocks: {
 		onDamagingHit(damage, target, source, move) {
-			const side = source.isAlly(target) ? source.side.foe : source.side;
+			const side = target.side.foe;
 			if (!move.flags["contact"]) return;
 			const stealthrock = side.sideConditions["stealthrock"];
 			if (stealthrock) return;

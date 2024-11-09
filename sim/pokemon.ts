@@ -2299,7 +2299,8 @@ export class Pokemon {
 		status: string | Condition,
 		source: Pokemon | null = null,
 		sourceEffect: Effect | null = null,
-		linkedStatus: string | Condition | null = null
+		linkedStatus: string | Condition | null = null,
+		noEvents: boolean = false,
 	): boolean | any {
 		let result;
 		status = this.battle.dex.conditions.get(status);
@@ -2313,6 +2314,7 @@ export class Pokemon {
 		if (!source) source = this;
 
 		if (this.volatiles[status.id]) {
+			if (noEvents) return false;
 			if (!status.onRestart) return false;
 			return this.battle.singleEvent(
 				"Restart",
@@ -2323,14 +2325,14 @@ export class Pokemon {
 				sourceEffect
 			);
 		}
-		if (!this.runStatusImmunity(status.id)) {
+		if (!noEvents && !this.runStatusImmunity(status.id)) {
 			this.battle.debug("immune to volatile status");
 			if ((sourceEffect as Move)?.status) {
 				this.battle.add("-immune", this);
 			}
 			return false;
 		}
-		result = this.battle.runEvent(
+		result = noEvents || this.battle.runEvent(
 			"TryAddVolatile",
 			this,
 			source,
@@ -2350,7 +2352,7 @@ export class Pokemon {
 		if (sourceEffect) this.volatiles[status.id].sourceEffect = sourceEffect;
 		if (status.duration) this.volatiles[status.id].duration = status.duration;
 		this.volatiles[status.id].startedThisTurn = status.countFullRounds;
-		if (status.durationCallback) {
+		if (!noEvents && status.durationCallback) {
 			this.volatiles[status.id].duration = status.durationCallback.call(
 				this.battle,
 				this,
@@ -2358,7 +2360,7 @@ export class Pokemon {
 				sourceEffect
 			);
 		}
-		result = this.battle.singleEvent(
+		result = noEvents || this.battle.singleEvent(
 			"Start",
 			status,
 			this.volatiles[status.id],
@@ -2373,7 +2375,7 @@ export class Pokemon {
 		}
 		if (linkedStatus && source) {
 			if (!source.volatiles[linkedStatus.toString()]) {
-				source.addVolatile(linkedStatus, this, sourceEffect);
+				source.addVolatile(linkedStatus, this, sourceEffect, null, noEvents);
 				source.volatiles[linkedStatus.toString()].linkedPokemon = [this];
 				source.volatiles[linkedStatus.toString()].linkedStatus = status;
 			} else {
