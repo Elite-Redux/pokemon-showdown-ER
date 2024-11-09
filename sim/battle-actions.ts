@@ -362,6 +362,7 @@ export class BattleActions {
 
 	runAdditionalMove(move: Move, pokemon: Pokemon, target: Pokemon, moveMutations?: any) {
 		if (pokemon.usedExtraMove) return;
+		if (pokemon.fainted || pokemon.faintQueued) return;
 		pokemon.usedExtraMove = true;
 		type MutableMove = {-readonly [K in keyof Move]: Move[K]};
 		const nextMutableMove: MutableMove = move;
