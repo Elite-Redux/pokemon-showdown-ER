@@ -17854,9 +17854,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 49,
 		accuracy: 100,
 		basePower: 70,
-		damage: 20,
 		category: "Special",
-
 		name: "Sonic Boom",
 		pp: 20,
 		priority: 0,
