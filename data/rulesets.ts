@@ -62,15 +62,53 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Endless Battle Clause",
 			"HP Percentage Mod",
 			"Cancel Mod",
-			"Suicune Complex",
 			"Sketch Post-Gen 7 Moves",
-			"Twisted Dimensions Clause",
-			"northwindlightclay",
 			"Sleep Clause Mod",
-			"Cheap Ambush Clause",
 			"Dynamax Clause",
 		],
-		banlist: ["Seaborne", "Baton Pass", "Revival Blessing", "Power Construct"],
+		banlist: ["Baton Pass", "Revival Blessing", "White Smoke"],
+	},
+	standardelitereduxousingles: {
+		effectType: "ValidatorRule",
+		name: "Standard Elite Redux OU Singles",
+		desc: "Standard ruleset for OU singles",
+		ruleset: [
+			"Standard Elite Redux",
+			"Cheap Ambush Clause",
+			"North Wind Light Clay Clause",
+			"Regenerator Clause",
+			"Suicune Complex",
+			"Twisted Dimensions Clause",
+		],
+		banlist: [
+			"Arena Trap",
+			"Fearmonger",
+			"Power Construct",
+			"Power of Alchemy",
+			"Seaborne",
+			"Shadow Tag",
+			"Watch Your Step",
+		]
+	},
+	standardelitereduxoudoubles: {
+		effectType: "ValidatorRule",
+		name: "Standard Elite Redux OU Doubles",
+		desc: "Standard ruleset for OU doubles",
+		ruleset: [
+			"Standard Elite Redux",
+			"Cheap Ambush Clause",
+			"Regenerator Clause",
+		],
+		banlist: [
+			"Air Blower",
+			"Fearmonger",
+			"North Wind",
+			"Twist. Dimension",
+			"Power Construct",
+			"Power of Alchemy",
+			"Seaborne",
+			"Watch Your Step",
+		],
 	},
 	cheapambushclause: {
 		effectType: "ValidatorRule",
@@ -96,7 +134,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 	twisteddimensionsclause: {
 		effectType: "ValidatorRule",
 		name: "Twisted Dimensions Clause",
-		desc: "Prevents a team from having more than 2 mons with twisted dimensions.",
+		desc: "Prevents a team from having more than 1 mon with twisted dimensions.",
 		onValidateTeam(team) {
 			let count = 0;
 			for(const set of team) {
@@ -109,8 +147,8 @@ export const Rulesets: { [k: string]: FormatData } = {
 					count++;
 				}
 			}
-			if (count > 2) {
-				return [`You may only have up to 2 Pokemon with Twisted Dimensions. Your team currently has ${count}.`];
+			if (count > 1) {
+				return [`You may only have up to 1 Pokemon with Twisted Dimensions. Your team currently has ${count}.`];
 			}
 		},
 	},
@@ -124,7 +162,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			}
 		},
 	},
-	northwindlightclay: {
+	northwindlightclayclause: {
 		effectType: "ValidatorRule",
 		name: "North Wind Light Clay Clause",
 		desc: "Mons can't have North Wind and Light Clay",

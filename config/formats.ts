@@ -56,15 +56,8 @@ export const Formats: FormatList = [
 		name: "Elite Redux OU",
 		desc: `OU for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard Elite Redux"],
-		banlist: [
-			"Uber",
-			"AG",
-			"Watch Your Step",
-			"Fearmonger",
-			"Shadow Tag",
-			"Arena Trap"
-		],
+		ruleset: ["Standard Elite Redux OU Singles"],
+		banlist: ["Uber", "AG",],
 		debug: true,
 
 		// ER Scripts
@@ -153,13 +146,8 @@ export const Formats: FormatList = [
 		name: "Elite Redux Monotype OU",
 		desc: `OU Monotype for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard Elite Redux", "Force Monotype (ER)"],
-		banlist: [
-			"Uber",
-			"AG",
-			"Fearmonger",
-			"Watch Your Step",
-		],
+		ruleset: ["Standard Elite Redux OU Singles", "Force Monotype (ER)"],
+		banlist: ["Uber",	"AG"],
 		debug: true,
 
 		// ER Scripts
@@ -248,7 +236,7 @@ export const Formats: FormatList = [
 		name: "Elite Redux UU",
 		desc: `UU For Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Elite Redux OU"],
+		ruleset: ["Standard Elite Redux OU Singles"],
 		banlist: ["OU", "UUBL"],
 		// ER Scripts
 		onValidateSet(set) {
@@ -607,12 +595,8 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Elite Redux"],
-		banlist: ["DUber", "DOU", "DUU", "Air Blower",
-			"Twist. Dimension",
-			"Fearmonger",
-			"North Wind",
-			"Watch Your Step"],
+		ruleset: ["Standard Elite Redux OU Doubles"],
+		banlist: ["DUber", "DOU", "DUU"],
 		// ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
@@ -700,12 +684,8 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Elite Redux"],
-		banlist: ["DUber", "Air Blower",
-			"Twist. Dimension",
-			"Fearmonger",
-			"North Wind",
-			"Watch Your Step"],
+		ruleset: ["Standard Elite Redux OU Doubles"],
+		banlist: ["DUber"],
 
 		// ER Scripts
 		onValidateSet(set) {
@@ -793,12 +773,8 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Elite Redux", "Force Monotype (ER)"],
-		banlist: ["DUber", "Air Blower",
-			"Twist. Dimension",
-			"Fearmonger",
-			"North Wind",
-			"Watch Your Step"],
+		ruleset: ["Standard Elite Redux OU Doubles", "Force Monotype (ER)"],
+		banlist: ["DUber"],
 		// ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);

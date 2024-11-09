@@ -67,41 +67,4 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			return pokemon;
 		},
 	},
-	regeneratorclause: {
-		inherit: true,
-		onValidateTeam(team) {
-			let regenCount = 0;
-			for (const set of team) {
-				const species = this.dex.species.get(set.species);
-				const ability = set.ability;
-				const innateList = Object.keys(species.abilities)
-					.filter(key => key.includes('I'))
-					.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
-				const activeAbilities = [ability, ...innateList];
-
-				if (['Regenerator'].some(a => activeAbilities.includes(a))) {
-					regenCount++;
-				}
-			}
-			if (regenCount > 2) {
-				return [`You may only have up to 2 Pokemon with Regenerator. Your team currently has ${regenCount}`];
-			}
-		},
-	},
-	seismictossclause: {
-		inherit: true,
-		onValidateSet(set) {
-			const multihitAbilities = ['Multi Headed', 'Hyper Aggressive', 'Parental Bond', 'Minion Control'];
-			const species = this.dex.species.get(set.species);
-			const innateList = Object.keys(species.abilities)
-				.filter(key => key.includes('I'))
-				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
-			const activeAbilities = [set.ability, ...innateList];
-			for (const abilityName of activeAbilities) {
-				if (abilityName && multihitAbilities.includes(abilityName) && set.moves.some(a => a === 'Seismic Toss')) {
-					return [`${set.name} cannot have both Seismic Toss and ${abilityName}.`];
-				}
-			}
-		},
-	},
 };
