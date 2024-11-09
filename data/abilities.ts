@@ -3360,7 +3360,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onModifyMove(move) {
 			let baseEffectiveness = move.onEffectiveness;
-			if (!(baseEffectiveness instanceof Function)) baseEffectiveness = undefined;
 			move.onEffectiveness = (effectiveness, target, type, move) => {
 				const otherResult = baseEffectiveness?.apply(this, [effectiveness, target, type, move]);
 				if (otherResult === 1) return otherResult;
@@ -6559,7 +6558,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move.ignoreImmunity["Electric"] = true;
 			}
 			let baseEffectiveness = move.onEffectiveness;
-			if (!(baseEffectiveness instanceof Function)) baseEffectiveness = undefined;
 			move.onEffectiveness = (effectiveness, target, type, move) => {
 				if (move.type === 'Electric' && type === 'Ground') return -1;
 				return baseEffectiveness?.apply(this, [effectiveness, target, type, move]);
@@ -7698,7 +7696,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	overcharge: {
 		onModifyMove(move) {
 			let baseEffectiveness = move.onEffectiveness;
-			if (!(baseEffectiveness instanceof Function)) baseEffectiveness = undefined;
 			move.onEffectiveness = (effectiveness, target, type, move) => {
 				if (move.type === 'Electric' && type === 'Electric') return 1;
 				return baseEffectiveness?.apply(this, [effectiveness, target, type, move]);

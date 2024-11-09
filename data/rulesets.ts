@@ -74,7 +74,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		desc: "Standard ruleset for OU singles",
 		ruleset: [
 			"Standard Elite Redux",
-			"Cheap Ambush Clause",
+			"Cheap Blow Clause",
 			"North Wind Light Clay Clause",
 			"Regenerator Clause",
 			"Suicune Complex",
@@ -96,7 +96,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		desc: "Standard ruleset for OU doubles",
 		ruleset: [
 			"Standard Elite Redux",
-			"Cheap Ambush Clause",
+			"Cheap Blow Clause",
 			"Regenerator Clause",
 		],
 		banlist: [
@@ -110,7 +110,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Watch Your Step",
 		],
 	},
-	cheapambushclause: {
+	cheapblowclause: {
 		effectType: "ValidatorRule",
 		name: "Cheap Blow Clause",
 		desc: "Prevents a team from having more than 1 mon with Cheap Tactics, Ambush, or Low Blow.",
