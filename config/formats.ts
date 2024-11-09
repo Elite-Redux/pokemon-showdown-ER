@@ -36,8 +36,8 @@ function addInnates(battle: Battle, pokemon: Pokemon, runStart: boolean = false)
 		battle.singleEvent(
 			"Start",
 			ability,
-			ability,
-			battle,
+			pokemon.volatiles[ability.id],
+			pokemon,
 			pokemon,
 			null
 		);

@@ -192,7 +192,20 @@ export class BattleActions {
 		pokemon.isStarted = true;
 		if (!pokemon.fainted) {
 			this.battle.singleEvent('Start', pokemon.getAbility(), pokemon.abilityState, pokemon);
-			this.battle.singleEvent('Start', pokemon.getItem(), pokemon.itemState, pokemon);
+			for (const innate of pokemon.m.innates)
+			{
+				const ability = pokemon.getVolatile("ability:" + innate);
+				if (!ability) continue;
+
+				this.battle.singleEvent(
+					"Start",
+					ability,
+					pokemon.volatiles[ability.id],
+					pokemon,
+					pokemon,
+					null
+				);
+			}
 		}
 		if (this.battle.gen === 4) {
 			for (const foeActive of pokemon.foes()) {

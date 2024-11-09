@@ -7688,11 +7688,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	overcharge: {
-		onModifyDamage(damage, source, target, move) {
-			if (move.type === "Electric" && target.hasType("Electric")) {
-				this.debug("Overcharge boost");
-				return this.chainModify(2);
-			}
+		onModifyMove(move) {
+			move.onEffectiveness = (effectiveness, target, type) => {
+				if (move.type === 'Electric' && type === 'Electric') return 1;
+			};
 		},
 		// Electric type paralysis implemented in sim/pokemon.js:setStatus
 		name: "Overcharge",
