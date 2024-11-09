@@ -15,26 +15,20 @@ describe("Sharing is Caring", function () {
 	it(`opposing fearmonger should lower their stats as well, and not break the battle sim`, function () {
 		const team1 = [
 			{
-				species: "Slowbro",
-				ability: "twistdimension",
+				species: "Gholdengo",
+				ability: "sharingiscaring",
 				moves: ["sleeptalk"],
 				evs: {spe: 1},
 			},
 			{
-				species: "Mawile Redux",
-				ability: "scare",
-				moves: ["recover"],
-				evs: {spe: 1},
-			},
-			{
-				species: "Slowking",
-				ability: "regenerator",
+				species: "Mew",
+				ability: "magicguard",
 				moves: ["sleeptalk"],
 				evs: {spe: 1},
 			},
 		];
 
-		assert.legalTeam(team1, "elitereduxou@@@!teampreview");
+		assert.legalTeam(team1, "elitereduxdoublesou@@@!teampreview");
 
 		battle = er.createBattle({formatid: "elitereduxdoublesou@@@!teampreview", gameType: "doubles"}, [
 			team1,
@@ -56,24 +50,24 @@ describe("Sharing is Caring", function () {
 		const roaringmoon = battle.p2.active[0];
 		const miltank = battle.p2.active[1];
 
-		// assert.statStage(gholdengo, "atk", -2);
-		// assert.statStage(gholdengo, "spa", -2);
+		assert.statStage(gholdengo, "atk", -2);
+		assert.statStage(gholdengo, "spa", -2);
 
-		// /// Mew gets hit by roaring moon's fearmonger and gholdengo's sharing is caring stat drops.
-		// assert.statStage(mew, "atk", -2);
-		// assert.statStage(mew, "spa", -2);
+		/// Mew gets hit by roaring moon's fearmonger and gholdengo's sharing is caring stat drops.
+		assert.statStage(mew, "atk", -2);
+		assert.statStage(mew, "spa", -2);
 
-		// assert.statStage(roaringmoon, "atk", -2);
-		// assert.statStage(roaringmoon, "spa", -2);
+		assert.statStage(roaringmoon, "atk", -2);
+		assert.statStage(roaringmoon, "spa", -2);
 
-		// assert.statStage(miltank, "atk", -2);
-		// assert.statStage(miltank, "spa", -2);
+		assert.statStage(miltank, "atk", -2);
+		assert.statStage(miltank, "spa", -2);
 
-		// battle.makeChoices("move sleeptalk, move sleeptalk", "move swordsdance, move sleeptalk");
+		battle.makeChoices("move sleeptalk, move sleeptalk", "move swordsdance, move sleeptalk");
 
-		// assert.statStage(roaringmoon, "atk", 0);
-		// assert.statStage(gholdengo, "atk", 0);
-		// assert.statStage(mew, "atk", 0);
-		// assert.statStage(miltank, "atk", 0);
+		assert.statStage(roaringmoon, "atk", 0);
+		assert.statStage(gholdengo, "atk", 0);
+		assert.statStage(mew, "atk", 0);
+		assert.statStage(miltank, "atk", 0);
 	});
 });
