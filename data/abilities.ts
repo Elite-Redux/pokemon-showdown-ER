@@ -3359,8 +3359,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.typeChangerBoosted === this.effect) { return this.chainModify(1.1); }
 		},
 		onModifyMove(move) {
-			move.onEffectiveness = (effectiveness) => {
+			const baseEffectiveness = move.onEffectiveness;
+			move.onEffectiveness = (effectiveness, target, type, move) => {
+				const otherResult = baseEffectiveness?.apply(this, [effectiveness, target, type, move]);
+				if (otherResult === 1) return otherResult;
 				if (effectiveness < 0) effectiveness = 0;
+				return effectiveness;
 			};
 		},
 		name: "Normalize",
@@ -6553,8 +6557,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.ignoreImmunity !== true) {
 				move.ignoreImmunity["Electric"] = true;
 			}
-			move.onEffectiveness = (effectiveness, target, type) => {
+			const baseEffectiveness = move.onEffectiveness;
+			move.onEffectiveness = (effectiveness, target, type, move) => {
 				if (move.type === 'Electric' && type === 'Ground') return -1;
+				return baseEffectiveness?.apply(this, [effectiveness, target, type, move]);
 			};
 		},
 		name: "Ground Shock",
@@ -7689,8 +7695,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	overcharge: {
 		onModifyMove(move) {
-			move.onEffectiveness = (effectiveness, target, type) => {
+			const baseEffectiveness = move.onEffectiveness;
+			move.onEffectiveness = (effectiveness, target, type, move) => {
 				if (move.type === 'Electric' && type === 'Electric') return 1;
+				return baseEffectiveness?.apply(this, [effectiveness, target, type, move]);
 			};
 		},
 		// Electric type paralysis implemented in sim/pokemon.js:setStatus
