@@ -11949,7 +11949,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	meteorbeam: {
 		num: 800,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 120,
 		category: "Special",
 		name: "Meteor Beam",
