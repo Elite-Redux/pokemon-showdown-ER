@@ -36702,7 +36702,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		num: 1010,
 		types: ["Grass", "Psychic"],
 		abilities: {
-			"0": "Blademaster",
+			"0": "Blade Master",
 			"1": "Dazzling",
 			H: "Filter",
 			I1: "Quark Drive",
