@@ -7797,7 +7797,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.flags["bone"]) {
 				move.ignoreImmunity = true;
 			}
-			move.onEffectiveness()
 		},
 		onModifyDamage(damage, source, target, move) {
 			if (move.flags["bone"] && target.getMoveHitData(move).typeMod < 0) {
