@@ -7629,12 +7629,16 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				"mawileredux",
 				"zweilousredux",
 				"doduoredux",
+				"weezinggalar",
+				"klink",
+				"doubladeredux",
 			];
 			const threeHeaded = [
 				"dugtrio",
 				"dugtrioalola",
 				"magneton",
 				"dodrio",
+				"exeggute",
 				"exeggutor",
 				"exeggutoralola",
 				"mawilemega",
@@ -7652,6 +7656,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				"magnezonemega",
 				"barbaracle",
 				"klinklang",
+				"probopass",
+				"klang",
+				"hydrapple",
 			];
 			if (twoHeaded.includes(source.species.id)) {
 				move.multihit = 2;
