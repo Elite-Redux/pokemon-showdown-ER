@@ -4518,7 +4518,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	eggbomb: {
 		num: 121,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
 
