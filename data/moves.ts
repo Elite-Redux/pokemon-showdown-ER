@@ -6375,7 +6375,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	furycutter: {
 		num: 210,
 		accuracy: 95,
-		basePower: 40,
+		basePower: 20,
 		basePowerCallback(pokemon, target, move) {
 			return 20 * move.hit;
 		},
