@@ -9383,6 +9383,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					},
 				},
 			);
+			pokemon.activeMoveActions = 0;
 		},
 		name: "Cheap Tactics",
 		rating: 3,
@@ -10733,7 +10734,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Phantom Thief",
 		shortDesc: "Uses 40BP Spectral Thief on switch-in.",
 		onStart(pokemon) {
-			pokemon.activeMoveActions = 0;
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
@@ -10749,6 +10749,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					},
 				},
 			);
+			pokemon.activeMoveActions = 0;
 		},
 	},
 	devourer: {
@@ -10880,7 +10881,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Web Spinner",
 		shortDesc: "Uses String Shot on switch-in.",
 		onStart(pokemon) {
-			pokemon.activeMoveActions = 0;
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
@@ -10889,6 +10889,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				target,
 				{self: {}},
 			);
+			pokemon.activeMoveActions = 0;
 		},
 	},
 	banshee: {
@@ -10924,7 +10925,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Monster Mash",
 		shortDesc: "Casts Trick-or-Treat on entry.",
 		onStart(pokemon) {
-			pokemon.activeMoveActions = 0;
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
@@ -10933,13 +10933,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				target,
 				{self: {}},
 			);
+			pokemon.activeMoveActions = 0;
 		},
 	},
 	powderburst: {
 		name: "Powder Burst",
 		shortDesc: "Casts Powder on entry.",
 		onStart(pokemon) {
-			pokemon.activeMoveActions = 0;
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
@@ -10948,6 +10948,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				target,
 				{self: {}},
 			);
+			pokemon.activeMoveActions = 0;
 		},
 	},
 	ponypower: {
