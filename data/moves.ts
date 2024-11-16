@@ -5518,7 +5518,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: {
 			chance: 100,
-			volatileStatus: 'flinch'
+			volatileStatus: 'flinch',
 		},
 		target: "normal",
 		type: "Bug",
@@ -12093,7 +12093,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		mindBlownRecoil: true,
 		onAfterMove(pokemon, target, move) {
-			if(pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) return;
+			if (pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) return;
 			if (move.mindBlownRecoil && !move.multihit) {
 				const hpBeforeRecoil = pokemon.hp;
 				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get('Mind Blown'), true);
@@ -17566,7 +17566,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Poison",
 		contestType: "Tough",
 	},
-	//This does not work :(
+	// This does not work :(
 	smokescreen: {
 		num: 108,
 		accuracy: 100,
@@ -17593,14 +17593,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 				return 5;
 			},
-			//Couldn't figure out how to increase own evasion so here's what we're doing instead
-			//This is technically wrong because it still applies to ignoreEvasion moves like sacred sword
-			//What we could also do is have an onStart +1 evasion boost and an onSideEnd -1 boost
-			//but that's finnicky for its own reasons so here we are
+			// Couldn't figure out how to increase own evasion so here's what we're doing instead
+			// This is technically wrong because it still applies to ignoreEvasion moves like sacred sword
+			// What we could also do is have an onStart +1 evasion boost and an onSideEnd -1 boost
+			// but that's finnicky for its own reasons so here we are
 			onModifyAccuracyPriority: -1,
 			onModifyAccuracy(accuracy, target) {
-				if(typeof accuracy !== "number") return;
-				return accuracy * .75;
+				if (typeof accuracy !== "number") return;
+				return accuracy * 0.75;
 			},
 			onSideStart(side) {
 				this.add('-sidestart', side, 'Smokescreen');
@@ -18473,7 +18473,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, pulse: 1, bullet: 1},
 		mindBlownRecoil: true,
 		onAfterMove(pokemon, target, move) {
-			if(pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) return;
+			if (pokemon.hasAbility(['steelbarrel', 'rockhead', 'impenetrable', 'magicguard', 'appleenlightenment'])) return;
 			if (move.mindBlownRecoil && !move.multihit) {
 				const hpBeforeRecoil = pokemon.hp;
 				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get('Steel Beam'), true);

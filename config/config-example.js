@@ -91,7 +91,7 @@ Main's SSL deploy script from Let's Encrypt looks like:
  * @type {false | string[]}.
  */
 exports.proxyip = [
-	"169.254.169.126"
+	"169.254.169.126",
 ];
 
 /**

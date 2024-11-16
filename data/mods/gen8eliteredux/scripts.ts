@@ -209,8 +209,6 @@ export const Scripts: ModdedBattleScriptsData = {
 				return calculateParentalBond(move, move.damage, this.battle);
 			}
 
-			const category = this.battle.getCategory(move);
-
 			let basePower: number | false | null = move.basePower;
 			if (move.basePowerCallback) {
 				basePower = move.basePowerCallback.call(this.battle, source, target, move);

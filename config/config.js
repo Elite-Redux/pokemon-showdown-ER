@@ -92,7 +92,7 @@ Main's SSL deploy script from Let's Encrypt looks like:
  */
 exports.proxyip = [
 	"169.254.169.126",
-	"127.0.0.1"
+	"127.0.0.1",
 ];
 
 /**

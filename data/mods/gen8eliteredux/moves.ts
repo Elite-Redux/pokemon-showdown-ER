@@ -1754,7 +1754,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onModifyType(move, pokemon) {
 			let types = pokemon.getTypes(true).map(it => it === "Bird" ? "???" : it);
 			if (types[types.length - 1] === "???") types = pokemon.getTypes().map(it => it === "Bird" ? "???" : it);
-			console.log(types[types.length - 1])
+			console.log(types[types.length - 1]);
 			return types[types.length - 1];
 		},
 	},

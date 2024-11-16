@@ -48,7 +48,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		effectType: "ValidatorRule",
 		name: "Standard Elite Redux",
 		desc: "The standard ruleset for Elite Redux",
-		/*adding this since so far singles and doubles have shared the same
+		/* adding this since so far singles and doubles have shared the same
 		ruleset so consolidating them makes more sense until they diverge
 		enough to justify seperating them enough */
 		ruleset: [
@@ -88,7 +88,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Seaborne",
 			"Shadow Tag",
 			"Watch Your Step",
-		]
+		],
 	},
 	standardelitereduxoudoubles: {
 		effectType: "ValidatorRule",
@@ -116,11 +116,11 @@ export const Rulesets: { [k: string]: FormatData } = {
 		desc: "Prevents a team from having more than 1 mon with Cheap Tactics, Ambush, or Low Blow.",
 		onValidateTeam(team) {
 			let count = 0;
-			for(const set of team) {
+			for (const set of team) {
 				const species = this.dex.species.get(set.species);
 				const innateList = Object.keys(species.abilities)
-				.filter(key => key.includes('I'))
-				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+					.filter(key => key.includes('I'))
+					.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 				const activeAbilities = [set.ability, ...innateList];
 				if (activeAbilities.includes('Cheap Tactics') || activeAbilities.includes('Low Blow')) {
 					count++;
@@ -137,11 +137,11 @@ export const Rulesets: { [k: string]: FormatData } = {
 		desc: "Prevents a team from having more than 1 mon with twisted dimensions.",
 		onValidateTeam(team) {
 			let count = 0;
-			for(const set of team) {
+			for (const set of team) {
 				const species = this.dex.species.get(set.species);
 				const innateList = Object.keys(species.abilities)
-				.filter(key => key.includes('I'))
-				.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
+					.filter(key => key.includes('I'))
+					.map(key => species.abilities[key as 'I1' | 'I2' | 'I3']);
 				const activeAbilities = [set.ability, ...innateList];
 				if (activeAbilities.includes('Twist. Dimension')) {
 					count++;

@@ -17,7 +17,7 @@ New sections will be added to the bottom of the specified column.
 The column value will be ignored for repeat sections.
 */
 
-function addInnates(battle: Battle, pokemon: Pokemon, runStart: boolean = false) {
+function addInnates(battle: Battle, pokemon: Pokemon, runStart = false) {
 	const added: string[] = [];
 	if (pokemon.m.innates) {
 		for (const innate of pokemon.m.innates) {
@@ -57,7 +57,7 @@ export const Formats: FormatList = [
 		desc: `OU for Elite Redux`,
 		mod: "gen8eliteredux",
 		ruleset: ["Standard Elite Redux OU Singles"],
-		banlist: ["Uber", "AG",],
+		banlist: ["Uber", "AG"],
 		debug: true,
 
 		// ER Scripts
@@ -325,8 +325,8 @@ export const Formats: FormatList = [
 		desc: `LC for Elite Redux`,
 		mod: "gen8eliteredux",
 		ruleset: ["Elite Redux OU"],
-		banlist: ["OU", "UUBL",],
-		//ER Scripts
+		banlist: ["OU", "UUBL"],
+		// ER Scripts
 		onValidateSet(set) {
 			const species = this.dex.species.get(set.species);
 			const innateList = Object.keys(species.abilities)
@@ -765,7 +765,7 @@ export const Formats: FormatList = [
 					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
 				.filter((ability) => ability !== pokemon.ability);
 
-				addInnates(this, pokemon, true);
+			addInnates(this, pokemon, true);
 		},
 	},
 	{

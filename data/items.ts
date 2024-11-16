@@ -381,7 +381,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.category === 'Special') {
-				return this.chainModify(1/1.5);
+				return this.chainModify(1 / 1.5);
 			}
 		},
 		onDisableMove(pokemon) {
@@ -402,7 +402,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.category === 'Physical') {
-				return this.chainModify(1/1.5);
+				return this.chainModify(1 / 1.5);
 			}
 		},
 		onDisableMove(pokemon) {
@@ -1398,7 +1398,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.category === 'Special') {
-				return this.chainModify(.5);
+				return this.chainModify(0.5);
 			}
 		},
 		itemUser: ["Clamperl"],
@@ -1867,7 +1867,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			basePower: 40,
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			this.chainModify(1/1.5);
+			this.chainModify(1 / 1.5);
 		},
 		num: 538,
 		gen: 5,
@@ -4007,7 +4007,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		spritenum: 287,
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.category === 'Physical') {
-				return this.chainModify(.5);
+				return this.chainModify(0.5);
 			}
 		},
 		itemUser: ["Ditto"],

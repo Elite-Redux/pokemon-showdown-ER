@@ -192,8 +192,7 @@ export class BattleActions {
 		pokemon.isStarted = true;
 		if (!pokemon.fainted) {
 			this.battle.singleEvent('Start', pokemon.getAbility(), pokemon.abilityState, pokemon);
-			for (const innate of pokemon.m.innates)
-			{
+			for (const innate of pokemon.m.innates) {
 				const ability = pokemon.getVolatile("ability:" + innate);
 				if (!ability) continue;
 

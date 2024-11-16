@@ -246,7 +246,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (move.category !== 'Status' && typeof accuracy === 'number') {
-				return this.chainModify(.9);
+				return this.chainModify(0.9);
 			}
 		},
 		desc: "This Pokemon's deals 1.4x damage but the accuracy of its physical attacks is multiplied by 0.9.",

@@ -132,7 +132,7 @@ export class Pokemon {
 
 	illusion: Pokemon | null;
 	transformed: boolean;
-	coward: boolean = false; //adding this because permanentAbilityState isnt working for some reason
+	coward = false; // adding this because permanentAbilityState isnt working for some reason
 	permanentAbilityState: {[ability: string]: any} = {};
 
 	maxhp: number;
@@ -148,7 +148,7 @@ export class Pokemon {
 	knownType: boolean;
 	/** Keeps track of what type the client sees for this Pokemon. */
 	apparentType: string;
-	usedExtraMove: boolean = false;
+	usedExtraMove = false;
 
 	/**
 	 * If the switch is called by an effect with a special switch
@@ -792,6 +792,12 @@ export class Pokemon {
 	adjacentFoes(): Pokemon[] {
 		if (this.battle.activePerHalf <= 2) return this.side.foes();
 		return this.side.foes().filter((foe) => this.isAdjacent(foe));
+	}
+
+	oppositeFoe(): Pokemon | null {
+		if (this.foes().length < 1) return null;
+		if (this.foes().length === 1) return this.foes()[0];
+		return this.getAtLoc(-this.getLocOf(this));
 	}
 
 	isAlly(pokemon: Pokemon | null) {
@@ -2300,7 +2306,7 @@ export class Pokemon {
 		source: Pokemon | null = null,
 		sourceEffect: Effect | null = null,
 		linkedStatus: string | Condition | null = null,
-		noEvents: boolean = false,
+		noEvents = false,
 	): boolean | any {
 		let result;
 		status = this.battle.dex.conditions.get(status);
