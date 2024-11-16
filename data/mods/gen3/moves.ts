@@ -20,13 +20,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {contact: 1, protect: 1, mirror: 1},
 	},
-	astonish: {
-		inherit: true,
-		basePowerCallback(pokemon, target) {
-			if (target.volatiles['minimize']) return 60;
-			return 30;
-		},
-	},
 	beatup: {
 		inherit: true,
 		onModifyMove(move, pokemon) {
