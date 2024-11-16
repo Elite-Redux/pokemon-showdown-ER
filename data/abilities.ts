@@ -12147,11 +12147,19 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	noisecancel: {
 		name: "Noise Cancel",
 		shortDesc: "Protects the party from sound-based moves.",
-		// Protect ally
-		onTryHitSide(target, source, move) {
-			if (move.flags["sound"]) {
+		onAllyTryHit(target, source, move) {
+			if (target !== source && move.flags["sound"]) {
 				this.add("-immune", target, "[from] ability: Noise Cancel");
 				return null;
+			}
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (move.flags["sound"]) {
+				this.add(
+					"-immune",
+					this.effectState.target,
+					"[from] ability: Noise Cancel"
+				);
 			}
 		},
 	},
