@@ -679,7 +679,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	clearbody: {
 		onTryBoost(boost, target, source, effect) {
-			if (source && target === source) return;
 			let showMsg = false;
 			let i: BoostID;
 			for (i in boost) {
@@ -1764,7 +1763,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	fullmetalbody: {
 		onTryBoost(boost, target, source, effect) {
-			if (source && target === source) return;
 			let showMsg = false;
 			let i: BoostID;
 			for (i in boost) {

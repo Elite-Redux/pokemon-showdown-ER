@@ -248,8 +248,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	clearbody: {
 		name: "Clear Body",
-		shortDesc:
-			"Prevents other Pokemon from lowering this Pokemon's stat stages.",
+		shortDesc: "Prevents lowering this Pokemon's stat stages.",
 	},
 	cloudnine: {
 		name: "Cloud Nine",
@@ -624,8 +623,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	fullmetalbody: {
 		name: "Full Metal Body",
-		shortDesc:
-			"Prevents other Pokemon from lowering this Pokemon's stat stages.",
+		shortDesc: "Prevents lowering this Pokemon's stat stages.",
 	},
 	furcoat: {
 		name: "Fur Coat",
