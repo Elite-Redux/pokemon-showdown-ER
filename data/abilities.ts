@@ -4595,8 +4595,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (source === this.effectState.target || !target.isAlly(source)) { return; }
 			if (move.type === "Grass") {
 				if (
-					this.effectState.target.getStat("atk") >
-					this.effectState.target.getStat("spa")
+					this.effectState.target.getStat("atk", false, true) >
+					this.effectState.target.getStat("spa", false, true)
 				) {
 					this.boost({atk: 1}, this.effectState.target);
 				} else {
@@ -6144,8 +6144,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	windrider: {
 		onStart(pokemon) {
+			if (pokemon.getVolatile("windriderstarted")) return;
 			if (pokemon.side.sideConditions["tailwind"]) {
-				this.boost({atk: 1}, pokemon, pokemon);
+				if (pokemon.getStat("atk", false, true) >	pokemon.getStat("spa", false, true)) {
+					this.boost({atk: 1}, pokemon);
+				} else {
+					this.boost({spa: 1}, pokemon);
+				}
 			}
 		},
 		onTryHit(target, source, move) {
@@ -6159,7 +6164,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAllySideConditionStart(target, source, sideCondition) {
 			const pokemon = this.effectState.target;
 			if (sideCondition.id === "tailwind") {
-				this.boost({atk: 1}, pokemon, pokemon);
+				if (pokemon.getStat("atk", false, true) >	pokemon.getStat("spa", false, true)) {
+					this.boost({atk: 1}, pokemon);
+				} else {
+					this.boost({spa: 1}, pokemon);
+				}
+				pokemon.addVolatile("windriderstarted");
 			}
 		},
 		name: "Wind Rider",
