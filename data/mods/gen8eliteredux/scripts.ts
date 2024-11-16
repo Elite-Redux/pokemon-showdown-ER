@@ -1,5 +1,18 @@
 import {Dex, toID} from "../../../sim/dex";
 
+function addInnates(battle: Battle, pokemon: Pokemon): string[] {
+	const added: string[] = [];
+	if (pokemon.m.innates) {
+		for (const innate of pokemon.m.innates) {
+			if (pokemon.hasAbility(innate)) continue;
+			if (!pokemon.addVolatile("ability:" + innate, pokemon, null, null, true)) continue;
+			added.push(innate.toString());
+		}
+	}
+
+	return added;
+}
+
 function calculateParentalBond(move: ActiveMove, baseDamage: number, battle: Battle): number {
 	if (move.multihitType === "parentalbond" && move.hit > 1) {
 		// Parental Bond modifier
@@ -607,6 +620,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		formeChange(speciesId, source, isPermanent, message) {
 			if (!source) source = this.battle.effect;
 
+			console.log(speciesId, source, isPermanent, message)
+
 			const rawSpecies = this.battle.dex.species.get(speciesId);
 
 			const species = this.setSpecies(rawSpecies, source);
@@ -677,48 +692,66 @@ export const Scripts: ModdedBattleScriptsData = {
 					);
 				}
 			}
-			if (
-				isPermanent &&
-				![
-					"disguise",
-					"iceface",
-					"ability:disguise",
-					"ability:iceface",
-				].includes(source.id)
-			) {
+			if (isPermanent) {
 				if (this.illusion) {
 					this.ability = ""; // Don't allow Illusion to wear off
 				}
 
-				if (isPermanent && !["disguise", "iceface"].includes(source.id)) {
-					if (this.illusion) {
-						this.ability = ""; // Don't allow Illusion to wear off
-					}
+				this.m.innates = Object.keys(rawSpecies.abilities)
+					.filter((key) => key.includes("I"))
+					.map((key) =>
+						this.battle.toID(
+							this.species.abilities[key as "I1" | "I2" | "I3"]
+						))
+					.filter((ability) => ability !== this.ability);
+				const newInnates = addInnates(this.battle, this).filter(it => it !== this.ability);
+				const currentAbilities = Object.keys(this.volatiles).filter(it => it.startsWith("ability:")).map(it => it.slice("ability:".length));
+				console.log(currentAbilities, newInnates)
+				for (const oldAbility of currentAbilities)
+				{
+					if (Object.values(this.m.innates).includes(oldAbility)) continue;
+					this.removeVolatile("ability:" + oldAbility)
+				}
+				console.log(Object.keys(this.volatiles))
 
-					let abilityKey: keyof typeof rawSpecies.abilities;
-					const baseSpecies = this.battle.dex.species.get(
-						rawSpecies.baseSpecies
-					);
-					let abilitySlot;
+				let abilityKey: keyof typeof rawSpecies.abilities;
+				const baseSpecies = this.battle.dex.species.get(
+					rawSpecies.baseSpecies
+				);
+				let abilitySlot;
 
-					for (abilityKey in baseSpecies.abilities) {
-						if (
-							this.battle.dex.abilities.getByID(this.baseAbility)
-								.name ===
-							this.battle.dex.abilities.get(
-								baseSpecies.abilities[abilityKey]
-							).name
-						) {
-							if (!(abilityKey as string).includes("I")) { abilitySlot = abilityKey; }
-						}
+				for (abilityKey in baseSpecies.abilities) {
+					if (
+						this.battle.dex.abilities.getByID(this.baseAbility)
+							.name ===
+						this.battle.dex.abilities.get(
+							baseSpecies.abilities[abilityKey]
+						).name
+					) {
+						if (!(abilityKey as string).includes("I")) { abilitySlot = abilityKey; }
 					}
-					if (species.abilities[abilitySlot as string] === undefined) { abilitySlot = "0"; }
-					this.setAbility(
-						species.abilities[abilitySlot as string],
-						null,
-						true
+				}
+				if (species.abilities[abilitySlot as string] === undefined) { abilitySlot = "0"; }
+				this.setAbility(
+					species.abilities[abilitySlot as string],
+					null,
+					true
+				);
+				this.baseAbility = this.ability;
+
+				for (const innate of newInnates)
+				{
+					const ability = this.getVolatile("ability:" + innate);
+					if (!ability) continue;
+
+					this.battle.singleEvent(
+						"Start",
+						ability,
+						this.volatiles[ability.id],
+						this,
+						this,
+						null
 					);
-					this.baseAbility = this.ability;
 				}
 			}
 			if (this.terastallized && this.terastallized !== this.apparentType) {
