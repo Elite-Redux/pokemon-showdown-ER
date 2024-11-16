@@ -20530,6 +20530,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {mirror: 1},
 		pseudoWeather: 'trickroom',
 		condition: {
+			countFullRounds: true,
 			duration: 5,
 			durationCallback(target, source, effect) {
 				if (source?.hasAbility('persistent')) {
@@ -23497,4 +23498,54 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Rock",
 	},
+	inverseroom: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Inverse Room",
+		pp: 5,
+		priority: -7,
+		flags: {mirror: 1},
+		pseudoWeather: 'inverseroom',
+		secondary: null,
+		target: "all",
+		type: "Psychic",
+		condition: {
+			countFullRounds: true,
+			duration: 5,
+			durationCallback(target, source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', '[move] Inverse Room');
+					return 7;
+				}
+
+				if (effect?.effectType === "Ability" && effect.id === "inverseroom") {
+					return 3;
+				}
+
+				return 5;
+			},
+			onModifyMove(move) {
+				move.ignoreImmunity = true;
+			},
+			onEffectivenessPriority: 20,
+			onEffectiveness(typeMod, target, type, move) {
+				const typeObject = this.dex.types.get(type);
+				const result = typeObject.damageTaken[move.type];
+				console.log(result, type, target?.name, move.type)
+				if (!result) return;
+				if (result === 1) return -1;
+				else return 1;
+			},
+			onFieldRestart(target, source) {
+				this.field.removePseudoWeather('inverseroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onFieldResidualOrder: 27,
+			onFieldResidualSubOrder: 1,
+			onFieldEnd() {
+				this.add('-fieldend', 'move: Inverse Room');
+			},
+		},
+	}
 };
