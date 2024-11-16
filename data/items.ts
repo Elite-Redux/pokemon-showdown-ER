@@ -1806,7 +1806,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 10,
 		},
-		onStart(pokemon) {
+		onSwitchIn(pokemon) {
 			if (
 				!pokemon.ignoringItem() &&
 				this.field.isTerrain("electricterrain")
@@ -2551,7 +2551,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 10,
 		},
-		onStart(pokemon) {
+		onSwitchIn(pokemon) {
 			if (!pokemon.ignoringItem() && this.field.isTerrain("grassyterrain")) {
 				pokemon.useItem();
 			}
@@ -4227,7 +4227,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 10,
 		},
-		onStart(pokemon) {
+		onSwitchIn(pokemon) {
 			if (!pokemon.ignoringItem() && this.field.isTerrain("mistyterrain")) {
 				pokemon.useItem();
 			}
@@ -4963,7 +4963,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 10,
 		},
-		onStart(pokemon) {
+		onSwitchIn(pokemon) {
 			if (
 				!pokemon.ignoringItem() &&
 				this.field.isTerrain("psychicterrain")
@@ -5371,7 +5371,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 100,
 		},
-		onStart(pokemon) {
+		onSwitchIn(pokemon) {
 			if (
 				!pokemon.ignoringItem() &&
 				this.field.getPseudoWeather("trickroom")
