@@ -946,7 +946,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			volatileStatus: 'confusion',
 		},
 		target: "normal",
-		type: "Fighting",
+		type: "Dark",
 	},
 	babydolleyes: {
 		num: 608,
