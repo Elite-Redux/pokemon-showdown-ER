@@ -9497,6 +9497,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	elementalcharge: {
 		onModifyMove(move) {
+			if (move.category === 'Status' || move.target === 'self') return;
 			let status;
 			switch (move.type) {
 			case "Fire":
@@ -11863,7 +11864,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Toxic Chain",
 		shortDesc: "Moves have a 30% chance to badly poison the foe.",
 		onModifyMove(move, mon, target) {
-			if (mon === target) return;
+			if (move.category === 'Status' || move.target === 'self') return;
 			if (!move.secondaries) {
 				move.secondaries = [];
 			}
@@ -12168,6 +12169,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Haunting Frenzy",
 		shortDesc: "20% chance to flinch the opponent. +1 speed on kill.",
 		onModifyMove(move) {
+			if (move.category === 'Status' || move.target === 'self') return;
 			if (!move.secondaries) {
 				move.secondaries = [];
 			}
