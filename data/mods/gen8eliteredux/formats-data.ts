@@ -5426,8 +5426,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "NFE",
 	},
 	hydreigonredux: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 	gibleredux: {
 		tier: "LC",
