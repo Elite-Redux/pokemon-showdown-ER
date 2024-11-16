@@ -9540,10 +9540,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	ambush: {
-		onModifyMove(move, attacker, defender) {
-			if (attacker.activeMoveActions === 0) {
+		onStart(pkmn) {
+			pkmn.addVolatile("ambush");
+		},
+		condition: {
+			duration: 1,
+			countFullRounds: true,
+			onModifyMove(move, attacker, defender) {
 				move.willCrit = true;
-			}
+			},
 		},
 		name: "Ambush",
 		rating: 3,
