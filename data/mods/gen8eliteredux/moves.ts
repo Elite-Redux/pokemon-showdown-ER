@@ -79,6 +79,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onBeforeMovePriority: 2,
 			onBeforeMove(pokemon, target, move) {},
+			onSourceDamage() { return this.chainModify(.5); },
 			onEnd(pokemon) {
 				this.add('-end', pokemon, 'Attract', '[silent]');
 			},
