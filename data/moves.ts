@@ -11020,7 +11020,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 443,
 		accuracy: true,
 		basePower: 70,
-		category: "Physical",
+		category: "Special",
 		onEffectiveness(typeMod, target, type, move) {
 			if (type === 'Steel') return 1;
 		},
