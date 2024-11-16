@@ -50,6 +50,18 @@ function doesMoveCharge(pokemon: Pokemon, move: ActiveMove) {
 	return true;
 }
 
+function isParentalBondBanned(move: ActiveMove, source: Pokemon): boolean {
+	if (move.category === "Status") return true;
+	if (move.multihit) return true;
+	if (move.flags["noparentalbond"]) return true;
+	if (doesMoveCharge(source, move)) return true;
+	if (move.flags["futuremove"]) return true;
+	if (move.spreadHit) return true;
+	if (move.isZ) return true;
+	if (move.isMax) return true;
+	return false;
+}
+
 export const Abilities: { [abilityid: string]: AbilityData } = {
 	noability: {
 		isNonstandard: "Past",
@@ -3537,16 +3549,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	parentalbond: {
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			move.multihit = 2;
 			move.multihitType = "parentalbond";
 		},
@@ -7087,16 +7090,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	ragingboxer: {
 		// Uses parentalBond as base.
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			if (move.flags["punch"]) {
 				move.multihit = 2;
 				move.multihitType = "boxer";
@@ -7601,16 +7595,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	multiheaded: {
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			const twoHeaded = [
 				"doduo",
 				"weezing",
@@ -7857,16 +7842,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	hyperaggressive: {
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			move.multihit = 2;
 			move.multihitType = "parentalbond";
 		},
@@ -9240,16 +9216,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	primalmaw: {
 		// Uses parentalBond as base.
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			if (move.flags["bite"]) {
 				move.multihit = 2;
 				move.multihitType = "maw";
@@ -9553,16 +9520,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	dualwield: {
 		// Uses parentalBond as base.
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			if (move.flags["pulse"] || move.flags['slicing']) {
 				move.multihit = 2;
 				move.multihitType = "dual";
@@ -10034,16 +9992,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Raging Moth",
 		shortDesc: "Fire moves hit twice, both hits at 75% power.",
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			move.multihit = 2;
 			move.multihitType = "ragingmoth";
 		},
@@ -10798,16 +10747,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 			if (move.flags["bite"]) {
 				move.multihit = 2;
 				move.multihitType = "maw";
@@ -12246,16 +12186,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Minion Control",
 		shortDesc: "Moves hit an extra time for each healthy party member.",
 		onPrepareHit(source, target, move) {
-			if (
-				move.category === "Status" ||
-				move.multihit ||
-				move.flags["noparentalbond"] ||
-				doesMoveCharge(source, move) ||
-				move.flags["futuremove"] ||
-				move.spreadHit ||
-				move.isZ ||
-				move.isMax
-			) { return; }
+			if (isParentalBondBanned(move, source)) { return; }
 
 			let allyCount = 0;
 			for (const ally of source.side.pokemon) {
