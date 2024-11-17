@@ -2770,6 +2770,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.actions.useMove(newMove, target, source);
+			target.activeMoveActions--;
 			return null;
 		},
 		onAllyTryHitSide(target, source, move) {
@@ -2784,6 +2785,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
 			this.actions.useMove(newMove, this.effectState.target, source);
+			target.activeMoveActions--;
 			return null;
 		},
 		condition: {
@@ -9395,6 +9397,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (pokemon.coward) return;
 			pokemon.coward = true;
 			this.actions.useMove(Dex.moves.get("protect"), pokemon);
+			pokemon.activeMoveActions = 0;
 		},
 		name: "Coward",
 		rating: 3,
@@ -9939,6 +9942,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const newMove = this.dex.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			this.actions.useMove(newMove, target, source);
+			target.activeMoveActions--;
 			return null;
 		},
 		onAllyTryHitSide(target, source, move) {
@@ -11946,6 +11950,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (!move.flags.sound) return;
 			this.add("-activate", this.effectState.target, "ability: Parroting");
 			this.actions.useMove(move, this.effectState.target, target);
+			this.effectState.target.activeMoveActions--;
 		},
 	},
 	terashell: {
