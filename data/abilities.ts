@@ -9894,15 +9894,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 460,
 		gen: 8,
 		onStart(pokemon) {
-			this.debug("Monkey switches in");
-			let targetLoc = 4;
-			pokemon.side.foes().forEach((a) => {
-				if (pokemon.getLocOf(a) < targetLoc) { targetLoc = pokemon.getLocOf(a); }
-			});
-			if (targetLoc < 4 && targetLoc > 0) {
-				this.boost({atk: -1, def: -1}, pokemon.side.foes()[targetLoc], pokemon, null, true);
-				this.add("-ability", pokemon, "Monkey Business", "boost");
-			}
+			const opponent = pokemon.oppositeFoe();
+			if (!opponent) return;
+
+			this.boost({atk: -1, def: -1}, opponent, pokemon, null, true);
+			this.add("-ability", pokemon, "Monkey Business", "boost");
 		},
 	},
 
