@@ -3900,6 +3900,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				active.clearBoosts();
 			}
 		},
+		onDeductPP(target, source) {
+			if (target.hasAbility('pressure')) return;
+			return 1;
+		},
 		name: "Pressure",
 		rating: 2.5,
 		num: 46,
