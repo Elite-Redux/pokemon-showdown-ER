@@ -860,12 +860,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 			onSideStart(side, source, effect) {
-				if (effect instanceof Ability)
-				{
-					this.add('-sidestart', side, 'move: Aurora Veil', '[northwind]');
-				}
-				else
-				{
+				if (effect?.effectType === 'Ability') {
+					this.add('-sidestart', side, 'move: Aurora Veil', '[from] ability: ' + effect.name, '[of] ' + source);
+				} else {
 					this.add('-sidestart', side, 'move: Aurora Veil');
 				}
 			},
