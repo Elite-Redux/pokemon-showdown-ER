@@ -3333,7 +3333,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	emanate: {
 		name: "Emanate",
 		shortDesc:
-			"This Pokemon's Normal-type moves become Fire type and get a 10% boost.",
+			"This Pokemon's Normal-type moves become Psychic type and get a 10% boost.",
 	},
 	monkeybusiness: {
 		name: "Monkey Business",
