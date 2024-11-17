@@ -637,10 +637,10 @@ export class TeamValidator {
 		}
 
 		ability = dex.abilities.get(set.ability);
-		problem = this.checkAbility(set, ability, setHas);
-		problem = this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I1), setHas);
-		problem = this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I2), setHas);
-		problem = this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I3), setHas);
+		problem = this.checkAbility(set, ability, setHas)
+			|| this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I1), setHas)
+			|| this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I2), setHas)
+			|| this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I3), setHas);
 		if (problem) problems.push(problem);
 
 		if (!set.nature || dex.gen <= 2) {
