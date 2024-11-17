@@ -476,25 +476,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	flail: {
 		inherit: true,
-		basePowerCallback(pokemon, target) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 64 / pokemon.maxhp), 1);
-			let bp;
-			if (ratio < 2) {
-				bp = 200;
-			} else if (ratio < 6) {
-				bp = 150;
-			} else if (ratio < 13) {
-				bp = 100;
-			} else if (ratio < 22) {
-				bp = 80;
-			} else if (ratio < 43) {
-				bp = 40;
-			} else {
-				bp = 20;
-			}
-			this.debug('BP: ' + bp);
-			return bp;
-		},
 	},
 	flareblitz: {
 		inherit: true,
@@ -1291,25 +1272,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	reversal: {
 		inherit: true,
-		basePowerCallback(pokemon, target) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 64 / pokemon.maxhp), 1);
-			let bp;
-			if (ratio < 2) {
-				bp = 200;
-			} else if (ratio < 6) {
-				bp = 150;
-			} else if (ratio < 13) {
-				bp = 100;
-			} else if (ratio < 22) {
-				bp = 80;
-			} else if (ratio < 43) {
-				bp = 40;
-			} else {
-				bp = 20;
-			}
-			this.debug('BP: ' + bp);
-			return bp;
-		},
 	},
 	roar: {
 		inherit: true,

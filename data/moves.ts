@@ -5565,26 +5565,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	flail: {
 		num: 175,
 		accuracy: 100,
-		basePower: 0,
-		basePowerCallback(pokemon, target) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 48 / pokemon.maxhp), 1);
-			let bp;
-			if (ratio < 2) {
-				bp = 200;
-			} else if (ratio < 5) {
-				bp = 150;
-			} else if (ratio < 10) {
-				bp = 100;
-			} else if (ratio < 17) {
-				bp = 80;
-			} else if (ratio < 33) {
-				bp = 40;
-			} else {
-				bp = 20;
-			}
-			this.debug('BP: ' + bp);
-			return bp;
-		},
+		basePower: 80,
 		onModifyMove(move, source, target) {
 			if (source.hp < source.maxhp / 2) {
 				move.willCrit = true;
@@ -15439,26 +15420,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	reversal: {
 		num: 179,
 		accuracy: 100,
-		basePower: 0,
-		basePowerCallback(pokemon, target) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 48 / pokemon.maxhp), 1);
-			let bp;
-			if (ratio < 2) {
-				bp = 200;
-			} else if (ratio < 5) {
-				bp = 150;
-			} else if (ratio < 10) {
-				bp = 100;
-			} else if (ratio < 17) {
-				bp = 80;
-			} else if (ratio < 33) {
-				bp = 40;
-			} else {
-				bp = 20;
-			}
-			this.debug('BP: ' + bp);
-			return bp;
-		},
+		basePower: 80,
 		onModifyMove(move, source, target) {
 			if (source.hp < source.maxhp / 2) {
 				move.willCrit = true;
@@ -18865,7 +18827,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	strugglebug: {
 		num: 522,
 		accuracy: 100,
-		basePower: 50,
+		basePower: 80,
 		category: "Special",
 		name: "Struggle Bug",
 		pp: 20,
