@@ -10599,8 +10599,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				foe.addVolatile(
 					"healingblocked",
 					this.effectState.target,
-					Dex.abilities.get("permanence"),
-					"healingblocked"
+					Dex.abilities.get("permanence")
 				);
 			}
 		},
@@ -10608,8 +10607,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			foe.addVolatile(
 				"healingblocked",
 				this.effectState.target,
-				Dex.abilities.get("permanence"),
-				"healingblocked"
+				Dex.abilities.get("permanence")
 			);
 		},
 		onEnd(source) {
