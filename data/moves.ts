@@ -3909,7 +3909,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {futuremove: 1},
-		onTry(source, target) {
+		onTry(source, target, move) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				move: 'doomdesire',
@@ -3917,13 +3917,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 				moveData: {
 					id: 'doomdesire',
 					name: "Doom Desire",
-					accuracy: 100,
-					basePower: 140,
-					category: "Special",
+					accuracy: move.accuracy,
+					basePower: move.basePower,
+					category: move.category,
 					priority: 0,
-					flags: {futuremove: 1},
+					flags: move.flags,
 					effectType: 'Move',
-					type: 'Steel',
+					type: move.type,
 				},
 			});
 			this.add('-start', source, 'Doom Desire');
@@ -6447,7 +6447,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {allyanim: 1, futuremove: 1},
 		ignoreImmunity: true,
-		onTry(source, target) {
+		onTry(source, target, move) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				duration: 3,
@@ -6456,14 +6456,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 				moveData: {
 					id: 'futuresight',
 					name: "Future Sight",
-					accuracy: 100,
-					basePower: 120,
-					category: "Special",
+					accuracy: move.accuracy,
+					basePower: move.basePower,
+					category: move.category,
 					priority: 0,
-					flags: {allyanim: 1, futuremove: 1},
+					flags: move.flags,
 					ignoreImmunity: false,
 					effectType: 'Move',
-					type: 'Psychic',
+					type: move.type,
 				},
 			});
 			this.add('-start', source, 'move: Future Sight');
