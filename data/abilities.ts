@@ -11686,7 +11686,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Inverse Room",
 		shortDesc: "Sets up the Inverse field condition for 3 turns upon entry.",
 		onStart(source) {
-			this.field.addPseudoWeather("inverseroom", source);
+			this.add("-activate", source, "ability: Inverse Room");
+			this.field.addPseudoWeather("inverseroom", source, source.getAbility());
 		},
 	},
 	superslammer: {
