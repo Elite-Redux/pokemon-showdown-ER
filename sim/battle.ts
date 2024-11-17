@@ -2678,6 +2678,7 @@ export class Battle {
 			for (const handler of this.getAllHandlers('Residual')) {
 				if (handler.state) handler.state.startedThisTurn = false;
 			}
+			this.add('clearstartedflag')
 			break;
 		case 'residual':
 			this.add('');

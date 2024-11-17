@@ -1,3 +1,4 @@
+import { Ability } from '../sim/dex-abilities.js';
 import {Condition} from '../sim/dex-conditions';
 // List of flags and their descriptions can be found in sim/dex-moves.ts
 
@@ -858,8 +859,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 					}
 				}
 			},
-			onSideStart(side) {
-				this.add('-sidestart', side, 'move: Aurora Veil');
+			onSideStart(side, source, effect) {
+				if (effect instanceof Ability)
+				{
+					this.add('-sidestart', side, 'move: Aurora Veil', '[northwind]');
+				}
+				else
+				{
+					this.add('-sidestart', side, 'move: Aurora Veil');
+				}
 			},
 			onSideResidualOrder: 26,
 			onSideResidualSubOrder: 10,
@@ -4545,6 +4553,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {nonsky: 1},
 		terrain: 'electricterrain',
 		condition: {
+			countFullRounds: true,
 			duration: 5,
 			durationCallback(source, effect) {
 				if (source?.hasItem('terrainextender')) {
@@ -7882,6 +7891,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {nonsky: 1},
 		pseudoWeather: 'gravity',
 		condition: {
+			countFullRounds: true,
 			duration: 5,
 			durationCallback(source, effect) {
 				if (source?.hasAbility('persistent')) {
@@ -23507,6 +23517,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onFieldResidualSubOrder: 1,
 			onFieldEnd() {
 				this.add('-fieldend', 'move: Inverse Room');
+			},
+			onFieldStart(target, source, effect) {
+				if (effect.effectType === "Ability" && effect.id === "inverseroom") {
+					this.effectState.duration = 3; // Twist Dimension duration change
+					this.add("-fieldstart", 'move: Inverse Room', `[of] ${source}`, '[inverseroom]');
+				} else {
+					this.add('-fieldstart', 'move: Inverse Room', '[of] ' + source);
+				}
 			},
 		},
 	}
