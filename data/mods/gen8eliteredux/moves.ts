@@ -154,12 +154,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 			onMoveAborted(pokemon, target, move) {
-				if (move.id !== 'charge') {
+				if (move.id !== 'charge' && move.type === 'Electric') {
 					pokemon.removeVolatile('charge');
 				}
 			},
 			onAfterMove(pokemon, target, move) {
-				if (move.id !== 'charge') {
+				if (move.id !== 'charge' && move.type === 'Electric') {
 					pokemon.removeVolatile('charge');
 				}
 			},
