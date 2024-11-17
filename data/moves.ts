@@ -6535,23 +6535,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Status",
 
 		name: "Gear Up",
-		pp: 20,
+		pp: 10,
 		priority: 0,
-		flags: {snatch: 1, bypasssub: 1},
-		onHitSide(side, source, move) {
-			const targets = side.allies().filter(target => (
-				target.hasAbility(['plus', 'minus']) &&
-				(!target.volatiles['maxguard'] || this.runEvent('TryHit', target, source, move))
-			));
-			if (!targets.length) return false;
-			let didSomething = false;
-			for (const target of targets) {
-				didSomething = this.boost({atk: 1, spa: 1}, target, source, move, false, true) || didSomething;
-			}
-			return didSomething;
+		flags: {snatch: 1},
+		boosts: {
+			spe: 2,
+			spa: 1,
 		},
 		secondary: null,
-		target: "allySide",
+		target: "self",
 		type: "Steel",
 		zMove: {boost: {spa: 1}},
 		contestType: "Clever",

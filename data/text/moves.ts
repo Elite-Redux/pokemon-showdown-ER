@@ -2340,8 +2340,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	gearup: {
 		name: "Gear Up",
-		desc: "Raises the Attack and Special Attack of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
-		shortDesc: "Raises Atk, Sp. Atk of allies with Plus/Minus by 1.",
+		desc: "Raises the user's Sp. Atk by 1 and Speed by 2.",
+		shortDesc: "Raises the user's Sp. Atk by 1 and Speed by 2.",
 	},
 	genesissupernova: {
 		name: "Genesis Supernova",
