@@ -24,7 +24,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		},
 	},
 	frz: {
-		name: "frostbite",
+		name: "frz",
 		effectType: "Status",
 		onStart(target, source, sourceEffect) {
 			if (sourceEffect && sourceEffect.id === "frostorb") {
