@@ -4891,16 +4891,16 @@ export const Rulesets: { [k: string]: FormatData } = {
 			this.add("rule", "Species Clause: Limit one of each Pokémon");
 		},
 		onValidateTeam(team, format) {
-			const speciesTable = new Set<number>();
+			const speciesTable = new Set<string>();
 			for (const set of team) {
-				const species = this.dex.species.get(set.species);
-				if (speciesTable.has(species.num)) {
+				const species = this.dex.species.get(set.species).baseSpecies;
+				if (speciesTable.has(species)) {
 					return [
 						`You are limited to one of each Pokémon by Species Clause.`,
-						`(You have more than one ${species.baseSpecies})`,
+						`(You have more than one ${species})`,
 					];
 				}
-				speciesTable.add(species.num);
+				speciesTable.add(species);
 			}
 		},
 	},
