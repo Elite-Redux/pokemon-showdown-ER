@@ -3793,7 +3793,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				} else if (result === 1) {
 					target.trySetStatus('par', source);
 				} else {
-					target.trySetStatus('slp', source);
+					target.trySetStatus('bld', source);
 				}
 			},
 		},
