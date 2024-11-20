@@ -37607,6 +37607,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 	},
 	mrmimegalar: {
 		name: "Mr-Mime Galar",
+		baseSpecies: "Mr Mime",
 		num: 1576,
 		types: ["Ice", "Psychic"],
 		abilities: {
