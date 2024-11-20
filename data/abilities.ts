@@ -40,13 +40,14 @@ Ratings and how they work:
 function doesMoveCharge(pokemon: Pokemon, move: ActiveMove) {
 	if (!move.flags["charge"]) return false;
 	if (pokemon.hasAbility("accelerate")) return false;
-	if (move.name === "solarbeam" || move.name === "solarblade") {
-		return ["sunnyday", "desolateland"].includes(pokemon.effectiveWeather()) ||
-			pokemon.hasAbility("solarflare") ||
-			pokemon.hasAbility("chloroplast") ||
-			pokemon.hasAbility("bigleaves");
+	if (move.id === "solarbeam" || move.id === "solarblade") {
+		if (["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())) return false;
+		if (pokemon.hasAbility("solarflare")) return false;
+		if (pokemon.hasAbility("chloroplast")) return false;
+		if (pokemon.hasAbility("bigleaves")) return false;
+		return true;
 	}
-	if (move.name === "electroshot") return ['raindance', 'primordialsea'].includes(pokemon.effectiveWeather());
+	if (move.id === "electroshot") return !['raindance', 'primordialsea'].includes(pokemon.effectiveWeather());
 	return true;
 }
 
