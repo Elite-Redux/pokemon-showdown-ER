@@ -32309,7 +32309,6 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		eggGroups: ["Human-Like", "Human-Like"],
 		weightkg: 0,
 		evoLevel: 0,
-		requiredItem: "Sablenite-R",
 		otherFormes: ["Sableye-Mega-Redux"],
 		formeOrder: ["Sableye-Redux", "Sableye-Mega-Redux"],
 	},
