@@ -125,22 +125,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux Monotype OU",
@@ -215,22 +200,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux UU",
@@ -303,22 +273,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux LC",
@@ -391,22 +346,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux Ubers",
@@ -480,22 +420,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux AG",
@@ -569,22 +494,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 
 	{
@@ -662,22 +572,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux Doubles OU",
@@ -752,21 +647,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux Monotype Doubles OU",
@@ -844,22 +725,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux Doubles Ubers",
@@ -933,22 +799,7 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 	{
 		name: "Elite Redux 2v2 Doubles",
@@ -1029,21 +880,6 @@ export const Formats: FormatList = [
 				this.singleEvent("End", innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
-			// clear original pokemon innates
-			for (const innate of Object.keys(pokemon.volatiles).filter((i) =>
-				i.startsWith("ability:"))) {
-				pokemon.removeVolatile(innate);
-			}
-			// initialize mega innates
-			pokemon.m.innates = Object.keys(pokemon.species.abilities)
-				.filter((key) => key.includes("I"))
-				.map((key) =>
-					this.toID(pokemon.species.abilities[key as "I1" | "I2" | "I3"]))
-				.filter((ability) => ability !== pokemon.ability);
-
-			// before switch in innate load
-			addInnates(this, pokemon, true);
-		},
+		onAfterMega(pokemon) {},
 	},
 ];

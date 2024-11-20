@@ -55,7 +55,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		inherit: true,
 		canMegaEvo(pokemon: Pokemon) {
 			let species = pokemon.baseSpecies;
-			console.log(species.name)
 			let altForme =
 				species.otherFormes && this.dex.species.get(species.otherFormes[0]);
 			const item = pokemon.getItem();
