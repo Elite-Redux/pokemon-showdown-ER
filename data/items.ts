@@ -217,7 +217,7 @@ export const Items: { [itemid: string]: ItemData } = {
 		fling: {
 			basePower: 10,
 		},
-		onStart(target) {
+		onSwitchIn(target) {
 			if (
 				!target.ignoringItem() &&
 				!this.field.getPseudoWeather("gravity")
