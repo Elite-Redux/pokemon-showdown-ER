@@ -1587,9 +1587,10 @@ export class Pokemon {
 		if (!species) return null;
 		this.species = species;
 
+		const addedType = this.addedType;
 		this.setType(species.types, true);
 		this.apparentType = rawSpecies.types.join("/");
-		this.addedType = species.addedType || "";
+		this.addedType = species.addedType || addedType;
 		this.knownType = true;
 		this.weighthg = species.weighthg;
 
