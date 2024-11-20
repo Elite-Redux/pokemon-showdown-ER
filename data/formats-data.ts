@@ -605,8 +605,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	exeggutoralola: {
-		tier: "UU",
-		doublesTier: "DOU",
+		tier: "Uber",
+		doublesTier: "DUber",
 	},
 	cubone: {
 		tier: "LC",
