@@ -972,8 +972,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	confusion: {
 		name: "Confusion",
-		desc: "Has a 10% chance to confuse the target.",
-		shortDesc: "10% chance to confuse the target.",
+		desc: "Confuses the target.",
+		shortDesc: "Confuses the target.",
 	},
 	constrict: {
 		name: "Constrict",
