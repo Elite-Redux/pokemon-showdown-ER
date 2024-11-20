@@ -55,39 +55,25 @@ export const Scripts: ModdedBattleScriptsData = {
 		inherit: true,
 		canMegaEvo(pokemon: Pokemon) {
 			let species = pokemon.baseSpecies;
+			console.log(species.name)
 			let altForme =
 				species.otherFormes && this.dex.species.get(species.otherFormes[0]);
 			const item = pokemon.getItem();
 
-			// Necrozma Check
-			if (
-				["Necrozma-Dusk-Mane", "Necrozma-Dawn-Wings"].some(
-					(a) => a === species.name
-				)
-			) {
-				species = this.dex.species.get(species.name);
-				altForme =
-					species.otherFormes &&
-					this.dex.species.get(species.otherFormes[0]);
-			}
+			// // Necrozma Check
+			// if (["Necrozma-Dusk-Mane", "Necrozma-Dawn-Wings"].some((a) => a === species.name)) {
+			// 	species = this.dex.species.get(species.name);
+			// 	altForme =
+			// 		species.otherFormes &&
+			// 		this.dex.species.get(species.otherFormes[0]);
+			// }
 
 			// Mega Rayquaza
-			if (
-				(this.battle.gen <= 7 ||
-					this.battle.ruleTable.has("+pokemontag:past") ||
-					this.battle.format.mod.includes("redux")) &&
-				altForme?.isMega &&
-				altForme?.requiredMove &&
-				pokemon.baseMoves.includes(toID(altForme.requiredMove)) &&
-				!item.zMove
-			) {
+			if (altForme?.isMega && altForme.requiredMove && pokemon.baseMoves.includes(toID(altForme.requiredMove))) {
 				return altForme.name;
 			}
 			// a hacked-in Megazard X can mega evolve into Megazard Y, but not into Megazard X
-			if (
-				item.megaEvolves === species.baseSpecies &&
-				item.megaStone !== species.name
-			) {
+			if (item.megaEvolves === species.name) {
 				return item.megaStone;
 			}
 			return null;
@@ -620,8 +606,6 @@ export const Scripts: ModdedBattleScriptsData = {
 		formeChange(speciesId, source, isPermanent, message) {
 			if (!source) source = this.battle.effect;
 
-			console.log(speciesId, source, isPermanent, message)
-
 			const rawSpecies = this.battle.dex.species.get(speciesId);
 
 			const species = this.setSpecies(rawSpecies, source);
@@ -706,13 +690,11 @@ export const Scripts: ModdedBattleScriptsData = {
 					.filter((ability) => ability !== this.ability);
 				const newInnates = addInnates(this.battle, this).filter(it => it !== this.ability);
 				const currentAbilities = Object.keys(this.volatiles).filter(it => it.startsWith("ability:")).map(it => it.slice("ability:".length));
-				console.log(currentAbilities, newInnates)
 				for (const oldAbility of currentAbilities)
 				{
 					if (Object.values(this.m.innates).includes(oldAbility)) continue;
 					this.removeVolatile("ability:" + oldAbility)
 				}
-				console.log(Object.keys(this.volatiles))
 
 				let abilityKey: keyof typeof rawSpecies.abilities;
 				const baseSpecies = this.battle.dex.species.get(
