@@ -261,15 +261,16 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			const level = source.level;
 
-			const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
-			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
+			const statAttacker = move.overrideOffensivePokemon === 'target' ? target : source;
+			// For unaware
+			const statAttackerOpposite = move.overrideOffensivePokemon === 'target' ? source : target;
 
 			const isPhysical = move.category === 'Physical';
 			const attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
 			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
 
-			let atkBoosts = attacker.boosts[attackStat];
-			let defBoosts = defender.boosts[defenseStat];
+			let atkBoosts = statAttacker.boosts[attackStat];
+			let defBoosts = target.boosts[defenseStat];
 
 			let ignoreNegativeOffensive = !!move.ignoreNegativeOffensive;
 			let ignorePositiveDefensive = !!move.ignorePositiveDefensive;
@@ -293,16 +294,16 @@ export const Scripts: ModdedBattleScriptsData = {
 			let bonusStat = 0;
 			for (const [secondaryStat, secondaryMultiplier] of move.secondaryOffensiveStats || []) {
 				if (secondaryStat && secondaryMultiplier > 0 && this.dex.getActiveMove(move.baseMove || "")?.overrideOffensiveStat !== "def") {
-					let secondaryBoost = attacker.boosts[secondaryStat];
+					let secondaryBoost = statAttacker.boosts[secondaryStat];
 					if (ignoreNegativeOffensive && secondaryBoost < 0) secondaryBoost = 0;
 					else if (move.ignoreOffensive) secondaryBoost = 0;
 					else if (secondaryStat === attackStat) secondaryBoost = 0;
-					bonusStat += attacker.calculateStat(secondaryStat, secondaryBoost, secondaryMultiplier, source, target, move, 0);
+					bonusStat += statAttacker.calculateStat(secondaryStat, secondaryBoost, secondaryMultiplier, statAttacker, statAttackerOpposite, move, 0);
 				}
 			}
 
-			const attack = attacker.calculateStat(attackStat, atkBoosts, 1, source, target, move, bonusStat);
-			let defense = defender.calculateStat(defenseStat, defBoosts, 1, target, source, move, 0);
+			const attack = statAttacker.calculateStat(attackStat, atkBoosts, 1, statAttacker, statAttackerOpposite, move, bonusStat);
+			let defense = target.calculateStat(defenseStat, defBoosts, 1, target, source, move, 0);
 
 			if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'def') {
 				defense = this.battle.clampIntRange(Math.floor(defense / 2), 1);
@@ -395,11 +396,15 @@ export const Scripts: ModdedBattleScriptsData = {
 			boosts = this.battle.runEvent(
 				"ModifyBoost",
 				statUser || this,
-				null,
+				statTarget,
 				null,
 				boosts
 			);
 			boost = boosts[boostName]!;
+			if (statUser && statTarget)
+			{
+				console.log(statUser.name, statTarget.name, boosts, boostName)
+			}
 			const boostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
 			if (boost > 6) boost = 6;
 			if (boost < -6) boost = -6;
