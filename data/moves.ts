@@ -4102,15 +4102,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 	dragonbreath: {
 		num: 225,
 		accuracy: 100,
-		basePower: 70,
+		basePower: 20,
 		category: "Special",
 		name: "Dragon Breath",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 30,
-			status: 'par',
+			chance: 100,
+			status: 'brn',
 		},
 		target: "normal",
 		type: "Dragon",
