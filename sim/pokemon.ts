@@ -2221,6 +2221,7 @@ export class Pokemon {
 		const oldAbility = this.ability;
 		if (!isFromFormeChange) {
 			if (ability.isPermanent || this.getAbility().isPermanent) return false;
+			if (this.hasAbility(ability.id)) return false;
 		}
 		const setAbilityEvent: boolean | null = this.battle.runEvent(
 			"SetAbility",
@@ -2230,13 +2231,17 @@ export class Pokemon {
 			ability
 		);
 		if (!setAbilityEvent) return setAbilityEvent;
-		this.battle.singleEvent(
-			"End",
-			this.battle.dex.abilities.get(oldAbility),
-			this.abilityState,
-			this,
-			source
-		);
+		const alreadyHadAbility = this.hasAbility(ability.id);
+		this.ability = ability.id;
+		if (!this.hasAbility(oldAbility)) {
+			this.battle.singleEvent(
+				"End",
+				this.battle.dex.abilities.get(oldAbility),
+				this.abilityState,
+				this,
+				source
+			);
+		}
 		if (
 			this.battle.effect &&
 			this.battle.effect.effectType === "Move" &&
@@ -2249,9 +2254,9 @@ export class Pokemon {
 				"[from] move: " + this.battle.dex.moves.get(this.battle.effect.id)
 			);
 		}
-		this.ability = ability.id;
 		this.abilityState = {id: ability.id, target: this};
 		if (
+			!alreadyHadAbility &&
 			ability.id &&
 			this.battle.gen > 3 &&
 			(!isTransform || oldAbility !== ability.id || this.battle.gen <= 4)
@@ -2403,10 +2408,14 @@ export class Pokemon {
 		if (!this.hp) return false;
 		status = this.battle.dex.conditions.get(status) as Effect;
 		if (!this.volatiles[status.id]) return false;
-		this.battle.singleEvent("End", status, this.volatiles[status.id], this);
 		const linkedPokemon = this.volatiles[status.id].linkedPokemon;
 		const linkedStatus = this.volatiles[status.id].linkedStatus;
+		const volatile = this.volatiles[status.id];
 		delete this.volatiles[status.id];
+		if (!status.id.startsWith("ability:") || !this.hasAbility(status.id.slice("ability:".length)))
+		{
+			this.battle.singleEvent("End", status, volatile, this);
+		}
 		if (linkedPokemon) {
 			this.removeLinkedVolatiles(linkedStatus, linkedPokemon);
 		}

@@ -1,10 +1,10 @@
 import {Dex, toID} from "../../../sim/dex";
 
-function addInnates(battle: Battle, pokemon: Pokemon): string[] {
+function addInnates(battle: Battle, pokemon: Pokemon, allowAddingAbilityAsInnate: boolean): string[] {
 	const added: string[] = [];
 	if (pokemon.m.innates) {
 		for (const innate of pokemon.m.innates) {
-			if (pokemon.hasAbility(innate)) continue;
+			if (!allowAddingAbilityAsInnate && pokemon.hasAbility(innate)) continue;
 			if (!pokemon.addVolatile("ability:" + innate, pokemon, null, null, true)) continue;
 			added.push(innate.toString());
 		}
@@ -612,6 +612,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			const rawSpecies = this.battle.dex.species.get(speciesId);
 
+			const oldSpecies = this.species;
 			const species = this.setSpecies(rawSpecies, source);
 			if (!species) return false;
 
@@ -690,20 +691,11 @@ export const Scripts: ModdedBattleScriptsData = {
 					.map((key) =>
 						this.battle.toID(
 							this.species.abilities[key as "I1" | "I2" | "I3"]
-						))
-					.filter((ability) => ability !== this.ability);
-				const newInnates = addInnates(this.battle, this).filter(it => it !== this.ability);
-				const currentAbilities = Object.keys(this.volatiles).filter(it => it.startsWith("ability:")).map(it => it.slice("ability:".length));
-				for (const oldAbility of currentAbilities)
-				{
-					if (Object.values(this.m.innates).includes(oldAbility)) continue;
-					this.removeVolatile("ability:" + oldAbility)
-				}
+						));
+				const newInnates = addInnates(this.battle, this, true).filter(it => it !== this.ability);
 
 				let abilityKey: keyof typeof rawSpecies.abilities;
-				const baseSpecies = this.battle.dex.species.get(
-					rawSpecies.baseSpecies
-				);
+				const baseSpecies = this.battle.dex.species.get(oldSpecies);
 				let abilitySlot;
 
 				for (abilityKey in baseSpecies.abilities) {
@@ -724,6 +716,13 @@ export const Scripts: ModdedBattleScriptsData = {
 					true
 				);
 				this.baseAbility = this.ability;
+
+				const currentAbilities = Object.keys(this.volatiles).filter(it => it.startsWith("ability:")).map(it => it.slice("ability:".length));
+				for (const oldAbility of currentAbilities)
+				{
+					if (Object.values(this.m.innates).includes(oldAbility)) continue;
+					this.removeVolatile("ability:" + oldAbility)
+				}
 
 				for (const innate of newInnates)
 				{
