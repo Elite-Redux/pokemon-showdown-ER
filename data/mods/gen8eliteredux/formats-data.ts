@@ -5264,8 +5264,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	shucklemega: {
-		tier: "Illegal",
-		doublesTier: "Illegal",
+		tier: "OU",
+		doublesTier: "DOU",
 	},
 	relicanthmega: {
 		tier: "OU",
