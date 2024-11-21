@@ -7354,13 +7354,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	badluck: {
-		onFoeModifyMove(move, pokemon) {
-			move.willCrit = false;
-
-			// apparently bad luck lowers accuracy of moevs with no accuracy. fun stuff.
-			if (typeof move.accuracy === "number") move.accuracy -= 5;
-			if (move.accuracy === true) move.accuracy = 95;
+		onAccuracy(accuracy, target, source, move) {
+			if (accuracy === true) return;
+			return this.chainModify(.95);
 		},
+		onCriticalHit: false,
 		// Low damage roll implementation is in battle-actions.ts
 		name: "Bad Luck",
 		rating: 2,
