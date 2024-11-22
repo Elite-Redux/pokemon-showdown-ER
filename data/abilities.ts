@@ -9291,6 +9291,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 		},
 		name: "Gifted Mind",
+		isBreakable: true,
 		rating: 3,
 		num: 437,
 		gen: 8,
