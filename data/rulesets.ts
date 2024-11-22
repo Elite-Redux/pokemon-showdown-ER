@@ -98,7 +98,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 		banlist: [
 			"Air Blower",
 			"Fearmonger",
-			"North Wind",
 			"Power Construct",
 			"Power of Alchemy",
 			"Seaborne",
