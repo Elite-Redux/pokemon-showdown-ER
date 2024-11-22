@@ -9351,67 +9351,36 @@ export const Moves: {[moveid: string]: MoveData} = {
 	iceball: {
 		num: 301,
 		accuracy: 100,
-		basePower: 30,
+		basePower: 40,
 		basePowerCallback(pokemon, target, move) {
 			let bp = move.basePower;
-			const iceballData = pokemon.volatiles['iceball'];
-			if (iceballData?.hitCount) {
-				bp *= Math.pow(2, iceballData.contactHitCount);
-			}
-			if (iceballData && pokemon.status !== 'slp') {
-				iceballData.hitCount++;
-				iceballData.contactHitCount++;
-				if (iceballData.hitCount < 5) {
-					iceballData.duration = 2;
-				}
-			}
-			if (pokemon.volatiles['defensecurl']) {
-				bp *= 2;
-			}
-			this.debug("BP: " + bp);
-			return bp;
+			const rolloutData = pokemon.volatiles['rollout'];
+			let hitCount = rolloutData.hitCount;
+			if (!hitCount || hitCount <= 1) return bp;
+			if (hitCount > 3) hitCount = 3;
+			return bp * Math.pow(2, hitCount - 1);
 		},
 		category: "Physical",
-
 		name: "Ice Ball",
 		pp: 20,
 		priority: 0,
-		flags: {bullet: 1, contact: 1, protect: 1, mirror: 1, noparentalbond: 1, failinstruct: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
 		onModifyMove(move, pokemon, target) {
-			if (pokemon.volatiles['iceball'] || pokemon.status === 'slp' || !target) return;
-			pokemon.addVolatile('iceball');
-			// @ts-ignore
-			// TS thinks pokemon.volatiles['iceball'] doesn't exist because of the condition on the return above
-			// but it does exist now because addVolatile created it
-			pokemon.volatiles['iceball'].targetSlot = move.sourceEffect ? pokemon.lastMoveTargetLoc : pokemon.getLocOf(target);
+			if (!pokemon.volatiles['rollout']) pokemon.addVolatile('rollout');
+			pokemon.volatiles['rollout'].hitCount++;
 		},
-		onAfterMove(source, target, move) {
-			const iceballData = source.volatiles["iceball"];
-			if (
-				iceballData &&
-				iceballData.hitCount === 5 &&
-				iceballData.contactHitCount < 5
-				// this conditions can only be met in gen7 and gen8dlc1
-				// see `disguise` and `iceface` abilities in the resp mod folders
-			) {
-				source.addVolatile("rolloutstorage");
-				source.volatiles["rolloutstorage"].contactHitCount =
-				iceballData.contactHitCount;
-			}
+		onHit(target, source) {
+			const rolloutData = source.volatiles['rollout']
+			if (!rolloutData) return;
+			rolloutData.startedThisTurn = true;
 		},
-
 		condition: {
 			duration: 1,
-			onLockMove: 'iceball',
-			onStart() {
+			countFullRounds: true,
+			onLockMove: 'rollout',
+			onStart(source) {
 				this.effectState.hitCount = 0;
-				this.effectState.contactHitCount = 0;
-			},
-			onResidual(target) {
-				if (target.lastMove && target.lastMove.id === 'struggle') {
-					// don't lock
-					delete target.volatiles['iceball'];
-				}
+				if (source.volatiles['defensecurl']) this.effectState.hitCount++;
 			},
 		},
 		secondary: null,
@@ -15684,63 +15653,33 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePowerCallback(pokemon, target, move) {
 			let bp = move.basePower;
 			const rolloutData = pokemon.volatiles['rollout'];
-			if (rolloutData?.hitCount) {
-				bp *= Math.pow(2, rolloutData.contactHitCount);
-			}
-			if (rolloutData && pokemon.status !== 'slp') {
-				rolloutData.hitCount++;
-				rolloutData.contactHitCount++;
-				if (rolloutData.hitCount < 5) {
-					rolloutData.duration = 2;
-				}
-			}
-			if (pokemon.volatiles['defensecurl']) {
-				bp *= 2;
-			}
-			this.debug("BP: " + bp);
-			return bp;
+			let hitCount = rolloutData.hitCount;
+			if (!hitCount || hitCount <= 1) return bp;
+			if (hitCount > 3) hitCount = 3;
+			return bp * Math.pow(2, hitCount - 1);
 		},
 		category: "Physical",
 		name: "Rollout",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, noparentalbond: 1, failinstruct: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
 		onModifyMove(move, pokemon, target) {
-			if (pokemon.volatiles['rollout'] || pokemon.status === 'slp' || !target) return;
-			pokemon.addVolatile('rollout');
-			// @ts-ignore
-			// TS thinks pokemon.volatiles['rollout'] doesn't exist because of the condition on the return above
-			// but it does exist now because addVolatile created it
-			pokemon.volatiles['rollout'].targetSlot = move.sourceEffect ? pokemon.lastMoveTargetLoc : pokemon.getLocOf(target);
+			if (!pokemon.volatiles['rollout']) pokemon.addVolatile('rollout');
+			pokemon.volatiles['rollout'].hitCount++;
 		},
-		onAfterMove(source, target, move) {
-			const rolloutData = source.volatiles["rollout"];
-			if (
-				rolloutData &&
-				rolloutData.hitCount === 5 &&
-				rolloutData.contactHitCount < 5
-				// this conditions can only be met in gen7 and gen8dlc1
-				// see `disguise` and `iceface` abilities in the resp mod folders
-			) {
-				source.addVolatile("rolloutstorage");
-				source.volatiles["rolloutstorage"].contactHitCount =
-					rolloutData.contactHitCount;
-			}
+		onHit(target, source) {
+			const rolloutData = source.volatiles['rollout']
+			if (!rolloutData) return;
+			rolloutData.startedThisTurn = true;
 		},
 		condition: {
 			duration: 1,
+			countFullRounds: true,
 			onLockMove: 'rollout',
-			onStart() {
+			onStart(source) {
 				this.effectState.hitCount = 0;
-				this.effectState.contactHitCount = 0;
+				if (source.volatiles['defensecurl']) this.effectState.hitCount++;
 			},
-			onResidual(target) {
-				if (target.lastMove && target.lastMove.id === 'struggle') {
-					// don't lock
-					delete target.volatiles['rollout'];
-				}
-			},
-			// onAfterMove(pokemon, )
 		},
 		secondary: null,
 		target: "normal",
