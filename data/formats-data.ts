@@ -882,7 +882,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 	},
 	articuno: {
 		tier: "OU",
-		doublesTier: "DUber",
+		doublesTier: "DOU",
 	},
 	zapdos: {
 		tier: "OU",

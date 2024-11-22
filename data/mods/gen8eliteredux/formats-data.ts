@@ -885,7 +885,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	articuno: {
-		tier: "Uber",
+		tier: "OU",
 		doublesTier: "DOU",
 	},
 	zapdos: {
@@ -5362,8 +5362,8 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	slowkingmega: {
-		tier: "Uber",
-		doublesTier: "DUber",
+		tier: "OU",
+		doublesTier: "DOU",
 	},
 	dewleon: {
 		tier: "AG",
