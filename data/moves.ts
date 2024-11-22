@@ -5474,7 +5474,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Physical",
 		name: "First Impression",
 		pp: 10,
-		priority: 2,
+		priority: 3,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onTry(source) {
 			if (source.activeMoveActions > 1) {
