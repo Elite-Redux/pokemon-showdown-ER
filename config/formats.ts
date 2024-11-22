@@ -131,7 +131,7 @@ export const Formats: FormatList = [
 		name: "Elite Redux Monotype OU",
 		desc: `OU Monotype for Elite Redux`,
 		mod: "gen8eliteredux",
-		ruleset: ["Standard Elite Redux OU Singles", "Force Monotype (ER)"],
+		ruleset: ["Standard Elite Redux OU Singles", "Force Monotype (ER)", "Monotype Ability Banlist"],
 		banlist: ["Uber",	"AG"],
 		debug: true,
 
@@ -654,7 +654,7 @@ export const Formats: FormatList = [
 
 		mod: "gen8eliteredux",
 		gameType: "doubles",
-		ruleset: ["Standard Elite Redux OU Doubles", "Force Monotype (ER)"],
+		ruleset: ["Standard Elite Redux OU Doubles", "Force Monotype (ER)", "Monotype Ability Banlist"],
 		banlist: ["DUber"],
 		// ER Scripts
 		onValidateSet(set) {
