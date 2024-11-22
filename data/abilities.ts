@@ -8504,7 +8504,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				pokemon,
 				target,
 				{
-					self: {},
 					onDamagePriority: -20,
 					onDamage: (damage: number, moveTarget: Pokemon) => {
 						if (damage >= moveTarget.hp) return moveTarget.hp - 1;
@@ -8855,16 +8854,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 
 			if (!willBurst) return;
 
-			const moveMutations = {
-				basePower: 150 / 3,
-				self: {},
-			};
+			const move = Dex.moves.get("hyperbeam");
+			const flags = move.flags;
+			delete flags.recharge;
 
 			this.actions.runAdditionalMove(
-				Dex.moves.get("hyperbeam"),
+				move,
 				pokemon,
 				source,
-				moveMutations
+				{ basePower: 50, self: {}, flags: flags }
 			);
 		},
 		name: "Atomic Burst",
@@ -8884,15 +8882,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 			if (!willBlow) return;
 
-			const moveMutations = {
-				self: {},
-			};
+			const move = Dex.moves.get("hyperbeam");
+			const flags = move.flags;
+			delete flags.recharge;
 
 			this.actions.runAdditionalMove(
-				Dex.moves.get("hyperbeam"),
+				move,
 				pokemon,
 				source,
-				moveMutations
+				{ self: {}, flags: flags }
 			);
 		},
 		name: "Retribution Blow",
@@ -9364,7 +9362,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				pokemon,
 				target,
 				{
-					self: {},
 					onDamagePriority: -20,
 					onDamage: (damage: number, moveTarget: Pokemon) => {
 						if (damage >= moveTarget.hp) return moveTarget.hp - 1;
@@ -10556,18 +10553,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Clap Trap",
 		shortDesc: "Counters contact with 50BP Snap Trap.",
 		onDamagingHit(damage, target, source, move) {
-			if (!this.checkMoveMakesContact(move, source, target)) {
-				const moveMutations = {
-					basePower: 100 / 2,
-					self: {},
-				};
-
-				this.actions.runAdditionalMove(
-					Dex.moves.get("snaptrap"),
-					target,
-					source,
-					moveMutations
-				);
+			if (this.checkMoveMakesContact(move, source, target)) {
+				this.actions.runAdditionalMove(Dex.moves.get("snaptrap"), target, source, { basePower: 50 });
 			}
 		},
 	},
@@ -10720,12 +10707,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
-				Dex.moves.get("feintattack"),
+				Dex.moves.get("spectralthief"),
 				pokemon,
 				target,
 				{
 					basePower: 40,
-					self: {},
 					onDamagePriority: -20,
 					onDamage: (damage: number, moveTarget: Pokemon) => {
 						if (damage >= moveTarget.hp) return moveTarget.hp - 1;
