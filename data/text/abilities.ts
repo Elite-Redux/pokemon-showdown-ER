@@ -2511,7 +2511,7 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	sandsong: {
 		name: "Sand Song",
-		shortDesc: "This Pokemon's sound-based moves become Ground type.",
+		shortDesc: "This Pokemon's Normal-type sound-based moves become Ground type.",
 	},
 	rampage: {
 		name: "Rampage",
