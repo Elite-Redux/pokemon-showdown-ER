@@ -13959,14 +13959,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	powdersnow: {
 		num: 181,
 		accuracy: 100,
-		basePower: 40,
+		basePower: 80,
 		category: "Special",
 		name: "Powder Snow",
-		pp: 25,
+		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 10,
+			chance: 30,
 			status: 'frz',
 		},
 		target: "allAdjacentFoes",

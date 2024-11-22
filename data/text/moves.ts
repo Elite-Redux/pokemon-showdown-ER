@@ -4633,10 +4633,10 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	powdersnow: {
 		name: "Powder Snow",
-		desc: "Has a 10% chance to freeze the target.",
-		shortDesc: "10% chance to freeze the foe(s).",
+		desc: "Has a 30% chance to freeze the target.",
+		shortDesc: "30% chance to freeze the foe(s).",
 		gen2: {
-			shortDesc: "10% chance to freeze the target.",
+			shortDesc: "30% chance to freeze the target.",
 		},
 	},
 	powergem: {
@@ -5366,8 +5366,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	scorchingsands: {
 		name: "Scorching Sands",
-		desc: "Has a 30% chance to burn the target. The target thaws out if it is frozen.",
-		shortDesc: "30% chance to burn the target. Thaws target.",
+		desc: "Has a 30% chance to burn the target. The target thaws out if it is frozen. Mega Launcher boost.",
+		shortDesc: "30% chance to burn the target. Thaws target. Mega Launcher boost.",
 	},
 	scratch: {
 		name: "Scratch",
