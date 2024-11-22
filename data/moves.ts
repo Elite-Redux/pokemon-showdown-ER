@@ -6627,7 +6627,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	gigatonhammer: {
 		num: 893,
 		accuracy: 100,
-		basePower: 160,
+		basePower: 140,
 		category: "Physical",
 		name: "Gigaton Hammer",
 		pp: 5,
@@ -14277,7 +14277,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	prismaticlaser: {
 		num: 711,
 		accuracy: 100,
-		basePower: 160,
+		basePower: 140,
 		category: "Special",
 		dynamicCategory: "highestattack",
 		name: "Prismatic Laser",
@@ -15661,7 +15661,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	rockwrecker: {
 		num: 439,
 		accuracy: 90,
-		basePower: 150,
+		basePower: 120,
 		category: "Physical",
 		name: "Rock Wrecker",
 		pp: 5,
