@@ -15740,7 +15740,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					delete target.volatiles['rollout'];
 				}
 			},
-			onAfterMove(pokemon, )
+			// onAfterMove(pokemon, )
 		},
 		secondary: null,
 		target: "normal",

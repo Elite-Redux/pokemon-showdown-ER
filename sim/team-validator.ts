@@ -638,6 +638,8 @@ export class TeamValidator {
 		}
 
 		ability = dex.abilities.get(set.ability);
+		problem = this.checkAbility(set, ability, setHas);
+		if (problem) problems.push(problem);
 		for (const key of ["I1", "I2", "I3"]) {
 			const ability = dex.abilities.get(dex.species.get(set.species).abilities[key as keyof SpeciesAbility]);
 			const problem = this.checkAbility(set, ability, setHas);
