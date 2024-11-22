@@ -353,7 +353,7 @@ export const Formats: FormatList = [
 		desc: `Testing for ER Innates`,
 		mod: "gen8eliteredux",
 		ruleset: ["Standard Elite Redux"],
-		banlist: ["AG", "King's Rock", "North Wind"],
+		banlist: ["AG", "King's Rock"],
 
 		// ER Scripts
 		onValidateSet(set) {
