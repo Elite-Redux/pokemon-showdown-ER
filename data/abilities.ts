@@ -1711,14 +1711,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	forewarn: {
 		onStart(pokemon) {
-			const move: Move = {
-				...Dex.moves.get("futuresight"),
-				basePower: 50,
-			};
-
-			const target = pokemon.foes()[0];
-			this.actions.useMove(move, pokemon, target);
-			pokemon.activeMoveActions = 0;
+			const target = pokemon.oppositeFoe();
+			if (!target) return;
+			this.actions.runAdditionalMove(Dex.moves.get("futuresight"), pokemon, target, { basePower: 50 });
 		},
 		name: "Forewarn",
 		rating: 0.5,
@@ -8502,7 +8497,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	lowblow: {
 		onStart(pokemon) {
-			pokemon.activeMoveActions = 0;
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
@@ -8517,7 +8511,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					},
 				},
 			);
-			pokemon.activeMoveActions = 0;
 		},
 		name: "Low Blow",
 		rating: 3,
@@ -9364,7 +9357,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	cheaptactics: {
 		onStart(pokemon) {
-			pokemon.activeMoveActions = 0;
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
 			this.actions.runAdditionalMove(
@@ -9379,7 +9371,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					},
 				},
 			);
-			pokemon.activeMoveActions = 0;
 		},
 		name: "Cheap Tactics",
 		rating: 3,
@@ -9390,8 +9381,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			if (pokemon.coward) return;
 			pokemon.coward = true;
-			this.actions.useMove(Dex.moves.get("protect"), pokemon);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("protect"),	pokemon, pokemon);
 		},
 		name: "Coward",
 		rating: 3,
@@ -10742,7 +10732,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 					},
 				},
 			);
-			pokemon.activeMoveActions = 0;
 		},
 	},
 	devourer: {
@@ -10876,13 +10865,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("stringshot"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("stringshot"), pokemon, target);
 		},
 	},
 	banshee: {
@@ -10920,13 +10903,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("trickortreat"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("trickortreat"), pokemon, target);
 		},
 	},
 	powderburst: {
@@ -10935,13 +10912,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("powder"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("powder"), pokemon, target);
 		},
 	},
 	ponypower: {
@@ -10975,13 +10946,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("telekinesis"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("telekinesis"), pokemon, target);
 		},
 	},
 	fighter: {
@@ -11060,13 +11025,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("heartswap"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("heartswap"), pokemon, target);
 		},
 	},
 	hightide: {
@@ -11192,13 +11151,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("torment"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("torment"), pokemon, target);
 		},
 	},
 	yukionna: {
@@ -11236,13 +11189,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("doomdesire"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("doomdesire"), pokemon, target);
 		},
 	},
 	arcaneforce: {
@@ -11536,13 +11483,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("disable"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("disable"), pokemon, target);
 		},
 	},
 	berserkerrage: {
@@ -11606,13 +11547,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("sandattack"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("sandattack"), pokemon, target);
 		},
 	},
 	moonspirit: {
@@ -11631,13 +11566,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onSwitchIn(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("charge"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("charge"), pokemon, target);
 		},
 	},
 	itchydefense: {
@@ -11743,27 +11672,19 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	demolitionist: {
 		name: "Demolitionist",
 		shortDesc:
-			"Readied Action + Ignores Protect + screens break on readied turn",
-		onModifyAtk(atk, source, target, move) {
-			if (source.activeMoveActions === 0) {
-				return this.chainModify(2.0);
-			}
+			"Doubles attack, ignores protect, and breaks screens on first attack.",
+		onStart(pkmn) {
+			pkmn.addVolatile("readiedaction");
 		},
-		// Ignores Protect
-		onModifyMove(move) {
-			if (move.flags["contact"]) delete move.flags["protect"];
+		onTryHit(target, source) {
+			if (!source.getVolatile("readiedaction")) return;
+			target.side.removeSideCondition('reflect');
+			target.side.removeSideCondition('lightscreen');
+			target.side.removeSideCondition('auroraveil');
 		},
-		// Foe screens break
-		onStart(pokemon) {
-			if (pokemon.side.foe.active[0].side.sideConditions["reflect"]) {
-				pokemon.side.foe.active[0].side.removeSideCondition("reflect");
-			}
-			if (pokemon.side.foe.active[0].side.sideConditions["lightscreen"]) {
-				pokemon.side.foe.active[0].side.removeSideCondition("lightscreen");
-			}
-			if (pokemon.side.foe.active[0].side.sideConditions["auroraveil"]) {
-				pokemon.side.foe.active[0].side.removeSideCondition("auroraveil");
-			}
+		onModifyMove(move, source) {
+			if (!source.getVolatile("readiedaction")) return;
+			if (move.flags["protect"]) delete move.flags["protect"];
 		},
 	},
 	flamingmaw: {
@@ -11830,13 +11751,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(
-				Dex.moves.get("quash"),
-				pokemon,
-				target,
-				{self: {}},
-			);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("quash"), pokemon, target);
 		},
 	},
 	entrance: {
@@ -11938,7 +11853,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (source === this.effectState.target) return;
 			if (!move.flags.sound) return;
 			this.add("-activate", this.effectState.target, "ability: Parroting");
-			this.actions.useMove(move, this.effectState.target, target);
+			this.actions.runAdditionalMove(Dex.moves.get(move.id), this.effectState.target, target);
 			this.effectState.target.activeMoveActions--;
 		},
 	},
@@ -12444,8 +12359,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (counter >= 3) return;
 			pokemon.permanentAbilityState['wishmaker'] = counter;
 
-			this.actions.useMove(Dex.moves.get("wish"), pokemon);
-			pokemon.activeMoveActions = 0;
+			this.actions.runAdditionalMove(Dex.moves.get("wish"),	pokemon,	pokemon);
 		},
 	},
 };

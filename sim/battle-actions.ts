@@ -374,6 +374,7 @@ export class BattleActions {
 		const targetLoc = pokemon.getLocOf(target);
 		this.runMove(nextMove, pokemon, targetLoc, null, undefined, true);
 		pokemon.usedExtraMove = false;
+		pokemon.activeMoveActions--;
 	}
 	/**
 	 * useMove is the "inside" move caller. It handles effects of the

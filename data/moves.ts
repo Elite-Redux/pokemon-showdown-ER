@@ -15679,8 +15679,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	rollout: {
 		num: 205,
-		accuracy: 90,
-		basePower: 30,
+		accuracy: 100,
+		basePower: 40,
 		basePowerCallback(pokemon, target, move) {
 			let bp = move.basePower;
 			const rolloutData = pokemon.volatiles['rollout'];
@@ -15740,6 +15740,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					delete target.volatiles['rollout'];
 				}
 			},
+			onAfterMove(pokemon, )
 		},
 		secondary: null,
 		target: "normal",
