@@ -3898,7 +3898,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 						active.boosts[boostName as BoostID] = Math.min(0, active.boosts[boostName as BoostID]);
 					}
 				}
-				active.clearBoosts();
 			}
 		},
 		onDeductPP(target, source) {
