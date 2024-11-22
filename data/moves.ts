@@ -680,6 +680,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
+		dynamicCategory: "highestattack",
 		name: "Attack Order",
 		pp: 15,
 		priority: 0,
@@ -1440,6 +1441,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Blast Burn",
 		pp: 5,
 		priority: 0,
@@ -5419,25 +5421,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return 90;
 		},
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Fire Pledge",
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1, pledgecombo: 1},
-		onPrepareHit(target, source, move) {
-			for (const action of this.queue.list as MoveAction[]) {
-				if (
-					!action.move || !action.pokemon?.isActive ||
-					action.pokemon.fainted || action.maxMove || action.zmove
-				) {
-					continue;
-				}
-				if (action.pokemon.isAlly(source) && ['grasspledge', 'waterpledge'].includes(action.move.id)) {
-					this.queue.prioritizeAction(action, move);
-					this.add('-waiting', source, action.pokemon);
-					return null;
-				}
-			}
-		},
 		onModifyMove(move, pokemon) {
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Water';
@@ -6289,6 +6277,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Frenzy Plant",
 		pp: 5,
 		priority: 0,
@@ -7698,6 +7687,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return 90;
 		},
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Grass Pledge",
 		pp: 15,
 		priority: 0,
@@ -9197,6 +9187,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Hydro Cannon",
 		pp: 5,
 		priority: 0,
@@ -13638,14 +13629,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
-
+		dynamicCategory: "highestattack",
 		name: "Photon Geyser",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, pulse: 1},
-		onModifyMove(move, pokemon) {
-			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
-		},
 		ignoreAbility: true,
 		secondary: null,
 		target: "normal",
@@ -14268,7 +14256,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 160,
 		category: "Special",
-
+		dynamicCategory: "highestattack",
 		name: "Prismatic Laser",
 		pp: 10,
 		priority: 0,
@@ -15275,6 +15263,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 85,
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Relic Song",
 		pp: 10,
 		priority: 0,
@@ -16624,6 +16613,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
+		dynamicCategory: "highestdamage",
 		name: "Shell Side Arm",
 		pp: 10,
 		priority: 0,
@@ -16631,19 +16621,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onPrepareHit(target, source, move) {
 			if (!source.isAlly(target)) {
 				this.attrLastMove('[anim] Shell Side Arm ' + move.category);
-			}
-		},
-		onModifyMove(move, pokemon, target) {
-			if (!target) return;
-			const atk = pokemon.getStat('atk', false, true);
-			const spa = pokemon.getStat('spa', false, true);
-			const def = target.getStat('def', false, true);
-			const spd = target.getStat('spd', false, true);
-			const physical = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * atk) / def) / 50);
-			const special = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * spa) / spd) / 50);
-			if (physical > special || (physical === special && this.random(2) === 0)) {
-				move.category = 'Physical';
-				move.flags.contact = 1;
 			}
 		},
 		onHit(target, source, move) {
@@ -20377,12 +20354,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Tri Attack",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 20,
+			chance: 30,
 			onHit(target, source) {
 				const result = this.random(3);
 				if (result === 0) {
@@ -21082,6 +21060,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return 90;
 		},
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Water Pledge",
 		pp: 15,
 		priority: 0,
@@ -22617,6 +22596,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 50,
 		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Tachyon Cutter",
 		pp: 10,
 		priority: 0,
@@ -22625,11 +22605,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Steel",
 		multihit: 2,
-		onModifyMove(move, pokemon) {
-			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-				move.category = 'Physical';
-			}
-		},
 	},
 	pixiebeam: {
 		accuracy: 85,
@@ -23328,7 +23303,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 	malignantchain: {
 		accuracy: 100,
 		basePower: 100,
-		category: "Physical",
+		category: "Special",
+		dynamicCategory: "highestattack",
 		name: "Malignant Chain",
 		pp: 5,
 		priority: 0,

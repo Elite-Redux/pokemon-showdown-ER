@@ -264,6 +264,21 @@ export const Scripts: ModdedBattleScriptsData = {
 			// For unaware
 			const statAttackerOpposite = move.overrideOffensivePokemon === 'target' ? source : target;
 
+			if (move.dynamicCategory === 'highestattack') {
+				const atk = source.calculateStat('atk', source.boosts['atk'], 1, source, target, move, 0);
+				const spa = source.calculateStat('spa', source.boosts['spa'], 1, source, target, move, 0);
+				if (atk > spa) move.category = 'Physical';
+				else if (spa < atk) move.category = 'Special';
+			} else if (move.dynamicCategory === 'highestdamage') {
+				const atk = source.calculateStat('atk', source.boosts['atk'], 1, source, target, move, 0);
+				const def = source.calculateStat('def', source.boosts['def'], 1, target, source, move, 0);
+				const spa = source.calculateStat('spa', source.boosts['spa'], 1, source, target, move, 0);
+				const spd = source.calculateStat('spd', source.boosts['spd'], 1, target, source, move, 0);
+				if (atk / def > spa / spd) move.category = 'Physical';
+				else if (spa / spd < atk / def) move.category = 'Special';
+				if (move.category === 'Physical' && move.id === 'shellsidearm') move.flags.contact = 1;
+			}
+
 			const isPhysical = move.category === 'Physical';
 			const attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
 			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
