@@ -1501,7 +1501,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		tier: "NFE",
 	},
 	exploud: {
-		tier: "UU",
+		tier: "Uber",
 		doublesTier: "DOU",
 	},
 	makuhita: {
