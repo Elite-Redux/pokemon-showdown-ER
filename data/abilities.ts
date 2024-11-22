@@ -2539,6 +2539,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			move.ignoreEvasion = true;
 			move.accuracy = typeof move.accuracy === 'number' ? move.accuracy * 1.2 : move.accuracy;
 		},
+		onSourceModifyAccuracy(accuracy) {
+			if (typeof accuracy !== "number") return;
+			return this.chainModify(1.2);
+		},
 		isBreakable: true,
 		name: "Keen Eye",
 		rating: 0.5,
@@ -6194,8 +6198,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyAccuracyPriority: 10,
 		onModifyAccuracy(accuracy, target, source, move) {
 			if (move.category === "Status" && typeof accuracy === "number") {
-				this.debug("Wonder Skin - setting accuracy to 50");
-				return 50;
+				return this.chainModify(.5);
 			}
 		},
 		isBreakable: true,
@@ -7354,9 +7357,10 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	badluck: {
-		onAccuracy(accuracy, target, source, move) {
-			if (accuracy === true) return;
-			return this.chainModify(.95);
+		onModifyAccuracy(accuracy, target, source, move) {
+			if (typeof accuracy === "number") {
+				return this.chainModify(.95);
+			}
 		},
 		onCriticalHit: false,
 		// Low damage roll implementation is in battle-actions.ts
