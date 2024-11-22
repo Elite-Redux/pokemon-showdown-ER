@@ -3888,14 +3888,15 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	pressure: {
 		onStart(pokemon) {
 			this.add("-ability", pokemon, "Pressure");
-			this.add('-clearallboost');
 
 			for (const active of this.getAllActive()) {
 				for (const boostName in active.boosts) {
 					if (active === pokemon) {
 						active.boosts[boostName as BoostID] = Math.max(0, active.boosts[boostName as BoostID]);
+						this.add('-clearnegativeboost', active);
 					} else {
 						active.boosts[boostName as BoostID] = Math.min(0, active.boosts[boostName as BoostID]);
+						this.add('-clearpositiveboost', active);
 					}
 				}
 			}
