@@ -259,8 +259,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	aurawheel: {
 		name: "Aura Wheel",
-		desc: "Has a 100% chance to raise the user's Speed by 1 stage. If the user is a Morpeko in Full Belly Mode, this move is Electric type. If the user is a Morpeko in Hangry Mode, this move is Dark type. This move cannot be used successfully unless the user's current form, while considering Transform, is Full Belly or Hangry Mode Morpeko.",
-		shortDesc: "Morpeko: Electric; Hangry: Dark; 100% +1 Spe.",
+		desc: "Has a 100% chance to raise the user's Speed by 1 stage. Is either Electric or Dark type based on which does the most damage.",
+		shortDesc: "Either Electric or Dark; 100% +1 Spe.",
 	},
 	aurorabeam: {
 		name: "Aurora Beam",
@@ -2140,8 +2140,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	flyingpress: {
 		name: "Flying Press",
-		desc: "This move combines Flying in its type effectiveness against the target. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-		shortDesc: "Combines Flying in its type effectiveness.",
+		desc: "Is either Fighting or Flying type based on which does the most damage. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		shortDesc: "Either Fighting or Flying type.",
 	},
 	focusblast: {
 		name: "Focus Blast",
@@ -4213,8 +4213,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	muddywater: {
 		name: "Muddy Water",
-		desc: "Has a 30% chance to lower the target's accuracy by 1 stage.",
-		shortDesc: "30% chance to lower the foe(s) accuracy by 1.",
+		desc: "Has a 30% chance to lower the target's accuracy by 1 stage. Is either Ground or Water type based on which does the most damage.",
+		shortDesc: "Either Ground or Water. 30% chance to lower the foe(s) accuracy by 1.",
 	},
 	multiattack: {
 		name: "Multi-Attack",
@@ -7376,8 +7376,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	scorchedearth: {
 		name: "Scorched Earth",
-		desc: "This move combines Ground in its type effectiveness against the target. Has a 10% chance to burn the target.",
-		shortDesc: "Combines Ground in its type effectiveness. 10% chance to burn the target.",
+		desc: "Is either Fire or Ground type based on which does the most damage. Has a 10% chance to burn the target.",
+		shortDesc: "Either Fire or Ground. 10% chance to burn the target.",
 	},
 	ironfangs: {
 		name: "Iron Fangs",

@@ -415,10 +415,6 @@ export const Scripts: ModdedBattleScriptsData = {
 				boosts
 			);
 			boost = boosts[boostName]!;
-			if (statUser && statTarget)
-			{
-				console.log(statUser.name, statTarget.name, boosts, boostName)
-			}
 			const boostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
 			if (boost > 6) boost = 6;
 			if (boost < -6) boost = -6;

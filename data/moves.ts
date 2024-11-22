@@ -780,24 +780,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				},
 			},
 		},
-		onTry(source) {
-			if (source.species.baseSpecies === 'Morpeko') {
-				return;
-			}
-			this.attrLastMove('[still]');
-			this.add('-fail', source, 'move: Aura Wheel');
-			this.hint("Only a Pokemon whose form is Morpeko or Morpeko-Hangry can use this move.");
-			return null;
-		},
-		onModifyType(move, pokemon) {
-			if (pokemon.species.name === 'Morpeko-Hangry') {
-				move.type = 'Dark';
-			} else {
-				move.type = 'Electric';
-			}
-		},
 		target: "normal",
 		type: "Electric",
+		type2: "Dark",
 	},
 	aurorabeam: {
 		num: 62,
@@ -5966,13 +5951,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Flying Press",
 		pp: 10,
 		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1, distance: 1, nonsky: 1},
-		onEffectiveness(typeMod, target, type, move) {
-			return typeMod + this.dex.getEffectiveness('Flying', type);
-		},
 		priority: 0,
 		secondary: null,
 		target: "any",
 		type: "Fighting",
+		type2: "Flying",
 		zMove: {basePower: 170},
 		contestType: "Tough",
 	},
@@ -12734,7 +12717,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	muddywater: {
 		num: 330,
 		accuracy: 100,
-		basePower: 90,
+		basePower: 70,
 		category: "Special",
 		name: "Muddy Water",
 		pp: 10,
@@ -12748,6 +12731,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		target: "allAdjacentFoes",
 		type: "Ground",
+		type2: "Water",
 		contestType: "Tough",
 	},
 	multiattack: {
@@ -21977,9 +21961,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Scorched Earth",
 		pp: 10,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onEffectiveness(typeMod, target, type, move) {
-			return typeMod + this.dex.getEffectiveness('Ground', type);
-		},
 		priority: 0,
 		secondary: {
 			status: 'brn',
@@ -21987,6 +21968,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		target: "any",
 		type: "Fire",
+		type2: "Ground",
 		zMove: {basePower: 170},
 		contestType: "Tough",
 	},

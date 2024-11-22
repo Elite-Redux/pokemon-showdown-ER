@@ -646,7 +646,12 @@ export class BattleActions {
 		return hitResults;
 	}
 	hitStepTryHitEvent(targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) {
-		const hitResults = this.battle.runEvent('TryHit', targets, pokemon, move);
+		const hitResults: any[] = [];
+		for (const target of targets) {
+			this.checkType2Override(pokemon, target, move);
+			const hitResult = this.battle.runEvent('TryHit', target, pokemon, move);
+			hitResults.push(hitResult);
+		}
 		if (!hitResults.includes(true) && hitResults.includes(false)) {
 			this.battle.add('-fail', pokemon);
 			this.battle.attrLastMove('[still]');
@@ -1039,6 +1044,18 @@ export class BattleActions {
 
 		return damage;
 	}
+	checkType2Override(pokemon: Pokemon, target: Pokemon, moveData: ActiveMove) {
+		if (moveData.type2) {
+			if (!moveData.savedType) moveData.savedType = moveData.type;
+			moveData.type = moveData.savedType;
+			const damage1 = this.getDamage(pokemon, target, moveData, true);
+			moveData.type = moveData.type2;
+			const damage2 = this.getDamage(pokemon, target, moveData, true);
+			if (typeof(damage1) !== 'number' && typeof(damage2) === 'number') moveData.type = moveData.type2;
+			else if (typeof(damage2) === 'number' && damage2 > (damage1 as number)) moveData.type = moveData.type2;
+			else moveData.type = moveData.savedType;
+		}
+	}
 	spreadMoveHit(
 		targets: SpreadMoveTargets, pokemon: Pokemon, moveOrMoveName: ActiveMove,
 		hitEffect?: Dex.HitEffect, isSecondary?: boolean, isSelf?: boolean
@@ -1060,6 +1077,7 @@ export class BattleActions {
 		} else if ((move.target === 'foeSide' || move.target === 'allySide' || move.target === 'allyTeam') && !isSelf) {
 			hitResult = this.battle.singleEvent('TryHitSide', moveData, {}, target || null, pokemon, move);
 		} else if (target) {
+			this.checkType2Override(pokemon, target, moveData);
 			hitResult = this.battle.singleEvent('TryHit', moveData, {}, target, pokemon, move);
 		}
 		if (!hitResult) {
@@ -1167,6 +1185,7 @@ export class BattleActions {
 			if (!target) continue;
 			this.battle.activeTarget = target;
 			damage[i] = undefined;
+			this.checkType2Override(source, target, move);
 			const curDamage = this.getDamage(source, target, moveData);
 			// getDamage has several possible return values:
 			//
