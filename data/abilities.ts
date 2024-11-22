@@ -3894,15 +3894,18 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-ability", pokemon, "Pressure");
 
 			for (const active of this.getAllActive()) {
+				let message = "";
 				for (const boostName in active.boosts) {
 					if (active === pokemon) {
-						active.boosts[boostName as BoostID] = Math.max(0, active.boosts[boostName as BoostID]);
-						this.add('-clearnegativeboost', active);
+						if (active.boosts[boostName as BoostID] >= 0) continue;
+						message = '-clearnegativeboost';
 					} else {
-						active.boosts[boostName as BoostID] = Math.min(0, active.boosts[boostName as BoostID]);
-						this.add('-clearpositiveboost', active);
+						if (active.boosts[boostName as BoostID] <= 0) continue;
+						message = '-clearpositiveboost';
 					}
+					active.boosts[boostName as BoostID] = 0;
 				}
+				if (message) this.add(message, active);
 			}
 		},
 		onDeductPP(target, source) {
