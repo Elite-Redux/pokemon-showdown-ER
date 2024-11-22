@@ -9374,15 +9374,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (!rolloutData) return;
 			rolloutData.startedThisTurn = true;
 		},
-		condition: {
-			duration: 1,
-			countFullRounds: true,
-			onLockMove: 'rollout',
-			onStart(source) {
-				this.effectState.hitCount = 0;
-				if (source.volatiles['defensecurl']) this.effectState.hitCount++;
-			},
-		},
 		secondary: null,
 		target: "normal",
 		type: "Ice",
@@ -15675,7 +15666,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 1,
 			countFullRounds: true,
-			onLockMove: 'rollout',
 			onStart(source) {
 				this.effectState.hitCount = 0;
 				if (source.volatiles['defensecurl']) this.effectState.hitCount++;
