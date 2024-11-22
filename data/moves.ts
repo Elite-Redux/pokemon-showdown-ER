@@ -6652,6 +6652,30 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Steel",
 	},
+	bloodmoon: {
+		accuracy: 100,
+		basePower: 140,
+		category: "Special",
+		name: "Blood Moon",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onDisableMove(pokemon) {
+			if (pokemon.lastMove?.id === 'bloodmoon') pokemon.disableMove('bloodmoon');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.lastMove?.id === 'bloodmoon') pokemon.addVolatile('bloodmoon');
+		},
+		onAfterMove(pokemon) {
+			if (pokemon.removeVolatile('bloodmoon')) {
+				this.add('-hint', "Some effects can force a Pokemon to use Blood Moon again in a row.");
+			}
+		},
+		condition: {},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+	},
 	gigavolthavoc: {
 		num: 646,
 		accuracy: true,
@@ -11910,11 +11934,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.lastMove?.id === 'meteorassault') pokemon.addVolatile('meteorassault');
 		},
 		onAfterMove(pokemon) {
-			if (pokemon.removeVolatile('gigatonhammer')) {
+			if (pokemon.removeVolatile('meteorassault')) {
 				this.add('-hint', "Some effects can force a Pokemon to use Meteor Assault again in a row.");
 			}
 		},
-
 		secondary: null,
 		target: "normal",
 		type: "Fighting",
@@ -14260,9 +14283,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Prismatic Laser",
 		pp: 10,
 		priority: 0,
-		flags: {recharge: 1, protect: 1, mirror: 1, pulse: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		flags: {recharge: 1, mirror: 1, pulse: 1},
+		onDisableMove(pokemon) {
+			if (pokemon.lastMove?.id === 'prismaticlaser') pokemon.disableMove('prismaticlaser');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.lastMove?.id === 'prismaticlaser') pokemon.addVolatile('prismaticlaser');
+		},
+		onAfterMove(pokemon) {
+			if (pokemon.removeVolatile('prismaticlaser')) {
+				this.add('-hint', "Some effects can force a Pokemon to use Prismatic Laser again in a row.");
+			}
 		},
 		secondary: null,
 		target: "normal",
@@ -15632,13 +15663,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 150,
 		category: "Physical",
-
 		name: "Rock Wrecker",
 		pp: 5,
 		priority: 0,
-		flags: {bullet: 1, recharge: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		flags: {bullet: 1, protect: 1, mirror: 1, pulse: 1},
+		onDisableMove(pokemon) {
+			if (pokemon.lastMove?.id === 'rockwrecker') pokemon.disableMove('rockwrecker');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.lastMove?.id === 'rockwrecker') pokemon.addVolatile('rockwrecker');
+		},
+		onAfterMove(pokemon) {
+			if (pokemon.removeVolatile('rockwrecker')) {
+				this.add('-hint', "Some effects can force a Pokemon to use Rock Wrecker again in a row.");
+			}
 		},
 		secondary: null,
 		target: "normal",

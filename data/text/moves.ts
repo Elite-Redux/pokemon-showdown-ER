@@ -2375,6 +2375,10 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Gigaton Hammer",
 		shortDesc: "Cannot be used twice in a row.",
 	},
+	bloodmoon: {
+		name: "Blood Moon",
+		shortDesc: "Cannot be used twice in a row.",
+	},
 	gigavolthavoc: {
 		name: "Gigavolt Havoc",
 		shortDesc: "Power is equal to the base move's Z-Power.",
@@ -4696,8 +4700,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	prismaticlaser: {
 		name: "Prismatic Laser",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		shortDesc: "Cannot be used twice in a row. Mega Launcher boosted.",
 	},
 	protect: {
 		name: "Protect",
@@ -5181,8 +5184,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	rockwrecker: {
 		name: "Rock Wrecker",
-		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
-		shortDesc: "User cannot move next turn.",
+		shortDesc: "Cannot be used twice in a row. Mega Launcher boosted",
 	},
 	roleplay: {
 		name: "Role Play",
