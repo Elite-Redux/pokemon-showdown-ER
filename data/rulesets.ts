@@ -66,7 +66,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Sleep Clause Mod",
 			"Dynamax Clause",
 		],
-		banlist: ["Baton Pass", "Revival Blessing", "White Smoke", "Twist. Dimension"],
+		banlist: ["Baton Pass", "Revival Blessing", "White Smoke", "Twist. Dimension", "North Wind"],
 	},
 	standardelitereduxousingles: {
 		effectType: "ValidatorRule",
@@ -75,10 +75,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		ruleset: [
 			"Standard Elite Redux",
 			"Cheap Blow Clause",
-			"North Wind Light Clay Clause",
 			"Regenerator Clause",
-			"Suicune Complex",
-			"Twisted Dimensions Clause",
 		],
 		banlist: [
 			"Arena Trap",
