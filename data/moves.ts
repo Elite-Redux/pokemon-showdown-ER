@@ -5398,32 +5398,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 519,
 		accuracy: 100,
 		basePower: 90,
-		basePowerCallback(target, source, move) {
-			if (['grasspledge', 'waterpledge'].includes(move.sourceEffect)) {
-				this.add('-combine');
-				return 150;
-			}
-			return 90;
-		},
 		category: "Special",
 		dynamicCategory: "highestattack",
 		name: "Fire Pledge",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, nonsky: 1, pledgecombo: 1},
+		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onModifyMove(move, pokemon) {
-			if (move.sourceEffect === 'waterpledge') {
-				move.type = 'Water';
-				move.forceSTAB = true;
+			if (['raindance', 'primordialsea'].includes(this.field.effectiveWeather())) {
 				move.self = {sideCondition: 'waterpledge'};
-			}
-			if (move.sourceEffect === 'grasspledge') {
-				move.type = 'Fire';
-				move.forceSTAB = true;
+			} else if (this.field.effectiveTerrain() === 'grassyterrain') {
 				move.sideCondition = 'firepledge';
-			}
-			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-				move.category = 'Physical';
 			}
 		},
 		condition: {
@@ -7686,47 +7671,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 520,
 		accuracy: 100,
 		basePower: 90,
-		basePowerCallback(target, source, move) {
-			if (['waterpledge', 'firepledge'].includes(move.sourceEffect)) {
-				this.add('-combine');
-				return 150;
-			}
-			return 90;
-		},
 		category: "Special",
 		dynamicCategory: "highestattack",
 		name: "Grass Pledge",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, nonsky: 1, pledgecombo: 1},
-		onPrepareHit(target, source, move) {
-			for (const action of this.queue.list as MoveAction[]) {
-				if (
-					!action.move || !action.pokemon?.isActive ||
-					action.pokemon.fainted || action.maxMove || action.zmove
-				) {
-					continue;
-				}
-				if (action.pokemon.isAlly(source) && ['waterpledge', 'firepledge'].includes(action.move.id)) {
-					this.queue.prioritizeAction(action, move);
-					this.add('-waiting', source, action.pokemon);
-					return null;
-				}
-			}
-		},
+		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onModifyMove(move, pokemon) {
-			if (move.sourceEffect === 'waterpledge') {
-				move.type = 'Grass';
-				move.forceSTAB = true;
-				move.sideCondition = 'grasspledge';
-			}
-			if (move.sourceEffect === 'firepledge') {
-				move.type = 'Fire';
-				move.forceSTAB = true;
-				move.sideCondition = 'firepledge';
-			}
-			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-				move.category = 'Physical';
+			if (['raindance', 'primordialsea'].includes(this.field.effectiveWeather())) {
+				move.self = {sideCondition: 'grasspledge'};
+			} else if (['sunnyday', 'desolateland'].includes(this.field.effectiveWeather())) {
+				move.self = {sideCondition: 'firepledge'};
 			}
 		},
 		condition: {
@@ -21074,50 +21029,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 518,
 		accuracy: 100,
 		basePower: 90,
-		basePowerCallback(target, source, move) {
-			if (['firepledge', 'grasspledge'].includes(move.sourceEffect)) {
-				this.add('-combine');
-				return 150;
-			}
-			return 90;
-		},
 		category: "Special",
 		dynamicCategory: "highestattack",
 		name: "Water Pledge",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, nonsky: 1, pledgecombo: 1},
-		onPrepareHit(target, source, move) {
-			for (const action of this.queue) {
-				if (action.choice !== 'move') continue;
-				const otherMove = action.move;
-				const otherMoveUser = action.pokemon;
-				if (
-					!otherMove || !action.pokemon || !otherMoveUser.isActive ||
-					otherMoveUser.fainted || action.maxMove || action.zmove
-				) {
-					continue;
-				}
-				if (otherMoveUser.isAlly(source) && ['firepledge', 'grasspledge'].includes(otherMove.id)) {
-					this.queue.prioritizeAction(action, move);
-					this.add('-waiting', source, otherMoveUser);
-					return null;
-				}
-			}
-		},
+		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onModifyMove(move, pokemon) {
-			if (move.sourceEffect === 'grasspledge') {
-				move.type = 'Grass';
-				move.forceSTAB = true;
-				move.sideCondition = 'grasspledge';
-			}
-			if (move.sourceEffect === 'firepledge') {
-				move.type = 'Water';
-				move.forceSTAB = true;
+			if (['sunnyday', 'desolateland'].includes(this.field.effectiveWeather())) {
 				move.self = {sideCondition: 'waterpledge'};
-			}
-			if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-				move.category = 'Physical';
+			} else if (this.field.effectiveTerrain() === 'grassyterrain') {
+				move.sideCondition = 'grasspledge';
 			}
 		},
 		condition: {
