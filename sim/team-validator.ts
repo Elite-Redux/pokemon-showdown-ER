@@ -12,6 +12,7 @@ import {Utils} from '../lib';
 import {Tags} from '../data/tags';
 import {Teams} from './teams';
 import {PRNG} from './prng';
+import { SpeciesAbility } from './dex-species.js';
 
 /**
  * Describes a possible way to get a pokemon. Is not exhaustive!
@@ -637,11 +638,24 @@ export class TeamValidator {
 		}
 
 		ability = dex.abilities.get(set.ability);
-		problem = this.checkAbility(set, ability, setHas)
-			|| this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I1), setHas)
-			|| this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I2), setHas)
-			|| this.checkAbility(set, dex.abilities.get(dex.species.get(set.species).abilities.I3), setHas);
-		if (problem) problems.push(problem);
+		for (const key of ["I1", "I2", "I3"]) {
+			const ability = dex.abilities.get(dex.species.get(set.species).abilities[key as keyof SpeciesAbility]);
+			const problem = this.checkAbility(set, ability, setHas);
+			if (problem) problems.push(problem);
+		}
+
+		if (outOfBattleSpecies.name !== tierSpecies.name) {
+			const abilites = ["I1", "I2", "I3"];
+			if (outOfBattleSpecies.abilities[0] === set.ability) abilites.push("0");
+			else if (outOfBattleSpecies.abilities[1] === set.ability) abilites.push("1");
+			else if (outOfBattleSpecies.abilities.H === set.ability) abilites.push("H");
+
+			for (const key of abilites) {
+				const ability = dex.abilities.get(tierSpecies.abilities[key as keyof SpeciesAbility]);
+				const problem = this.checkAbility(set, ability, setHas);
+				if (problem) problems.push(problem);
+			}
+		}
 
 		if (!set.nature || dex.gen <= 2) {
 			set.nature = '';
