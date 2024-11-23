@@ -5620,7 +5620,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Rollout",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
+		flags: {contact: 1, protect: 1, mirror: 1},
 		onModifyMove(move, pokemon, target) {
 			if (!pokemon.volatiles['rollout']) pokemon.addVolatile('rollout');
 			pokemon.volatiles['rollout'].hitCount++;
@@ -9387,7 +9387,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Ice Ball",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, bullet: 1},
 		onModifyMove(move, pokemon, target) {
 			if (!pokemon.volatiles['rollout']) pokemon.addVolatile('rollout');
 			pokemon.volatiles['rollout'].hitCount++;
@@ -15676,7 +15676,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Rollout",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
+		flags: {contact: 1, protect: 1, mirror: 1},
 		onModifyMove(move, pokemon, target) {
 			if (!pokemon.volatiles['rollout']) pokemon.addVolatile('rollout');
 			pokemon.volatiles['rollout'].hitCount++;
@@ -22244,7 +22244,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Electro Shot",
 		pp: 10,
 		priority: 0,
-		flags: {charge: 1, protect: 1, mirror: 1},
+		flags: {charge: 1, protect: 1, mirror: 1, pulse: 1, bullet: 1},
 		onTryMove(attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;
