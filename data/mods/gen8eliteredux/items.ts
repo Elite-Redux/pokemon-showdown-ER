@@ -747,7 +747,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		onModifyAtk() {},
 		onModifyDamage(atk, pokemon, target, move) {
 			if (move.category !== 'Physical') return;
-			if (pokemon.species.name === 'Cubone' || pokemon.species.name === 'Marowak') {
+			if (pokemon.baseSpecies.baseSpecies === 'Cubone' || pokemon.baseSpecies.baseSpecies === 'Marowak') {
 				return this.chainModify(2);
 			}
 		},
