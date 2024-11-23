@@ -3476,14 +3476,18 @@ export const Items: { [itemid: string]: ItemData } = {
 		},
 		onModifyAtkPriority: 1,
 		onModifyAtk(atk, pokemon) {
-			if (["Pikachu", "Raichu"].includes(pokemon.baseSpecies.baseSpecies)) {
-				return this.chainModify(2);
+			switch (pokemon.baseSpecies.baseSpecies)
+			{
+				case "Pikachu": return this.chainModify(2);
+				case "Raichu": return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 1,
 		onModifySpA(spa, pokemon) {
-			if (pokemon.baseSpecies.baseSpecies === "Pikachu") {
-				return this.chainModify(2);
+			switch (pokemon.baseSpecies.baseSpecies)
+			{
+				case "Pikachu": return this.chainModify(2);
+				case "Raichu": return this.chainModify(1.5);
 			}
 		},
 		itemUser: [
