@@ -3139,9 +3139,9 @@ export const AbilitiesText: { [k: string]: AbilityText } = {
 	},
 	atomicburst: {
 		name: "Atomic Burst",
-		desc: "If an opposing Pokemon successfully boosts stat(s), this pokemon will then follow up with a 50BP Hyper Beam. This move will not cause recharge.",
+		desc: "Retaliates with a 50BP Hyper Beam when hit by a super effective move. Does not cause recharge.",
 		shortDesc:
-			"Triggers 50BP Hyper Beam when foe boosts stat(s). Will not cause recharge",
+			"Retaliates with a 50BP Hyper Beam when hit by a super effective move. Does not cause recharge.",
 	},
 	retributionblow: {
 		name: "Retribution Blow",

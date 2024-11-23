@@ -8843,18 +8843,9 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		gen: 8,
 	},
 	atomicburst: {
-		onFoeAfterBoost(boost, target, source, effect) {
-			if (source && source !== target) return;
-			let willBurst = false;
-			const pokemon = this.effectState.target;
-			let i: BoostID;
-			for (i in boost) {
-				if (boost[i]! > 0) {
-					willBurst = true;
-				}
-			}
-
-			if (!willBurst) return;
+		onDamagingHit(damage, pokemon, attacker, attackerMove) {
+			if (attacker.hp <= 0) { return; }
+			if (pokemon.getMoveHitData(attackerMove).typeMod <= 0) return;
 
 			const move = Dex.moves.get("hyperbeam");
 			const flags = move.flags;
@@ -8863,7 +8854,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.actions.runAdditionalMove(
 				move,
 				pokemon,
-				target,
+				attacker,
 				{ basePower: 50, self: {}, flags: flags }
 			);
 		},
