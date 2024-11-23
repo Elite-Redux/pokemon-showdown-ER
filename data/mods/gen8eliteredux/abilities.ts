@@ -99,10 +99,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	corrosion: {
 		inherit: true,
 		onModifyMove(move, source, target) {
-			move.onEffectiveness = () => {
-				if (move.type !== 'Poison') return;
-				move.ignoreImmunity = true;
-			};
+			if (move.type !== 'Poison') return;
+			move.ignoreImmunity = true;
 		},
 		onEffectiveness(typeMod, target, type, move)
 		{
