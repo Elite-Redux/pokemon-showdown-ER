@@ -1960,6 +1960,24 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Bug",
 		contestType: "Cute",
 	},
+	berrysmash: {
+		num: 450,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Berry Smash",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, hammer: 1},
+		onTryHit(target, source) {
+			const item = source.getItem();
+			if (!item.isBerry) return;
+			source.eatItem(true);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+	},
 	bugbuzz: {
 		num: 405,
 		accuracy: 100,
