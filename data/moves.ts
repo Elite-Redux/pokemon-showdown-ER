@@ -12295,11 +12295,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 	mistball: {
 		num: 296,
 		accuracy: 100,
-		basePower: 95,
+		basePower: 110,
 		category: "Special",
 
 		name: "Mist Ball",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1},
 		secondary: {
