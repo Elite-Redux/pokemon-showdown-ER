@@ -16068,7 +16068,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Scale Shot",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, bullet: 1},
+		flags: {protect: 1, mirror: 1, bullet: 1, pulse: 1},
 		multihit: [2, 5],
 		selfBoost: {
 			boosts: {
