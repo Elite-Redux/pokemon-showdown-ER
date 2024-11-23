@@ -5474,7 +5474,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	firstimpression: {
 		num: 660,
 		accuracy: 100,
-		basePower: 90,
+		basePower: 75,
 		category: "Physical",
 		name: "First Impression",
 		pp: 10,
