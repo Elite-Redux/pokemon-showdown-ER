@@ -17929,7 +17929,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		multihit: [2, 5],
 		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Water",
 		maxMove: {basePower: 120},
 		contestType: "Cool",
 	},
