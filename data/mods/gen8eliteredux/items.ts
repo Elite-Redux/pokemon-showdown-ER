@@ -426,8 +426,9 @@ export const Items: {[k: string]: ModdedItemData} = {
 		onModifyAtk(atk, pokemon) {},
 		onModifySpA(spa, pokemon) {},
 		onModifyDamage(spa, pokemon) {
-			if (pokemon.baseSpecies.baseSpecies === 'Pikachu' || pokemon.baseSpecies.baseSpecies === 'Raichu' || pokemon.baseSpecies.baseSpecies === 'Raichu-Alola') {
-				return this.chainModify(2);
+			switch (pokemon.baseSpecies.baseSpecies) {
+				case "Pikachu": return this.chainModify(2);
+				case "Raichu": return this.chainModify(1.5);
 			}
 		},
 		itemUser: ["Pikachu", "Pikachu-Cosplay", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-PhD", "Pikachu-Libre", "Pikachu-Original", "Pikachu-Hoenn", "Pikachu-Sinnoh", "Pikachu-Unova", "Pikachu-Kalos", "Pikachu-Alola", "Pikachu-Partner", "Pikachu-Starter", "Pikachu-World", "Raichu", "Raichu-Alola"],
