@@ -1721,11 +1721,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	bounce: {
 		num: 340,
-		accuracy: 85,
-		basePower: 85,
+		accuracy: 100,
+		basePower: 100,
 		category: "Physical",
 		name: "Bounce",
-		pp: 5,
+		pp: 10,
 		priority: 0,
 		flags: {
 			contact: 1, charge: 1, protect: 1, mirror: 1, gravity: 1, distance: 1, nosleeptalk: 1, noassist: 1, failinstruct: 1,
@@ -4112,7 +4112,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	dragonclaw: {
 		num: 337,
 		accuracy: 100,
-		basePower: 80,
+		basePower: 90,
 		category: "Physical",
 		name: "Dragon Claw",
 		pp: 15,
@@ -6293,7 +6293,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	frostbreath: {
 		num: 524,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 60,
 		category: "Special",
 		name: "Frost Breath",
@@ -6301,7 +6301,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		willCrit: true,
-		secondary: null,
+		secondary: {
+			chance: 30,
+			status: 'frz',
+		},
 		target: "normal",
 		type: "Ice",
 		contestType: "Beautiful",
@@ -9144,7 +9147,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	hurricane: {
 		num: 542,
-		accuracy: 70,
+		accuracy: 75,
 		basePower: 110,
 		category: "Special",
 		name: "Hurricane",
@@ -15527,7 +15530,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
-			chance: 30,
+			chance: 20,
 			volatileStatus: 'flinch',
 		},
 		target: "allAdjacentFoes",
@@ -16979,11 +16982,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	skittersmack: {
 		num: 806,
-		accuracy: 90,
-		basePower: 70,
+		accuracy: 100,
+		basePower: 60,
 		category: "Physical",
 		name: "Skitter Smack",
-		pp: 10,
+		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: {
@@ -18288,6 +18291,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			// this is a side condition
 			onSideStart(side) {
+				if (side.getSideCondition('creepingthorns')) return false;
 				this.add('-sidestart', side, 'move: Stealth Rock');
 			},
 			onEntryHazard(pokemon) {
@@ -18300,6 +18304,34 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: null,
 		target: "foeSide",
 		type: "Rock",
+		zMove: {boost: {def: 1}},
+		contestType: "Cool",
+	},
+	creepingthorns: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Creeping Thorns",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1, mustpressure: 1},
+		sideCondition: 'creepingthorns',
+		condition: {
+			// this is a side condition
+			onSideStart(side) {
+				if (side.getSideCondition('stealthrock')) return false;
+				this.add('-sidestart', side, 'move: Creeping Thorns');
+			},
+			onEntryHazard(pokemon) {
+				if (pokemon.hasItem('heavydutyboots')) return;
+				if (pokemon.hasAbility('shielddust')) return;
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('creepingthorns')), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		secondary: null,
+		target: "foeSide",
+		type: "Grass",
 		zMove: {boost: {def: 1}},
 		contestType: "Cool",
 	},
@@ -18802,15 +18834,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	submission: {
 		num: 66,
-		accuracy: 80,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 120,
 		category: "Physical",
 
 		name: "Submission",
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		recoil: [1, 2],
+		recoil: [1, 3],
 		secondary: null,
 		target: "normal",
 		type: "Fighting",
@@ -21878,6 +21910,22 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, bite: 1},
+		secondary: {
+			chance: 10,
+			volatileStatus: 'attract',
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Beautiful",
+	},
+	cutsieslap: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Cutsie Slap",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, punch: 1},
 		secondary: {
 			chance: 10,
 			volatileStatus: 'attract',
