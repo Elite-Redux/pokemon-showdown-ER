@@ -1881,7 +1881,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	brutalswing: {
 		num: 693,
 		accuracy: 100,
-		basePower: 60,
+		basePower: 90,
 		category: "Physical",
 		name: "Brutal Swing",
 		pp: 20,
@@ -5567,7 +5567,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Flame Burst",
 		pp: 15,
 		priority: 1,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, pulse: 1},
 		onHit(target, source, move) {
 			for (const ally of target.adjacentAllies()) {
 				this.damage(ally.baseMaxhp / 4, ally, source, this.dex.conditions.get('Flame Burst'));
