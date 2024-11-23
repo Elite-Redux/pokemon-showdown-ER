@@ -156,7 +156,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		},
 		onModifyDefPriority: 10,
 		onModifyDef(def, pokemon) {
-			if (pokemon.types.includes("Ice") && this.field.isWeather('hail')) {
+			if (pokemon.hasType("Ice") && this.field.isWeather('hail')) {
 				return this.modify(def, 1.5);
 			}
 		},

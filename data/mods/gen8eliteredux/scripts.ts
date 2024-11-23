@@ -400,7 +400,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			const statTable = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
 			let statSuffix = statTable[statName];
 			if (statName === 'spe' && modifier) statSuffix += modifier < 1 ? "Secondary" : "Primary";
-			stat = this.battle.runEvent('Modify' + statSuffix, statUser, statTarget, move, stat);
+			stat = this.battle.runEvent('Modify' + statSuffix, statUser || this, statTarget, move, stat);
 			stat += bonusStat;
 
 			// stat boosts
