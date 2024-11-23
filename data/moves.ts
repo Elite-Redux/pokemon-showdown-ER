@@ -5602,16 +5602,30 @@ export const Moves: {[moveid: string]: MoveData} = {
 	flamewheel: {
 		num: 172,
 		accuracy: 100,
-		basePower: 60,
-		category: "Physical",
-		name: "Flame Wheel",
-		pp: 25,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, defrost: 1},
-		secondary: {
-			chance: 10,
-			status: 'brn',
+		basePower: 40,
+		basePowerCallback(pokemon, target, move) {
+			let bp = move.basePower;
+			const rolloutData = pokemon.volatiles['rollout'];
+			let hitCount = rolloutData.hitCount;
+			if (!hitCount || hitCount <= 1) return bp;
+			if (hitCount > 3) hitCount = 3;
+			return bp * Math.pow(2, hitCount - 1);
 		},
+		category: "Physical",
+		name: "Rollout",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, failinstruct: 1},
+		onModifyMove(move, pokemon, target) {
+			if (!pokemon.volatiles['rollout']) pokemon.addVolatile('rollout');
+			pokemon.volatiles['rollout'].hitCount++;
+		},
+		onHit(target, source) {
+			const rolloutData = source.volatiles['rollout']
+			if (!rolloutData) return;
+			rolloutData.startedThisTurn = true;
+		},
+		secondary: null,
 		target: "normal",
 		type: "Fire",
 		contestType: "Beautiful",
