@@ -7699,9 +7699,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onModifyMove(move, pokemon) {
 			if (['raindance', 'primordialsea'].includes(this.field.effectiveWeather())) {
-				move.self = {sideCondition: 'grasspledge'};
+				move.sideCondition = 'grasspledge';
 			} else if (['sunnyday', 'desolateland'].includes(this.field.effectiveWeather())) {
-				move.self = {sideCondition: 'firepledge'};
+				move.sideCondition = 'firepledge';
 			}
 		},
 		condition: {
