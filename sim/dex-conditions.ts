@@ -91,7 +91,7 @@ export interface EventMethods {
 	onModifySpeFull?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
 	onModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void;
 	onMoveAborted?: CommonHandlers['VoidMove'];
-	onNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | void) | boolean;
+	onNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | string | void) | boolean;
 	onOverrideAction?: (this: Battle, pokemon: Pokemon, target: Pokemon, move: ActiveMove) => string | void;
 	onPrepareHit?: CommonHandlers['ResultSourceMove'];
 	onRedirectTarget?: (

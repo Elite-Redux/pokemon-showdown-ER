@@ -2512,7 +2512,7 @@ export class Pokemon {
 		return [this.battle.gen >= 5 ? "Normal" : "???"];
 	}
 
-	isGrounded(negateImmunity = false) {
+	isGrounded(negateImmunity: boolean | string = false) {
 		if ("gravity" in this.battle.field.pseudoWeather) return true;
 		if ("ingrain" in this.volatiles && this.battle.gen >= 4) return true;
 		if ("smackdown" in this.volatiles) return true;
@@ -2524,7 +2524,7 @@ export class Pokemon {
 			this.hasType("Flying") &&
 			!(this.hasType("???") && "roost" in this.volatiles)
 		) { return false; }
-		if (
+		if (negateImmunity !== 'levitate' &&
 			(this.hasAbility("levitate") || this.hasAbility("dragonfly")) &&
 			!this.battle.suppressingAbility(this)
 		) { return null; }

@@ -172,6 +172,7 @@ export interface MoveEventMethods {
 
 	/* Invoked by the global BasePower event (onEffect = true) */
 	onBasePower?: CommonHandlers["ModifierSourceMove"];
+	onNegateImmunity?: ((this: Battle, pokemon: Pokemon, type: string) => boolean | string | void) | boolean;
 
 	onEffectiveness?: (
 		this: Battle,

@@ -1672,7 +1672,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 50,
 		category: "Physical",
-
+		onNegateImmunity(pokemon, type) {
+			if (type !== "Ground") return;
+			return "levitate";
+		},
+		ignoreImmunity: {'Ground': true},
 		name: "Bonemerang",
 		pp: 10,
 		priority: 0,
@@ -19754,13 +19758,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
-		onEffectiveness(typeMod, target, type, move) {
-			if (move.type !== 'Ground') return;
-			if (!target) return; // avoid crashing when called from a chat plugin
-			// ignore effectiveness if the target is Flying type and immune to Ground
-			if (!target.runImmunity('Ground')) {
-				if (target.hasType('Flying')) return 0;
-			}
+		onNegateImmunity(pokemon, type) {
+			if (type !== "Ground") return;
+			return "levitate";
 		},
 		volatileStatus: 'smackdown',
 		ignoreImmunity: {'Ground': true},

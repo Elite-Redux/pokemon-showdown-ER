@@ -7780,6 +7780,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyMove(move) {
 			if (move.flags["bone"]) {
 				move.ignoreImmunity = true;
+				move.onNegateImmunity = () => "levitate";
 			}
 		},
 		onModifyDamage(damage, source, target, move) {
@@ -11935,8 +11936,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			if (move.ignoreImmunity !== true) {
 				move.ignoreImmunity["Ground"] = true;
 			}
-
-			if (target.hasAbility('levitate') || target.hasAbility('dragonfly')) move.ignoreAbility = true;
+			move.onNegateImmunity = () => "levitate";
 		},
 	},
 	flourish: {
