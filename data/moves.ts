@@ -16062,7 +16062,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	scaleshot: {
 		num: 799,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 25,
 		category: "Physical",
 		name: "Scale Shot",
