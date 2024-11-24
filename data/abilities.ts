@@ -10646,7 +10646,16 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Egoist",
 		shortDesc: "Raises its own stats when foes raise theirs.",
 		onFoeAfterBoost(boost, target, source, effect) {
-			(this.effectState.target as Pokemon).boostBy(boost);
+			const positiveBoosts: Partial<BoostsTable> = {};
+			let any = false
+			for (const [stat, change] of Object.entries(boost)) {
+				if (change <= 0) continue;
+				positiveBoosts[stat as keyof BoostsTable] = change;
+				any = true;
+			}
+			if (!any) return;
+			const pokemon = this.effectState.target as Pokemon;
+			this.boost(positiveBoosts, pokemon, pokemon, effect, false, false, true);
 		},
 	},
 	terminalvelocity: {
@@ -12245,11 +12254,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 
 			for (const pokemon of target.foes()) {
 				if (pokemon === target) continue;
-				pokemon.boostBy(boost)
+				this.boost(boost, pokemon, this.effectState.target, effect, false, false, true);
 			}
 			for (const pokemon of target.allies()) {
 				if (pokemon === target) continue;
-				pokemon.boostBy(boost)
+				this.boost(boost, pokemon, this.effectState.target, effect, false, false, true);
 			}
 		},
 	},

@@ -4261,7 +4261,7 @@ export const Items: { [itemid: string]: ItemData } = {
 			if (!statsRaised) return;
 			const pokemon: Pokemon = this.effectState.target;
 			pokemon.useItem();
-			this.boost(boostPlus, pokemon);
+			this.boost(boostPlus, pokemon, this.effectState.target, effect, false, false, true);
 		},
 		num: 1883,
 		 gen: 8,
