@@ -12242,28 +12242,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			const sharingiscaring = this.dex.abilities.get("sharingiscaring");
 
 			if (effect.id === sharingiscaring.id) return;
-			// temporary fix to stop crashing
-			try {
-				if (target !== this.effectState.target) {
-					console.debug("boosting", this.effectState.target.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
-					this.boost(boost, this.effectState.target, this.effectState.target, sharingiscaring, false, true);
-				}
 
-				for (const pokemon of target.foes()) {
-					if (pokemon !== target && pokemon !== this.effectState.target) {
-						console.debug("boosting", pokemon.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
-						this.boost(boost, pokemon, this.effectState.target, sharingiscaring, false, true);
-					}
-				}
-				for (const pokemon of target.allies()) {
-					if (pokemon !== target && pokemon !== this.effectState.target) {
-						console.debug("boosting", pokemon.name, "due to", target.name, "sharing is caring from", `${source.name}'s`, effect.name);
-						this.boost(boost, pokemon, this.effectState.target, sharingiscaring, false, true);
-					}
-				}
-			} catch (e) {
-				console.error(e);
-				this.add("-fail", target, "ability: Sharing is Caring. BUG: Please report this.");
+			for (const pokemon of target.foes()) {
+				if (pokemon === target) continue;
+				pokemon.boostBy(boost)
+			}
+			for (const pokemon of target.allies()) {
+				if (pokemon === target) continue;
+				pokemon.boostBy(boost)
 			}
 		},
 	},
