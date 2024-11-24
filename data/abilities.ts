@@ -10646,7 +10646,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		name: "Egoist",
 		shortDesc: "Raises its own stats when foes raise theirs.",
 		onFoeAfterBoost(boost, target, source, effect) {
-			this.boost(boost, this.effectState.target);
+			(this.effectState.target as Pokemon).boostBy(boost);
 		},
 	},
 	terminalvelocity: {
