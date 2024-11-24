@@ -20970,6 +20970,31 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Electric",
 		contestType: "Cool",
 	},
+	ghastlyecho: {
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		name: "Ghastly Echo",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
+		self: { slotCondition: "ghastlyecho" },
+		condition: {
+			duration: 1,
+			countFullRounds: true,
+			onModifyDamage() {
+				return this.chainModify(1.5);
+			},
+			onSwitchIn(pokemon) {
+				pokemon.side.removeSlotCondition(pokemon, 'ghastlyecho');
+				pokemon.addVolatile('ghastlyecho');
+			},
+		},
+	},
 	volttackle: {
 		num: 344,
 		accuracy: 100,
