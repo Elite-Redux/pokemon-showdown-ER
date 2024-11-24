@@ -2,7 +2,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 	brn: {
 		inherit: true,
 		onModifyAtk(atk, source, target, move) {
-			if (move.id === 'facade') return;
+			if (move?.id === 'facade') return;
 			if (source.hasAbility(['guts', 'heatproof', 'flareboost'])) return;
 			return this.modify(atk, 0.5);
 		},
@@ -15,7 +15,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		onBeforeMovePriority: 10,
 		onBeforeMove(pokemon, target, move) {},
 		onModifySpA(spa, source, target, move) {
-			if (move.id === 'facade') return;
+			if (move?.id === 'facade') return;
 			if (source.hasAbility('determination')) return;
 			return this.modify(spa, 0.5);
 		},
