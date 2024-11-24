@@ -8278,16 +8278,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	// Elite Redux's Opportunist renamed to 'Expert Hunter' to avoid name confict with gen 9's Opportunist
 	experthunter: {
-		onFractionalPriority(priority, source, target, move) {
-			if (
-				(move.category === "Status" &&
-					source.hasAbility("myceliummight")) ||
-				!target
-			) { return; } // Just in case this happens
-			if (target.hp && target.hp <= target.maxhp / 2) {
-				this.add("-activate", source, "ability: Expert Hunter");
-				return 0.1;
-			}
+		onModifyPriority(priority, source, target, move) {
+			if (target.hp && target.hp <= target.maxhp / 2) return priority + 1;
 		},
 		name: "Expert Hunter",
 		rating: 4.5,
