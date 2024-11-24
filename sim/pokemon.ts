@@ -695,14 +695,19 @@ export class Pokemon {
 	}
 
 	getActionSpeed() {
+		if (this.battle.field.getPseudoWeather("quash")) {
+			const baseSpeed = this.getStat("spe", true, true);
+			return this.battle.runEvent("ModifySpeFull", this, this, null, baseSpeed);
+		}
+
 		let speed = this.getStat("spe", false, false);
 		if (
 			this.battle.field.getPseudoWeather("trickroom") &&
 			!this.battle.field.suppressingRoom()
 		) {
-			speed = 10000 - speed;
+			speed = Math.pow(2, 16) - speed + 1;
 		}
-		return this.battle.trunc(speed, 13);
+		return this.battle.trunc(speed, 16);
 	}
 
 	/**

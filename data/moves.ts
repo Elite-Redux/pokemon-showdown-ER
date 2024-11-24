@@ -14755,18 +14755,27 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Quash",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onHit(target) {
-			if (this.activePerHalf === 1) return false; // fails in singles
-			const action = this.queue.willMove(target);
-			if (!action) return false;
-
-			action.order = 201;
-			this.add('-activate', target, 'move: Quash');
+		flags: {mirror: 1},
+		pseudoWeather: 'quash',
+		condition: {
+			countFullRounds: true,
+			duration: 5,
+			onFieldStart(target, source, effect) {
+				if (effect.effectType === "Ability") {
+					this.add("-fieldstart", 'move: Quash', `[of] ${source}`, `[${effect.id}]`);
+				} else {
+					this.add('-fieldstart', 'move: Quash', '[of] ' + source);
+				}
+			},
+			onFieldResidualOrder: 27,
+			onFieldResidualSubOrder: 1,
+			onFieldEnd() {
+				this.add('-fieldend', 'move: Quash');
+			},
 		},
 		secondary: null,
 		target: "normal",
-		type: "Dark",
+		type: "Psychic",
 		zMove: {boost: {spe: 1}},
 		contestType: "Clever",
 	},
