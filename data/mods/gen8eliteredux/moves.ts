@@ -1149,11 +1149,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				return 8;
 			},
 			onBasePower(basePower, attacker, defender, move) {
-				const weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
-				if (weakenedMoves.includes(move.id) && defender.isGrounded() && !defender.isSemiInvulnerable()) {
-					this.debug('move weakened by grassy terrain');
-					return this.chainModify(0.5);
-				}
 				if (move.type === 'Grass' && attacker.isGrounded()) {
 					this.debug('grassy terrain boost');
 					return this.chainModify(1.3);
