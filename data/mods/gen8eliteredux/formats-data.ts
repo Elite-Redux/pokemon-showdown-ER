@@ -485,7 +485,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "NFE",
 	},
 	magnezone: {
-		tier: "OU",
+		tier: "Uber",
 		doublesTier: "DOU",
 	},
 	farfetchd: {
