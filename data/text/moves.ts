@@ -4851,8 +4851,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	quash: {
 		name: "Quash",
-		desc: "Causes the target to take its turn after all other Pokemon this turn, no matter the priority of its selected move. Fails if the target already moved this turn.",
-		shortDesc: "Forces the target to move last this turn.",
+		desc: "For 5 turns when computing turn order disables Trick Room, non-item speed-altering effects, and all moves are reduced to -4 priority if below -4 priority.",
+		shortDesc: "Disables most forms of speed control for 5 turns.",
 
 		activate: "  [TARGET]'s move was postponed!",
 	},
