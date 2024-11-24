@@ -37475,6 +37475,7 @@ export const Pokedex: { [k: string]: ModdedSpeciesData } = {
 		color: "Blue",
 		evoLevel: 0,
 		evos: [],
+		battleOnly: "Palafin",
 	},
 	ursalunabloodmoon: {
 		name: "Ursaluna-Bloodmoon",
