@@ -1208,9 +1208,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Belch",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, failmefirst: 1, nosleeptalk: 1, noassist: 1, failcopycat: 1, failinstruct: 1, failmimic: 1},
-		onDisableMove(pokemon) {
-			if (!pokemon.ateBerry) pokemon.disableMove('belch');
+		flags: {protect: 1, mirror: 1},
+		onTryHit(target, source) {
+			const item = source.getItem();
+			if (item.isBerry) source.eatItem(true);
+			if (!source.ateBerry) return false;
 		},
 		secondary: null,
 		target: "normal",

@@ -1705,6 +1705,21 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				pokemon.formeChange(forme, this.effect, false, "[msg]");
 			}
 		},
+		onAfterMove(source, target, move) {
+			switch (move.id) {
+				case "sunnyday":
+				case "sandstorm":
+				case "hail":
+				case "raindance":
+					break;
+
+				default:
+					return;
+			}
+			const opposite = source.oppositeFoe();
+			if (!opposite) return;
+			this.actions.runAdditionalMove(Dex.moves.get("weatherball"), source, opposite);
+		},
 		name: "Forecast",
 		rating: 2,
 		num: 59,
