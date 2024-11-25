@@ -640,23 +640,16 @@ export class TeamValidator {
 		ability = dex.abilities.get(set.ability);
 		problem = this.checkAbility(set, ability, setHas);
 		if (problem) problems.push(problem);
-		for (const key of ["I1", "I2", "I3"]) {
-			const ability = dex.abilities.get(dex.species.get(set.species).abilities[key as keyof SpeciesAbility]);
-			const problem = this.checkAbility(set, ability, setHas);
-			if (problem) problems.push(problem);
-		}
 
 		if (outOfBattleSpecies.name !== tierSpecies.name) {
-			const abilites = ["I1", "I2", "I3"];
-			if (outOfBattleSpecies.abilities[0] === set.ability) abilites.push("0");
-			else if (outOfBattleSpecies.abilities[1] === set.ability) abilites.push("1");
-			else if (outOfBattleSpecies.abilities.H === set.ability) abilites.push("H");
+			let ability = outOfBattleSpecies.abilities[0];
+			if (outOfBattleSpecies.abilities[0] === set.ability) ability = outOfBattleSpecies.abilities[0];
+			else if (outOfBattleSpecies.abilities[1] === set.ability) ability = outOfBattleSpecies.abilities[1];
+			else if (outOfBattleSpecies.abilities.H === set.ability) ability = outOfBattleSpecies.abilities.H;
 
-			for (const key of abilites) {
-				const ability = dex.abilities.get(tierSpecies.abilities[key as keyof SpeciesAbility]);
-				const problem = this.checkAbility(set, ability, setHas);
-				if (problem) problems.push(problem);
-			}
+			const abilityObj = dex.abilities.get(ability);
+			const problem = this.checkAbility(set, abilityObj, setHas);
+			if (problem) problems.push(problem);
 		}
 
 		if (!set.nature || dex.gen <= 2) {

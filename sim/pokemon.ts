@@ -7,6 +7,7 @@
 
 import {State} from "./state";
 import {toID} from "./dex";
+import { TeamValidator } from "./team-validator.js";
 
 /** A Pokemon's move slot. */
 interface MoveSlot {
@@ -2321,6 +2322,7 @@ export class Pokemon {
 	): boolean | any {
 		let result;
 		status = this.battle.dex.conditions.get(status);
+		if (status.id.startsWith("ability:") && TeamValidator.get(this.battle.format).ruleTable.get("-" + status.id)) return false;
 		if (!this.hp && !status.affectsFainted) return false;
 		if (linkedStatus && source && !source.hp) return false;
 		if (this.battle.event) {

@@ -73,14 +73,6 @@ export const Formats: FormatList = [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
 				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
-				}
 			}
 		},
 		onBegin() {
@@ -148,14 +140,6 @@ export const Formats: FormatList = [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
 				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
-				}
 			}
 		},
 		onBegin() {
@@ -221,14 +205,6 @@ export const Formats: FormatList = [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
 				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
-				}
 			}
 		},
 		onBegin() {
@@ -293,14 +269,6 @@ export const Formats: FormatList = [
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
-				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
 				}
 			}
 		},
@@ -368,14 +336,6 @@ export const Formats: FormatList = [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
 				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
-				}
 			}
 		},
 		onBegin() {
@@ -441,14 +401,6 @@ export const Formats: FormatList = [
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
-				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
 				}
 			}
 		},
@@ -520,14 +472,6 @@ export const Formats: FormatList = [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
 				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
-				}
 			}
 		},
 		onBegin() {
@@ -595,14 +539,6 @@ export const Formats: FormatList = [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
 				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
-				}
 			}
 		},
 		onBegin() {
@@ -668,14 +604,6 @@ export const Formats: FormatList = [
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
-				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
 				}
 			}
 			// const type = this.dex.types.get(this.ruleTable.valueRules.get('forcemonotype')!)
@@ -746,14 +674,6 @@ export const Formats: FormatList = [
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
-				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
 				}
 			}
 		},
@@ -827,14 +747,6 @@ export const Formats: FormatList = [
 					return [
 						`${set.name} already has ${innateName} as Innate. Please select from Abilities`,
 					];
-				}
-
-				// Checks if innate is banned
-				const banReason = this.ruleTable.check(
-					"ability:" + this.toID(innateName)
-				);
-				if (banReason) {
-					return [`${set.name}'s ability ${innateName} is ${banReason}.`];
 				}
 			}
 		},
