@@ -10818,7 +10818,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Prevents opposing pokemon from fleeing on entry.",
 		onStart(pokemon) {
 			for (const target of pokemon.side.foe.active) {
-				target.tryTrap(true);
+				target.addVolatile('trapped', pokemon, this.dex.abilities.get('saltcircle'), 'trapper');
 			}
 		},
 	},
