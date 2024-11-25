@@ -505,6 +505,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 				pokemon.removeVolatile("choicelock");
 				return;
 			}
+			if (pokemon.usedExtraMove) return;
 			if (
 				!pokemon.ignoringItem() &&
 				!pokemon.volatiles["dynamax"] &&
