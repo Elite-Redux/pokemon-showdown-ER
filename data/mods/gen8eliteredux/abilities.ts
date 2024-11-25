@@ -467,6 +467,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	neutralizinggas: {
 		// TODO: Remove diabling of setter's innates
 		inherit: true,
+		isPermanent: true,
 		// Ability suppression implemented in sim/pokemon.ts:Pokemon#ignoringAbility
 		onPreStart(pokemon) {
 			this.add('-ability', pokemon, 'Neutralizing Gas');

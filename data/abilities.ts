@@ -1670,6 +1670,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 218,
 	},
 	forecast: {
+		isPermanent: true,
 		onStart(pokemon) {
 			this.singleEvent(
 				"WeatherChange",
@@ -2135,6 +2136,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 37,
 	},
 	hungerswitch: {
+		isPermanent: true,
 		onResidualOrder: 29,
 		onResidual(pokemon) {
 			if (pokemon.species.baseSpecies !== "Morpeko" || pokemon.transformed) { return; }
@@ -9246,6 +9248,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	// TODO: Test Clueless
 	clueless: {
+		isPermanent: true,
 		onStart(pokemon) {
 			this.add("-ability", pokemon, "Clueless");
 			this.eachEvent("WeatherChange", this.effect);
