@@ -1689,7 +1689,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				break;
 			}
 			if (pokemon.isActive && forme) {
-				pokemon.formeChange(forme, this.effect, false, "[msg]");
+				pokemon.formeChange(forme, this.effect, true, "[msg]");
 			}
 		},
 		onAfterMove(source, target, move) {
