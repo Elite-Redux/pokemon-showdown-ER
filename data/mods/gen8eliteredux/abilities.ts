@@ -498,8 +498,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				const abilities = [target.ability, ...target.m.innates as string[]];
 				for (const ability of abilities) {
 					if (alreadyNotIgnored.get(target)![ability]) continue;
-					if (target.isAbilityIgnored(ability)) continue;
-					this.singleEvent('Start', this.dex.abilities.get(ability), target.abilityState, target, source, 'neutralizinggas');
+					const abilityObject = this.dex.abilities.get(ability);
+					if (!abilityObject) continue;
+					this.singleEvent('Start', abilityObject, target.abilityState, target, source, 'neutralizinggas');
 				}
 			}
 		},
