@@ -2517,6 +2517,8 @@ export class Pokemon {
 		return [this.battle.gen >= 5 ? "Normal" : "???"];
 	}
 
+	levitateEffects = ["levitate", "dragonfly", "aerialist"];
+
 	isGrounded(negateImmunity: boolean | string = false) {
 		if (negateImmunity === 'levitate') return false;
 		if ("gravity" in this.battle.field.pseudoWeather) return true;
@@ -2530,9 +2532,9 @@ export class Pokemon {
 			this.hasType("Flying") &&
 			!(this.hasType("???") && "roost" in this.volatiles)
 		) { return false; }
-		if ((this.hasAbility("levitate") || this.hasAbility("dragonfly")) &&
-			!this.battle.suppressingAbility(this)
-		) { return null; }
+		for (const ability in this.levitateEffects) {
+			if (this.hasAbility(ability) && !this.battle.suppressingAbility(this)) return null;
+		}
 		if ("magnetrise" in this.volatiles) return false;
 		if ("telekinesis" in this.volatiles) return false;
 		return item !== "airballoon";
@@ -2637,10 +2639,11 @@ export class Pokemon {
 		if (notImmune) return true;
 		if (!message) return false;
 		if (notImmune === null) {
-			if (this.hasAbility("levitate")) {
-				this.battle.add("-immune", this, "[from] ability: Levitate");
-			} else if (this.hasAbility("dragonfly")) {
-				this.battle.add("-immune", this, "[from] ability: Dragonfly");
+			for (const ability in this.levitateEffects) {
+				if (this.hasAbility(ability)) {
+					this.battle.add("-immune", this, `[from] ability: ${this.battle.dex.abilities.get(ability).name}`);
+					break;
+				}
 			}
 		} else {
 			this.battle.add("-immune", this);
