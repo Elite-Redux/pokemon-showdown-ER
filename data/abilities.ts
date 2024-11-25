@@ -258,6 +258,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 271,
 	},
 	anticipation: {
+		isBreakable: true,
 		onStart(pokemon) {
 			for (const target of pokemon.foes()) {
 				for (const moveSlot of target.moveSlots) {
@@ -590,27 +591,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		num: 201,
 	},
 	bigpecks: {
-		onTryBoost(boost, target, source, effect) {
-			if (source && target === source) return;
-			if (boost.def && boost.def < 0) {
-				delete boost.def;
-				if (
-					!(effect as ActiveMove).secondaries &&
-					effect.id !== "octolock"
-				) {
-					this.add(
-						"-fail",
-						target,
-						"unboost",
-						"Defense",
-						"[from] ability: Big Pecks",
-						"[of] " + target
-					);
-				}
+		onModifyDamage(basePower, attacker, defender, move) {
+			if (move.flags['contact']) {
+				return this.chainModify([5325, 4096]);
 			}
 		},
-		isBreakable: true,
 		name: "Big Pecks",
+		shortDesc: "This Pokemon's contact moves have their power multiplied by 1.3.",
 		rating: 0.5,
 		num: 145,
 	},
@@ -1571,9 +1558,8 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				}
 			}
 		},
-		onAllyModifyAtkPriority: 3,
-		onAllyModifyAtk(atk, pokemon) {
-			if (this.effectState.target.baseSpecies.baseSpecies !== "Cherrim") { return; }
+		onAllyModifySpAPriority: 3,
+		onAllyModifySpA(spa, pokemon) {
 			if (
 				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
 			) {
@@ -1582,13 +1568,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAllyModifySpDPriority: 4,
 		onAllyModifySpD(spd, pokemon) {
-			if (this.effectState.target.baseSpecies.baseSpecies !== "Cherrim") { return; }
 			if (
 				["sunnyday", "desolateland"].includes(pokemon.effectiveWeather())
 			) {
 				return this.chainModify(1.5);
 			}
 		},
+		isPermanent: true,
 		isBreakable: true,
 		name: "Flower Gift",
 		rating: 1,
@@ -2116,7 +2102,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyWeight(weighthg) {
 			return weighthg * 2;
 		},
-		isBreakable: true,
 		name: "Heavy Metal",
 		rating: 0,
 		num: 134,
@@ -2634,7 +2619,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifySpe(spe, pokemon) {
 			this.chainModify(1.3);
 		},
-		isBreakable: true,
 		name: "Light Metal",
 		rating: 1,
 		num: 135,
@@ -5600,6 +5584,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 			return false;
 		},
+		isBreakable: true,
 		name: "Thermal Exchange",
 		rating: 2.5,
 		num: 270,
@@ -6052,6 +6037,12 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.boost({def: 2});
 			}
 		},
+		onSourceModifyDamage(damage, source, target, move) {
+			if (move.type === "Water") {
+				return this.chainModify(.5);
+			}
+		},
+		isBreakable: true,
 		name: "Water Compaction",
 		rating: 1.5,
 		num: 195,
@@ -6109,7 +6100,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				);
 			}
 		},
-		isBreakable: true,
 		name: "White Smoke",
 		rating: 2,
 		num: 73,
@@ -6180,6 +6170,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				pokemon.addVolatile("windriderstarted");
 			}
 		},
+		isBreakable: true,
 		name: "Wind Rider",
 		rating: 3.5,
 		// We do not want Brambleghast to get Infiltrator in Randbats
@@ -6730,6 +6721,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onSourceModifyDamage(spe, pokemon, target, move) {
 			if (move.category === 'Physical') this.chainModify(0.6);
 		},
+		isBreakable: true,
 		name: "Lead Coat",
 		rating: 3.5,
 		num: 326,
@@ -7162,6 +7154,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 			return false;
 		},
+		isBreakable: true,
 		name: "Juggernaut",
 		rating: 3.5,
 		num: 350,
@@ -7379,6 +7372,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onCriticalHit: false,
 		// Low damage roll implementation is in battle-actions.ts
+		isBreakable: true,
 		name: "Bad Luck",
 		rating: 2,
 		num: 362,
@@ -7818,6 +7812,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return null;
 			}
 		},
+		isBreakable: true,
 		name: "Weather Control",
 		rating: 3,
 		num: 369,
@@ -8079,6 +8074,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return false;
 			}
 		},
+		isBreakable: true,
 		name: "Big Leaves",
 		rating: 4,
 		num: 387,
@@ -9033,6 +9029,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return null;
 			}
 		},
+		isBreakable: true,
 		name: "Desert Cloak",
 		rating: 3,
 		num: 427,
@@ -9412,6 +9409,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return this.chainModify(1.2);
 			}
 		},
+		isBreakable: true,
 		name: "Dune Terror",
 		rating: 3,
 		num: 444,
@@ -9467,6 +9465,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return false;
 			}
 		},
+		isBreakable: true,
 		name: "Radiance",
 		rating: 3,
 		num: 446,
@@ -9965,6 +9964,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			target.side.addSideCondition("mist");
 			return null;
 		},
+		isBreakable: true,
 		name: "Evaporate",
 		shortDesc: "Takes no damage and sets Mist if hit by water.",
 	},
@@ -10218,6 +10218,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return null;
 			}
 		},
+		isBreakable: true,
 	},
 	huntershorn: {
 		name: "Hunter's Horn",
@@ -10706,6 +10707,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return this.chainModify(0.5);
 			}
 		},
+		isBreakable: true,
 	},
 	earlygrave: {
 		name: "Early Grave",
@@ -10897,6 +10899,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifySpe(spe, pokemon) {
 			return this.chainModify(0.9);
 		},
+		isBreakable: true,
 	},
 	monstermash: {
 		name: "Monster Mash",
@@ -11280,6 +11283,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				);
 			}
 		},
+		isBreakable: true,
 	},
 	tippingpoint: {
 		name: "Tipping Point",
@@ -11477,6 +11481,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				return this.chainModify(0.5);
 			}
 		},
+		isBreakable: true,
 	},
 	trickster: {
 		name: "Trickster",
@@ -11857,6 +11862,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.actions.runAdditionalMove(Dex.moves.get(move.id), this.effectState.target, target);
 			this.effectState.target.activeMoveActions--;
 		},
+		isBreakable: true,
 	},
 	terashell: {
 		name: "Tera Shell",
@@ -11870,6 +11876,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 	},
 	aerialist: {
+		isBreakable: true,
 		name: "Aerialist",
 		shortDesc: "Combines Levitate & Flock.",
 		// Levitate defined in sim/pokemon.ts
@@ -12073,6 +12080,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				);
 			}
 		},
+		isBreakable: true,
 	},
 	hauntingfrenzy: {
 		name: "Haunting Frenzy",
@@ -12215,6 +12223,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			}
 			return false;
 		},
+		isBreakable: true,
 	},
 	gallantry: {
 		name: "Gallantry",
@@ -12229,6 +12238,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 			this.add("-activate", mon, "ability: Gallantry");
 			return 0;
 		},
+		isBreakable: true,
 	},
 	thickskin: {
 		name: "Thick Skin",
@@ -12301,6 +12311,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 	},
 	firescales: {
+		isBreakable: true,
 		name: "Fire Scales",
 		shortDesc:
 			"Halves damage taken by Special moves. Does NOT double Sp.Def.",
