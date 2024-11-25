@@ -6725,21 +6725,23 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	},
 	coilup: {
 		onStart(pokemon) {
-			this.effectState.coiled = true;
-			this.add("-activate", pokemon, "Coil Up");
-			// console.log(`On Start: EffectState: ${this.effectState.coiled}`);
+			pokemon.addVolatile('coilup');
 		},
-		onModifyPriority(priority, source, target, move) {
-			if (!this.effectState.coiled) return;
-			if (this.effectState.coiled && move.flags["bite"]) {
-				return priority + 1;
-			}
-		},
-		onAfterMove(attacker, defender, move) {
-			if (!this.effectState.coiled) return;
-			if (this.effectState.coiled && move.flags["bite"]) {
-				this.effectState.coiled = false;
-			}
+		condition: {
+			onStart(pokemon) {
+				this.add("-activate", pokemon, "Coil Up");
+			},
+			onModifyPriority(priority, source, target, move) {
+				if (this.effectState.coiled && move.flags["bite"]) {
+					return priority + 1;
+				}
+			},
+			onAfterMove(attacker, defender, move) {
+				if (attacker.usedExtraMove) return;
+				if (this.effectState.coiled && move.flags["bite"]) {
+					attacker.removeVolatile('coilup');
+				}
+			},
 		},
 		name: "Coil Up",
 		rating: 3.5,
