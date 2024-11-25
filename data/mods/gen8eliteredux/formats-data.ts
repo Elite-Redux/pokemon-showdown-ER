@@ -5406,7 +5406,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	mawilemegaredux: {
-		tier: "Uber",
+		tier: "OU",
 		doublesTier: "DOU",
 	},
 	pawniardredux: {
