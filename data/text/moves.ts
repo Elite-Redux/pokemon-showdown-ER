@@ -7305,11 +7305,13 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	wringout: {
 		name: "Wring Out",
-		desc: "Power is equal to 120 * (target's current HP / target's maximum HP), rounded half down, but not less than 1.",
-		shortDesc: "More power the more HP the target has left.",
-		gen4: {
-			desc: "Power is equal to 120 * (target's current HP / target's maximum HP) + 1, rounded down.",
-		},
+		desc: "If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is As One, Battle Bond, Comatose, Commander, Disguise, Gulp Missile, Hadron Engine, Ice Face, Multitype, Orichalcum Pulse, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Zen Mode, or Zero to Hero, this effect does not happen, and receiving the effect through Baton Pass ends the effect immediately.",
+		shortDesc: "Nullifies the foe(s) Ability if the foe(s) move first.",
+	},
+	hardpress: {
+		name: "Hard Press",
+		desc: "If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is As One, Battle Bond, Comatose, Commander, Disguise, Gulp Missile, Hadron Engine, Ice Face, Multitype, Orichalcum Pulse, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Zen Mode, or Zero to Hero, this effect does not happen, and receiving the effect through Baton Pass ends the effect immediately.",
+		shortDesc: "Nullifies the foe(s) Ability if the foe(s) move first.",
 	},
 	xscissor: {
 		name: "X-Scissor",

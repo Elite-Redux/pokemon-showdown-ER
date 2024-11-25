@@ -2895,18 +2895,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-
 		name: "Core Enforcer",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onHit(target) {
-			if (target.getAbility().isPermanent) return;
 			if (target.newlySwitched || this.queue.willMove(target)) return;
 			target.addVolatile('gastroacid');
 		},
 		onAfterSubDamage(damage, target) {
-			if (target.getAbility().isPermanent) return;
 			if (target.newlySwitched || this.queue.willMove(target)) return;
 			target.addVolatile('gastroacid');
 		},
@@ -21662,24 +21659,47 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	wringout: {
 		num: 378,
-		accuracy: 100,
-		basePower: 0,
-		basePowerCallback(pokemon, target, move) {
-			const hp = target.hp;
-			const maxHP = target.maxhp;
-			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(hp * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug('BP for ' + hp + '/' + maxHP + " HP: " + bp);
-			return bp;
-		},
-		category: "Special",
-
+		accuracy: 80,
+		basePower: 100,
+		category: "Physical",
 		name: "Wring Out",
-		pp: 5,
+		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
+		onHit(target) {
+			if (target.newlySwitched || this.queue.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage(damage, target) {
+			if (target.newlySwitched || this.queue.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
 		secondary: null,
 		target: "normal",
 		type: "Normal",
+		zMove: {basePower: 190},
+		maxMove: {basePower: 140},
+		contestType: "Tough",
+	},
+	hardpress: {
+		accuracy: 80,
+		basePower: 100,
+		category: "Physical",
+		name: "Hard Press",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit(target) {
+			if (target.newlySwitched || this.queue.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage(damage, target) {
+			if (target.newlySwitched || this.queue.willMove(target)) return;
+			target.addVolatile('gastroacid');
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
 		zMove: {basePower: 190},
 		maxMove: {basePower: 140},
 		contestType: "Tough",
