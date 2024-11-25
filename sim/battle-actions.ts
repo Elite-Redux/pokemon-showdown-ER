@@ -1052,8 +1052,8 @@ export class BattleActions {
 			const damage1 = this.getDamage(pokemon, target, moveData, true);
 			moveData.type = moveData.type2;
 			const damage2 = this.getDamage(pokemon, target, moveData, true);
-			if (typeof(damage1) !== 'number' && typeof(damage2) === 'number') moveData.type = moveData.type2;
-			else if (typeof(damage2) === 'number' && damage2 > (damage1 as number)) moveData.type = moveData.type2;
+			if (typeof (damage1) !== 'number' && typeof (damage2) === 'number') moveData.type = moveData.type2;
+			else if (typeof (damage2) === 'number' && damage2 > (damage1 as number)) moveData.type = moveData.type2;
 			else moveData.type = moveData.savedType;
 		}
 	}

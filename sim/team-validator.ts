@@ -12,7 +12,7 @@ import {Utils} from '../lib';
 import {Tags} from '../data/tags';
 import {Teams} from './teams';
 import {PRNG} from './prng';
-import { SpeciesAbility } from './dex-species.js';
+import {SpeciesAbility} from './dex-species.js';
 
 /**
  * Describes a possible way to get a pokemon. Is not exhaustive!
@@ -642,13 +642,13 @@ export class TeamValidator {
 		if (problem) problems.push(problem);
 
 		if (outOfBattleSpecies.name !== tierSpecies.name) {
-			let ability = outOfBattleSpecies.abilities[0];
-			if (outOfBattleSpecies.abilities[0] === set.ability) ability = outOfBattleSpecies.abilities[0];
-			else if (outOfBattleSpecies.abilities[1] === set.ability) ability = outOfBattleSpecies.abilities[1];
-			else if (outOfBattleSpecies.abilities.H === set.ability) ability = outOfBattleSpecies.abilities.H;
+			let oobAbility = outOfBattleSpecies.abilities[0];
+			if (outOfBattleSpecies.abilities[0] === set.ability) oobAbility = outOfBattleSpecies.abilities[0];
+			else if (outOfBattleSpecies.abilities[1] === set.ability) oobAbility = outOfBattleSpecies.abilities[1];
+			else if (outOfBattleSpecies.abilities.H === set.ability) oobAbility = outOfBattleSpecies.abilities.H;
 
-			const abilityObj = dex.abilities.get(ability);
-			const problem = this.checkAbility(set, abilityObj, setHas);
+			const abilityObj = dex.abilities.get(oobAbility);
+			problem = this.checkAbility(set, abilityObj, setHas);
 			if (problem) problems.push(problem);
 		}
 

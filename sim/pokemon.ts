@@ -7,7 +7,7 @@
 
 import {State} from "./state";
 import {toID} from "./dex";
-import { TeamValidator } from "./team-validator.js";
+import {TeamValidator} from "./team-validator.js";
 
 /** A Pokemon's move slot. */
 interface MoveSlot {
@@ -2419,8 +2419,7 @@ export class Pokemon {
 		const linkedStatus = this.volatiles[status.id].linkedStatus;
 		const volatile = this.volatiles[status.id];
 		delete this.volatiles[status.id];
-		if (!status.id.startsWith("ability:") || !this.hasAbility(status.id.slice("ability:".length)))
-		{
+		if (!status.id.startsWith("ability:") || !this.hasAbility(status.id.slice("ability:".length))) {
 			this.battle.singleEvent("End", status, volatile, this);
 		}
 		if (linkedPokemon) {
@@ -2535,7 +2534,7 @@ export class Pokemon {
 			this.hasType("Flying") &&
 			!(this.hasType("???") && "roost" in this.volatiles)
 		) { return false; }
-		for (const ability in this.levitateEffects) {
+		for (const ability of this.levitateEffects) {
 			if (this.hasAbility(ability) && !this.battle.suppressingAbility(this)) return null;
 		}
 		if ("magnetrise" in this.volatiles) return false;
@@ -2642,7 +2641,7 @@ export class Pokemon {
 		if (notImmune) return true;
 		if (!message) return false;
 		if (notImmune === null) {
-			for (const ability in this.levitateEffects) {
+			for (const ability of this.levitateEffects) {
 				if (this.hasAbility(ability)) {
 					this.battle.add("-immune", this, `[from] ability: ${this.battle.dex.abilities.get(ability).name}`);
 					break;

@@ -79,7 +79,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onBeforeMovePriority: 2,
 			onBeforeMove(pokemon, target, move) {},
-			onSourceDamage() { return this.chainModify(.5); },
+			onSourceDamage() { return this.chainModify(0.5); },
 			onEnd(pokemon) {
 				this.add('-end', pokemon, 'Attract', '[silent]');
 			},
@@ -990,7 +990,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
 			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'smokescreen', ...this.getAllHazards()
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'smokescreen', ...this.getAllHazards(),
 			];
 			const removeAll = this.getAllHazards();
 			for (const targetCondition of removeTarget) {

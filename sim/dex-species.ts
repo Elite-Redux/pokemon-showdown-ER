@@ -1,5 +1,4 @@
 import {toID, BasicEffect} from "./dex-data";
-import {getAbilities} from "../dex_repo/src/abilities";
 
 export interface SpeciesAbility {
 	0: string;

@@ -1,4 +1,3 @@
-import {TriumvirateModeTrivia} from "../../../server/chat-plugins/trivia/trivia";
 import {Pokemon} from "../../../sim/pokemon.js";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
@@ -92,8 +91,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move.type !== 'Poison') return;
 			move.ignoreImmunity = true;
 		},
-		onEffectiveness(typeMod, target, type, move)
-		{
+		onEffectiveness(typeMod, target, type, move) {
 			if (type === "Steel" && move.type === "Poison") return 1;
 		},
 		shortDesc: "This Pokemon can poison or badly poison a Pokemon regardless of its typing. Poison hits Steel super effectively",

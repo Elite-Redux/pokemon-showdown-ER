@@ -1694,14 +1694,14 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onAfterMove(source, target, move) {
 			switch (move.id) {
-				case "sunnyday":
-				case "sandstorm":
-				case "hail":
-				case "raindance":
-					break;
+			case "sunnyday":
+			case "sandstorm":
+			case "hail":
+			case "raindance":
+				break;
 
-				default:
-					return;
+			default:
+				return;
 			}
 			const opposite = source.oppositeFoe();
 			if (!opposite) return;
@@ -1715,7 +1715,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onStart(pokemon) {
 			const target = pokemon.oppositeFoe();
 			if (!target) return;
-			this.actions.runAdditionalMove(Dex.moves.get("futuresight"), pokemon, target, { basePower: 50 });
+			this.actions.runAdditionalMove(Dex.moves.get("futuresight"), pokemon, target, {basePower: 50});
 		},
 		name: "Forewarn",
 		rating: 0.5,
@@ -6035,7 +6035,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (move.type === "Water") {
-				return this.chainModify(.5);
+				return this.chainModify(0.5);
 			}
 		},
 		isBreakable: true,
@@ -6200,7 +6200,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onModifyAccuracyPriority: 10,
 		onModifyAccuracy(accuracy, target, source, move) {
 			if (move.category === "Status" && typeof accuracy === "number") {
-				return this.chainModify(.5);
+				return this.chainModify(0.5);
 			}
 		},
 		isBreakable: true,
@@ -7365,7 +7365,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 	badluck: {
 		onModifyAccuracy(accuracy, target, source, move) {
 			if (typeof accuracy === "number") {
-				return this.chainModify(.95);
+				return this.chainModify(0.95);
 			}
 		},
 		onCriticalHit: false,
@@ -8171,7 +8171,11 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		onAllyTryHitSide(target, source, move) {
 			if (source === this.effectState.target || !target.isAlly(source)) { return; }
 			if (move.type === "Ice") {
-				if (target.getStat("atk") > target.getStat("spa")) { this.boost({atk: 1}, this.effectState.target); } else { this.boost({spa: 1}, this.effectState.target); }
+				if (target.getStat("atk") > target.getStat("spa")) {
+					this.boost({atk: 1}, this.effectState.target);
+				} else {
+					this.boost({spa: 1}, this.effectState.target);
+				}
 			}
 		},
 		isBreakable: true,
@@ -8858,7 +8862,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move,
 				pokemon,
 				attacker,
-				{ basePower: 50, self: {}, flags: flags }
+				{basePower: 50, self: {}, flags: flags}
 			);
 		},
 		name: "Atomic Burst",
@@ -8888,7 +8892,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				move,
 				pokemon,
 				target,
-				{ self: {}, flags: flags }
+				{self: {}, flags: flags}
 			);
 		},
 		name: "Retribution Blow",
@@ -10559,7 +10563,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Counters contact with 50BP Snap Trap.",
 		onDamagingHit(damage, target, source, move) {
 			if (this.checkMoveMakesContact(move, source, target)) {
-				this.actions.runAdditionalMove(Dex.moves.get("snaptrap"), target, source, { basePower: 50 });
+				this.actions.runAdditionalMove(Dex.moves.get("snaptrap"), target, source, {basePower: 50});
 			}
 		},
 	},
@@ -10641,7 +10645,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		shortDesc: "Raises its own stats when foes raise theirs.",
 		onFoeAfterBoost(boost, target, source, effect) {
 			const positiveBoosts: Partial<BoostsTable> = {};
-			let any = false
+			let any = false;
 			for (const [stat, change] of Object.entries(boost)) {
 				if (change <= 0) continue;
 				positiveBoosts[stat as keyof BoostsTable] = change;

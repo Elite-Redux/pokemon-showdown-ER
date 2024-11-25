@@ -1,4 +1,4 @@
-import { Ability } from '../sim/dex-abilities.js';
+import {Ability} from '../sim/dex-abilities.js';
 import {Condition} from '../sim/dex-conditions';
 // List of flags and their descriptions can be found in sim/dex-moves.ts
 
@@ -3510,7 +3510,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
 			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', ...this.getAllHazards()
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', ...this.getAllHazards(),
 			];
 			const removeAll = this.getAllHazards();
 			for (const targetCondition of removeTarget) {
@@ -5624,7 +5624,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		basePowerCallback(pokemon, target, move) {
-			let bp = move.basePower;
+			const bp = move.basePower;
 			const rolloutData = pokemon.volatiles['rollout'];
 			let hitCount = rolloutData.hitCount;
 			if (!hitCount || hitCount <= 1) return bp;
@@ -5641,7 +5641,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			pokemon.volatiles['rollout'].hitCount++;
 		},
 		onHit(target, source) {
-			const rolloutData = source.volatiles['rollout']
+			const rolloutData = source.volatiles['rollout'];
 			if (!rolloutData) return;
 			rolloutData.startedThisTurn = true;
 		},
@@ -7643,7 +7643,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onHit(source) {
 				let success = false;
 				const removeTarget = [
-					'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', ...this.getAllHazards()
+					'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', ...this.getAllHazards(),
 				];
 				const removeAll = this.getAllHazards();
 				for (const targetCondition of removeTarget) {
@@ -9394,7 +9394,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		basePowerCallback(pokemon, target, move) {
-			let bp = move.basePower;
+			const bp = move.basePower;
 			const rolloutData = pokemon.volatiles['rollout'];
 			let hitCount = rolloutData.hitCount;
 			if (!hitCount || hitCount <= 1) return bp;
@@ -9411,7 +9411,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			pokemon.volatiles['rollout'].hitCount++;
 		},
 		onHit(target, source) {
-			const rolloutData = source.volatiles['rollout']
+			const rolloutData = source.volatiles['rollout'];
 			if (!rolloutData) return;
 			rolloutData.startedThisTurn = true;
 		},
@@ -15704,7 +15704,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 40,
 		basePowerCallback(pokemon, target, move) {
-			let bp = move.basePower;
+			const bp = move.basePower;
 			const rolloutData = pokemon.volatiles['rollout'];
 			let hitCount = rolloutData.hitCount;
 			if (!hitCount || hitCount <= 1) return bp;
@@ -15721,7 +15721,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			pokemon.volatiles['rollout'].hitCount++;
 		},
 		onHit(target, source) {
-			const rolloutData = source.volatiles['rollout']
+			const rolloutData = source.volatiles['rollout'];
 			if (!rolloutData) return;
 			rolloutData.startedThisTurn = true;
 		},
@@ -20986,7 +20986,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: null,
 		target: "normal",
 		type: "Ghost",
-		self: { slotCondition: "ghastlyecho" },
+		self: {slotCondition: "ghastlyecho"},
 		condition: {
 			duration: 1,
 			countFullRounds: true,
@@ -23511,7 +23511,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onEffectiveness(typeMod, target, type, move) {
 				const typeObject = this.dex.types.get(type);
 				const result = typeObject.damageTaken[move.type];
-				console.log(result, type, target?.name, move.type)
+				console.log(result, type, target?.name, move.type);
 				if (!result) return;
 				if (result === 1) return -1;
 				else return 1;
@@ -23534,5 +23534,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			},
 		},
-	}
+	},
 };

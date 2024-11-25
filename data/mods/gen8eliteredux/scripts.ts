@@ -54,8 +54,8 @@ export const Scripts: ModdedBattleScriptsData = {
 	actions: {
 		inherit: true,
 		canMegaEvo(pokemon: Pokemon) {
-			let species = pokemon.baseSpecies;
-			let altForme =
+			const species = pokemon.baseSpecies;
+			const altForme =
 				species.otherFormes && this.dex.species.get(species.otherFormes[0]);
 			const item = pokemon.getItem();
 
@@ -725,14 +725,12 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.baseAbility = this.ability;
 
 				const currentAbilities = Object.keys(this.volatiles).filter(it => it.startsWith("ability:")).map(it => it.slice("ability:".length));
-				for (const oldAbility of currentAbilities)
-				{
+				for (const oldAbility of currentAbilities) {
 					if (Object.values(this.m.innates).includes(oldAbility)) continue;
-					this.removeVolatile("ability:" + oldAbility)
+					this.removeVolatile("ability:" + oldAbility);
 				}
 
-				for (const innate of newInnates)
-				{
+				for (const innate of newInnates) {
 					const ability = this.getVolatile("ability:" + innate);
 					if (!ability) continue;
 
