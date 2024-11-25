@@ -4067,7 +4067,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.add("-end", pokemon, "Protosynthesis");
 			},
 		},
-		isPermanent: true,
 		name: "Protosynthesis",
 		rating: 3,
 		num: 281,
@@ -4214,7 +4213,6 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.add("-end", pokemon, "Quark Drive");
 			},
 		},
-		isPermanent: true,
 		name: "Quark Drive",
 		rating: 3,
 		num: 282,
