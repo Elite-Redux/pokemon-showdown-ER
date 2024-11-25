@@ -492,6 +492,7 @@ export const Conditions: { [k: string]: ConditionData } = {
 		name: "choicelock",
 		noCopy: true,
 		onStart(pokemon) {
+			if (pokemon.usedExtraMove) return false;
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");
 			if (
 				!this.activeMove.id ||
