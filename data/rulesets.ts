@@ -81,6 +81,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Pickup",
 			"Power Construct",
 			"Power of Alchemy",
+			"Salt Circle",
 			"Seaborne",
 			"Shadow Tag",
 			"Watch Your Step",
