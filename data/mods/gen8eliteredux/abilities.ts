@@ -462,53 +462,44 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onPreStart(pokemon) {
 			this.add('-ability', pokemon, 'Neutralizing Gas');
 			pokemon.abilityState.ending = false;
-			// Remove setter's innates before the ability starts
-			if (pokemon.m.innates) {
-				for (const innate of pokemon.m.innates) {
-					if (this.dex.abilities.get(innate).isPermanent || innate === 'neutralizinggas') continue;
-					pokemon.removeVolatile('ability:' + innate);
-				}
-			}
+
 			for (const target of this.getAllActive()) {
-				if (target.illusion) {
-					this.singleEvent('End', this.dex.abilities.get('Illusion'), target.abilityState, target, pokemon, 'neutralizinggas');
-				}
-				if (target.volatiles['slowstart']) {
-					delete target.volatiles['slowstart'];
-					this.add('-end', target, 'Slow Start', '[silent]');
-				}
-				if (target.m.innates) {
-					for (const innate of target.m.innates) {
-						if (this.dex.abilities.get(innate).isPermanent) continue;
-						target.removeVolatile('ability:' + innate);
-					}
+				if (target.fainted || target.faintQueued) continue;
+				if (target === pokemon) continue;
+				const abilities = [target.ability, ...target.m.innates as string[]];
+				for (const ability of abilities) {
+					const abilityObject = this.dex.abilities.get(ability || "");
+					if (!abilityObject) continue;
+					if (!target.isAbilityIgnored(abilityObject.id)) continue;
+					this.singleEvent('End', abilityObject, target.abilityState, target, pokemon, 'neutralizinggas');
 				}
 			}
 		},
 		onEnd(source) {
 			this.add('-end', source, 'ability: Neutralizing Gas');
 
-			// FIXME this happens before the pokemon switches out, should be the opposite order.
-			// Not an easy fix since we cant use a supported event. Would need some kind of special event that
-			// gathers events to run after the switch and then runs them when the ability is no longer accessible.
-			// (If you're tackling this, do note extreme weathers have the same issue)
+			const alreadyNotIgnored: Map<Pokemon, {[ability: string]: true}> = new Map();
 
-			// Mark this pokemon's ability as ending so Pokemon#ignoringAbility skips it
-			if (source.abilityState.ending) return;
-			source.abilityState.ending = true;
-			const sortedActive = this.getAllActive();
-			this.speedSort(sortedActive);
-			for (const pokemon of sortedActive) {
-				if (pokemon !== source) {
-					// Will be suppressed by Pokemon#ignoringAbility if needed
-					this.singleEvent('Start', pokemon.getAbility(), pokemon.abilityState, pokemon);
-					if (pokemon.m.innates) {
-						for (const innate of pokemon.m.innates) {
-							// permanent abilities
-							if (pokemon.volatiles['ability:' + innate]) continue;
-							pokemon.addVolatile('ability:' + innate, pokemon);
-						}
-					}
+			for (const target of this.getAllActive()) {
+				const arr: {[ability: string]: true} = {};
+				alreadyNotIgnored.set(target, arr);
+				const abilities = [target.ability, ...target.m.innates as string[]];
+				for (const ability of abilities) {
+					if (!target.isAbilityIgnored(ability)) arr[ability] = true;
+				}
+			}
+
+			if (source.ability === 'neutralizinggas') source.ability = '';
+			if (source.volatiles['ability:neutralizinggas']) delete source.volatiles['ability:neutralizinggas'];
+
+			for (const target of this.getAllActive()) {
+				if (target.fainted || target.faintQueued) continue;
+				if (target === source) continue;
+				const abilities = [target.ability, ...target.m.innates as string[]];
+				for (const ability of abilities) {
+					if (alreadyNotIgnored.get(target)![ability]) continue;
+					if (target.isAbilityIgnored(ability)) continue;
+					this.singleEvent('Start', this.dex.abilities.get(ability), target.abilityState, target, source, 'neutralizinggas');
 				}
 			}
 		},
