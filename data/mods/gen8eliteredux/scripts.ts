@@ -335,34 +335,30 @@ export const Scripts: ModdedBattleScriptsData = {
 	field: {
 		suppressingWeather() {
 			for (const pokemon of this.battle.getAllActive()) {
-				if (
-					pokemon &&
-					!pokemon.fainted &&
-					!pokemon.ignoringAbility() &&
-					(pokemon.getAbility().suppressWeather ||
-						pokemon.m.innates?.some(
-							(k: string) =>
-								this.battle.dex.abilities.get(k).suppressWeather
-						))
-				) {
-					return true;
+				if (!pokemon || pokemon.fainted) continue;
+				for (const ability of [pokemon.getAbility(), ...pokemon.m.innates?.map((it: string) => this.battle.dex.abilities.get(it)) as Ability[]]) {
+					if (!ability) continue;
+					if (ability.suppressWeather && !pokemon.isAbilityIgnored(ability.id)) return true;
 				}
 			}
 			return false;
 		},
 		suppressingTerrain() {
 			for (const pokemon of this.battle.getAllActive()) {
-				if (
-					pokemon &&
-					!pokemon.fainted &&
-					!pokemon.ignoringAbility() &&
-					(pokemon.getAbility().suppressTerrain ||
-						pokemon.m.innates?.some(
-							(k: string) =>
-								this.battle.dex.abilities.get(k).suppressTerrain
-						))
-				) {
-					return true;
+				if (!pokemon || pokemon.fainted) continue;
+				for (const ability of [pokemon.getAbility(), ...pokemon.m.innates?.map((it: string) => this.battle.dex.abilities.get(it)) as Ability[]]) {
+					if (!ability) continue;
+					if (ability.suppressTerrain && !pokemon.isAbilityIgnored(ability.id)) return true;
+				}
+			}
+			return false;
+		},
+		suppressingRoom() {
+			for (const pokemon of this.battle?.getAllActive() || []) {
+				if (!pokemon || pokemon.fainted) continue;
+				for (const ability of [pokemon.getAbility(), ...pokemon.m.innates?.map((it: string) => this.battle!.dex.abilities.get(it)) as Ability[]]) {
+					if (!ability) continue;
+					if (ability.suppressRoom && !pokemon.isAbilityIgnored(ability.id)) return true;
 				}
 			}
 			return false;
@@ -457,8 +453,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			);
 		},
 		hasAbility(ability) {
-			if (this.ignoringAbility()) return false;
 			if (Array.isArray(ability)) { return ability.some((abil) => this.hasAbility(abil)); }
+			if (this.isAbilityIgnored(ability)) return false;
 			ability = this.battle.toID(ability);
 			return (
 				this.ability === ability || !!this.volatiles["ability:" + ability]

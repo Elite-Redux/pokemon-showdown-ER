@@ -961,6 +961,16 @@ export class Pokemon {
 		return {targets, pressureTargets};
 	}
 
+	isAbilityIgnored(ability: string) {
+		const abilityObject = this.battle.dex.abilities.get(ability);
+		if (!abilityObject) return true;
+		if (abilityObject.isPermanent) return false;
+		if (this.hasItem('abilityshield')) return false;
+		if (this.volatiles["gastroacid"]) return true;
+		if (this.battle.getAllActive().some(it => it.hasAbility("neutralizinggas"))) return true;
+		return false;
+	}
+
 	ignoringAbility() {
 		if (this.battle.gen >= 5 && !this.isActive) return true;
 		if (this.getAbility().isPermanent) return false;
@@ -2291,16 +2301,7 @@ export class Pokemon {
 		return !this.ignoringAbility();
 	}
 	hasAbilityOrInnate(ability: string | string[]) {
-		if (this.ignoringAbility()) return false;
-		const i1 = this.species.abilities['I1'];
-		const i2 = this.species.abilities['I2'];
-		const i3 = this.species.abilities['I3'];
-		if (Array.isArray(ability)) {
-			if (!ability.map(toID).includes(this.ability) && !ability.map(toID).includes(toID(i1)) && !ability.map(toID).includes(toID(i2)) && !ability.map(toID).includes(toID(i3))) return false;
-		} else {
-			if (toID(ability) !== this.ability && toID(ability) !== toID(i1) && toID(ability) !== toID(i2) && toID(ability) !== toID(i3)) return false;
-		}
-		return true;
+		return this.hasAbility(ability);
 	}
 
 	clearAbility() {

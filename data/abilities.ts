@@ -5812,7 +5812,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 		},
 		condition: {
 			onModifySpe(spe, pokemon) {
-				if (!pokemon.item && !pokemon.ignoringAbility()) {
+				if (!pokemon.item && !pokemon.hasAbility("unburden")) {
 					return this.chainModify(2);
 				}
 			},

@@ -559,7 +559,7 @@ export class Battle {
 			this.debug(eventid + ' handler suppressed by Embargo, Klutz or Magic Room');
 			return relayVar;
 		}
-		if (eventid !== 'End' && effect.effectType === 'Ability' && (target instanceof Pokemon) && target.ignoringAbility()) {
+		if (eventid !== 'End' && effect.effectType === 'Ability' && (target instanceof Pokemon) && target.isAbilityIgnored(effect.id)) {
 			this.debug(eventid + ' handler suppressed by Gastro Acid or Neutralizing Gas');
 			return relayVar;
 		}
@@ -839,7 +839,7 @@ export class Battle {
 				}
 				continue;
 			} else if (eventid !== 'End' && effect.effectType === 'Ability' &&
-					(effectHolder instanceof Pokemon) && effectHolder.ignoringAbility()) {
+					(effectHolder instanceof Pokemon) && effectHolder.isAbilityIgnored(effect.id)) {
 				if (eventid !== 'Update') {
 					this.debug(eventid + ' handler suppressed by Gastro Acid or Neutralizing Gas');
 				}
