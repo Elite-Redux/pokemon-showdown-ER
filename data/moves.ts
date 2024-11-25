@@ -933,7 +933,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			this.damage(source.baseMaxhp / 2, source, source, this.dex.conditions.get('High Jump Kick'));
 		},
 		secondary: {
-			chance: 100,
+			chance: 30,
 			volatileStatus: 'confusion',
 		},
 		target: "normal",
