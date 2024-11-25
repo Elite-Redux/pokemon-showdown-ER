@@ -74,7 +74,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 		desc: "Standard ruleset for OU singles",
 		ruleset: [
 			"Standard Elite Redux",
-			"Cheap Blow Clause",
 			"Regenerator Clause",
 		],
 		banlist: [
@@ -114,7 +113,6 @@ export const Rulesets: { [k: string]: FormatData } = {
 		desc: "Standard ruleset for OU doubles",
 		ruleset: [
 			"Standard Elite Redux",
-			"Cheap Blow Clause",
 			"Regenerator Clause",
 		],
 		banlist: [
