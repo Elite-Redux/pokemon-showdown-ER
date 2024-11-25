@@ -66,7 +66,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 			"Sleep Clause Mod",
 			"Dynamax Clause",
 		],
-		banlist: ["Baton Pass", "Revival Blessing", "White Smoke", "Twist. Dimension", "North Wind"],
+		banlist: ["Baton Pass", "Revival Blessing", "White Smoke", "Twist. Dimension", "North Wind", "Phantom Thief"],
 	},
 	standardelitereduxousingles: {
 		effectType: "ValidatorRule",

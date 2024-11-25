@@ -3856,7 +3856,7 @@ export const FormatsData: { [k: string]: ModdedSpeciesFormatsData } = {
 		doublesTier: "DOU",
 	},
 	marshadow: {
-		tier: "AG",
+		tier: "Uber",
 		doublesTier: "DUber",
 	},
 	poipole: {
