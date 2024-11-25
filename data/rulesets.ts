@@ -78,6 +78,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		],
 		banlist: [
 			"Arena Trap",
+			"Pickup",
 			"Power Construct",
 			"Power of Alchemy",
 			"Seaborne",
@@ -118,6 +119,7 @@ export const Rulesets: { [k: string]: FormatData } = {
 		banlist: [
 			"Air Blower",
 			"Fearmonger",
+			"Pickup",
 			"Power Construct",
 			"Power of Alchemy",
 			"Seaborne",
