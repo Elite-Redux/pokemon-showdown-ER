@@ -6732,13 +6732,13 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				this.add("-activate", pokemon, "Coil Up");
 			},
 			onModifyPriority(priority, source, target, move) {
-				if (this.effectState.coiled && move.flags["bite"]) {
+				if (move.flags["bite"]) {
 					return priority + 1;
 				}
 			},
 			onAfterMove(attacker, defender, move) {
 				if (attacker.usedExtraMove) return;
-				if (this.effectState.coiled && move.flags["bite"]) {
+				if (move.flags["bite"]) {
 					attacker.removeVolatile('coilup');
 				}
 			},
