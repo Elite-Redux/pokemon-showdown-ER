@@ -539,7 +539,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	pickup: {
 		inherit: true,
 		onStart(pokemon) {
-			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+			const sideConditions = this.getAllHazards();
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] ability: Pickup', '[of] ' + pokemon);

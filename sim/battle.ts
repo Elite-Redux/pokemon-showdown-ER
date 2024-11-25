@@ -893,6 +893,10 @@ export class Battle {
 		return Array.isArray(target) ? targetRelayVars : relayVar;
 	}
 
+	getAllHazards() {
+		return ['spikes', 'toxicspikes', 'stealthrock', 'creepingthorns', 'stickyweb', 'gmaxsteelsurge'];
+	}
+
 	/**
 	 * priorityEvent works just like runEvent, except it exits and returns
 	 * on the first non-undefined value instead of only on null/false.
