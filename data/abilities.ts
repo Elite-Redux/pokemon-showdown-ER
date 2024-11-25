@@ -3918,7 +3918,7 @@ export const Abilities: { [abilityid: string]: AbilityData } = {
 				if (message) this.add(message, active);
 			}
 		},
-		onDeductPP(target, source) {
+		onFoeDeductPP(target, source) {
 			if (target.hasAbility('pressure')) return;
 			return 1;
 		},
