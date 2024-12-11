@@ -389,9 +389,6 @@ export class TeamValidator {
 				tierSpecies = outOfBattleSpecies;
 			}
 		}
-		if (ability.id === 'owntempo' && species.id === 'rockruff') {
-			tierSpecies = outOfBattleSpecies = dex.species.get('rockruffdusk');
-		}
 
 		if (ruleTable.has('obtainableformes')) {
 			const canMegaEvo = dex.gen <= 7 || ruleTable.has('+pokemontag:past');
@@ -642,12 +639,12 @@ export class TeamValidator {
 		if (problem) problems.push(problem);
 
 		if (outOfBattleSpecies.name !== tierSpecies.name) {
-			let oobAbility = outOfBattleSpecies.abilities[0];
-			if (outOfBattleSpecies.abilities[0] === set.ability) oobAbility = outOfBattleSpecies.abilities[0];
-			else if (outOfBattleSpecies.abilities[1] === set.ability) oobAbility = outOfBattleSpecies.abilities[1];
-			else if (outOfBattleSpecies.abilities.H === set.ability) oobAbility = outOfBattleSpecies.abilities.H;
+			let tierAbility = outOfBattleSpecies.abilities[0];
+			if (outOfBattleSpecies.abilities[0] === set.ability) tierAbility = tierSpecies.abilities[0];
+			else if (outOfBattleSpecies.abilities[1] === set.ability && tierSpecies.abilities[1]) tierAbility = tierSpecies.abilities[1];
+			else if (outOfBattleSpecies.abilities.H === set.ability && tierSpecies.abilities.H) tierAbility = tierSpecies.abilities.H;
 
-			const abilityObj = dex.abilities.get(oobAbility);
+			const abilityObj = dex.abilities.get(tierAbility);
 			problem = this.checkAbility(set, abilityObj, setHas);
 			if (problem) problems.push(problem);
 		}
