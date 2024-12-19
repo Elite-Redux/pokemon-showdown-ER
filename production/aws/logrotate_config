@@ -1,0 +1,9 @@
+/home/bitnami/logs/*/*.log {
+	size 10M
+	rotate 3
+	compress
+	delaycompress
+	missngok
+	notifempty
+	create 0644 
+}
