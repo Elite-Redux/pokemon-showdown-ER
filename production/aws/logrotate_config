@@ -1,10 +1,9 @@
 /home/bitnami/logs/*/*.log {
 	size 10M
-	daily
 	rotate 3
 	compress
 	delaycompress
-	missingok
+	missngok
 	notifempty
 	create 0644 
 }
