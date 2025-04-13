@@ -23,6 +23,7 @@
         "./server/chat-plugins/private/*/*.d.ts"
     ],
     "include": [
+        "./data/proto/*.ts",
         "./config/*.ts",
         "./data/*",
         "./data/text/*",
@@ -37,5 +38,5 @@
         "./translations/**/*.ts",
         "./proto/**/*.ts",
         "tools/elite-redux/dex-parser/generate-learnsets.ts"
-    ]
+    ],
 }
