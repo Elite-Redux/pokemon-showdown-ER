@@ -34,6 +34,8 @@
         "./sim/**/*",
         "./tools/set-import/*.ts",
         "./tools/modlog/*.ts",
-        "./translations/**/*.ts", "tools/elite-redux/dex-parser/generate-learnsets.ts",
+        "./translations/**/*.ts",
+        "./proto/**/*.ts",
+        "tools/elite-redux/dex-parser/generate-learnsets.ts"
     ]
 }

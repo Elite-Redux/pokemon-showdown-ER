@@ -27,6 +27,7 @@ tools/set-import/importer.js
 tools/modlog/converter.js
 *.tsbuildinfo
 **/sourceMaps
+proto/
 
 !test/**/*.js
 tools/modlog/**/*.js

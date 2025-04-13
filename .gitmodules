@@ -1,0 +1,6 @@
+[submodule "er-config-2.5"]
+	path = er-config-2-5
+	url = https://github.com/Elite-Redux/er-config.git
+[submodule "er-config"]
+	path = er-config
+	url = https://github.com/Elite-Redux/er-config.git
