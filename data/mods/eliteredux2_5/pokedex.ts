@@ -21,8 +21,12 @@ import {
 	itemForId,
 	moveForId,
 	reverseEvosForId,
+	speciesToId,
+	Xtox,
+	readItems,
 } from "./data.js";
 import {create} from "@bufbuild/protobuf";
+import {HoldEffect} from "../../proto/ItemList_pb.js";
 
 const formMap: { [key in SpeciesEnum]?: SpeciesEnum[] } =
 	readSpecies().species.reduce(
@@ -69,15 +73,7 @@ const PRIMAL_SUFFIX: { [key in Species_PrimalEvolution_PrimalType]: string } = {
 	[Species_PrimalEvolution_PrimalType.ULTRA]: "-Ultra",
 };
 
-function Xtox(str: string, prefix?: string) {
-	if (prefix && str.startsWith(prefix)) str = str.slice(prefix.length);
-	return str
-		.split("_")
-		.map((it) => it[0].toUpperCase + it.slice(1).toLowerCase())
-		.join("");
-}
-
-function displayName(species: Species): string {
+export function displayName(species: Species): string {
 	if (species.baseSpeciesInfo.case === "dex") {
 		return species.baseSpeciesInfo.value.name;
 	}
@@ -116,12 +112,12 @@ function displayName(species: Species): string {
 	return Xtox(SpeciesEnum[species.id], "SPECIES_");
 }
 
-export const Pokedex: { [k: string]: SpeciesData } = Object.fromEntries(
+export const Pokedex: { [k: string]: ModdedSpeciesData } = Object.fromEntries(
 	readSpecies()
 		.species.filter(
 			(it) => it.randomizerBanned !== Species_RandomizeBanned.SPECIES_HIDDEN
 		)
-		.map<[string, SpeciesData]>((it) => {
+		.map<[string, ModdedSpeciesData]>((it) => {
 		const dex = speciesInfo(it);
 		const showdownSpecies: {
 			-readonly [key in keyof SpeciesData]?: SpeciesData[key];
@@ -215,9 +211,22 @@ export const Pokedex: { [k: string]: SpeciesData } = Object.fromEntries(
 			showdownSpecies.gender = "N";
 		}
 
-		return [
-			SpeciesEnum[it.id].split("_").join("").toLowerCase(),
-			showdownSpecies as SpeciesData,
-		];
+		if (it.baseSpeciesInfo.case === "formOf") {
+			if (it.baseSpeciesInfo.value === SpeciesEnum.SPECIES_ARCEUS) {
+				const type = Type[SpeciesEnum[it.id].replace("SPECIES_ARCEUS_", "") as keyof typeof Type];
+				showdownSpecies.requiredItem = readItems().item.find(item => item.holdEffect === HoldEffect.PLATE && item.holdEffectType === type)?.name;
+				showdownSpecies.forme = "Arceus";
+			} else if (it.baseSpeciesInfo.value === SpeciesEnum.SPECIES_SILVALLY) {
+				const type = Type[SpeciesEnum[it.id].replace("SPECIES_SILVALLY_", "") as keyof typeof Type];
+				showdownSpecies.requiredItem = readItems().item.find(item => item.holdEffect === HoldEffect.MEMORY && item.holdEffectType === type)?.name;
+				showdownSpecies.forme = "Silvally";
+			}
+		}
+
+		if (it.battleForm) {
+			showdownSpecies.battleOnly = displayName(speciesForId(it.battleForm.of));
+		}
+
+		return [speciesToId(it.id), showdownSpecies as ModdedSpeciesData];
 	})
 );

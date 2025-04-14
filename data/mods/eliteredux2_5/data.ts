@@ -16,6 +16,34 @@ import {AbilityEnum} from "../../proto/AbilityEnum_pb.js";
 import {ItemEnum} from "../../proto/ItemEnum_pb.js";
 import {MoveEnum} from "../../proto/MoveEnum_pb.js";
 
+export function Xtox(str: string, prefix?: string) {
+	if (prefix && str.startsWith(prefix)) str = str.slice(prefix.length);
+	return str
+		.split("_")
+		.map((it) => it[0].toUpperCase + it.slice(1).toLowerCase())
+		.join("");
+}
+
+export function enumToId(value: string, prefix: string): string {
+	return value.replace(prefix, "").split("_").join("").toLowerCase();
+}
+
+export function speciesToId(species: SpeciesEnum): string {
+	return enumToId(SpeciesEnum[species], "SPECIES_");
+}
+
+export function moveToId(move: MoveEnum): string {
+	return enumToId(MoveEnum[move], "MOVE_");
+}
+
+export function itemToId(item: ItemEnum): string {
+	return enumToId(ItemEnum[item], "ITEM_");
+}
+
+export function abilityToId(ability: AbilityEnum): string {
+	return enumToId(AbilityEnum[ability], "ABILITY_");
+}
+
 function protocLocation() {
 	switch (platform()) {
 	case "linux":

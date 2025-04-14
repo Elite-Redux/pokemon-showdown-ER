@@ -24,6 +24,7 @@
     ],
     "include": [
         "./data/proto/*.ts",
+        "./data/proto/**/*.ts",
         "./config/*.ts",
         "./data/*",
         "./data/text/*",

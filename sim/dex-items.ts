@@ -17,6 +17,10 @@ export type ModdedItemData = ItemData | Partial<Omit<ItemData, 'name'>> & {
 	onCustap?: (this: Battle, pokemon: Pokemon) => void,
 };
 
+export function doesItemMegaEvolve(item: Item, baseSpecies: string): boolean {
+	return (item.multiMegaEvolves?.includes(baseSpecies)) || item.megaEvolves === baseSpecies;
+}
+
 export class Item extends BasicEffect implements Readonly<BasicEffect> {
 	declare readonly effectType: 'Item';
 
@@ -50,6 +54,12 @@ export class Item extends BasicEffect implements Readonly<BasicEffect> {
 	 * undefined, if not a mega stone.
 	 */
 	readonly megaEvolves?: string;
+	/**
+	 * If this is a mega stone: The names (e.g. Charizard) of the
+	 * formes this allows transformation from.
+	 * undefined, if not a mega stone or if there is .
+	 */
+	readonly multiMegaEvolves?: string[];
 	/**
 	 * If this is a Z crystal: true if the Z Crystal is generic
 	 * (e.g. Firium Z). If species-specific, the name
@@ -113,6 +123,7 @@ export class Item extends BasicEffect implements Readonly<BasicEffect> {
 		this.onMemory = data.onMemory || undefined;
 		this.megaStone = data.megaStone || undefined;
 		this.megaEvolves = data.megaEvolves || undefined;
+		this.multiMegaEvolves = data.multiMegaEvolves || undefined;
 		this.zMove = data.zMove || undefined;
 		this.zMoveType = data.zMoveType || undefined;
 		this.zMoveFrom = data.zMoveFrom || undefined;
